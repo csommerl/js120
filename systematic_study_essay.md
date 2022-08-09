@@ -1,4 +1,4 @@
-How to Study Systematically for the JS109 Written Exam
+How to Study Systematically for Launch School's JS109 Assessments
 =====
 
 ---
@@ -7,29 +7,43 @@ How to Study Systematically for the JS109 Written Exam
 
 ---
 
-# Why care about the written exam?
-
-It is initially peculiar to have an essay-style exam to test coding knowledge. And (at least for me) I was anxious after JS101 to continue either learning new things or doing more coding problems. So, it's worth recognizing the benefits of such an exam, and being conscious of them can help maintain motivation to studying for it.
-
-Three benefits that I focused on are these. First,
+# Introduction
 
 ...
 
-2. 1. interview prep
-   1. compare to learning German
+---
 
-2. precision that will help later, e.g., https://www.joshwcomeau.com/javascript/statements-vs-expressions/
+# The Written Assessment
 
-- psychology of wanting to make progress
-- lack of clear expectations can be helpful, since it forces you to think about what to prioritize
+## Why care about the written exam?
 
-3. Read code
+At first, it appeared peculiar to have an essay-style exam to test coding knowledge. And for me, it also appeared to be a digression from making progress in learning to code, since I was anxious after JS101 to continue learn new things. By the time I took the exam, I had realized these appearances were incorrect and that there are substantial benefits to having an essay-style exam for learning the fundamentals of software development.
+
+So, before getting to the particulars of how I studied for the exam, it might be helpful to identify some of these benefits, especially since recognizing them can help one maintain motivation to study for it. I identified four main benefits.
+
+First, the written exam is designed for testing mastery of fundamental concepts. In particular, Launch School's high standards force one to adhere to a high level of precision. And that will provide **a sturdy foundation to build on top of**. For example, lack of a precise understanding of the distinction between statements and expressions in JavaScript is something that appears to thwart those who learn React without such a foundation.[^1]
+
+Second, the written assessment is **good preparation for the interview assessment**. The main thing here is that one becomes *fluent* in talking about coding concepts. A written exam is especially helpful for this. When I learned German years ago, I practiced by writing in e-mails in German to a friend. In these e-mails, I would force myself to use new bits of grammar that I had just begun to learn. By practicing writing using those grammatical structures, I was able very quickly to speak aloud using those same grammatical structures. Likewise, after I prepared extensively for Launch School's written exam, I noticed that I was much more fluent when talking with classmates about coding concepts and code snippets. And when I took the interview exam, I was able to talk precisely while thinking aloud about my problem-solving process.
+
+Third, and following the previous point, the written assessment is good preparation for job interviews down the line. Many of the written exam's questions test fundamental concepts that come up in job interviews.[^2]
+
+Fourth, 
+
+read code
+
+Fifth,
+
+lack of clear expectations can be helpful, since it forces you to think about what to prioritize
+
+[^1]: See Josh W. Comeau's blog post ["Statements and Expressions"](https://www.joshwcomeau.com/javascript/statements-vs-expressions/).
+
+[^2]: Notice how many of the questions on [30 seconds of interviews](https://30secondsofinterviews.org/) are easily answered if you have a mastery of the JS101 material.
 
 ---
 
-# Orientation: Mastery-based learning
+## Orientation: Mastery-based learning
 
-## Assumptions
+### Assumptions
 
 Anki
 
@@ -37,7 +51,7 @@ Small Problems
 
 Only a suggested roadmap, a rational reconstruction
 
-## Tactics for mastery
+### Tactics for mastery
 
 1. Asking questions
 2. Paying attention to language
@@ -49,7 +63,7 @@ All of these involve further processing / making it your own
 
 ---
 
-# Organize study documents
+## Organize study documents
 
 ```
 ├── 01_study_guide_topics.md
@@ -69,9 +83,9 @@ All of these involve further processing / making it your own
 
 ---
 
-# Steps
+## Steps
 
-## Step 1: Active review
+### Step 1: Active review
 
 Docs 1-3
 
@@ -86,13 +100,13 @@ pay attention to bold words (perhaps save for third review with explanation snip
 
 Strategy document: add small lessons from different sources
 
-## Step 2: Practice
+### Step 2: Practice
 
 Docs 4-8
 
 Add to language & question documents: practicing will force one to pay attention to things that might be tricky to articulate precisely
 
-## Step 3: Consolidation
+### Step 3: Consolidation
 
 Docs 9-10
 
@@ -103,20 +117,19 @@ Tactics for concise explanations:
 - "This means that..."
 - "This contrasts with..."
 
-## Step 4: Mock exam
+### Step 4: Mock exam
 
 Doc 11
 
-## Step 5: Final preparations
+### Step 5: Final preparations
 
 Docs 12-13
 
 ---
 
-# Interview Prep
+# The Interview Assessment
 
 ```
-├── coding_tips.md
 ├── interview_to_do.md
 └── my_pedac.md
 ```
@@ -133,3 +146,4 @@ Docs 12-13
 
 # Conclusion
 
+...
