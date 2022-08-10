@@ -1,55 +1,50 @@
 const readline = require('readline-sync');
 const VALID_MOVES = ['rock', 'paper', 'scissors'];
 
-// eslint-disable-next-line max-lines-per-function
-function createPlayer(playerType) {
+function createPlayer() {
   return {
-    playerType,
+    move: null,
+  };
+}
+
+function createComputer() {
+  let playerObject = createPlayer();
+
+  let computerObject = {
     move: null,
 
     choose() {
-      if (this.isHuman()) {
-        let choice;
+      let randomIndex = Math.floor(Math.random() * VALID_MOVES.length);
+      this.move = VALID_MOVES[randomIndex];
+    },
+  };
 
-        while (true) {
-          choice = readline.question('Please choose rock, paper, or scissors: ');
-          if (VALID_MOVES.includes(choice)) break;
-          console.log('Sorry, invalid choice.');
-        }
+  return Object.assign(playerObject, computerObject);
+}
 
-        this.move = choice;
+function createHuman() {
+  let playerObject = createPlayer();
 
-      } else {
-        let randomIndex = Math.floor(Math.random() * VALID_MOVES.length);
-        this.move = VALID_MOVES[randomIndex];
+  let humanObject = {
+    choose() {
+      let choice;
+
+      while (true) {
+        choice = readline.question('Please choose rock, paper, or scissors: ');
+        if (VALID_MOVES.includes(choice)) break;
+        console.log('Sorry, invalid choice.');
       }
-    },
 
-    isHuman() {
-      return this.playerType === 'human';
+      this.move = choice;
     },
   };
-}
 
-function createMove() {
-  return {
-    // TODO
-  };
+  return Object.assign(playerObject, humanObject);
 }
-
-function createRule() {
-  return {
-    // TODO
-  };
-}
-
-let compare = function(move1, move2) {
-  // TODO
-};
 
 const RPSGame = {
-  human: createPlayer('human'),
-  computer: createPlayer('computer'),
+  human: createHuman(),
+  computer: createComputer(),
 
   displayWelcomeMessage() {
     console.log('Welcome to Rock, Paper, Scissors!');

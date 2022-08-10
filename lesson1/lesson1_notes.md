@@ -181,19 +181,26 @@ An **engine** is what coordinates the objects & their control flow.
 
 # [1.11 Walkthrough: OO RPS Design Choice](https://launchschool.com/lessons/fb892747/assignments/ae7e77a4)
 
+**Class inheritance** refers to how child objects inherit common properties and methods from a parent type.
+
+- The benefit of class inheritance is that it avoids unwieldy code when different children have behavior that differs depending on a property of that object type.
+
+It's good practice to set properties / initial states to `null` even though they will be set through some other behavior.
+
+---
+
+# [1.12 OO RPS](https://launchschool.com/lessons/fb892747/assignments/a9807753)
+
 ...
 
 ---
 
-# 1.12 OO RPS
+# [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
-...
-
----
-
-# 1.13 Assignment: OO RPS Bonus Features
-
-...
+- [ ] Keeping score
+- [ ] Add Lizard and Spock
+- [ ] Keep track of a history moves
+- [ ] Adjust computer choice based on history
 
 ---
 
