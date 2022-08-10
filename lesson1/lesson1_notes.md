@@ -82,7 +82,7 @@ let obj = {
 }
 ```
 
-:information_desk_person: Notice that methods like this do **not** require `return` statements.
+:information_source: Notice that methods like this do **not** require `return` statements.
 
 ## Compact Method Syntax
 
@@ -140,7 +140,7 @@ An object's **type** refers to what it shared in common with other objects.
 
 Since objects of the same type share things in common (e.g., types of states and behavior), functions that are **object factories** (or, more simply, **factory functions**) can be used to create them.
 
-:raising_hand: *There are additional techniques?*
+:question: *Are there additional techniques?*
 
 ---
 
@@ -161,11 +161,19 @@ function createObj(behavior1, behavior2) {
 
 # [1.9 Assignment: OO RPS](https://launchschool.com/lessons/fb892747/assignments/b65f1ede)
 
-...
+Three steps to making an object-oriented program:
+
+1. Write a description of the problem.
+2. Identify important nouns & verbs.
+3. Organize nouns & verbs.
+   - Nouns are (types of) objects.
+   - Verbs are behaviors.
+
+An **engine** is what coordinates the objects & their control flow.
 
 ---
 
-# 1.10 Walk-through: OO RPS
+# [1.10 Walk-through: OO RPS](https://launchschool.com/lessons/fb892747/assignments/a54702fd)
 
 ...
 
