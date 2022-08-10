@@ -198,6 +198,8 @@ It's good practice to set properties / initial states to `null` even though they
 # [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
 - [ ] Keeping score
+  - [ ] make the score a state of each player instead of the game?
+
 - [ ] Add Lizard and Spock
 - [ ] Keep track of a history moves
 - [ ] Adjust computer choice based on history
