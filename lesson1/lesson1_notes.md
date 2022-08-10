@@ -1,17 +1,17 @@
-Lesson 1: Introduction to Object Oriented Programming
+[Lesson 1: Introduction to Object Oriented Programming](https://launchschool.com/lessons/fb892747/assignments)
 =====
 
 [TOC]
 
 ---
 
-# 1.1 Introduction
+# [1.1 Introduction](https://launchschool.com/lessons/fb892747/assignments/78f95d7f)
 
 Object-Oriented Programming (OOP) is useful for dealing with large, complex programs.
 
 ---
 
-# 1.2 What is OOP?
+# [1.2 What is OOP?](https://launchschool.com/lessons/fb892747/assignments/454a3f12)
 
 ## Definitions
 
@@ -39,7 +39,7 @@ Tradeoffs:
 
 ---
 
-# 1.3 Encapsulation
+# [1.3 Encapsulation](https://launchschool.com/lessons/fb892747/assignments/d09dc4ed)
 
 **Encapsulation** is the bundling together into a single structure of two things:
 1. data (state)
@@ -52,7 +52,7 @@ Purpose of encapsulation:
 
 ---
 
-# 1.4 Practice Problems: OOP and Encapsulation
+# [1.4 Practice Problems: OOP and Encapsulation](https://launchschool.com/lessons/fb892747/assignments/bd81804d)
 
 1. OOP is an approach to programming where problems are conceptualized and solved in terms of objects, which are entities that combine together both data and operations.
 2. The advantages are that it is easier to reason about problems, organize code, and to restrict operations to particular domains/objects. The disadvantages are that it makes code more complex and less efficient.
@@ -63,7 +63,7 @@ Purpose of encapsulation:
 
 ---
 
-# 1.5 Creating Objects
+# [1.5 Creating Objects](https://launchschool.com/lessons/fb892747/assignments/20ed580c)
 
 Objects' state are represented by typical key-value pairs, where the value is a type of data. Objects' behavior is represented by key-value pairs where the value is a function (enabled by functions being first-class).
 
@@ -71,29 +71,79 @@ A **method** is a property of an object that is a function. They are invoked wit
 
 In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might assign them to undesirable values, by changing the data type or giving a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
 
+## Full Method Syntax
+
+```javascript
+let obj = {
+  state1: true,
+  behavior1: function() {
+    obj.state1 = obj.state1 ? false : true; // see below about the this keyword!
+  }
+}
+```
+
 ## Compact Method Syntax
 
-...
+Compact syntax is formed by:
+
+1. omitting `:`
+2. omitting the `function` keyword
+
+Example:
+
+```javascript
+let obj = {
+  state1: true,
+  behavior1() {
+    obj.state1 = obj.state1 ? false : true; // see below about the this keyword!
+  }
+}
+```
+
+| :warning: *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.* |
+| ------------------------------------------------------------ |
+
+Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
 
 ## The `this` Keyword
 
-...
+The `this` keyword can be used in place of the variable name within method definitions:
+
+```javascript
+let obj = {
+  state1: true,
+  behavior1() {
+    this.state1 = obj.state1 ? false : true;
+  }
+}
+```
+
+The benefit of using `this` is that the method definition will work as expected regardless of the variable name.
+
+Cf. [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on MDN.
 
 ---
 
-# 1.6 Collaborator Objects
+# [1.6 Collaborator Objects](https://launchschool.com/lessons/fb892747/assignments/675a4d9d)
 
-...
-
----
-
-# 1.7 Functions as Object Factories
-
-...
+A **collaborator object or collaborator** is an object that is a state of another object.
+- The two objects can be said to "collaborate" insofar as they work together.
+- Collaborators help connect different classes with each other.
+- Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
 ---
 
-# 1.8 Practice Problems: Objects and Factories
+# [1.7 Functions as Object Factories](https://launchschool.com/lessons/fb892747/assignments/3a7351ce)
+
+An object's **type** refers to what it shared in common with other objects.
+
+Since objects of the same type share things in common (e.g., types of states and behavior), functions that are **object factories** can be used to create them.
+
+There are additional techniques?
+
+---
+
+# [1.8 Practice Problems: Objects and Factories](https://launchschool.com/lessons/fb892747/assignments/957404de)
 
 ...
 
