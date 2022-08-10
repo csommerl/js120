@@ -82,6 +82,8 @@ let obj = {
 }
 ```
 
+:information_desk_person: Notice that methods like this do **not** require `return` statements.
+
 ## Compact Method Syntax
 
 Compact syntax is formed by:
@@ -100,8 +102,7 @@ let obj = {
 }
 ```
 
-| :warning: *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.* |
-| ------------------------------------------------------------ |
+:warning: *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.*
 
 Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
 
@@ -137,19 +138,28 @@ A **collaborator object or collaborator** is an object that is a state of anothe
 
 An object's **type** refers to what it shared in common with other objects.
 
-Since objects of the same type share things in common (e.g., types of states and behavior), functions that are **object factories** can be used to create them.
+Since objects of the same type share things in common (e.g., types of states and behavior), functions that are **object factories** (or, more simply, **factory functions**) can be used to create them.
 
-There are additional techniques?
+:raising_hand: *There are additional techniques?*
 
 ---
 
 # [1.8 Practice Problems: Objects and Factories](https://launchschool.com/lessons/fb892747/assignments/957404de)
 
-...
+When using a factory function: if the property name is supposed to be the name of the parameter, you can use **shorthand notation** like so:
+
+```javascript
+function createObj(behavior1, behavior2) {
+  return {
+    behavior1,
+    behavior2,
+  };
+}
+```
 
 ---
 
-# 1.9 Assignment: OO RPS
+# [1.9 Assignment: OO RPS](https://launchschool.com/lessons/fb892747/assignments/b65f1ede)
 
 ...
 
