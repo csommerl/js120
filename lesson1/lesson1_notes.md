@@ -47,17 +47,35 @@ Tradeoffs:
 
 Purpose of encapsulation:
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
-2. 
+2. They have a **public interface** for interacting with them, whereas it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
+   - JavaScript does *not* officially/formally/syntactically support access restrictions.
 
 ---
 
 # 1.4 Practice Problems: OOP and Encapsulation
 
-...
+1. OOP is an approach to programming where problems are conceptualized and solved in terms of objects, which are entities that combine together both data and operations.
+2. The advantages are that it is easier to reason about problems, organize code, and to restrict operations to particular domains/objects. The disadvantages are that it makes code more complex and less efficient.
+   - another advantage: *reduce dependencies*
+3. Encapsulation refers to how code is structured together: certain kinds of data (state) and certain kinds of operations (behavior) are bundled together in a single entity.
+4. JavaScript differs from other OO languages insofar as there are no formal access restrictions.
+   - So, they must be devised using other means.
 
 ---
 
 # 1.5 Creating Objects
+
+Objects' state are represented by typical key-value pairs, where the value is a type of data. Objects' behavior is represented by key-value pairs where the value is a function (enabled by functions being first-class).
+
+A **method** is a property of an object that is a function. They are invoked with dot notation.
+
+In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might assign them to undesirable values, by changing the data type or giving a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
+
+## Compact Method Syntax
+
+...
+
+## The `this` Keyword
 
 ...
 
