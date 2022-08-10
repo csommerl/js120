@@ -179,7 +179,7 @@ An **engine** is what coordinates the objects & their control flow.
 
 ---
 
-# 1.11 Walkthrough: OO RPS Design Choice
+# [1.11 Walkthrough: OO RPS Design Choice](https://launchschool.com/lessons/fb892747/assignments/ae7e77a4)
 
 ...
 
