@@ -6,7 +6,7 @@ Disadvantages of OOP; 1. OOP programs are often larger, 2. OOP programs are ofte
 
 Encapsulation; the bundling together into a single structure of two things: 1. data (state), 2. operations on that data (behavior); js120
 
-Purposes of encapsulation; 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited; 2. It provides a **public interface** for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.; js120
+Purposes of encapsulation; 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited, 2. It provides a public interface for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.; js120
 
 Full Method Syntax; behavior: function() {...},; js120
 
@@ -20,4 +20,10 @@ object type; what it shared in common with other objects; js120
 
 factory function / object factory; a function that creates and returns an object, and thereby can be used to create multiple objects of the same type that share the same kinds of states & behaviors; js120
 
-1.9
+Three steps to making an object-oriented program; 1. Write a description of the problem, 2. Identify important nouns & verbs, 3. Organize nouns & verbs.; js120
+
+Engine in OOP; what coordinates the objects & their control flow; js120
+
+Class inheritance; refers to how child objects inherit common properties and methods from a parent type.; js120
+
+Benefit of class inheritance; it helps one avoid unwieldy code when different children have behavior that differs depending on a property of that object type.; js120

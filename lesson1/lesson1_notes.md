@@ -16,6 +16,7 @@ Object-Oriented Programming (OOP) is useful for dealing with large, complex prog
 ## Definitions
 
 **Object-Oriented Programming** is a *programming paradigm* in which:
+
 - problems are dealt with in terms of objects, and
 - objects are used to organize a program.
 
@@ -36,6 +37,10 @@ Advantages of OOP:
 Disadvantages of OOP:
 1. OOP programs are often larger
 2. OOP programs are often less efficient (more memory, storage, and processing)
+
+#### :information_source: More information on reducing dependencies
+
+- [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
 
 ---
 
@@ -102,7 +107,9 @@ let obj = {
 }
 ```
 
-:warning: *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.*
+#### :warning: Limitation of compact syntax
+
+*Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.*
 
 Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
 
@@ -121,7 +128,12 @@ let obj = {
 
 The benefit of using `this` is that the method definition will work as expected regardless of the variable name.
 
-Cf. [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on MDN.
+#### :information_source: More information on `this`
+
+- [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on MDN.
+- [The `this` keyword in JavaScript made simple](https://medium.com/@eamonocallaghan/the-this-keyword-in-javascript-made-simple-320eaddecc22)
+- [Using `this` in a key's (non-function) value to refer to the containing object: is it possible?](https://launchschool.com/posts/037459d4)
+- [When to omit "this"](https://launchschool.com/posts/324563b8)
 
 ---
 
@@ -132,6 +144,12 @@ A **collaborator object or collaborator** is an object that is a state of anothe
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
+#### :information_source: More information on collaborators
+
+- [Initial Concepts of OOP: From Properties and Methods to Collaboration](https://launchschool.com/posts/beeca25e)
+- [When is a property value of an object NOT a collaborator?](https://launchschool.com/posts/d12c383f)
+- [Primitive values as collaborators - Changing state?](https://launchschool.com/posts/e1b02d08)
+
 ---
 
 # [1.7 Functions as Object Factories](https://launchschool.com/lessons/fb892747/assignments/3a7351ce)
@@ -140,7 +158,9 @@ An object's **type** refers to what it shared in common with other objects.
 
 A **factory function** or **object factory** is a function that creates and returns an object, and thereby can be used to create multiple objects of the same type that share the same kinds of states & behaviors.
 
-:question: *Are there additional techniques?*
+#### :question: Question about factory functions
+
+*Are there additional techniques?*
 
 ---
 
@@ -199,7 +219,6 @@ It's good practice to set properties / initial states to `null` even though they
 
 - [ ] Keeping score
   - [ ] make the score a state of each player instead of the game?
-
 - [ ] Add Lizard and Spock
 - [ ] Keep track of a history moves
 - [ ] Adjust computer choice based on history
