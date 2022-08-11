@@ -29,11 +29,11 @@ Contrast with what has come so far:
 1. **procedural programming** (step-by-step approach, e.g., with conditionals and loops)
 2. **functional programming** (e.g., passing callback functions as arguments to methods)
 
-Benefits of OOP:
+Advantages of OOP:
 1. easy to reason about (through abstraction)
 2. easy to maintain (to decrease the number of dependencies)
 
-Tradeoffs:
+Disadvantages of OOP:
 1. OOP programs are often larger
 2. OOP programs are often less efficient (more memory, storage, and processing)
 
@@ -47,7 +47,7 @@ Tradeoffs:
 
 Purpose of encapsulation:
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
-2. They have a **public interface** for interacting with them, whereas it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
+2. It provides a **public interface** for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
    - JavaScript does *not* officially/formally/syntactically support access restrictions.
 
 ---
@@ -138,7 +138,7 @@ A **collaborator object or collaborator** is an object that is a state of anothe
 
 An object's **type** refers to what it shared in common with other objects.
 
-Since objects of the same type share things in common (e.g., types of states and behavior), functions that are **object factories** (or, more simply, **factory functions**) can be used to create them.
+A **factory function** or **object factory** is a function that creates and returns an object, and thereby can be used to create multiple objects of the same type that share the same kinds of states & behaviors.
 
 :question: *Are there additional techniques?*
 
