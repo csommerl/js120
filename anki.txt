@@ -27,3 +27,11 @@ Engine in OOP; what coordinates the objects & their control flow; js120
 Class inheritance; refers to how child objects inherit common properties and methods from a parent type.; js120
 
 Benefit of class inheritance; it helps one avoid unwieldy code when different children have behavior that differs depending on a property of that object type.; js120
+
+---
+
+What is a dependency?; This exists when some bit of code depends on some other bit of code.; js120
+
+How does OOP reduce dependencies?; It confines them to exist within a single class/object.; js120
+
+How is collaboration different from dependency?; With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.; js120

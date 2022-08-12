@@ -1,5 +1,4 @@
-[Lesson 1: Introduction to Object Oriented Programming](https://launchschool.com/lessons/fb892747/assignments)
-=====
+# [Lesson 1: Introduction to Object Oriented Programming](https://launchschool.com/lessons/fb892747/assignments)
 
 [TOC]
 
@@ -38,9 +37,11 @@ Disadvantages of OOP:
 1. OOP programs are often larger
 2. OOP programs are often less efficient (more memory, storage, and processing)
 
-#### :information_source: More information on reducing dependencies
-
-- [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
+#### :information_source: [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
+- A dependency exists when some bit of code depends on some other bit of code.
+- How does OOP reduce dependencies? It confines them to exist within a single class/object.
+- How is collaboration different from dependency? With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.
+  - Example...
 
 ---
 
@@ -52,6 +53,9 @@ Disadvantages of OOP:
 
 Purpose of encapsulation:
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
+   - That would occur if when a function is defined outside an object, and it is passed data of an incorrect type.
+   - Example...
+
 2. It provides a **public interface** for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
    - JavaScript does *not* officially/formally/syntactically support access restrictions.
 
@@ -70,9 +74,9 @@ Purpose of encapsulation:
 
 # [1.5 Creating Objects](https://launchschool.com/lessons/fb892747/assignments/20ed580c)
 
-Objects' state are represented by typical key-value pairs, where the value is a type of data. Objects' behavior is represented by key-value pairs where the value is a function (enabled by functions being first-class).
+Objects' states are represented by typical key-value pairs, where the value is a type of data. Objects' behavior is represented by key-value pairs where the value is a function (enabled by functions being first-class). That is, the latter is represented by methods.
 
-A **method** is a property of an object that is a function. They are invoked with dot notation.
+A **method** is a property of an object that is a function. Methods are invoked with dot notation.
 
 In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might assign them to undesirable values, by changing the data type or giving a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
 
@@ -87,7 +91,7 @@ let obj = {
 }
 ```
 
-:information_source: Notice that methods like this do **not** require `return` statements.
+:information_source: Notice that methods like this do **not** require `return` statements in order to match LS's style guidelines.
 
 ## Compact Method Syntax
 
