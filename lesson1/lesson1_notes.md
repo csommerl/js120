@@ -259,6 +259,7 @@ It's good practice to set properties / initial states to `null` even though they
 - [ ] Keeping score
   - [ ] make the score a state of each player instead of the game?
   - [ ] Create separate methods for playMatch and playRound
+  - [ ] Add instructions
 - [ ] Add Lizard and Spock
 - [ ] Keep track of a history moves
 - [ ] Adjust computer choice based on history
