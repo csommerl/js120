@@ -268,15 +268,22 @@ It's good practice to set properties / initial states to `null` even though they
   - [ ] git branch
   - [ ] PEDAC
   - [ ] add rule
-
 - [ ] Add Lizard and Spock
   - [ ] git branch
-
 - [ ] Keep track of a history moves
   - [ ] git branch
-
 - [ ] Adjust computer choice based on history
   - [ ] git branch
+
+Questions for code review
+
+- For the 'keeping score' bonus feature, I initially tried to create objects for `match` and `round`. Something like this:
+
+```javascript
+
+```
+
+- My motivations were that that seems to be in the spirit of OOP, and that `score` should be a state of `match` instead of `RPSGame` as a whole. But I had some difficulty with doing this. In part, one of the main worries was how to deal with the `human` and `computer` properties/states of `RPSGame`. Namely, it seemed like I would have to pass those properties as arguments to a method 
 
 
 ---

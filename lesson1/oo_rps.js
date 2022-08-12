@@ -148,11 +148,10 @@ const RPSGame = {
 
   play() {
     this.displayWelcomeMessage();
-    while (true) {
-      this.playMatch();
-      if (!this.playAgain()) break;
+    do {
       this.match.resetMatch();
-    }
+      this.playMatch();
+    } while (this.playAgain());
 
     this.displayGoodbyeMessage();
   },
