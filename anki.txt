@@ -1,12 +1,12 @@
 Object-Oriented Programming; a programming paradigm in which problems are dealt with in terms of objects, and objects are used to organize a program; js120
 
-Advantages of OOP; 1. easy to reason about (through abstraction), 2. easy to maintain (to decrease the number of dependencies); js120
+Two Advantages of OOP; 1. easy to reason about (through abstraction), 2. easy to maintain (to decrease the number of dependencies); js120
 
-Disadvantages of OOP; 1. OOP programs are often larger, 2. OOP programs are often less efficient (more memory, storage, and processing); js120
+Two Disadvantages of OOP; 1. OOP programs are often larger, 2. OOP programs are often less efficient (more memory, storage, and processing); js120
 
 Encapsulation; the bundling together into a single structure of two things: 1. data (state), 2. operations on that data (behavior); js120
 
-Purposes of encapsulation; 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited, 2. It provides a public interface for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.; js120
+Two purposes of encapsulation; 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited, 2. It provides a public interface for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.; js120
 
 Full Method Syntax; behavior: function() {...},; js120
 
@@ -14,7 +14,7 @@ Compact Method Syntax; behavior() {...},; js120
 
 `this` keyword; can be used in place of the variable name within method definitions, and thereby the method definition will work as expected regardless of the variable name; js120
 
-collaborator object or collaborator; an object that is a state of another object; js120
+collaborator object or collaborator; an object that is a state of another object and the latter object has a method that depends on that state; js120
 
 object type; what it shared in common with other objects; js120
 
@@ -28,10 +28,12 @@ Class inheritance; refers to how child objects inherit common properties and met
 
 Benefit of class inheritance; it helps one avoid unwieldy code when different children have behavior that differs depending on a property of that object type.; js120
 
----
-
 What is a dependency?; This exists when some bit of code depends on some other bit of code.; js120
 
 How does OOP reduce dependencies?; It confines them to exist within a single class/object.; js120
 
 How is collaboration different from dependency?; With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.; js120
+
+---
+
+

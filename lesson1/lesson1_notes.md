@@ -41,7 +41,11 @@ Disadvantages of OOP:
 - A dependency exists when some bit of code depends on some other bit of code.
 - How does OOP reduce dependencies? It confines them to exist within a single class/object.
 - How is collaboration different from dependency? With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.
-  - Example...
+
+Example:
+
+```javascript
+```
 
 ---
 
@@ -54,7 +58,11 @@ Disadvantages of OOP:
 Purpose of encapsulation:
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
    - That would occur if when a function is defined outside an object, and it is passed data of an incorrect type.
-   - Example...
+
+Example:
+
+```javascript
+```
 
 2. It provides a **public interface** for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
    - JavaScript does *not* officially/formally/syntactically support access restrictions.
@@ -116,6 +124,7 @@ let obj = {
 *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.*
 
 Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
+- It appears that one of the main limitations is that method definitions are not constructable.
 
 ## The `this` Keyword
 
@@ -132,6 +141,8 @@ let obj = {
 
 The benefit of using `this` is that the method definition will work as expected regardless of the variable name.
 
+- e.g., even if the variable name changes
+
 #### :information_source: More information on `this`
 
 - [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on MDN.
@@ -143,10 +154,34 @@ The benefit of using `this` is that the method definition will work as expected 
 
 # [1.6 Collaborator Objects](https://launchschool.com/lessons/fb892747/assignments/675a4d9d)
 
-A **collaborator object or collaborator** is an object that is a state of another object.
+A **collaborator object or collaborator** is an object that is a state of another object (i.e., an object that is provided as a value/property of another object's key) and the latter object has a method that depends on that state.
 - The two objects can be said to "collaborate" insofar as they work together.
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
+
+Example:
+
+```javascript
+let cat = {
+  name: 'Bella',
+  whine() {
+    console.log('mwaooooooh');
+  },
+};
+
+let person = {
+  name: 'Curtis',
+  pet: cat,
+  displayPersonInfo() {
+    console.log(`My name is ${this.name} and my pet's name is ${this.pet.name}.`);
+  },
+};
+```
+
+Here, `cat` is a collaborator of `person` because:
+
+1. `cat` is a state of `person` on line 10; and,
+2. the function `displayPersonInfo` defined on lines 11-13 depends on that state.
 
 #### :information_source: More information on collaborators
 
