@@ -46,14 +46,20 @@ function createHuman() {
 function createMatch() {
   return {
     score: {human: 0, computer: 0},
-    roundWinner: null,
     matchWinner: null,
+    round: createRound(),
 
     resetMatch() {
       this.matchWinner = null;
       this.score.human = 0;
       this.score.computer = 0;
     },
+  };
+}
+
+function createRound() {
+  return {
+    roundWinner: null,
   };
 }
 
@@ -66,49 +72,50 @@ const RPSGame = {
     console.log('Welcome to Rock, Paper, Scissors!');
   },
 
-  displayChoices() {
+  displayChoices() { // MOVE TO createRound
     console.log(`-----\nYou chose: ${this.human.move}\n` +
       `The computer chose: ${this.computer.move}`);
   },
 
-  displayScore() {
-    console.log(`You currently have ${this.match.score.human} points, and the computer currently has ${this.match.score.computer} points.`);
+  displayScore() { // MOVE TO createMatch
+    console.log(`You currently have ${this.match.score.human} points, ` +
+      `and the computer currently has ${this.match.score.computer} points.`);
   },
 
   displayGoodbyeMessage() {
     console.log('Thanks for playing Rock, Paper, Scissors. Goodbye!');
   },
 
-  getRoundWinner() {
+  getRoundWinner() { // MOVE TO createRound
     let humanMove = this.human.move;
     let computerMove = this.computer.move;
 
     if ((humanMove === 'rock' && computerMove === 'scissors') ||
     (humanMove === 'paper' && computerMove === 'rock') ||
     (humanMove === 'scissors' && computerMove === 'paper')) {
-      this.match.roundWinner = 'human';
+      this.match.round.roundWinner = 'human';
       this.match.score.human += 1;
     } else if ((humanMove === 'rock' && computerMove === 'paper') ||
     (humanMove === 'paper' && computerMove === 'scissors') ||
     (humanMove === 'scissors' && computerMove === 'rock')) {
-      this.match.roundWinner = 'computer';
+      this.match.round.roundWinner = 'computer';
       this.match.score.computer += 1;
     } else {
-      this.match.roundWinner = 'tie';
+      this.match.round.roundWinner = 'tie';
     }
   },
 
-  displayRoundWinner() {
-    if (this.match.roundWinner === 'human') {
+  displayRoundWinner() { // MOVE TO createRound
+    if (this.match.round.roundWinner === 'human') {
       console.log('You win the round!\n-----');
-    } else if (this.match.roundWinner === 'computer') {
+    } else if (this.match.round.roundWinner === 'computer') {
       console.log('The computer wins the round!\n-----');
     } else {
       console.log('It\'s a tie.\n-----');
     }
   },
 
-  getMatchWinner() {
+  getMatchWinner() { // MOVE TO createMatch
     if (this.match.score.human === WINNING_SCORE) {
       this.match.matchWinner = 'human';
       console.log('-----\nYou won the match!\n-----');
@@ -123,13 +130,13 @@ const RPSGame = {
     return answer.toLowerCase()[0] === 'y';
   },
 
-  playMatch() {
+  playMatch() { // MOVE TO createMatch
     while (!this.match.matchWinner) {
       this.playRound();
     }
   },
 
-  playRound() {
+  playRound() { // MOVE TO createRound
     this.human.choose();
     this.computer.choose();
     this.displayChoices();
