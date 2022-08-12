@@ -46,7 +46,7 @@ function createHuman() {
 const RPSGame = {
   human: createHuman(),
   computer: createComputer(),
-  score: {human: 0, computer: 0}, // REVISE?
+  score: {human: 0, computer: 0},
   roundWinner: null,
   matchWinner: null,
 
@@ -54,7 +54,7 @@ const RPSGame = {
     console.log('Welcome to Rock, Paper, Scissors!');
   },
   displayChoices() {
-    console.log(`You chose: ${this.human.move}\n` +
+    console.log(`-----\nYou chose: ${this.human.move}\n` +
       `The computer chose: ${this.computer.move}`);
   },
   displayGoodbyeMessage() {
@@ -81,26 +81,26 @@ const RPSGame = {
   },
 
   displayScore() {
-    console.log(`You currently have ${this.score.human} points, and the computer currently has ${this.score.computer} points.\n`);
+    console.log(`You currently have ${this.score.human} points, and the computer currently has ${this.score.computer} points.\n-----`);
   },
 
   displayRoundWinner() {
     if (this.roundWinner === 'human') {
-      console.log('You win the round!\n');
+      console.log('You win the round!\n-----');
     } else if (this.roundWinner === 'computer') {
-      console.log('The computer wins the round!\n');
+      console.log('The computer wins the round!\n-----');
     } else {
-      console.log('It\'s a tie.\n');
+      console.log('It\'s a tie.\n-----');
     }
   },
 
-  getMatchWinner() { // REVISE?
+  getMatchWinner() {
     if (this.score.human === WINNING_SCORE) {
       this.matchWinner = 'human';
-      console.log('You won the match!\n');
+      console.log('You won the match!\n-----');
     } else if (this.score.computer === WINNING_SCORE) {
       this.matchWinner = 'computer';
-      console.log('The computer won the match.\n');
+      console.log('The computer won the match.\n-----');
     }
   },
 
@@ -111,21 +111,21 @@ const RPSGame = {
   },
 
   playAgain() {
-    let answer = readline.question('Would you like to play again? (y/n)\n');
+    let answer = readline.question('Would you like to play again? (y/n) ');
     return answer.toLowerCase()[0] === 'y';
   },
 
   play() {
     this.displayWelcomeMessage();
-    while (true) { // REVISE?
-      while (!this.matchWinner) { // REVISE?
+    while (true) {
+      while (!this.matchWinner) {
         this.human.choose();
         this.computer.choose();
         this.displayChoices();
         this.getRoundWinner();
         this.displayRoundWinner();
         this.displayScore();
-        this.getMatchWinner(); // REVISE?
+        this.getMatchWinner();
       }
 
       if (!this.playAgain()) break;
