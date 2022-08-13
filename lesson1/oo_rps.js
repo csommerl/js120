@@ -1,6 +1,5 @@
 const readline = require('readline-sync');
 const VALID_MOVES = ['rock', 'paper', 'scissors'];
-const WINNING_SCORE = 5;
 
 function createPlayer() {
   return {
@@ -52,7 +51,9 @@ function createScore() {
 }
 
 // eslint-disable-next-line max-lines-per-function
-function createMatch() {  // pass players to createScore?
+function createMatch() {
+  const WINNING_SCORE = 5;
+
   return {
     score: createScore(),
     matchWinner: null,

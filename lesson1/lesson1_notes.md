@@ -259,14 +259,19 @@ It's good practice to set properties / initial states to `null` even though they
 - [ ] Keeping score
   - [x] Add match object
   - [ ] pass `...players` to `createMatch` in order to populate the `score` object's keys.
+    - [ ] Then pass players to `createScore`?
   - [x] make the score a state of each player instead of the game?
   - [x] create round object?
   - [x] Create separate methods for playMatch and playRound
   - [x] playMatch
   - [ ] Add instructions for match
   - [ ] Move constants
+    - [ ] Is there any way to make `VALID_MOVES` a local constant? Maybe a state of `RPSGame`, that is then passed as an argument to `createComputer` and `createHuman`?
   - [ ] By passing human as an argument, a dependency is created because one must access the internal workings of human
     - [ ] Define `playMatch` not within `match` but in `RPSGame`?
+    - [ ] But is this a dependency in the relevant sense? All that must be accessed is the method `choose`. So, `playRound` does not actually deal with the inner workings within the human object.
+    - [ ] But more worrisome is that `playRound` does seem to have a dependency with respect to `score`: `score[this.roundWinner] += 1;`
+      - [ ] Solution: create `updateScore` method.
 - [ ] Improve logic of `getRoundWinner`
   - [ ] git branch
   - [ ] PEDAC
