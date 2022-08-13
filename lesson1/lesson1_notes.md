@@ -257,13 +257,16 @@ It's good practice to set properties / initial states to `null` even though they
 # [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
 - [ ] Keeping score
-  - [ ] Add match object
-    - [ ] pass `...players` to `createMatch` in order to populate the `score` object's keys.
+  - [x] Add match object
+  - [ ] pass `...players` to `createMatch` in order to populate the `score` object's keys.
   - [x] make the score a state of each player instead of the game?
-  - [ ] create round object?
-  - [ ] Create separate methods for playMatch and playRound
-  - [ ] playMatch
+  - [x] create round object?
+  - [x] Create separate methods for playMatch and playRound
+  - [x] playMatch
   - [ ] Add instructions for match
+  - [ ] Move constants
+  - [ ] By passing human as an argument, a dependency is created because one must access the internal workings of human
+    - [ ] Define `playMatch` not within `match` but in `RPSGame`?
 - [ ] Improve logic of `getRoundWinner`
   - [ ] git branch
   - [ ] PEDAC
