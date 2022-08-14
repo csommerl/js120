@@ -258,8 +258,11 @@ It's good practice to set properties / initial states to `null` even though they
 
 - [ ] Keeping score
   - [x] Add match object
-  - [ ] pass `...players` to `createMatch` in order to populate the `score` object's keys.
+  - [ ] Update players
+    - [ ] have a state of `RPSGame` that is `players`
+    - [ ] pass `...players` to `createMatch` in order to populate the `score` object's keys.
     - [ ] Then pass players to `createScore`?
+    - [ ] When should arguments get passed?
   - [x] make the score a state of each player instead of the game?
   - [x] create round object?
   - [x] Create separate methods for playMatch and playRound
@@ -355,6 +358,11 @@ console.log(curtis.hair.length);
 curtis.hair.cutHair();
 console.log(curtis.hair.length);
 ```
+
+Questions:
+
+- Should `cutHair` be a method of `hair` rather than `curtis`, as in Example 2?
+- Does Example 1 have a dependency since line 9 directly modifies a state of another object?
 
 ### Example 2
 
