@@ -174,7 +174,7 @@ const RPSGame = {
   play() {
     this.displayWelcomeMessage();
     do {
-      this.match.playMatch(this.human, this.computer);
+      this.match.playMatch(this.human, this.computer); // Is this in the spirit of OOP? It seems like it might not be because I'm passing arguments.
     } while (this.playAgain());
 
     this.displayGoodbyeMessage();

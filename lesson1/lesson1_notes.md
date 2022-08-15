@@ -261,6 +261,7 @@ It's good practice to set properties / initial states to `null` even though they
   - [ ] Update players
     - [ ] have a state of `RPSGame` that is `players`
     - [ ] pass `...players` to `createMatch` in order to populate the `score` object's keys.
+    - [ ] Pass human and computer to create match and add as states of match
     - [ ] Then pass players to `createScore`?
     - [ ] When should arguments get passed?
   - [x] make the score a state of each player instead of the game?
@@ -397,6 +398,10 @@ const game = {
 console.log(game);
 game.play();
 ```
+
+Lesson: you can't use the value of one key to determine the value of another key.
+
+`this` always refers to the innermost object in which it appears.
 
 Another attempt:
 
