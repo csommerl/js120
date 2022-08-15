@@ -367,3 +367,61 @@ Questions:
 ### Example 2
 
 (pass arguments)
+
+## Fix Attempt for Match
+
+Code that doesn't work:
+
+```javascript
+function createMatch(player1, player2) {
+  return {
+    player1,
+    player2,
+    score: 0,
+    playMatch() {
+      console.log(`${this.player1.name} vs. ${this.player2}, score = ${this.score}`);
+    },
+  };
+}
+
+const game = {
+  player1: {name: 'Curtis'},
+  player2: {name: 'Opie'},
+  match: createMatch(this.player1, this.player2),
+
+  play() {
+    this.match.playMatch();
+  },
+};
+
+console.log(game);
+game.play();
+```
+
+Another attempt:
+
+```javascript
+const game = {
+  player1: {name: 'Curtis'},
+  player2: {name: 'Opie'},
+  match: null,
+
+  createMatch() {
+    this.match = {
+      score: 0,
+      displayMatch() {
+        console.log(`${this.player1.name} vs. ${this.player2.name}, score = ${this.score}`);
+      },
+    };
+  },
+
+  play() {
+    this.createMatch();
+    this.match.displayMatch();
+  },
+};
+
+console.log(game);
+game.play();
+```
+
