@@ -228,7 +228,7 @@ Three steps to making an object-oriented program:
    - Nouns are (types of) objects.
    - Verbs are behaviors.
 
-An **engine** is what coordinates the objects & their control flow.
+An **engine** is what coordinates the objects & their control flow, i.e., it is where the procedural programming goes.
 
 ---
 
