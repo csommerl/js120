@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-const VALID_MOVES = ['rock', 'paper', 'scissors']; // Make property of RPSGame?
+const VALID_MOVES = ['rock', 'paper', 'scissors', 'lizard', 'spock']; // Make property of RPSGame?
 
 function createPlayer() {
   return {
@@ -30,7 +30,7 @@ function createHuman() {
       let choice;
 
       while (true) {
-        choice = readline.question('-----\nPlease choose rock, paper, or scissors: ');
+        choice = readline.question(`-----\nPlease choose one of: ${VALID_MOVES.join(', ')}: `); // use template literal
         if (VALID_MOVES.includes(choice)) break; // enable 1 character input
         console.log('Sorry, invalid choice.');
       }
@@ -61,9 +61,11 @@ const RPSGame = {
   endPadding: '\n-----',
   pointsToWin: 5,
   winningMoves: {
-    rock: 'scissors',
-    paper: 'rock',
-    scissors: 'paper',
+    rock: ['scissors', 'lizard'],
+    paper: ['rock', 'spock'],
+    scissors: ['paper', 'lizard'],
+    lizard: ['paper', 'spock'],
+    spock: ['rock', 'scissors'],
   },
 
   human: createHuman(),
@@ -92,9 +94,9 @@ const RPSGame = {
     let humanMove = this.human.move;
     let computerMove = this.computer.move;
 
-    if (this.winningMoves[humanMove] === computerMove) {
+    if (this.winningMoves[humanMove].includes(computerMove)) {
       this.match.round.roundWinner = 'human';
-    } else if (this.winningMoves[computerMove] === humanMove) {
+    } else if (this.winningMoves[computerMove].includes(humanMove)) {
       this.match.round.roundWinner = 'computer';
     } else {
       this.match.round.roundWinner = 'tie';
@@ -114,7 +116,7 @@ const RPSGame = {
         console.log(`The computer wins the round!${this.endPadding}`);
         break;
       case 'tie':
-        console.log(`It\'s a tie.${this.endPadding}`);
+        console.log(`It's a tie.${this.endPadding}`);
     }
   },
 
