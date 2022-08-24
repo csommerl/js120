@@ -42,7 +42,7 @@ Disadvantages of OOP:
 - How does OOP reduce dependencies? It confines them to exist within a single class/object.
 - How is collaboration different from dependency? With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.
 
-Example:
+#### *Example:
 
 ```javascript
 ```
@@ -59,7 +59,7 @@ Purpose of encapsulation:
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
    - That would occur if when a function is defined outside an object, and it is passed data of an incorrect type.
 
-Example:
+#### *Example:
 
 ```javascript
 ```
@@ -124,7 +124,7 @@ let obj = {
 *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.*
 
 Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
-- It appears that one of the main limitations is that method definitions are not constructable.
+- It appears that one of the main limitations is that method definitions / compact syntax are not constructable.
 
 ## The `this` Keyword
 
@@ -159,7 +159,7 @@ A **collaborator object or collaborator** is an object that is a state of anothe
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
-Example:
+#### *Example:
 
 ```javascript
 let cat = {
@@ -318,7 +318,7 @@ Questions for code review
 
 Is it correct that a program has less dependency when an object method changes its own state rather than something else directly changing the state?
 
-### Example 1
+### *Example 1
 
 Code Snippet 1:
 
@@ -365,11 +365,11 @@ Questions:
 - Should `cutHair` be a method of `hair` rather than `curtis`, as in Example 2?
 - Does Example 1 have a dependency since line 9 directly modifies a state of another object?
 
-### Example 2
+### * Example 2
 
 (pass arguments)
 
-## Fix Attempt for Match
+## * Fix Attempt for Match
 
 Code that doesn't work:
 
