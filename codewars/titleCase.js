@@ -39,15 +39,35 @@ Mental model
 
 Algorithm
 1. Convert title and minorWords to lowercase.
-2. Transform title
+2. Convert to arrays.
+3. Transform title
     a. If index = 0, capitalize.
     b. If in minorWords, return in lowercase
     c. Othewrise, capitalize.
-3. Return title
+4. Return title
 
 */
 
-function titleCase(title, minorWords) {
+function titleCase(title, minorWords = '') {
+  let titleWords = getLowerCaseWords(title);
+  let minorWordArr = getLowerCaseWords(minorWords);
+  return titleWords
+    .map((word, idx) => {
+      if (!word.length) {
+        return word;
+      } else if (idx === 0) {
+        return capitalize(word);
+      } else if (minorWordArr.includes(word)) {
+        return word;
+      } else {
+        return capitalize(word);
+      }
+    })
+    .join(' ');
+}
+
+function getLowerCaseWords(str) {
+  return str.toLowerCase().split(' ');
 }
 
 function capitalize(word) {
@@ -55,11 +75,13 @@ function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
 
-console.log(capitalize('a'));
-console.log(capitalize('of'));
-console.log(capitalize('bella'));
-console.log(capitalize('SYLVIE'));
+// console.log(capitalize('a'));
+// console.log(capitalize('of'));
+// console.log(capitalize('bella'));
+// console.log(capitalize('SYLVIE'));
 
+console.log(titleCase('')); // ''
 console.log(titleCase('a clash of KINGS', 'a an the of')); // 'A Clash of Kings'
 console.log(titleCase('THE WIND IN THE WILLOWS', 'The In')); // 'The Wind in the Willows'
 console.log(titleCase('the quick brown fox')); // 'The Quick Brown Fox'
+console.log(titleCase('first a of in', 'an often into')); // 'First A Of In'
