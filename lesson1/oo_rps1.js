@@ -1,9 +1,14 @@
 const readline = require('readline-sync');
-const VALID_MOVES = ['rock', 'paper', 'scissors', 'lizard', 'spock']; // Make property of RPSGame?
 
 function createPlayer() {
   return {
     move: null,
+    validMoves: ['rock', 'paper', 'scissors', 'lizard', 'spock'],
+    moveHistory: {},
+    updateMoveHistory(move) {
+      this.moveHistory[move] = this.moveHistory[move] ?? 0;
+      this.moveHistory[move] += 1;
+    },
   };
 }
 
@@ -11,11 +16,10 @@ function createComputer() {
   let playerObject = createPlayer();
 
   let computerObject = {
-    move: null,
-
     choose() {
-      let randomIndex = Math.floor(Math.random() * VALID_MOVES.length);
-      this.move = VALID_MOVES[randomIndex];
+      let randomIndex = Math.floor(Math.random() * this.validMoves.length);
+      this.move = this.validMoves[randomIndex];
+      this.updateMoveHistory(this.move);
     },
   };
 
@@ -30,12 +34,13 @@ function createHuman() {
       let choice;
 
       while (true) {
-        choice = readline.question(`-----\nPlease choose one of: ${VALID_MOVES.join(', ')}: `); // use template literal
-        if (VALID_MOVES.includes(choice)) break; // enable 1 character input
+        choice = readline.question(`-----\nPlease choose one of: ${this.validMoves.join(', ')}: `); // use template literal
+        if (this.validMoves.includes(choice)) break; // enable 1 character input
         console.log('Sorry, invalid choice.');
       }
 
       this.move = choice;
+      this.updateMoveHistory(this.move);
     },
   };
 
