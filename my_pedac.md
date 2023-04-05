@@ -1,16 +1,14 @@
 My PEMDIAC
 =====
 
----
-
 [TOC]
 
 ---
 
 # [Overview of PEMDIAC](https://launchschool.com/lessons/60e10aa5/assignments/73c01de6)
 
-1. **Understand the Problem** (IORDFQ)
-   - inputs, outputs, rules, definitions, facts, and questions
+1. **Understand the Problem** (IODRFTQ)
+   - inputs, outputs, definitions, rules, facts, tasks, and questions
 2. **Examples/Test Cases** (EPC)
    - edge cases, patterns, confirmation
 3. **Mental Model** (CFORSTV)
@@ -33,20 +31,21 @@ My PEMDIAC
 
 ---
 
-# Problem (IORDFQ)
+# Problem (IODRFTQ)
 
 1. Identify expected **INPUTS**.
    - What kinds of inputs can be assumed?
    - specify facts about inputs with bullet points underneath
 2. Identify expected **OUTPUTS / RETURN VALUES**.
    - specify facts about inputs with bullet points underneath
-3. Articulate **RULES**.
+3. Formulate **DEFINITIONS** for key terms.
+4. Articulate **RULES**.
    - explicit requirements
    - implicit requirements / assumptions
-4. Formulate **DEFINITIONS** for key terms.
 5. List all **FACTS** about inputs, outputs, and objectives.
    - helps with thinking of different / simpler solutions
-6. Raise **QUESTIONS** about all the above.
+6. Identify main **TASKS** (i.e., subproblems) that need to be performed.
+7. Raise **QUESTIONS** about all the above.
 
 ## Rules & facts to look for
 
@@ -389,3 +388,4 @@ What steps are needed to convert input to output?
 # * Questions
 
 How detailed should my algorithm be?
+
