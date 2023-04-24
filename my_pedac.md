@@ -109,6 +109,7 @@ My PEMDIAC
 - Arrays: `reduce`, `reduceRight`
 - Unique uses: calculate, construct, convert (CCC)
 - Shared uses: count, find, select, transform
+- Note: can pass a callback function
 
 ## Select
 
