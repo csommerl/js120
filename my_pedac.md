@@ -389,4 +389,3 @@ What steps are needed to convert input to output?
 # * Questions
 
 How detailed should my algorithm be?
-
