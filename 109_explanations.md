@@ -139,6 +139,8 @@ Alternatively put, they are not accessible outside of the block (or function bod
 
 Variables declared with `var` have function scope. This means that variables declared with `var` are available anywhere within the innermost function body in which they are declared. That means that even if they are declared within a block within a function body, their scope is not limited to that block and they can be accessed outside of that block.
 
+Functions defined by function **declarations** have function scope.
+
 ---
 
 ## Variable scoping rules
