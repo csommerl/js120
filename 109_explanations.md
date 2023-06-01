@@ -37,7 +37,7 @@ A **deep copy** of an object is one that duplicates every item in an object (or 
 
 #### Shallow copy and mutability
 
-This code demonstrates the concept of shallow copy and how that intersects with the concept of object mutability. When a shallow copy is created of an object that contains nested objects, changes to the nested object in the latter will be reflected in the same nested object within the shallow copy.
+When a shallow copy is created of an object that contains nested objects, changes to the nested object in the latter will be reflected in the corresponding nested object within the shallow copy.
 
 #### Prototypes
 
@@ -112,7 +112,7 @@ A `TypeError` is raised when such a reassignment is attempted.
 
 ## Constants that point to objects
 
-This code demonstrates that constants, i.e., variables declared with the `const` keyword, are compatible with object mutability. Although constants for objects are immutably bound to point to a particular object, that object can nevertheless be mutated. This is because a constant is technically assigned to a reference/pointer to an object. A constant for an object is immutably bound to this reference, and so the constant cannot be cannot be reassigned either to a different reference or to a primitive value. Yet, the object to which the constant points can change,[^1] e.g., its keys and values can be changed.
+Constants, i.e., variables declared with the `const` keyword, are compatible with object mutability. Although constants for objects are immutably bound to point to a particular object, that object can nevertheless be mutated. This is because a constant is technically assigned to a reference/pointer to an object. A constant for an object is immutably bound to this reference, and so the constant cannot be cannot be reassigned either to a different reference or to a primitive value. Yet, the object to which the constant points can change,[^1] e.g., its keys and values can be changed.
 
 [^1]: unless the object is frozen
 
