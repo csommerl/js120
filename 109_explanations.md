@@ -147,42 +147,44 @@ Functions defined by function **declarations** have function scope.
 
 ### Outer scope available within inner scopes
 
-This code illustrates how variable scoping works in JavaScript, namely that variables declared in an outer scope are accessible within nested inner scopes.
+Variables declared in an outer scope are accessible within nested inner scopes.
 
 ### Inner scope variables are not available within outer scopes
 
-This code illustrates how variable scoping works in JavaScript, namely that variables declared within an inner scope are not available in outer scopes.
+Variables declared within an inner scope are not available in outer scopes.
 
 ### Local scopes at the same level are independent
 
-This code illustrates how variable scoping works in JavaScript. Namely, it shows that local scopes at the same level are independent of one another. This means that variables declared in one are not available in the other.
+Local scopes at the same level are independent of one another. This means that variables declared in one are not available in the other.
 
 ### Nested functions have their own scope
 
-This code illustrates how variable scoping works in JavaScript. Namely, it shows that nested functions have their own variable scope.
+Nested functions have their own variable scope.
 
 ---
 
 # Variable Shadowing
 
-When a variable is declared within a nested inner scope and has the same name as a variable declared in the outer scope, the former variable "**shadows**" the latter. This means that the two are distinct variables, which has two implications:
+When a variable is declared within a nested inner scope and has the same name as a variable declared in the outer scope, the former variable "**shadows**" the latter. Thus, the two names represent two distinct variables. This has two implications:
 
-1. within the nested inner scope, JavaScript prevents access to the outer scope variable such that the variable name always accesses the locally-scoped variable; and,
-2. when the nested inner scope terminates, the local variable is discarded from memory such that the variable name thereafter accesses the original outer-scope variable.
+1. Within the nested inner scope, JavaScript prevents access to the outer scope variable, and so the variable name always accesses the locally-scoped variable; and,
+2. When the nested inner scope terminates, the local variable is discarded from memory, and so the variable name thereafter accesses the original outer-scope variable.
 
-Additional note: The only names that don't get involved in shadowing are property names for objects.
+The only names that don't get involved in shadowing are property names for objects.
 
 ---
 
 # Variable Hoisting
 
-All variables in JavaScript are **hoisted**, which means that they are virtually moved to the beginning of the scope in which they are declared (so that memory is reserved for them for execution of the code within the scope).
+All variables in JavaScript are **hoisted**, which means that they are virtually moved to the beginning of the scope in which they are declared. More technically, this means that memory is reserved for them during the execution of the code within the scope.
 
-## of `var`-declared variables
+But how variables are hoisted (i.e., what values they have when hoisted) depends on the keyword used to declare them:
+
+## Hoisting of `var`-declared variables
 
 When variables declared with `var` are hoisted, they are assigned to the value `undefined`. This means that from the beginning of the scope in which they are declared up to the variable declaration, `var`-declared variables are assigned to `undefined`, even if the variable declaration initializes the variable to some other value.
 
-## of `let`- and `const`-declared variables
+## Hoisting of `let`- and `const`-declared variables
 
 When variables declared with `let` or `const` are hoisted, they are not assigned to any value, not even the value `undefined`. This means that from the beginning of the scope in which they are declared up to the variable declaration, there exists a "temporal dead zone". This means that although the variable exists in memory, any attempt to access the value of the variable within that zone will raise a `ReferenceError`.
 
