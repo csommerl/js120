@@ -205,21 +205,21 @@ When variables declared with `let` or `const` are hoisted, they are not assigned
 
 ### Variables for objects are pointers
 
-Variables for objects (including arrays) are **pointers**. This means that a variable for an object does not contain the object itself but instead contains the value of the memory address in which the object is stored. This means that the variable acts as a reference or pointer to the place in memory where the object is stored.
+Variables for objects (including arrays) are **pointers**. This means that a variable for an object does not contain the object itself but instead contains the value of the memory address in which the object is stored. Thus, the variable acts as a reference or pointer to the place in memory where the object is stored.
 
-This further means that the same object can be referenced by multiple variables, such that mutating the object referenced by one of the variables also mutates the object referenced by the other variables (since they are the same object).
+A consequence of this is that the same object can be referenced by multiple variables. So, mutating the object referenced by one of these variables also mutates the object referenced by the other variables (since they are the same object).
 
 ### Variables for primitive values are not pointers
 
-A variable for a primitive value stores that primitive value directly within variable's memory location.
+A variable for a primitive value stores that primitive value directly within the variable's memory location.
 
-This means that the same primitive value can be stored in different variables such that changes to the value of one variable will not affect the value of the other variable.
+This means that although the same primitive value can be stored in different variables, changes to the value of one variable will not affect the value of the other variables containing the original primitive value.
 
 ### Assignment of a variable to a pointer to an object
 
 When a variable is assigned to the value of another variable that references an object, the memory address of that object gets copied and placed in the former variable. The result is that both variables reference or point to the same object.
 
-Thus, when any changes are made to the object referenced by either variable, the object referenced by the other variable will also be affected, since they are the same object.
+Thus, when the object referenced by either variable is mutated, the object referenced by the other variable will also be mutated, since they are the same object.
 
 ### Assignment of a variable to a primitive value
 
@@ -229,9 +229,9 @@ Thus, when any changes are made to the value of one of the variables, the other 
 
 ### Nested collections and pointers
 
-When we have an object with nested objects, what actually is going on is that the outer object contains references to the nested objects.
+Similar to how a variable for an object does not contain that object but instead the memory address for that object, objects nested within another object are not actually contained in the latter object. Instead, the outer object contains references to the nested objects.
 
-This means, for example, that variables can be assigned to reference those nested objects. And, in turn, that means that those nested objects can be mutated using those variables and such mutations will affect the nested objects within the outer object containing those nested objects.
+This means, for example, that variables can be assigned to reference those nested objects. Those nested objects can thus be mutated using those variables and such mutations will affect the nested objects within the outer object "containing" those nested objects.
 
 ---
 
