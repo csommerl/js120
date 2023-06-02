@@ -237,9 +237,9 @@ This means, for example, that variables can be assigned to reference those neste
 
 ## Statements vs. expressions
 
-An **expression** is anything that evaluates to a value, where this value can be captured and stored for later use. **Statements**, by contrast, primarily do something; although they can sometimes evaluate to values, such values cannot be captured. This means that most attempts of capturing those values will raise a `SyntaxError`.
+An **expression** is anything that evaluates to a value that can be captured and stored for later use (e.g., by assigning the expression to a variable). **Statements**, by contrast, primarily do something; although they can sometimes evaluate to values, such values cannot be captured. This means that most attempts of capturing those values will raise a `SyntaxError`.
 
-Possible: **statements** are commands that consist of a keyword followed by an expression.
+Statements ==typically== consist of a keyword followed by an expression. But some keywords followed by expressions are not statements. For example, `typeof 'Bella'` evaluates to the value 'string', which can be captured and assigned to a variable.
 
 ---
 
