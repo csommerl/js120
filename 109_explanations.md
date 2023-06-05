@@ -321,13 +321,11 @@ In contrast, functions defined with function expressions (including arrow functi
 
 ---
 
-## Return values and output
+## Return values
 
 A **return value** is the evaluated value of an expression. Return values can usually (but not always) be captured in order to be stored and used.
 
-`console.log` is a method that **outputs** or prints to the console a textual representation of the supplied arguments. It always returns `undefined`.
-
-### Implicit return value
+### Implicit return values
 
 A function invocation has an **implicit return value** when no explicit `return` statement is executed within the function body; in JavaScript, this implicit return value is always `undefined`.
 
@@ -337,41 +335,35 @@ In arrow functions, the `return` keyword can be omitted and yet there can be an 
 
 ---
 
-## Side effects
+## Output and side effects
 
-A function has a **side effect** when it depends on or affects something beyond its parameters. Side effects occur, for example, when:
+A function has a **side effect** when it depends on or affects something beyond its parameters.
 
-1. a function **reassigns a non-local variable** to a different value. This is a side effect because that variable was not passed as an argument to the function.
+A function's **output** is whatever the function does beyond generating a return value, i.e., the output amounts to its side effects.
 
-2. a function **mutates an object referenced by a non-local variable**. This is a side-effect because that mutation persists outside the function and its return value.
+### Examples of side effects
 
-3. a function **reads or write to a file**, including logging to the console. That's a side effect because the console exists beyond the parameters of the function.
+1. a function **reassigns a non-local variable** to a different value: This is a side effect because that variable was not passed as an argument to the function.
 
-4. a function **throws an error without handling it**.
+2. a function **mutates an object referenced by a non-local variable**: This is a side-effect because that mutation persists outside the function and its return value.
 
-5. a function **invokes another function that has a side effect**.
+3. a function **reads or write to a file**, including logging to the console: That's a side effect because the console exists beyond the parameters of the function.
 
-Functions should typically either return a value or have a side effect, but not both.
+4. a function **throws an error without handling it**
 
----
-
-## Return values vs. `console.log` vs. side effects
-
-### Return values vs. output
-
-The return value is what is explicitly returned, which is revealed by passing the function invocation as an argument to an invocation of `console.log`.
-
-The output is whatever the function does beyond generating a return value, i.e., the output amounts to its side effects.
-
-### Return values vs. `console.log`
-
-The `console.log` method has both a side effect and a return value. Its side effect is to print in the console the value of the expression passed to it as an argument. Its return value is the evaluated value of the whole `console.log` expression, which is always `undefined`. This return value can be captured and used by whatever initiated the execution of the `console.log` method.
+5. a function **invokes another function that has a side effect**
 
 ### Return values vs. side effects
 
+A function's return value is what it implicitly or explicitly returns, in contrast to its output or side effects. A function's return value can always be revealed by passing a function invocation as an argument to an invocation of `console.log`.
+
 Return values are distinct from side effects when they are produced as a result of only the parameters supplied to a function.
 
-A function should have either a return value or a side effect, *but not both*.
+A function typically should have either a return value or a side effect, *but not both*.
+
+### `console.log`
+
+The `console.log` method has both a side effect (output) and a return value. Its **side effect** or **output** is to print in the console a textual representation of the values of the expressions passed to it as arguments. Its **return value** is the evaluated value of the whole `console.log` expression, which is always `undefined`. This return value can be captured and used by whatever initiated the execution of the `console.log` method.
 
 ---
 
