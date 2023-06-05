@@ -251,7 +251,7 @@ Statements ==typically== consist of a keyword followed by an expression. But som
 
 ### Implicit
 
-**Implicit type coercion** is what occurs when a value of one data type is implicitly (i.e., automatically and regardless of the programmer's knowledge) converted to another data type, so that some other operation can be performed.
+**Implicit type coercion** occurs when a value of one data type is implicitly (i.e., automatically and regardless of the programmer's knowledge) converted to another data type, so that some other operation can be performed.
 
 ---
 
@@ -259,7 +259,7 @@ Statements ==typically== consist of a keyword followed by an expression. But som
 
 ### Strict equality operator
 
-The strict equality operator `===` returns `true` if and only if the operands are of the same type and have the same value; otherwise, the operator returns `false`.
+The strict equality operator `===` returns `true` if and only if the operands *both* are of the same type *and* have the same value; otherwise, the operator returns `false`.
 
 ### Non-strict equality operator
 
@@ -269,9 +269,9 @@ The non-strict or loose equality operator `==` returns `true` if and only if the
 
 ## Truthiness
 
-**Truthiness** is the concept that all expressions in JavaScript either are truthy (evaluate as true) or falsy (evaluate as false) when evaluated in boolean contexts, e.g., when they are operands for logical operators or are supplied as conditions within conditional statements.
+**Truthiness** is the concept that all expressions in JavaScript are either truthy (evaluate as true) or falsy (evaluate as false) when evaluated in boolean contexts (e.g., when they are operands for logical operators or are supplied as conditions within conditional statements).
 
-All values are truthy except: `false`, `0`, `-0`, `0n`, `undefined`, `null`, `NaN`, and `''`.
+All values in JavaScript are truthy except for the following 8 values: `false`, `0`, `-0`, `0n`, `undefined`, `null`, `NaN`, and `''`.
 
 ---
 
@@ -283,7 +283,7 @@ An **argument** is a value passed to a function.
 
 A **parameter** is a placeholder for an argument, or more precisely is a local variable initialized to the argument and whose scope is restricted to the function body.
 
-### Function definition
+### Function definitions
 
 **Function declarations** define functions by using the `function` keyword at the *start* of the function definition.
 
@@ -301,11 +301,11 @@ An **anonymous function** is one that lacks a name/identifier.
 
 ### JS functions are first-class
 
-All functions in JavaScript are first-class. A **first-class function** is one that is an object and so treated like any other variable in three respects:
+All functions in JavaScript are first-class. A **first-class function** is one that is an object. So, it is treated like any other variable in three respects:
 
-1. variables can be assigned to functions (and similarly functions can be added as elements of data structures);
-2. functions can be passed as arguments to other functions; and,
-3. functions can be returned from function invocations.
+1. variables can be assigned to a first-class function (and similarly they can be added as elements of data structures);
+2. a first-class function can be passed as an argument to other functions; and,
+3. a first-class function can be returned from function invocations.
 
 A **callback function** is one that is passed as an argument to another function. This latter function, the **caller**, invokes the callback function to accomplish some operation.
 
@@ -315,9 +315,9 @@ A **higher order function** is one that takes other functions as arguments or th
 
 ### Hoisting of functions
 
-Functions defined with function declarations are hoisted, which means that they are virtually moved to the top of the scope in which they are declared and so can be invoked prior to their definition.
+Functions defined with function declarations are hoisted, which means that they are virtually moved to the top of the scope in which they are declared. Thus, such functions can be invoked prior to their definition within the scope in which they are declared.
 
-In contrast, functions defined with function expressions (including arrow functions) are not hoisted, which means that any attempt to invoke them prior to their definition raises a `ReferenceError`.
+In contrast, functions defined with function expressions (including arrow functions) are not hoisted. This means that any attempt to invoke them prior to their definition raises a `ReferenceError`.
 
 ---
 
@@ -339,17 +339,17 @@ In arrow functions, the `return` keyword can be omitted and yet there can be an 
 
 ## Side effects
 
-A function has a **side effect** when it depends on or affects something beyond its parameters.
+A function has a **side effect** when it depends on or affects something beyond its parameters. Side effects occur, for example, when:
 
-1. It is a side effect for a function to **reassign a non-local variable** to a different value. This is a side effect because that variable was not passed as an argument to the function.
+1. a function **reassigns a non-local variable** to a different value. This is a side effect because that variable was not passed as an argument to the function.
 
-2. It is a side effect for a function to **mutate an object referenced by a non-local variable**. This is a side-effect because that mutation persists outside the function and its return value.
+2. a function **mutates an object referenced by a non-local variable**. This is a side-effect because that mutation persists outside the function and its return value.
 
-3. It is a side effect for a function to **read or write to a file**, including logging to the console. That's a side effect because the console exists beyond the parameters of the function.
+3. a function **reads or write to a file**, including logging to the console. That's a side effect because the console exists beyond the parameters of the function.
 
-4. It is a side effect for a function to **throw an error without handling it**.
+4. a function **throws an error without handling it**.
 
-5. It is a side effect for a function to **invoke another function that has a side effect**.
+5. a function **invokes another function that has a side effect**.
 
 Functions should typically either return a value or have a side effect, but not both.
 
