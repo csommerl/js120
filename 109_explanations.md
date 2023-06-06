@@ -241,6 +241,8 @@ An **expression** is anything that evaluates to a value that can be captured and
 
 Statements ==typically== consist of a keyword followed by an expression. But some keywords followed by expressions are not statements. For example, `typeof 'Bella'` evaluates to the value 'string', which can be captured and assigned to a variable.
 
+The term "statement" is often used in a *broad sense* to refer to any line or unit of code that commands a task.
+
 ---
 
 ## Type coercion
@@ -277,7 +279,7 @@ All values in JavaScript are truthy except for the following 8 values: `false`, 
 
 ## Functions
 
-A **function** is a named and defined body of statements and expressions that can be invoked an unlimited number of times.
+A **function** is a named and defined body of statements and expressions that can be invoked an unlimited number of times. The function body is usually (viz., always except in arrow functions) placed between curly braces (`{}`).
 
 An **argument** is a value passed to a function.
 
