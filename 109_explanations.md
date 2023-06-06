@@ -377,7 +377,7 @@ When dealing with primitive values, JavaScript **passes by value**. In the conte
 
 This is because the primitive value contained in the variable is passed to initialize the parameter, which contains its own instance of the primitive value.
 
-This means that the variable's value and the parameter's value are independent of one another such that changes to the value of one do not affect the other.
+Consequently, the original variable's value and the parameter's value are independent of one another such that changes to the value of one do not affect the other.
 
 #### Pass-by-value for return values
 
@@ -393,7 +393,7 @@ Consequently, changes to the value of either variable do not affect the value of
 
 When dealing with objects (including arrays), JavaScript **passes by value of the reference**. In the context of when a variable is used to pass an object as an argument to a function, this means that operations within the function that mutate the argument will mutate the object referenced by the original variable.
 
-This is because what is passed to initialize the parameter is a reference to the object. This means that the parameter and the variable used for passing an argument point to the very same object.
+This is because what is passed to initialize the parameter is a reference to the object (namely, a memory address). This means that the parameter and the variable used for passing an argument point to the very same object.
 
 Consequently, changes to the object referenced by either are changes to the object referenced by the other, since they are the same object.
 
@@ -421,7 +421,7 @@ To iterate over a string using a `for` loop, each of the indices of the string m
 
 ## Methods
 
-**Methods** in JavaScript are functions that are properties of objects, and they are invoked by appending to a value or variable name a `.` and the method's function invocation.
+**Methods** in JavaScript are functions that are properties of objects. They are invoked by appending to a value or variable name a dot (`.`) and the method's function invocation.
 
 A method **mutates the caller** when it permanently changes the object that invoked the method.
 
@@ -443,21 +443,27 @@ Longer: The `forEach()` array method is an iteration method that takes a callbac
 
 ### Transformation / `map`
 
-The `map` array method is a transformation method that creates and returns a new array whose elements are transformed values of the calling array's elements. These transformed values are determined by the callback function passed to `map` as an argument. Namely, on each iteration of the callback function, an element of the calling array is passed as an argument to the callback function, and the return value generated as a result is added to the array returned by the `map` method.
+The `map` array method is a transformation method that creates and returns a new array whose elements are transformed values of the calling array's elements. These transformed values are determined by the callback function passed to `map` as an argument. Namely, on each iteration of the callback function, an element of the calling array is passed as an argument to the callback function, and the return value generated as a result is added to the new array returned by the `map` method.
 
 ### Selection / `filter`
 
-The `filter` array method is a selection method that creates & returns a new array whose elements pass a specified test. This test is supplied by a callback function that is passed as an argument to the `filter` method, and this callback function is invoked once per element of the calling array. An element of the calling array passes the callback function's test when the callback function returns a truthy value as a result of being passed that element as an argument.
+The `filter` array method is a selection method that creates and returns a new array whose elements pass a specified test. This test is supplied by a callback function that is passed as an argument to the `filter` method. This callback function is invoked once per element of the calling array. An element of the calling array passes the callback function's test when the callback function returns a truthy value as a result of being passed that element as an argument.
 
 ### Search / `find`
 
-The `find` array method returns the value of the first element in the calling array that passes a specified test. This test is provided by the callback function that is passed as an argument to the `find` method, and this callback function is passed as an argument each element of the calling array until the test is passed. An element passes the callback function's test when the callback function returns a truthy value as a result of being passed that element as an argument. If no iteration of the callback function returns a truthy value, `undefined` is returned.
+The `find` array method returns the value of the first element in the calling array that passes a specified test. This test is provided by the callback function that is passed as an argument to the `find` method. Until the test is passed, each element of the calling array is passed as an argument to the callback function. An element passes the callback function's test when the callback function returns a truthy value as a result of being passed that element as an argument. If no iteration of the callback function returns a truthy value, `undefined` is returned.
 
 ### Sorting / `sort`
 
 Short: The `sort` array method is a *destructive* method that sorts the elements of the caller array in place. It takes an optional callback function as an argument, and it returns the mutated, sorted array. The order of sorted elements is determined either by the return values of the callback function or by a default algorithm.
 
-Long: The `sort` array method is a destructive method that takes a callback function as an argument and returns the mutated array with its elements sorted in place, as determined by the return values of each iteration of the callback function. When the callback function is passed two elements of the array as arguments, the first element will be sorted before the second when the callback function returns `-1`, the second will be sorted before the first when the callback function returns `1`, and the order of the two elements will be preserved when the callback function returns `0`. `undefined` will always be placed at the end of the sorted/returned array.
+Long: The `sort` array method is a *destructive* method that takes a callback function as an argument and returns the mutated array with its elements sorted in place, as determined by the return values of each iteration of the callback function. A sorting algorithm can be supplied by passing a callback function as an argument to the `sort` method. This callback function must take two arguments, corresponding to two elements of the array. These two elements are sorted depending on the callback function's return value:
+
+- the first element will be sorted before the second when the callback function returns `-1`,
+- the second will be sorted before the first when the callback function returns `1`, and
+- the order of the two elements will be preserved when the callback function returns `0`.
+
+When the `sort` method is not passed a callback function as an argument, `sort`'s default algorithm is performed. Namely, all elements (except `undefined`) are coerced to strings and those strings' Unicode character codes are compared. Regardless of the sorting algorithm, `undefined` will always be placed at the end of the sorted/returned array.
 
 ---
 
