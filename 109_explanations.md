@@ -132,9 +132,9 @@ At the most general level, there are two kinds of scope:
 
 ### Block scope
 
-Variables declared with `let` and `const` have block[^2] scope. This means that such variables are only available within the innermost block (or function body) in which they are declared, as well as any of that block's nested blocks or functions.
+Variables declared with `let` and `const` have block[^2] scope. This means that such variables are only available within the innermost block (or function body) in which they are declared, as well as any of that block's nested blocks or functions. Alternatively put, they are not accessible outside of the block (or function body) in which they are declared.
 
-Alternatively put, they are not accessible outside of the block (or function body) in which they are declared.
+Functions defined with expressions using `let` or `const` also have block scope.
 
 [^2]: A `block` is a related set of statements and expressions between two curly braces, i.e., `{` and `}`. But not everything between `{}` is a block, e.g., function bodies and object literals are not blocks.
 
@@ -142,7 +142,7 @@ Alternatively put, they are not accessible outside of the block (or function bod
 
 Variables declared with `var` have function scope. This means that variables declared with `var` are available anywhere within the innermost function body in which they are declared. That means that even if they are declared within a block within a function body, their scope is not limited to that block and they can be accessed outside of that block.
 
-Functions defined by function **declarations** have function scope.
+Functions defined with *expressions* using `var` also have function scope. Functions defined with function *declarations* have function scope.
 
 ### Scope of undeclared variables
 
@@ -183,21 +183,33 @@ The only names that don't get involved in shadowing are property names for objec
 
 ## Variables: hoisting
 
-All ==declared== variables in JavaScript are **hoisted**, which means that they are virtually moved to the beginning of the scope in which they are declared. More technically, this means that memory is reserved for them during the execution of the code within the scope.
+All ==declared== variables in JavaScript are **hoisted**, which means that they are virtually moved to the beginning of the scope in which they are declared.[^3] More technically, this means that memory is reserved for them during the execution of the code within the scope.
 
 But how variables are hoisted (i.e., what values they have when hoisted) depends on the keyword used to declare them.
 
+[^3]: Cf. [the MDN entry on hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+
 ### Hoisting of `var`-declared variables
 
-When variables declared with `var` are hoisted, they are assigned to the value `undefined`. This means that from the beginning of the scope in which they are declared up to the variable declaration, `var`-declared variables are assigned to `undefined`, even if the variable declaration initializes the variable to some other value.
+When variables declared with `var` are hoisted, they are assigned to the value `undefined` within their scope prior to their declaration. This means that from the beginning of the scope in which they are declared up to the variable declaration, `var`-declared variables are assigned to `undefined`, even if the variable declaration initializes the variable to some other value.
+
+Alternatively put, such variables have "declaration hoisting".
 
 ### Hoisting of `let`- and `const`-declared variables
 
 When variables declared with `let` or `const` are hoisted, they are not assigned to any value, not even the value `undefined`. This means that from the beginning of the scope in which they are declared up to the variable declaration, there exists a "temporal dead zone". This means that although the variable exists in memory, any attempt to access the value of the variable within that zone will raise a `ReferenceError` with the message that the variable cannot be accessed before its initialization.
 
+Alternatively put, they are "lexically hoisted", which means that the variable names are reserved throughout the entire scope. (For example, if such a variable shadows another variable in the outer scope, the variable name is reserved for the locally-scoped variable within the local scope even prior to the locally-scoped variable's declaration.
+
 ### Hoisting and undeclared variables
 
 ==Undeclared variables are not hoisted. This means that they do not exist prior to the code in which they are assigned a value. Thus, any attempt to access the value of an undeclared variable before its assignment will raise a `ReferenceError` with the message that the variable name is not defined.==
+
+### Hoisting of functions
+
+Functions defined with function declarations have "value hoisting". This means that they are hoisted to the top of their scope *with their values*, so that they can be invoked prior to their definition within their scope.
+
+Functions defined with function expressions are hoisted according to the keyword used. Accordingy, functions defined with the `var` keyword are hoisted to the top of the scope and are assigned to the value `undefined` within their scope prior to the keyword declaration. Those defined with `let` and `const` are hoisted but not assigned to any value.
 
 ---
 
