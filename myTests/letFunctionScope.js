@@ -1,5 +1,5 @@
 test();
 
-var test = function() {
+let test = function() {
   console.log('hello');
 }

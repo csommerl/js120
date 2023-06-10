@@ -209,7 +209,7 @@ Alternatively put, they are "lexically hoisted", which means that the variable n
 
 Functions defined with function declarations have "value hoisting". This means that they are hoisted to the top of their scope *with their values*, so that they can be invoked prior to their definition within their scope.
 
-Functions defined with function expressions are hoisted according to the keyword used. Accordingy, functions defined with the `var` keyword are hoisted to the top of the scope and are assigned to the value `undefined` within their scope prior to the keyword declaration. Those defined with `let` and `const` are hoisted but not assigned to any value.
+Functions defined with function expressions are hoisted according to the keyword used. Accordingy, functions defined with the `var` keyword are hoisted to the top of the scope and are assigned to the value `undefined` within their scope prior to the keyword declaration. Thus, attempts to invoke them within scope but prior to their declaration will throw a `TypeError` with the message that the value is not a function, since `undefined` is not a function. Those defined with `let` and `const` are hoisted but not assigned to any value. Thus, a `ReferenceError` will be thrown it is attempted to invoke them prior to their declaration within their scope.
 
 ---
 
@@ -326,12 +326,6 @@ A **callback function** is one that is passed as an argument to another function
 A **higher order function** is one that takes other functions as arguments or that returns other functions.
 
 **Function composition** occurs when a function invocation is passed as an argument to another function invocation. This means that the return value of the former function's invocation is passed as an argument to the latter function invocation.
-
-### Hoisting of functions
-
-Functions defined with function declarations are hoisted, which means that they are virtually moved to the top of the scope in which they are declared. Thus, such functions can be invoked prior to their definition within the scope in which they are declared.
-
-In contrast, functions defined with function expressions (including arrow functions) are not hoisted. This means that any attempt to invoke them prior to their definition raises a `ReferenceError`.
 
 ---
 
