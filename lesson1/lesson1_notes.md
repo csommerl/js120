@@ -31,7 +31,7 @@ Contrast with what has come so far:
 
 Advantages of OOP:
 1. easy to reason about (through abstraction)
-2. easy to maintain (to decrease the number of dependencies)
+2. easy to maintain, enabling the making of focused changes (to decrease the number of dependencies)
 
 Disadvantages of OOP:
 1. OOP programs are often larger
@@ -41,11 +41,6 @@ Disadvantages of OOP:
 - A dependency exists when some bit of code depends on some other bit of code.
 - How does OOP reduce dependencies? It confines them to exist within a single class/object.
 - How is collaboration different from dependency? With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.
-
-#### *Example:
-
-```javascript
-```
 
 ---
 
@@ -58,12 +53,6 @@ Disadvantages of OOP:
 Purpose of encapsulation:
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
    - That would occur if when a function is defined outside an object, and it is passed data of an incorrect type.
-
-#### *Example:
-
-```javascript
-```
-
 2. It provides a **public interface** for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
    - JavaScript does *not* officially/formally/syntactically support access restrictions.
 
