@@ -41,7 +41,7 @@ Disadvantages of OOP:
 1. OOP programs are often larger
 2. OOP programs are often less efficient (more memory, storage, and processing)
 
-### :information_source: [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
+### [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
 
 - A dependency exists when some bit of code depends on some other bit of code.
 - How does OOP reduce dependencies? It confines them to exist within a single class/object.
@@ -67,22 +67,10 @@ Purpose of encapsulation:
 
 ## [1.4 Practice Problems: OOP and Encapsulation](https://launchschool.com/lessons/fb892747/assignments/bd81804d)
 
-### Old
-
-1. OOP is an approach to programming where problems are conceptualized and solved in terms of objects, which are entities that combine together both data and operations.
-2. The advantages are that it is easier to reason about problems, organize code, and to restrict operations to particular domains/objects. The disadvantages are that it makes code more complex and less efficient.
-   - another advantage: *reduce dependencies*
+1. OOP is an approach to programming where problems are conceptualized in terms of objects and code solving those problems is thus organized in terms of those object. Objects are entities that combine together both states (data) and behaviors (operations that can be performed on that data).
+2. OOP's advantages are: it makes it easier to reason about problems (by abstraction); it makes it easier to organize & maintain code (by reducing dependencies); it allows code to be restricted to particular domains/objects; and, it reduces dependencies. OOP's disadvantages are that it makes code more complex, larger, slower, and less efficient with respect to memory.
 3. Encapsulation refers to how code is structured together: certain kinds of data (state) and certain kinds of operations (behavior) are bundled together in a single entity.
-4. JavaScript differs from other OO languages insofar as there are no formal access restrictions.
-   - So, they must be devised using other means.
-
-### New
-
-1. OOP is a programming paradigm in which problems are dealt with in terms of objects, which are bundles of states (data) and behaviors (operations that can be performed on that data).
-    - And we use objects to organize programs.
-2. OOP's advantages are that it makes programs easier to maintain (by reducing dependencies) and easier to reason about (by abstraction). Its disadvantages are that programs can become complex, large, take lots of memory, and are slow.
-3. Encapsulation refers to the bundling together two things within objects: states and behaviors.
-4. In other languages, there are formal access restrictions.
+4. JavaScript differs from other OO languages insofar as there are no formal (syntactical) access restrictions, and so they must be devised using other means.
 
 ---
 
@@ -97,7 +85,7 @@ Objects' behaviors are represented by key-value pairs where the value is a funct
 - That is, objects' behaviors are methods.
 - A **method** is a property of an object that is a function. Methods are invoked with dot notation.
 
-### Quirk of JavaScript Objects
+### :warning: Quirk of JavaScript Objects
 
 In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might mistakenly assign them to undesirable values. For example, we might accidentally change the data type or give a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
 
@@ -112,7 +100,7 @@ let obj = {
 }
 ```
 
-:information_source: Writing methods in this way does **not** require `return` statements in order to match LS's style guidelines.
+:warning: Writing methods in this way does **not** require `return` statements in order to match LS's style guidelines.
 
 ### Compact Method Syntax
 
@@ -156,7 +144,7 @@ let obj = {
 
 The benefit of using `this` is that the method definition will work as expected regardless of the variable name of the main object, e.g., even if the variable name changes.
 
-#### :information_source: More information on `this`
+#### :warning: More information on `this`
 
 - [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on MDN.
 - [The `this` keyword in JavaScript made simple](https://medium.com/@eamonocallaghan/the-this-keyword-in-javascript-made-simple-320eaddecc22)
@@ -167,13 +155,15 @@ The benefit of using `this` is that the method definition will work as expected 
 
 ## [1.6 Collaborator Objects](https://launchschool.com/lessons/fb892747/assignments/675a4d9d)
 
-A **collaborator object or collaborator** is an object that is a state of another object (i.e., an object that is provided as a value/property of another object's key) and the latter object has a method that depends on that state.
+A **collaborator object or collaborator** is an object that is a property or state of another object (i.e., an object that is the value of another object's key) and[^1] the latter object has a method that depends on that state.
 
 - The two objects can be said to "collaborate" insofar as they work together.
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
-### *Example
+[^1]: According to [Pete in the discussion forum](https://launchschool.com/posts/d12c383f#comment-85901).
+
+### Example
 
 ```javascript
 let cat = {
@@ -197,7 +187,7 @@ Here, `cat` is a collaborator of `person` because:
 1. `cat` is a state of `person` on line 10; and,
 2. the function `displayPersonInfo` defined on lines 11-13 depends on that state.
 
-### :information_source: More information on collaborators
+### :warning: More information on collaborators
 
 - [Initial Concepts of OOP: From Properties and Methods to Collaboration](https://launchschool.com/posts/beeca25e)
 - [When is a property value of an object NOT a collaborator?](https://launchschool.com/posts/d12c383f)
