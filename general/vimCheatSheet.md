@@ -132,11 +132,11 @@ Tip Special registers:
  * - clipboard contents (X11 primary)
  + - clipboard contents (X11 clipboard)
  / - last search pattern
-     : - last command-line
-     . - last inserted text
+      : - last command-line
+      . - last inserted text
  - - ==last small (less than a line) delete==
  = - expression register
-     _ - black hole register
+      _ - black hole register
 
 # Marks and positions
 :marks - list of marks

@@ -4,13 +4,13 @@
 
 ---
 
-# [1.1 Introduction](https://launchschool.com/lessons/fb892747/assignments/78f95d7f)
+## [1.1 Introduction](https://launchschool.com/lessons/fb892747/assignments/78f95d7f)
 
 Object-Oriented Programming (OOP) is useful for dealing with large, complex programs.
 
 ---
 
-# [1.2 What is OOP?](https://launchschool.com/lessons/fb892747/assignments/454a3f12)
+## [1.2 What is OOP?](https://launchschool.com/lessons/fb892747/assignments/454a3f12)
 
 ## Definitions
 
@@ -20,45 +20,54 @@ Object-Oriented Programming (OOP) is useful for dealing with large, complex prog
 - objects are used to organize a program.
 
 An **object** is a type of data that has two features:
+
 1. **state**, i.e., properties
 2. **behavior**, i.e., what it can do
 
 ## Use-cases
 
 Contrast with what has come so far:
+
 1. **procedural programming** (step-by-step approach, e.g., with conditionals and loops)
 2. **functional programming** (e.g., passing callback functions as arguments to methods)
 
 Advantages of OOP:
+
 1. easy to reason about (through abstraction)
 2. easy to maintain, enabling the making of focused changes (to decrease the number of dependencies)
 
 Disadvantages of OOP:
+
 1. OOP programs are often larger
 2. OOP programs are often less efficient (more memory, storage, and processing)
 
-#### :information_source: [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
+## :information_source: [Clarification on what 'reducing dependencies' means](https://launchschool.com/posts/88de8643)
+
 - A dependency exists when some bit of code depends on some other bit of code.
 - How does OOP reduce dependencies? It confines them to exist within a single class/object.
 - How is collaboration different from dependency? With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.
 
 ---
 
-# [1.3 Encapsulation](https://launchschool.com/lessons/fb892747/assignments/d09dc4ed)
+## [1.3 Encapsulation](https://launchschool.com/lessons/fb892747/assignments/d09dc4ed)
 
 **Encapsulation** is the bundling together into a single structure of two things:
+
 1. data (state)
 2. operations on that data (behavior)
 
 Purpose of encapsulation:
+
 1. It ensures that you don't perform an operation suited for one type of data on another type of data for which it is unsuited.
-   - That would occur if when a function is defined outside an object, and it is passed data of an incorrect type.
-2. It provides a **public interface** for interacting with objects, and it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
+   - That would occur when a function is defined outside an object, and it is passed data of an incorrect type. (*Example?*)
+2. It provides a **public interface** for interacting with objects. Namely, it hides and restricts access to implementation details, thereby preventing objects from being changed through improper channels.
    - JavaScript does *not* officially/formally/syntactically support access restrictions.
 
 ---
 
-# [1.4 Practice Problems: OOP and Encapsulation](https://launchschool.com/lessons/fb892747/assignments/bd81804d)
+## [1.4 Practice Problems: OOP and Encapsulation](https://launchschool.com/lessons/fb892747/assignments/bd81804d)
+
+### Old
 
 1. OOP is an approach to programming where problems are conceptualized and solved in terms of objects, which are entities that combine together both data and operations.
 2. The advantages are that it is easier to reason about problems, organize code, and to restrict operations to particular domains/objects. The disadvantages are that it makes code more complex and less efficient.
@@ -67,30 +76,45 @@ Purpose of encapsulation:
 4. JavaScript differs from other OO languages insofar as there are no formal access restrictions.
    - So, they must be devised using other means.
 
+### New
+
+1. OOP is a programming paradigm in which problems are dealt with in terms of objects, which are bundles of states (data) and behaviors (operations that can be performed on that data).
+    - And we use objects to organize programs.
+2. OOP's advantages are that it makes programs easier to maintain (by reducing dependencies) and easier to reason about (by abstraction). Its disadvantages are that programs can become complex, large, take lots of memory, and are slow.
+3. Encapsulation refers to the bundling together two things within objects: states and behaviors.
+4. In other languages, there are formal access restrictions.
+
 ---
 
-# [1.5 Creating Objects](https://launchschool.com/lessons/fb892747/assignments/20ed580c)
+## [1.5 Creating Objects](https://launchschool.com/lessons/fb892747/assignments/20ed580c)
 
-Objects' states are represented by typical key-value pairs, where the value is a type of data. Objects' behavior is represented by key-value pairs where the value is a function (enabled by functions being first-class). That is, the latter is represented by methods.
+### Formal Characterization of Objects
 
-A **method** is a property of an object that is a function. Methods are invoked with dot notation.
+Objects' states are represented by typical key-value pairs, where the value is a type of data.
 
-In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might assign them to undesirable values, by changing the data type or giving a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
+Objects' behaviors are represented by key-value pairs where the value is a function (enabled by functions being first-class).
 
-## Full Method Syntax
+- That is, objects' behaviors are methods.
+- A **method** is a property of an object that is a function. Methods are invoked with dot notation.
+
+## Quirk of JavaScript Objects
+
+In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might mistakenly assign them to undesirable values. For example, we might accidentally change the data type or give a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
+
+### Full Method Syntax
 
 ```javascript
 let obj = {
   state1: true,
   behavior1: function() {
     obj.state1 = obj.state1 ? false : true; // see below about the this keyword!
-  }
+  },
 }
 ```
 
 :information_source: Notice that methods like this do **not** require `return` statements in order to match LS's style guidelines.
 
-## Compact Method Syntax
+### Compact Method Syntax
 
 Compact syntax is formed by:
 
@@ -113,9 +137,10 @@ let obj = {
 *Compact syntax does not fully work the same as the full syntax of having a function as a value of a property.*
 
 Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
+
 - It appears that one of the main limitations is that method definitions / compact syntax are not constructable.
 
-## The `this` Keyword
+### The `this` Keyword
 
 The `this` keyword can be used in place of the variable name within method definitions:
 
@@ -141,14 +166,15 @@ The benefit of using `this` is that the method definition will work as expected 
 
 ---
 
-# [1.6 Collaborator Objects](https://launchschool.com/lessons/fb892747/assignments/675a4d9d)
+## [1.6 Collaborator Objects](https://launchschool.com/lessons/fb892747/assignments/675a4d9d)
 
 A **collaborator object or collaborator** is an object that is a state of another object (i.e., an object that is provided as a value/property of another object's key) and the latter object has a method that depends on that state.
+
 - The two objects can be said to "collaborate" insofar as they work together.
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
-#### *Example:
+### *Example
 
 ```javascript
 let cat = {
@@ -172,7 +198,7 @@ Here, `cat` is a collaborator of `person` because:
 1. `cat` is a state of `person` on line 10; and,
 2. the function `displayPersonInfo` defined on lines 11-13 depends on that state.
 
-#### :information_source: More information on collaborators
+### :information_source: More information on collaborators
 
 - [Initial Concepts of OOP: From Properties and Methods to Collaboration](https://launchschool.com/posts/beeca25e)
 - [When is a property value of an object NOT a collaborator?](https://launchschool.com/posts/d12c383f)
@@ -180,19 +206,19 @@ Here, `cat` is a collaborator of `person` because:
 
 ---
 
-# [1.7 Functions as Object Factories](https://launchschool.com/lessons/fb892747/assignments/3a7351ce)
+## [1.7 Functions as Object Factories](https://launchschool.com/lessons/fb892747/assignments/3a7351ce)
 
 An object's **type** refers to what it shared in common with other objects.
 
 A **factory function** or **object factory** is a function that creates and returns an object, and thereby can be used to create multiple objects of the same type that share the same kinds of states & behaviors.
 
-#### :question: Question about factory functions
+### :question: Question about factory functions
 
 *Are there additional techniques?*
 
 ---
 
-# [1.8 Practice Problems: Objects and Factories](https://launchschool.com/lessons/fb892747/assignments/957404de)
+## [1.8 Practice Problems: Objects and Factories](https://launchschool.com/lessons/fb892747/assignments/957404de)
 
 When using a factory function: if the property name is supposed to be the name of the parameter, you can use **shorthand notation** like so:
 
@@ -207,7 +233,7 @@ function createObj(behavior1, behavior2) {
 
 ---
 
-# [1.9 Assignment: OO RPS](https://launchschool.com/lessons/fb892747/assignments/b65f1ede)
+## [1.9 Assignment: OO RPS](https://launchschool.com/lessons/fb892747/assignments/b65f1ede)
 
 Three steps to making an object-oriented program:
 
@@ -221,13 +247,13 @@ An **engine** is what coordinates the objects & their control flow, i.e., it is 
 
 ---
 
-# [1.10 Walk-through: OO RPS](https://launchschool.com/lessons/fb892747/assignments/a54702fd)
+## [1.10 Walk-through: OO RPS](https://launchschool.com/lessons/fb892747/assignments/a54702fd)
 
 ...
 
 ---
 
-# [1.11 Walkthrough: OO RPS Design Choice](https://launchschool.com/lessons/fb892747/assignments/ae7e77a4)
+## [1.11 Walkthrough: OO RPS Design Choice](https://launchschool.com/lessons/fb892747/assignments/ae7e77a4)
 
 **Class inheritance** refers to how child objects inherit common properties and methods from a parent type.
 
@@ -237,13 +263,13 @@ It's good practice to set properties / initial states to `null` even though they
 
 ---
 
-# [1.12 OO RPS](https://launchschool.com/lessons/fb892747/assignments/a9807753)
+## [1.12 OO RPS](https://launchschool.com/lessons/fb892747/assignments/a9807753)
 
 ...
 
 ---
 
-# [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
+## [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
 - [ ] Keeping score
   - [x] Add match object
@@ -284,30 +310,29 @@ Questions for code review
 
 ```
 
-- My motivations were that that seems to be in the spirit of OOP, and that `score` should be a state of `match` instead of `RPSGame` as a whole. But I had some difficulty with doing this. In part, one of the main worries was how to deal with the `human` and `computer` properties/states of `RPSGame`. Namely, it seemed like I would have to pass those properties as arguments to a method 
-
+- My motivations were that that seems to be in the spirit of OOP, and that `score` should be a state of `match` instead of `RPSGame` as a whole. But I had some difficulty with doing this. In part, one of the main worries was how to deal with the `human` and `computer` properties/states of `RPSGame`. Namely, it seemed like I would have to pass those properties as arguments to a method.
 
 ---
 
-# 1.14 Summary
+## 1.14 Summary
 
 ...
 
 ---
 
-# 1.15 Lesson 1 Quiz 1
+## 1.15 Lesson 1 Quiz 1
 
 ...
 
 ---
 
-# Questions & Reflections
+## Questions & Reflections
 
-## Dependency vs. Collaboration
+### Dependency vs. Collaboration
 
 Is it correct that a program has less dependency when an object method changes its own state rather than something else directly changing the state?
 
-### *Example 1
+#### *Example 1
 
 Code Snippet 1:
 
@@ -354,11 +379,11 @@ Questions:
 - Should `cutHair` be a method of `hair` rather than `curtis`, as in Example 2?
 - Does Example 1 have a dependency since line 9 directly modifies a state of another object?
 
-### * Example 2
+#### * Example 2
 
 (pass arguments)
 
-## * Fix Attempt for Match
+### * Fix Attempt for Match
 
 Code that doesn't work:
 
@@ -418,4 +443,3 @@ const game = {
 console.log(game);
 game.play();
 ```
-
