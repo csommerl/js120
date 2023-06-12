@@ -85,7 +85,7 @@ Objects' behaviors are represented by key-value pairs where the value is a funct
 - That is, objects' behaviors are methods.
 - A **method** is a property of an object that is a function. Methods are invoked with dot notation.
 
-### :warning: Quirk of JavaScript Objects
+### :loudspeaker: Quirk of JavaScript Objects
 
 In many languages, it is not syntactically permitted to change directly an object's states (i.e., the values of its properties), and one must use an object's behaviors (i.e., methods) to do so. **But in JavaScript, the former is syntactically permitted.** The reason why we want to avoid changing states/properties directly is that we might mistakenly assign them to undesirable values. For example, we might accidentally change the data type or give a data type a value out of the intended range (e.g., setting a `fuelLevel` greater than `1`/`100%`).
 
@@ -100,7 +100,7 @@ let obj = {
 }
 ```
 
-:warning: Writing methods in this way does **not** require `return` statements in order to match LS's style guidelines.
+:loudspeaker: Writing methods in this way does **not** require `return` statements in order to match LS's style guidelines.
 
 ### Compact Method Syntax
 
@@ -144,7 +144,7 @@ let obj = {
 
 The benefit of using `this` is that the method definition will work as expected regardless of the variable name of the main object, e.g., even if the variable name changes.
 
-#### :warning: More information on `this`
+#### :loudspeaker: More information on `this`
 
 - [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) on MDN.
 - [The `this` keyword in JavaScript made simple](https://medium.com/@eamonocallaghan/the-this-keyword-in-javascript-made-simple-320eaddecc22)
@@ -187,7 +187,7 @@ Here, `cat` is a collaborator of `person` because:
 1. `cat` is a state of `person` on line 10; and,
 2. the function `displayPersonInfo` defined on lines 11-13 depends on that state.
 
-### :warning: More information on collaborators
+### :loudspeaker: More information on collaborators
 
 - [Initial Concepts of OOP: From Properties and Methods to Collaboration](https://launchschool.com/posts/beeca25e)
 - [When is a property value of an object NOT a collaborator?](https://launchschool.com/posts/d12c383f)
@@ -197,13 +197,9 @@ Here, `cat` is a collaborator of `person` because:
 
 ## [1.7 Functions as Object Factories](https://launchschool.com/lessons/fb892747/assignments/3a7351ce)
 
-An object's **type** refers to what it shared in common with other objects.
+An object's **type** refers to what is shared in common with other objects.
 
-A **factory function** or **object factory** is a function that creates and returns an object, and thereby can be used to create multiple objects of the same type that share the same kinds of states & behaviors.
-
-### :question: Question about factory functions
-
-*Are there additional techniques?*
+A **factory function** or **object factory** is a function that creates and returns an object of a particular type. Thus, they can be used to create multiple objects of the same type that share the same kinds of states & behaviors.
 
 ---
 
