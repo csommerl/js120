@@ -102,6 +102,10 @@ let obj = {
 
 :loudspeaker: Writing methods in this way does **not** require `return` statements in order to match LS's style guidelines.
 
+If a behavior accesses a state of its own object, then the state should **not** be passed as an argument to that behavior.
+
+Proper syntax would actually use the `this` keyword on line 4!
+
 ### Compact Method Syntax
 
 Compact syntax is formed by:
@@ -120,9 +124,11 @@ let obj = {
 }
 ```
 
+Proper syntax would actually use the `this` keyword on line 4!
+
 #### :warning: Limitation of compact syntax
 
-**Compact method syntax does not work the same as using the full syntax with the `function` keyword.**
+Compact method syntax **does not work the same** as using the full syntax with the `function` keyword.
 
 Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) on MDN.
 
@@ -205,13 +211,18 @@ A **factory function** or **object factory** is a function that creates and retu
 
 ## [1.8 Practice Problems: Objects and Factories](https://launchschool.com/lessons/fb892747/assignments/957404de)
 
-When using a factory function: if the property name is supposed to be the name of the parameter, you can use **shorthand notation** like so:
+**Shorthand notation** can be used when writing a factory function that creates an object with a state that:
+
+- has a name that is the same as one of the function's parameters; and,
+- has a value that is the same as the value of that parameter.
+
+In such cases, you can simply use the parameter name in the object without it being followed by a colon and a value. For example:
 
 ```javascript
-function createObj(behavior1, behavior2) {
+function createBook(title, author) {
   return {
-    behavior1,
-    behavior2,
+    title,     // same as `title: title,`
+    author,    // same as `author: author,`
   };
 }
 ```
