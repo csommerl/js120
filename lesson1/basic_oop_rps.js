@@ -28,9 +28,9 @@ function createPlayer(playerType) {
       let choice;
 
       while (true) {
-        choice = readline.question('Please choose rock, paper, or scissors:\n');
+        choice = readline.question('\nPlease choose rock, paper, or scissors:\n');
         if (this.choices.includes(choice)) break;
-        console.log('Sorry, invalid choice.\n');
+        console.log('Sorry, invalid choice.');
       }
 
       this.move = choice;
@@ -40,6 +40,11 @@ function createPlayer(playerType) {
 
 
 const RPSGame = {
+  winningCombos: {
+    rock: ['scissors'],
+    paper: ['rock'],
+    scissors: ['paper'],
+  },
   human: createPlayer('human'),
   computer: createPlayer('computer'),
   winner: null,
@@ -49,20 +54,26 @@ const RPSGame = {
   },
 
   displayGoodbyeMessage() {
-    console.log('Thanks for playing Rock, Paper, Scissors Goodbye!');
+    console.log('\nThanks for playing Rock, Paper, Scissors Goodbye!');
   },
 
   displayChoices() {
-    console.log(`You chose: ${this.human.move}`);
+    console.log(`\nYou chose: ${this.human.move}`);
     console.log(`The computer chose: ${this.computer.move}`);
   },
 
   getWinner() {
-    // TODO
+    if (this.winningCombos[this.human.move].includes(this.computer.move)) {
+      this.winner = 'human';
+    } else if (this.winningCombos[this.computer.move].includes(this.human.move)) {
+      this.winner = 'computer';
+    } else {
+      this.winner = 'tie';
+    }
   },
 
   displayWinner() {
-    // TODO
+    console.log(`\n${this.winner}`);
   },
 
   play() {
@@ -70,6 +81,7 @@ const RPSGame = {
     this.human.choose();
     this.computer.choose();
     this.displayChoices();
+    this.getWinner();
     this.displayWinner();
     this.displayGoodbyeMessage();
   },

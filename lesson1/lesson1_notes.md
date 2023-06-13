@@ -245,7 +245,18 @@ An **engine** is what coordinates the objects & their control flow, i.e., it is 
 
 ## [1.10 Walk-through: OO RPS](https://launchschool.com/lessons/fb892747/assignments/a54702fd)
 
-...
+Questions:
+
+- It seems unclear whether having a factory function for both the human player and the computer player is a good idea, since the two players are very different in some respects.
+  - The factory function reduces the amount of redundant code, e.g., `choices` and `move`.
+  - But the factory function also leads to creating a bunch of extra code, e.g., `playerType`, `isHuman`, and the body of `choose`.
+  - TODO: create separate factory functions for each.
+- The valid move choices seem more like properties of the game object rather than the player objects.
+  - Is there a way to capture this idea?
+  - The idea can't be captured by having the choices be a property of the game, since there isn't a way then for choices to be passed to the `createPlayer` function within the value of the other states of the game.
+  - TODO: Maybe `createPlayer` should be a method of the game as a whole?
+- Perhaps a factory function of `RPSGame` would be a good idea?
+  - Then maybe closure could be used, e.g., a local constant of `validMoves` within the factory function would give access to the constant throughout (or maybe only if `createPlayer` is a method of `RPSGame`?)?
 
 ---
 
