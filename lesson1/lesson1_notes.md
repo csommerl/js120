@@ -245,18 +245,15 @@ An **engine** is what coordinates the objects & their control flow, i.e., it is 
 
 ## [1.10 Walk-through: OO RPS](https://launchschool.com/lessons/fb892747/assignments/a54702fd)
 
-Questions:
+You can't use the value of one key to determine the value of another key.
 
-- It seems unclear whether having a factory function for both the human player and the computer player is a good idea, since the two players are very different in some respects.
-  - The factory function reduces the amount of redundant code, e.g., `choices` and `move`.
-  - But the factory function also leads to creating a bunch of extra code, e.g., `playerType`, `isHuman`, and the body of `choose`.
-  - TODO: create separate factory functions for each.
-- The valid move choices seem more like properties of the game object rather than the player objects.
-  - Is there a way to capture this idea?
-  - The idea can't be captured by having the choices be a property of the game, since there isn't a way then for choices to be passed to the `createPlayer` function within the value of the other states of the game.
-  - TODO: Maybe `createPlayer` should be a method of the game as a whole?
-- Perhaps a factory function of `RPSGame` would be a good idea?
-  - Then maybe closure could be used, e.g., a local constant of `validMoves` within the factory function would give access to the constant throughout (or maybe only if `createPlayer` is a method of `RPSGame`?)?
+Example:
+
+```js
+
+```
+
+When you have nested objects, `this` always refers to the innermost object in which it appears.
 
 ---
 
@@ -278,11 +275,7 @@ It's good practice to set properties / initial states to `null` even though they
 
 ## [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
-- [ ] Keeping score
-- [ ] Improve logic of `getRoundWinner`
-- [ ] Add Lizard and Spock
-- [ ] Keep track of a history moves
-- [ ] Adjust computer choice based on history
+...
 
 ---
 
@@ -298,59 +291,3 @@ It's good practice to set properties / initial states to `null` even though they
 
 ---
 
-## Questions & Reflections
-
-### Dependency vs. Collaboration
-
-Is it correct that a program has less dependency when an object method changes its own state rather than something else directly changing the state?
-
-#### * Example 1
-
-Code Snippet 1:
-
-```javascript
-const hair = {
-  color: 'brown',
-  length: 'long',
-};
-
-const curtis = {
-  hair,
-  cutHair() {
-    this.hair.length = 'short';
-  }
-};
-
-console.log(curtis.hair.length);
-curtis.cutHair();
-console.log(curtis.hair.length);
-```
-
-Code Snippet 2:
-
-```javascript
-const hair = {
-  color: 'brown',
-  length: 'long',
-  cutHair() {
-    this.length = 'short';
-  }
-};
-
-const curtis = {
-  hair,
-};
-
-console.log(curtis.hair.length);
-curtis.hair.cutHair();
-console.log(curtis.hair.length);
-```
-
-Questions:
-
-- Should `cutHair` be a method of `hair` rather than `curtis`, as in Example 2?
-- Does Example 1 have a dependency since line 9 directly modifies a state of another object?
-
-#### * Example 2
-
-(pass arguments)
