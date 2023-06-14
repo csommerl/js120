@@ -1,54 +1,51 @@
 const readline = require('readline-sync');
 
-
-function createPlayer() {
-  return {
-    choices: ['rock', 'paper', 'scissors'],
-    move: null,
-  };
-}
-
-
-function createComputer() {
-  let playerObject = createPlayer();
-
-  let computerObject = {
-    choose() {
-      let randomIdx = Math.floor(Math.random() * this.choices.length);
-      this.move = this.choices[randomIdx];
-    },
-  };
-
-  return Object.assign(playerObject, computerObject);
-}
-
-
-function createHuman() {
-  let playerObject = createPlayer();
-
-  let humanObject = {
-    choose() {
-      let choice;
-
-      while (true) {
-        choice = readline.question('\nPlease choose rock, paper, or scissors:\n');
-        if (this.choices.includes(choice)) break;
-        console.log('Sorry, invalid choice.');
-      }
-
-      this.move = choice;
-    },
-  };
-
-  return Object.assign(playerObject, humanObject);
-}
-
-
 const RPSGame = {
+  choices: [ 'rock', 'paper', 'scissors', ],
   winRules: { rock: ['scissors'], paper: ['rock'], scissors: ['paper'], },
-  human: createHuman(),
-  computer: createComputer(),
+  computer: null,
+  human: null,
   winner: null,
+
+  createPlayer() {
+    return {
+      choices: this.choices,
+      move: null,
+    };
+  },
+
+  createComputer() {
+    let playerObject = this.createPlayer();
+
+    let computerObject = {
+      choose() {
+        let randomIdx = Math.floor(Math.random() * this.choices.length);
+        this.move = this.choices[randomIdx];
+      },
+    };
+
+    this.computer = Object.assign(playerObject, computerObject);
+  },
+
+  createHuman() {
+    let playerObject = this.createPlayer();
+
+    let humanObject = {
+      choose() {
+        let choice;
+
+        while (true) {
+          choice = readline.question('\nPlease choose rock, paper, or scissors:\n');
+          if (this.choices.includes(choice)) break;
+          console.log('Sorry, invalid choice.');
+        }
+
+        this.move = choice;
+      },
+    };
+
+    this.human = Object.assign(playerObject, humanObject);
+  },
 
   displayWelcomeMessage() {
     console.log('Welcome to Rock, Paper, Scissors!');
@@ -87,6 +84,9 @@ const RPSGame = {
 
   play() {
     this.displayWelcomeMessage();
+    this.createComputer();
+    this.createHuman();
+
     while (true) {
       this.human.choose();
       this.computer.choose();
@@ -94,9 +94,9 @@ const RPSGame = {
       this.displayWinner();
       if (!this.playAgain()) break;
     }
+
     this.displayGoodbyeMessage();
   },
 };
-
 
 RPSGame.play();
