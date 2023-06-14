@@ -33,7 +33,11 @@ The walkthrough embeds the rules within the player objects. That seems to have t
 
 *The problem* then becomes how to capture my intuition in code.
 
-For example, the idea can't be captured by having the choices be a state/property of `RPSGame`. That's because of a general limitation (in JavaScript) of how code for objects can be written. Namely, *you can't use the value of one key to determine the value of another key*. Here, if `validMoves` where made a state of `RPSGame`, its value is not accessible by the value of other keys/states of `RPSGame` such as the `createPlayer` function within the states `human` and `computer`.
+For example, the idea can't be captured by having the choices be a state/property of `RPSGame`. That's because of a general limitation (in JavaScript) of how code for objects can be written.
+
+Namely, you *can't use the key of one state in an object to pass that state's value as an argument for the value of another key*. Here, if `validMoves` where made a state of `RPSGame`, its value is not accessible by the `createPlayer` function within the states `human` and `computer`.
+
+But you *can* use the value of one key within the value of other keys, including the function bodies of methods.
 
 TODO: Could this be solved by making `createPlayer` a method of the game as a whole?
 
@@ -65,4 +69,3 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 - [ ] Adjust computer choice based on history
 
 ---
-

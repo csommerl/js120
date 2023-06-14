@@ -245,13 +245,21 @@ An **engine** is what coordinates the objects & their control flow, i.e., it is 
 
 ## [1.10 Walk-through: OO RPS](https://launchschool.com/lessons/fb892747/assignments/a54702fd)
 
-You can't use the value of one key to determine the value of another key.
+### Lesson 1
 
-Example:
+You *can't* use the key of one state in an object to pass that state's value as an argument for the value of another key. For example:
 
-```js
+```javascript
 
 ```
+
+But you *can* use the value of one key within the value of other keys, including the function bodies of methods. For example:
+
+```javascript
+
+```
+
+### Lesson 2
 
 When you have nested objects, `this` always refers to the innermost object in which it appears.
 
@@ -290,4 +298,3 @@ It's good practice to set properties / initial states to `null` even though they
 ...
 
 ---
-
