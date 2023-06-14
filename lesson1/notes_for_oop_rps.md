@@ -23,8 +23,6 @@ It seems unclear whether having a factory function for both the human player and
   - `isHuman`
   - `choose`
 
-TODO: create separate factory functions for each.
-
 ### How to organize nouns with complex relationships?
 
 The RPS game has both players and rules (valid moves and conditions for winning). But these sub-objects interact with each other. For example, the players have the `move` behavior, but that behavior is defined in terms of `validMoves`.
@@ -44,6 +42,8 @@ TODO: Could this be solved by making `createPlayer` a method of the game as a wh
 ### How to avoid global constants?
 
 TODO: To deal with the previous problem, one solution might be to have a factory function of `RPSGame`. Then, at the top of that function body, a constant of `validMoves` could be declared. It seems that then closure could be used to access the constant within the values of `RPSGame`'s keys.
+
+- But then ESLint would complain about the function being too long.
 
 - Or maybe only if `createPlayer` is a nested function within the factory function for creating `RPSGame`?
 - Or maybe only if `createPlayer` is a method of `RPSGame`?
