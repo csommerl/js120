@@ -1,30 +1,33 @@
 const readline = require('readline-sync');
 
 
-function createPlayer(playerType) {
+function createPlayer() {
   return {
-    playerType,
-    choices: ['rock', 'paper', 'scissors'], // TODO: move to game object
+    choices: ['rock', 'paper', 'scissors'],
     move: null,
+  };
+}
 
+
+function createComputer() {
+  let playerObject = createPlayer();
+
+  let computerObject = {
     choose() {
-      if (this.isHuman()) {
-        this.humanChoose();
-      } else {
-        this.computerChoose();
-      }
-    },
-
-    isHuman() {
-      return this.playerType === 'human';
-    },
-
-    computerChoose() {
       let randomIdx = Math.floor(Math.random() * this.choices.length);
       this.move = this.choices[randomIdx];
     },
+  };
 
-    humanChoose() {
+  return Object.assign(playerObject, computerObject);
+}
+
+
+function createHuman() {
+  let playerObject = createPlayer();
+
+  let humanObject = {
+    choose() {
       let choice;
 
       while (true) {
@@ -36,13 +39,15 @@ function createPlayer(playerType) {
       this.move = choice;
     },
   };
+
+  return Object.assign(playerObject, humanObject);
 }
 
 
 const RPSGame = {
   winRules: { rock: ['scissors'], paper: ['rock'], scissors: ['paper'], },
-  human: createPlayer('human'),
-  computer: createPlayer('computer'),
+  human: createHuman(),
+  computer: createComputer(),
   winner: null,
 
   displayWelcomeMessage() {
@@ -75,12 +80,20 @@ const RPSGame = {
     }
   },
 
+  playAgain() {
+    let answer = readline.question('\nWould you like to play again? (y/n)\n');
+    return answer.toLowerCase()[0] === 'y';
+  },
+
   play() {
     this.displayWelcomeMessage();
-    this.human.choose();
-    this.computer.choose();
-    this.getWinner();
-    this.displayWinner();
+    while (true) {
+      this.human.choose();
+      this.computer.choose();
+      this.getWinner();
+      this.displayWinner();
+      if (!this.playAgain()) break;
+    }
     this.displayGoodbyeMessage();
   },
 };

@@ -267,6 +267,8 @@ When you have nested objects, `this` always refers to the innermost object in wh
 
 ## [1.11 Walkthrough: OO RPS Design Choice](https://launchschool.com/lessons/fb892747/assignments/ae7e77a4)
 
+In OOP, you typically want to avoid having factory functions create objects such that the behavior of those objects varies depending on the values of the properties of those objects. To avoid this, we can use *class inheritance* to create sub-types of types.
+
 **Class inheritance** refers to how child objects inherit common properties and methods from a parent type.
 
 - The benefit of class inheritance is that it avoids unwieldy code when different children have behavior that differs depending on a property of that object type.
@@ -275,15 +277,19 @@ It's good practice to set properties / initial states to `null` even though they
 
 ---
 
-## [1.12 OO RPS](https://launchschool.com/lessons/fb892747/assignments/a9807753)
+## [1.12 ESLint OO RPS](https://launchschool.com/lessons/fb892747/assignments/a9807753)
 
-...
+`$ npx eslint rps.js`
 
 ---
 
 ## [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
-...
+- [ ] Keeping score
+- [ ] Improve logic of `getRoundWinner`
+- [ ] Add Lizard and Spock
+- [ ] Keep track of a history moves
+- [ ] Adjust computer choice based on history
 
 ---
 

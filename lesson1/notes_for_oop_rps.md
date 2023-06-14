@@ -8,7 +8,7 @@
 
 ### When to create new object types?
 
-It seems unclear whether having a factory function for both the human player and the computer player is a good idea, since the two players are very different in some respects.
+It seems unclear whether having a factory function for both the human player and the computer player is a good idea, since the two players are very different in some respects. (Lesson 1.11 addresses this worry!)
 
 *Advantages* of making one factory function for both:
 
@@ -47,16 +47,6 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 - Or maybe only if `createPlayer` is a nested function within the factory function for creating `RPSGame`?
 - Or maybe only if `createPlayer` is a method of `RPSGame`?
-
----
-
-## [1.11 Walkthrough: OO RPS Design Choice](https://launchschool.com/lessons/fb892747/assignments/ae7e77a4)
-
----
-
-## [1.12 OO RPS](https://launchschool.com/lessons/fb892747/assignments/a9807753)
-
-...
 
 ---
 
