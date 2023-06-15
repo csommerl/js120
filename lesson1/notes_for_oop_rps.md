@@ -52,10 +52,25 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 ## [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
-- [ ] Keeping score
-- [ ] Improve logic of `getRoundWinner`
-- [ ] Add Lizard and Spock
-- [ ] Keep track of a history moves
-- [ ] Adjust computer choice based on history
+### [ ] Keeping score
+
+- [ ] Create score noun (new object or state of existing object?).
+- [ ] Whoever reaches 5 points first wins.
+
+### [ ] Add [Lizard and Spock](http://www.samkass.com/theories/RPSSL.html)
+
+- [ ] Add to `validMoves`.
+- [ ] Add to `winRules`.
+
+### [ ] Keep track of a history moves for the game session
+
+- [ ] Create data structure (new or existing object?).
+- [ ] Keep track of which moves correlate with winning or losing? (for next bonus feature)
+- [ ] Display history.
+
+### [ ] Adjust computer choice based on history: Use history of moves to help computer make its moves
+
+- [ ] Option 1: Based on history, give weights to each of the possible moves, e.g., computer plays proportionately less often moves that cause the human to win.
+- [ ] Option 2: Computer plays what will beat the most common human move.
 
 ---

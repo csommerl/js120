@@ -285,12 +285,6 @@ It's good practice to set properties / initial states to `null` even though they
 
 ## [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
-- [ ] Keeping score
-- [ ] Improve logic of `getRoundWinner`
-- [ ] Add Lizard and Spock
-- [ ] Keep track of a history moves
-- [ ] Adjust computer choice based on history
-
 ---
 
 ## 1.14 Summary
