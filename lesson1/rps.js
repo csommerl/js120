@@ -1,11 +1,24 @@
 const readline = require('readline-sync');
 
 const RPSGame = {
-  choices: [ 'rock', 'paper', 'scissors', ],
-  winRules: { rock: ['scissors'], paper: ['rock'], scissors: ['paper'], },
   computer: null,
   human: null,
   winner: null,
+  choices: [ 'rock', 'paper', 'scissors', 'spock', 'lizard', ],
+
+  winRules: {
+    rock: [ 'scissors', 'lizard', ],
+    paper: [ 'rock', 'spock', ],
+    scissors: [ 'paper', 'lizard', ],
+    spock: [ 'rock', 'scissors', ],
+    lizard: [ 'paper', 'spock', ],
+  },
+
+  getGameName() {
+    return this.choices
+      .map(choice => choice[0].toUpperCase() + choice.slice(1))
+      .join(', ');
+  },
 
   createPlayer() {
     return {
@@ -35,7 +48,7 @@ const RPSGame = {
         let choice;
 
         while (true) {
-          choice = readline.question('\nPlease choose rock, paper, or scissors:\n');
+          choice = readline.question(`\nPlease choose one of: ${this.choices.join(', ')}\n`);
           if (this.choices.includes(choice)) break;
           console.log('Sorry, invalid choice.');
         }
@@ -48,20 +61,20 @@ const RPSGame = {
   },
 
   displayWelcomeMessage() {
-    console.log('Welcome to Rock, Paper, Scissors!');
+    console.log(`Welcome to ${this.getGameName()}!`);
   },
 
   displayGoodbyeMessage() {
-    console.log('\nThanks for playing Rock, Paper, Scissors. Goodbye!');
+    console.log(`\nThanks for playing ${this.getGameName()}. Goodbye!`);
   },
 
   getWinner() {
-    if (this.winRules[this.human.move].includes(this.computer.move)) {
-      this.winner = 'human';
-    } else if (this.winRules[this.computer.move].includes(this.human.move)) {
-      this.winner = 'computer';
-    } else {
+    let humanWin = this.winRules[this.human.move].includes(this.computer.move);
+
+    if (this.human.move === this.computer.move) {
       this.winner = 'tie';
+    } else {
+      this.winner = humanWin ? 'human' : 'computer';
     }
   },
 

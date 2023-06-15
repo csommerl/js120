@@ -68,10 +68,10 @@ TODO: To deal with the previous problem, one solution might be to have a factory
   - Perhaps create a `round` object and a `match` object.8
 - [ ] Whoever reaches 5 points first wins.
 
-### [ ] Add [Lizard and Spock](http://www.samkass.com/theories/RPSSL.html)
+### [x] Add [Lizard and Spock](http://www.samkass.com/theories/RPSSL.html)
 
-- [ ] Add to `validMoves`.
-- [ ] Add to `winRules`.
+- [x] Add to `validMoves`.
+- [x] Add to `winRules`.
 
 ### [ ] Keep track of a history moves for the game session
 
