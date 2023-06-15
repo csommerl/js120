@@ -54,7 +54,18 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 ### [ ] Keeping score
 
-- [ ] Create score noun (new object or state of existing object?).
+- [ ] Create `match` object.
+  - [ ] Create `score` as state.
+  - [ ] Create `playMatch` as behavior.
+  - Problem: nested `this`, e.g., when accessing the players?
+- [ ] Create `playRound`.
+  - [ ] Rename `getWinner` and `displayWinner`.
+  - [ ] Reset human and computer `move` to `null` after each round?
+- [ ] Create `score` noun (new object or state of existing object?).
+  - Create an object only if it should have both behavior and state.
+  - No behavior of score.
+  - One behavior needed is `updateScore`, but that could simply be a behavior of a different object.
+  - Perhaps create a `round` object and a `match` object.8
 - [ ] Whoever reaches 5 points first wins.
 
 ### [ ] Add [Lizard and Spock](http://www.samkass.com/theories/RPSSL.html)

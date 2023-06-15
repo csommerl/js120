@@ -82,16 +82,24 @@ const RPSGame = {
     return answer.toLowerCase()[0] === 'y';
   },
 
+  playMatch() {
+    this.playRound();
+  },
+
+  playRound() {
+    this.human.choose();
+    this.computer.choose();
+    this.getWinner();
+    this.displayWinner();
+  },
+
   play() {
     this.displayWelcomeMessage();
     this.createComputer();
     this.createHuman();
 
     while (true) {
-      this.human.choose();
-      this.computer.choose();
-      this.getWinner();
-      this.displayWinner();
+      this.playMatch();
       if (!this.playAgain()) break;
     }
 
