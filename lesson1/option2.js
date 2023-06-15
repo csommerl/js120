@@ -1,5 +1,44 @@
 const readline = require('readline-sync');
 
+function createPlayer() {
+  return {
+    move: null,
+  };
+}
+
+function createComputer(choices) {
+  let playerObject = createPlayer();
+
+  let computerObject = {
+    choose() {
+      let randomIdx = Math.floor(Math.random() * choices.length);
+      this.move = choices[randomIdx];
+    },
+  };
+
+  return Object.assign(playerObject, computerObject);
+}
+
+function createHuman(choices) {
+  let playerObject = createPlayer();
+
+  let humanObject = {
+    choose() {
+      let choice;
+
+      while (true) {
+        choice = readline.question(`\nPlease choose one of: ${choices.join(', ')}\n`);
+        if (choices.includes(choice)) break;
+        console.log('Sorry, invalid choice.');
+      }
+
+      this.move = choice;
+    },
+  };
+
+  return Object.assign(playerObject, humanObject);
+}
+
 const RPSGame = {
   computer: null,
   human: null,
@@ -18,46 +57,6 @@ const RPSGame = {
     return this.choices
       .map(choice => choice[0].toUpperCase() + choice.slice(1))
       .join(', ');
-  },
-
-  createPlayer() {
-    return {
-      choices: this.choices,
-      move: null,
-    };
-  },
-
-  createComputer() {
-    let playerObject = this.createPlayer();
-
-    let computerObject = {
-      choose() {
-        let randomIdx = Math.floor(Math.random() * this.choices.length);
-        this.move = this.choices[randomIdx];
-      },
-    };
-
-    this.computer = Object.assign(playerObject, computerObject);
-  },
-
-  createHuman() {
-    let playerObject = this.createPlayer();
-
-    let humanObject = {
-      choose() {
-        let choice;
-
-        while (true) {
-          choice = readline.question(`\nPlease choose one of: ${this.choices.join(', ')}\n`);
-          if (this.choices.includes(choice)) break;
-          console.log('Sorry, invalid choice.');
-        }
-
-        this.move = choice;
-      },
-    };
-
-    this.human = Object.assign(playerObject, humanObject);
   },
 
   displayWelcomeMessage() {
@@ -95,24 +94,16 @@ const RPSGame = {
     return answer.toLowerCase()[0] === 'y';
   },
 
-  playMatch() {
-    this.playRound();
-  },
-
-  playRound() {
-    this.human.choose();
-    this.computer.choose();
-    this.getWinner();
-    this.displayWinner();
-  },
-
   play() {
     this.displayWelcomeMessage();
-    this.createComputer();
-    this.createHuman();
+    this.computer = createComputer(this.choices);
+    this.human = createHuman(this.choices);
 
     while (true) {
-      this.playMatch();
+      this.human.choose();
+      this.computer.choose();
+      this.getWinner();
+      this.displayWinner();
       if (!this.playAgain()) break;
     }
 
