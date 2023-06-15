@@ -33,11 +33,14 @@ The walkthrough embeds the rules within the player objects. That seems to have t
 
 For example, the idea can't be captured by having the choices be a state/property of `RPSGame`. That's because of a general limitation (in JavaScript) of how code for objects can be written.
 
-Namely, you *can't use the key of one state in an object to pass that state's value as an argument for the value of another key*. Here, if `validMoves` where made a state of `RPSGame`, its value is not accessible by the `createPlayer` function within the states `human` and `computer`.
+Namely, You *can't* use the key of one state in an object to pass that state's value to the value of another *state* of that object. Here, if `validMoves` where made a state of `RPSGame`, its value is not accessible by the `createPlayer` function within the states `human` and `computer`.
 
-But you *can* use the value of one key within the value of other keys, including the function bodies of methods.
+But you *can* use the key of one state in an object to pass that state's value to the function body of a *method* of that object.
 
-TODO: Could this be solved by making `createPlayer` a method of the game as a whole?
+Solutions:
+- Given the previous point, one option that works is to make `createPlayer` a method of the game as a whole.
+- Another option that works is to keep `createPlayer` as a separate global function that has a `choices`/`validMoves` parameter. Then, to avoid the general limitation above, each of the player states of the game can initially be `null` but later assigned using the `createPlayer` function (passed `this.choices`) within the orchestration engine (`play`).
+- A third option that is unclear whether it works: use `Object.assign` to add `choices` as a state of the player objects after they are created.
 
 ### How to avoid global constants?
 

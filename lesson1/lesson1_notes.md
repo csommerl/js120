@@ -247,16 +247,33 @@ An **engine** is what coordinates the objects & their control flow, i.e., it is 
 
 ### Lesson 1
 
-You *can't* use the key of one state in an object to pass that state's value as an argument for the value of another key. For example:
+You *can't* use the key of one state in an object to pass that state's value to the value of another *state* of that object. For example:
 
 ```javascript
+const cat = {
+  name: 'Bella',
+  color: 'grey',
+  personality: 'gentle',
+  description: `${this.name} is ${this.color} and ${this.personality}.`,
+};
 
+console.log(cat.description); // returns 'undefined is undefined and undefined.'
 ```
 
-But you *can* use the value of one key within the value of other keys, including the function bodies of methods. For example:
+But you *can* use the key of one state in an object to pass that state's value to the function body of a *method* of that object. For example:
 
 ```javascript
+const cat = {
+  name: 'Bella',
+  color: 'grey',
+  personality: 'gentle',
 
+  showDescription() {
+    console.log(`${this.name} is ${this.color} and ${this.personality}.`);
+  },
+};
+
+cat.showDescription();
 ```
 
 ### Lesson 2
