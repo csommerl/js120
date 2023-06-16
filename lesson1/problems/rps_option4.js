@@ -6,20 +6,20 @@ function createPlayer() {
   };
 }
 
-function createComputer(choices) {
+function createComputer() {
   let playerObject = createPlayer();
 
   let computerObject = {
     choose() {
-      let randomIdx = Math.floor(Math.random() * choices.length);
-      this.move = choices[randomIdx];
+      let randomIdx = Math.floor(Math.random() * RPSGame.validMoves.length);
+      this.move = RPSGame.validMoves[randomIdx];
     },
   };
 
   return Object.assign(playerObject, computerObject);
 }
 
-function createHuman(choices) {
+function createHuman() {
   let playerObject = createPlayer();
 
   let humanObject = {
@@ -27,8 +27,8 @@ function createHuman(choices) {
       let choice;
 
       while (true) {
-        choice = readline.question(`\nPlease choose one of: ${choices.join(', ')}\n`);
-        if (choices.includes(choice)) break;
+        choice = readline.question(`\nPlease choose one of: ${RPSGame.validMoves.join(', ')}\n`);
+        if (RPSGame.validMoves.includes(choice)) break;
         console.log('Sorry, invalid choice.');
       }
 
@@ -39,12 +39,10 @@ function createHuman(choices) {
   return Object.assign(playerObject, humanObject);
 }
 
-function createRound(human, computer, winRules) {
+function createRound(human, computer, winCombos) {
   return {
-    winner: null,
-
     getWinner() {
-      let humanWin = winRules[human.move].includes(computer.move);
+      let humanWin = winCombos[human.move].includes(computer.move);
 
       if (human.move === computer.move) {
         this.winner = 'tie';
@@ -77,7 +75,6 @@ function createRound(human, computer, winRules) {
 const RPSGame = {
   computer: null,
   human: null,
-  round: null,
   winner: null,
   validMoves: [ 'rock', 'paper', 'scissors', 'spock', 'lizard', ],
 
@@ -110,12 +107,12 @@ const RPSGame = {
 
   play() {
     this.displayWelcomeMessage();
-    this.computer = createComputer(this.validMoves);
-    this.human = createHuman(this.validMoves);
-    this.round = createRound(this.human, this.computer, this.winRules);
+    this.computer = createComputer();
+    this.human = createHuman();
 
     while (true) {
-      this.round.play();
+      let round = createRound(this.human, this.computer, this.winRules);
+      round.play();
       if (!this.playAgain()) break;
     }
 

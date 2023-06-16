@@ -38,9 +38,11 @@ Namely, You *can't* use the key of one state in an object to pass that state's v
 But you *can* use the key of one state in an object to pass that state's value to the function body of a *method* of that object.
 
 Solutions:
+
 - Option 1: Given the previous point, one option that works is to make `createPlayer` a method of the game as a whole.
 - Option 2: Another option that works is to keep `createPlayer` as a separate global function that has a `choices`/`validMoves` parameter. Then, to avoid the general limitation above, each of the player states of the game can initially be `null` but later assigned using the `createPlayer` function (passed `this.choices`) within the orchestration engine (`play`).
 - Option 3: A third option that is unclear whether it works: use `Object.assign` to add `choices` as a state of the player objects after they are created.
+- Option 4: Perhaps `validMoves` doesn't need to be passed, but instead it can just be accessed from the global constant?
 
 ### How to avoid global constants?
 
@@ -61,10 +63,11 @@ TODO: To deal with the previous problem, one solution might be to have a factory
   - [ ] Create `score` as state.
   - [ ] Create `playMatch` as behavior.
   - Problem: nested `this`, e.g., when accessing the players?
-- [ ] Create `playRound`.
-  - [ ] Rename `getWinner` and `displayWinner`.
+- [x] Create `playRound`.
+  - [x] Rename `getWinner` and `displayWinner`.
   - [ ] Reset human and computer `move` to `null` after each round?
 - [ ] Create `score` noun (new object or state of existing object?).
+  - [ ] Reset score.
   - Create an object only if it should have both behavior and state.
   - No behavior of score.
   - One behavior needed is `updateScore`, but that could simply be a behavior of a different object.
