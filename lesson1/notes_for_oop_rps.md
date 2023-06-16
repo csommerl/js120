@@ -59,15 +59,15 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 ### [ ] Keeping score
 
-- [ ] Create `match` object.
-  - [ ] Create `score` as state.
-  - [ ] Create `playMatch` as behavior.
+- [x] Create `match` object.
+  - [x] Create `score` as state.
+  - [x] Create `playMatch` as behavior.
   - Problem: nested `this`, e.g., when accessing the players?
 - [x] Create `playRound`.
   - [x] Rename `getWinner` and `displayWinner`.
-  - [ ] Reset human and computer `move` to `null` after each round?
-- [ ] Create `score` noun (new object or state of existing object?).
-  - [ ] Reset score.
+  - [x] Reset human and computer `move` to `null` after each round?
+- [x] Create `score` noun (new object or state of existing object?).
+  - [x] Reset score.
   - Create an object only if it should have both behavior and state.
   - No behavior of score.
   - One behavior needed is `updateScore`, but that could simply be a behavior of a different object.

@@ -53,7 +53,7 @@ function createRound(human, computer, winRules) {
       }
     },
 
-    displayResult() {
+    showResult() {
       console.log(`\nYou chose: ${human.move}`);
       console.log(`The computer chose: ${computer.move}`);
       if (this.winner === 'human') {
@@ -69,7 +69,43 @@ function createRound(human, computer, winRules) {
       human.choose();
       computer.choose();
       this.getWinner();
-      this.displayResult();
+      this.showResult();
+    },
+  };
+}
+
+function createScore() {
+  return {
+    computer: 0,
+    human: 0,
+
+    show() {
+      console.log(`You now have ${this.human} points, and the computer has ${this.computer} points.`);
+    },
+  };
+}
+
+function createMatch(human, computer, winRules) {
+  return {
+    round: null,
+    score: null,
+
+    showInstructions: null, // TODO
+    getWinner: null, // TODO
+    showWinner: null, // TODO
+
+    play() {
+      this.round = createRound(human, computer, winRules);
+      this.score = createScore();
+      // show instructions
+
+      for (let round = 0; round < 5; ++round) { // update win condition
+        this.round.play();
+        this.score[this.round.winner] += 1;
+        this.score.show();
+      }
+
+      console.log('The match is over!'); // Replace with winner
     },
   };
 }
@@ -77,8 +113,7 @@ function createRound(human, computer, winRules) {
 const RPSGame = {
   computer: null,
   human: null,
-  round: null,
-  winner: null,
+  match: null,
   validMoves: [ 'rock', 'paper', 'scissors', 'spock', 'lizard', ],
 
   winRules: {
@@ -112,10 +147,10 @@ const RPSGame = {
     this.displayWelcomeMessage();
     this.computer = createComputer(this.validMoves);
     this.human = createHuman(this.validMoves);
-    this.round = createRound(this.human, this.computer, this.winRules);
+    this.match = createMatch(this.human, this.computer, this.winRules);
 
     while (true) {
-      this.round.play();
+      this.match.play();
       if (!this.playAgain()) break;
     }
 
