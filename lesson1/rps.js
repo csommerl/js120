@@ -39,11 +39,44 @@ function createHuman(choices) {
   return Object.assign(playerObject, humanObject);
 }
 
+function createRound(human, computer, winCombos) {
+  return {
+    getWinner() {
+      let humanWin = winCombos[human.move].includes(computer.move);
+
+      if (human.move === computer.move) {
+        this.winner = 'tie';
+      } else {
+        this.winner = humanWin ? 'human' : 'computer';
+      }
+    },
+
+    displayResult() {
+      console.log(`\nYou chose: ${human.move}`);
+      console.log(`The computer chose: ${computer.move}`);
+      if (this.winner === 'human') {
+        console.log('You win!');
+      } else if (this.winner === 'computer') {
+        console.log('Computer wins!');
+      } else {
+        console.log("It's a tie");
+      }
+    },
+
+    play() {
+      human.choose();
+      computer.choose();
+      this.getWinner();
+      this.displayResult();
+    },
+  };
+}
+
 const RPSGame = {
   computer: null,
   human: null,
   winner: null,
-  choices: [ 'rock', 'paper', 'scissors', 'spock', 'lizard', ],
+  validMoves: [ 'rock', 'paper', 'scissors', 'spock', 'lizard', ],
 
   winRules: {
     rock: [ 'scissors', 'lizard', ],
@@ -53,40 +86,18 @@ const RPSGame = {
     lizard: [ 'paper', 'spock', ],
   },
 
-  getGameName() {
-    return this.choices
+  name() {
+    return this.validMoves
       .map(choice => choice[0].toUpperCase() + choice.slice(1))
       .join(', ');
   },
 
   displayWelcomeMessage() {
-    console.log(`Welcome to ${this.getGameName()}!`);
+    console.log(`Welcome to ${this.name()}!`);
   },
 
   displayGoodbyeMessage() {
-    console.log(`\nThanks for playing ${this.getGameName()}. Goodbye!`);
-  },
-
-  getWinner() {
-    let humanWin = this.winRules[this.human.move].includes(this.computer.move);
-
-    if (this.human.move === this.computer.move) {
-      this.winner = 'tie';
-    } else {
-      this.winner = humanWin ? 'human' : 'computer';
-    }
-  },
-
-  displayWinner() {
-    console.log(`\nYou chose: ${this.human.move}`);
-    console.log(`The computer chose: ${this.computer.move}`);
-    if (this.winner === 'human') {
-      console.log('You win!');
-    } else if (this.winner === 'computer') {
-      console.log('Computer wins!');
-    } else {
-      console.log("It's a tie");
-    }
+    console.log(`\nThanks for playing ${this.name()}. Goodbye!`);
   },
 
   playAgain() {
@@ -96,14 +107,12 @@ const RPSGame = {
 
   play() {
     this.displayWelcomeMessage();
-    this.computer = createComputer(this.choices);
-    this.human = createHuman(this.choices);
+    this.computer = createComputer(this.validMoves);
+    this.human = createHuman(this.validMoves);
 
     while (true) {
-      this.human.choose();
-      this.computer.choose();
-      this.getWinner();
-      this.displayWinner();
+      let round = createRound(this.human, this.computer, this.winRules);
+      round.play();
       if (!this.playAgain()) break;
     }
 
