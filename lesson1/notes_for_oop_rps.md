@@ -38,9 +38,9 @@ Namely, You *can't* use the key of one state in an object to pass that state's v
 But you *can* use the key of one state in an object to pass that state's value to the function body of a *method* of that object.
 
 Solutions:
-- Given the previous point, one option that works is to make `createPlayer` a method of the game as a whole.
-- Another option that works is to keep `createPlayer` as a separate global function that has a `choices`/`validMoves` parameter. Then, to avoid the general limitation above, each of the player states of the game can initially be `null` but later assigned using the `createPlayer` function (passed `this.choices`) within the orchestration engine (`play`).
-- A third option that is unclear whether it works: use `Object.assign` to add `choices` as a state of the player objects after they are created.
+- Option 1: Given the previous point, one option that works is to make `createPlayer` a method of the game as a whole.
+- Option 2: Another option that works is to keep `createPlayer` as a separate global function that has a `choices`/`validMoves` parameter. Then, to avoid the general limitation above, each of the player states of the game can initially be `null` but later assigned using the `createPlayer` function (passed `this.choices`) within the orchestration engine (`play`).
+- Option 3: A third option that is unclear whether it works: use `Object.assign` to add `choices` as a state of the player objects after they are created.
 
 ### How to avoid global constants?
 
