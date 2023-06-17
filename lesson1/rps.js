@@ -27,7 +27,8 @@ function createHuman(choices) {
       let choice;
 
       while (true) {
-        choice = readline.question(`\nPlease choose one of: ${choices.join(', ')}\n`);
+        console.log(`\nPlease choose one of: ${choices.join(', ')}`);
+        choice = readline.prompt();
         if (choices.includes(choice)) break;
         console.log('Sorry, invalid choice.');
       }
@@ -87,25 +88,40 @@ function createScore() {
 
 function createMatch(human, computer, winRules) {
   return {
+    winScore: 5,
     round: null,
     score: null,
+    winner: null,
 
-    showInstructions: null, // TODO
-    getWinner: null, // TODO
-    showWinner: null, // TODO
+    showInstructions() {
+      console.log(`\nThe first player to reach ${this.winScore} points wins the match. Good luck!`);
+    },
+
+    getWinner() {
+      if (this.score.human === this.winScore) {
+        this.winner = 'human';
+      } else if (this.score.computer === this.winScore) {
+        this.winner = 'computer';
+      }
+    },
+
+    showWinner() {
+      console.log(`${this.winner === 'human' ? 'You' : 'The computer'} won the match!`);
+    },
 
     play() {
-      this.round = createRound(human, computer, winRules);
       this.score = createScore();
-      // show instructions
+      this.showInstructions();
 
-      for (let round = 0; round < 5; ++round) { // update win condition
+      while (!this.winner) {
+        this.round = createRound(human, computer, winRules); // not necessary to create every time
         this.round.play();
         this.score[this.round.winner] += 1;
         this.score.show();
+        this.getWinner();
       }
 
-      console.log('The match is over!'); // Replace with winner
+      this.showWinner();
     },
   };
 }
@@ -152,6 +168,7 @@ const RPSGame = {
     while (true) {
       this.match.play();
       if (!this.playAgain()) break;
+      this.match = createMatch(this.human, this.computer, this.winRules);
     }
 
     this.displayGoodbyeMessage();

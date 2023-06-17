@@ -57,7 +57,7 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 ## [1.13 Assignment: OO RPS Bonus Features](https://launchschool.com/lessons/fb892747/assignments/805b45f6)
 
-### [ ] Keeping score
+### [x] Keeping score
 
 - [x] Create `match` object.
   - [x] Create `score` as state.
@@ -72,7 +72,7 @@ TODO: To deal with the previous problem, one solution might be to have a factory
   - No behavior of score.
   - One behavior needed is `updateScore`, but that could simply be a behavior of a different object.
   - Perhaps create a `round` object and a `match` object.8
-- [ ] Whoever reaches 5 points first wins.
+- [x] Whoever reaches 5 points first wins.
 
 ### [x] Add [Lizard and Spock](http://www.samkass.com/theories/RPSSL.html)
 
