@@ -21,8 +21,8 @@ Object-Oriented Programming (OOP) is useful for dealing with large, complex prog
 
 An **object** is a type of data that has two features:
 
-1. **state**, i.e., properties
-2. **behavior**, i.e., what it can do
+1. **state**, i.e., properties; and,
+2. **behavior**, i.e., what it can do, or methods.
 
 ### Use-cases
 
@@ -51,7 +51,7 @@ Disadvantages of OOP:
 
 ## [1.3 Encapsulation](https://launchschool.com/lessons/fb892747/assignments/d09dc4ed)
 
-**Encapsulation** is the bundling together into a single structure of two things:
+**Encapsulation** is the bundling together into a single structure (an object) of two things:
 
 1. data (state)
 2. operations on that data (behavior)
@@ -78,12 +78,20 @@ Purpose of encapsulation:
 
 ### Formal Characterization of Objects
 
+Objects can be created in JavaScript by using object-literal syntax.
+
 Objects' states are represented by typical key-value pairs, where the value is a type of data.
 
 Objects' behaviors are represented by key-value pairs where the value is a function (enabled by functions being first-class).
 
 - That is, objects' behaviors are methods.
 - A **method** is a property of an object that is a function. Methods are invoked with dot notation.
+
+### The General Patter
+
+```javascript
+TODO
+```
 
 ### :loudspeaker: Quirk of JavaScript Objects
 
@@ -137,13 +145,13 @@ Cf. [Method definitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ### The `this` Keyword
 
-The `this` keyword can be used in place of the variable name within method definitions:
+The `this` keyword is used within an object's body to access the states/properties and behaviors/methods of an object. For example, the `this` keyword can be used in place of the variable name within method definitions:
 
 ```javascript
 let obj = {
   state1: true,
   behavior1() {
-    this.state1 = obj.state1 ? false : true;
+    this.state1 = this.state1 ? false : true;
   }
 }
 ```
@@ -161,13 +169,19 @@ The benefit of using `this` is that the method definition will work as expected 
 
 ## [1.6 Collaborator Objects](https://launchschool.com/lessons/fb892747/assignments/675a4d9d)
 
-A **collaborator object or collaborator** is an object that is a property or state of another object (i.e., an object that is the value of another object's key) and[^1] the latter object has a method that depends on that state.
+A **collaborator object or collaborator** is an object that is a property/state of another object (i.e., an object that is the value of another object's key) and[^1] the latter object has a method that depends on that state.
 
 - The two objects can be said to "collaborate" insofar as they work together.
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
-[^1]: According to [Pete in the discussion forum](https://launchschool.com/posts/d12c383f#comment-85901).
+[^1]: This second conjunct is supplied by [Pete's post in the discussion forum](https://launchschool.com/posts/d12c383f#comment-85901).
+
+### The General Pattern for Creating Collaborator Objects
+
+```javascript
+TODO
+```
 
 ### Example
 
@@ -205,7 +219,13 @@ Here, `cat` is a collaborator of `person` because:
 
 An object's **type** refers to what is shared in common with other objects.
 
-A **factory function** or **object factory** is a function that creates and returns an object of a particular type. Thus, they can be used to create multiple objects of the same type that share the same kinds of states & behaviors.
+A **factory function** or **object factory** is a function that creates and returns an object of a particular type (i.e., having particular properties and methods). Thus, they can be used to create multiple objects of sharing the same kinds of states & behaviors. Commonly, the created objects will have the same methods, but they can be specified to have different property values by passing different values as arguments to the factory function.
+
+### The General Pattern for Factory Functions
+
+```javascript
+TODO
+```
 
 ---
 
@@ -286,11 +306,27 @@ When you have nested objects, `this` always refers to the innermost object in wh
 
 In OOP, you typically want to avoid having factory functions create objects such that the behavior of those objects varies depending on the values of the properties of those objects. To avoid this, we can use *class inheritance* to create sub-types of types.
 
-**Class inheritance** refers to how child objects inherit common properties and methods from a parent type.
+**Class inheritance** refers to how child objects inherit common states/properties and behavior/methods from a parent type.
 
 - The benefit of class inheritance is that it avoids unwieldy code when different children have behavior that differs depending on a property of that object type.
 
-It's good practice to set properties / initial states to `null` even though they will be set through some other behavior.
+It's good practice to set initial properties/states to `null` even though they will be set through some other behavior. This signals in the code that the objects are supposed to have those properties/states.
+
+### The General Pattern of Class Inheritance with Factory Functions
+
+Class inheritance can be devised with factory functions with the following pattern:
+
+```javascript
+function createChild(args) {
+  let parentObject = createParent();
+
+  let childObject = {
+    // states & behaviors
+  };
+
+  return Object.assign(parentObject, childObject);
+}
+```
 
 ---
 

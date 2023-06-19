@@ -86,12 +86,20 @@ function createScore() {
   };
 }
 
+function createWinningMoveHistory() {
+  return {
+    human: [],
+    computer: [],
+  };
+}
+
 function createMatch(human, computer, winRules) {
   return {
     winScore: 5,
     round: null,
     score: null,
     winner: null,
+    winningMoveHistory: createWinningMoveHistory(),
 
     showInstructions() {
       console.log(`\nThe first player to reach ${this.winScore} points wins the match. Good luck!`);
@@ -119,6 +127,7 @@ function createMatch(human, computer, winRules) {
         this.score[this.round.winner] += 1;
         this.score.show();
         this.getWinner();
+        // TODO: update history, need to pass players as object to associate winner value with player object?
       }
 
       this.showWinner();
@@ -139,6 +148,8 @@ const RPSGame = {
     spock: [ 'rock', 'scissors', ],
     lizard: [ 'paper', 'spock', ],
   },
+
+  winningMoveHistory: createWinningMoveHistory(),
 
   name() {
     return this.validMoves
