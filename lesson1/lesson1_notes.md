@@ -87,10 +87,14 @@ Objects' behaviors are represented by key-value pairs where the value is a funct
 - That is, objects' behaviors are methods.
 - A **method** is a property of an object that is a function. Methods are invoked with dot notation.
 
-### The General Patter
+### The General Pattern
 
 ```javascript
-TODO
+let obj = {
+  prop: value,
+  method: function() {
+  },
+};
 ```
 
 ### :loudspeaker: Quirk of JavaScript Objects
@@ -125,9 +129,9 @@ Example:
 
 ```javascript
 let obj = {
-  state1: true,
-  behavior1() {
-    obj.state1 = obj.state1 ? false : true; // see below about the this keyword!
+  state: true,
+  behavior() { // method for changing the boolean of `state`
+    obj.state = obj.state ? false : true; // see below about the this keyword!
   }
 }
 ```
@@ -149,9 +153,9 @@ The `this` keyword is used within an object's body to access the states/properti
 
 ```javascript
 let obj = {
-  state1: true,
-  behavior1() {
-    this.state1 = this.state1 ? false : true;
+  state: true,
+  behavior() { // method for changing the boolean of `state`
+    this.state = this.state ? false : true;
   }
 }
 ```
@@ -176,12 +180,6 @@ A **collaborator object or collaborator** is an object that is a property/state 
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
 [^1]: This second conjunct is supplied by [Pete's post in the discussion forum](https://launchschool.com/posts/d12c383f#comment-85901).
-
-### The General Pattern for Creating Collaborator Objects
-
-```javascript
-TODO
-```
 
 ### Example
 
@@ -224,7 +222,15 @@ A **factory function** or **object factory** is a function that creates and retu
 ### The General Pattern for Factory Functions
 
 ```javascript
-TODO
+function createObj(state1, state2) {
+  return {
+    state1,
+    state2,
+    method() {
+      // function body
+    },
+  };
+}
 ```
 
 ---
