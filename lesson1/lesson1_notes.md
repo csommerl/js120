@@ -179,6 +179,8 @@ A **collaborator object or collaborator** is an object that is a property/state 
 - Collaborators help connect different classes with each other.
 - Collaborators can be programmer-created objects, as well as built-in objects such as arrays, dates, etc.
 
+The *advantage* of collaborator objects is that they help you modularize a problem into distinct, coherent chunks.
+
 [^1]: This second conjunct is supplied by [Pete's post in the discussion forum](https://launchschool.com/posts/d12c383f#comment-85901).
 
 ### Example
@@ -218,6 +220,8 @@ Here, `cat` is a collaborator of `person` because:
 An object's **type** refers to what is shared in common with other objects.
 
 A **factory function** or **object factory** is a function that creates and returns an object of a particular type (i.e., having particular properties and methods). Thus, they can be used to create multiple objects of sharing the same kinds of states & behaviors. Commonly, the created objects will have the same methods, but they can be specified to have different property values by passing different values as arguments to the factory function.
+
+The *benefit* of using factory functions is that it lessens code duplication and errors as a result.
 
 ### The General Pattern for Factory Functions
 
@@ -260,10 +264,12 @@ function createBook(title, author) {
 Three steps to making an object-oriented program:
 
 1. Write a description of the problem.
-2. Identify important nouns & verbs.
-3. Organize nouns & verbs.
+2. Identify *important* nouns & verbs in the description.
+3. Organize the nouns & verbs in relation to one another.
    - Nouns are (types of) objects.
    - Verbs are behaviors.
+
+This approach involves making tradeoffs.
 
 An **engine** is what coordinates the objects & their control flow, i.e., it is where the procedural programming goes.
 
@@ -346,14 +352,14 @@ function createChild(args) {
 
 ---
 
-## 1.14 Summary
-
-...
+## [1.14 Summary](https://launchschool.com/lessons/fb892747/assignments/159686e9)
 
 ---
 
-## 1.15 Lesson 1 Quiz 1
+## [1.15 Lesson 1 Quiz 1](https://launchschool.com/lessons/fb892747/assignments/271844ae)
 
-...
+An object's **interface** consists in the states & behaviors that are accessible to other objects.
+
+Methods are properties.
 
 ---
