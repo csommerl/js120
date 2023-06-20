@@ -90,6 +90,10 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 - [ ] Keep track of which moves correlate with winning or losing? (for next bonus feature)
 - [ ] Display history.
 
+#### PEMDAC
+
+...
+
 ### [ ] Adjust computer choice based on history: Use history of moves to help computer make its moves
 
 - [ ] Option 1: Based on history, give weights to each of the possible moves, e.g., computer plays proportionately less often moves that cause the human to win.
