@@ -40,12 +40,13 @@ function createHuman(choices) {
   return Object.assign(playerObject, humanObject);
 }
 
-function createRound(human, computer, winRules) {
+// eslint-disable-next-line max-lines-per-function
+function createRound(human, computer, rules) {
   return {
     winner: null,
 
     getWinner() {
-      let humanWin = winRules[human.move].includes(computer.move);
+      let humanWin = rules[human.move].includes(computer.move);
 
       if (human.move === computer.move) {
         this.winner = 'tie';
@@ -86,20 +87,13 @@ function createScore() {
   };
 }
 
-function createWinningMoveHistory() {
-  return {
-    human: [],
-    computer: [],
-  };
-}
-
-function createMatch(human, computer, winRules) {
+// eslint-disable-next-line max-lines-per-function
+function createMatch(human, computer, rules) {
   return {
     winScore: 5,
     round: null,
     score: null,
     winner: null,
-    winningMoveHistory: createWinningMoveHistory(),
 
     showInstructions() {
       console.log(`\nThe first player to reach ${this.winScore} points wins the match. Good luck!`);
@@ -122,12 +116,11 @@ function createMatch(human, computer, winRules) {
       this.showInstructions();
 
       while (!this.winner) {
-        this.round = createRound(human, computer, winRules); // not necessary to create every time
+        this.round = createRound(human, computer, rules); // not necessary to create every time
         this.round.play();
         this.score[this.round.winner] += 1;
         this.score.show();
         this.getWinner();
-        // TODO: update history, need to pass players as object to associate winner value with player object?
       }
 
       this.showWinner();
@@ -139,9 +132,7 @@ const RPSGame = {
   computer: null,
   human: null,
   match: null,
-  validMoves: [ 'rock', 'paper', 'scissors', 'spock', 'lizard', ],
-
-  winRules: {
+  rules: {
     rock: [ 'scissors', 'lizard', ],
     paper: [ 'rock', 'spock', ],
     scissors: [ 'paper', 'lizard', ],
@@ -149,10 +140,8 @@ const RPSGame = {
     lizard: [ 'paper', 'spock', ],
   },
 
-  winningMoveHistory: createWinningMoveHistory(),
-
   name() {
-    return this.validMoves
+    return Object.keys(this.rules)
       .map(choice => choice[0].toUpperCase() + choice.slice(1))
       .join(', ');
   },
@@ -172,14 +161,14 @@ const RPSGame = {
 
   play() {
     this.displayWelcomeMessage();
-    this.computer = createComputer(this.validMoves);
-    this.human = createHuman(this.validMoves);
-    this.match = createMatch(this.human, this.computer, this.winRules);
+    this.computer = createComputer(Object.keys(this.rules));
+    this.human = createHuman(Object.keys(this.rules));
+    this.match = createMatch(this.human, this.computer, this.rules);
 
     while (true) {
       this.match.play();
       if (!this.playAgain()) break;
-      this.match = createMatch(this.human, this.computer, this.winRules);
+      this.match = createMatch(this.human, this.computer, this.rules);
     }
 
     this.displayGoodbyeMessage();

@@ -81,9 +81,10 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 ### [ ] Keep track of a history moves for the game session
 
-- [ ] Delete past history attempt.
-- [ ] Create `rules` and `choices` will just be `Object.keys(rules)`.
+- [x] Create `rules` and `choices` will just be `Object.keys(rules)`.
 - [ ] Pass `choices` to `choose` method.
+  - But maybe I want `rules` to be available to the player object as a whole,
+    e.g., in order to create a history?
 - [ ] Do PEMDAC.
 - [ ] Create data structure (new or existing object?).
 - [ ] Keep track of which moves correlate with winning or losing? (for next bonus feature)
