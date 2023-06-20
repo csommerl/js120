@@ -2,7 +2,7 @@ const readline = require('readline-sync');
 
 function createHistory(moves) {
   return moves.reduce((history, move) => {
-    history[move] = { count: 0, wins: 0, };
+    history[move] = { count: 0, wins: 0, percWins: 0, }; // change default for percWins
     return history;
   }, {});
 }
@@ -13,10 +13,14 @@ function createPlayer(moves) {
     history: createHistory(moves),
 
     updateHistory(isWinner) {
-      this.history[this.move]['count'] += 1;
+      const moveProp = this.history[this.move];
+      moveProp.count += 1;
+
       if (isWinner) {
-        this.history[this.move]['wins'] += 1;
+        moveProp.wins += 1;
       }
+
+      moveProp.percWins = moveProp.wins / moveProp.count;
     },
 
     showHistory() {
