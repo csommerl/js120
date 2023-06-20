@@ -6,11 +6,11 @@ function createPlayer() {
   };
 }
 
-function createComputer(choices) {
+function createComputer() {
   let playerObject = createPlayer();
 
   let computerObject = {
-    choose() {
+    choose(choices) {
       let randomIdx = Math.floor(Math.random() * choices.length);
       this.move = choices[randomIdx];
     },
@@ -19,11 +19,11 @@ function createComputer(choices) {
   return Object.assign(playerObject, computerObject);
 }
 
-function createHuman(choices) {
+function createHuman() {
   let playerObject = createPlayer();
 
   let humanObject = {
-    choose() {
+    choose(choices) {
       let choice;
 
       while (true) {
@@ -44,6 +44,7 @@ function createHuman(choices) {
 function createRound(human, computer, rules) {
   return {
     winner: null,
+    choices: Object.keys(rules),
 
     getWinner() {
       let humanWin = rules[human.move].includes(computer.move);
@@ -68,8 +69,8 @@ function createRound(human, computer, rules) {
     },
 
     play() {
-      human.choose();
-      computer.choose();
+      human.choose(this.choices);
+      computer.choose(this.choices);
       this.getWinner();
       this.showResult();
     },
@@ -161,8 +162,8 @@ const RPSGame = {
 
   play() {
     this.displayWelcomeMessage();
-    this.computer = createComputer(Object.keys(this.rules));
-    this.human = createHuman(Object.keys(this.rules));
+    this.computer = createComputer();
+    this.human = createHuman();
     this.match = createMatch(this.human, this.computer, this.rules);
 
     while (true) {
