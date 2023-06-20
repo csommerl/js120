@@ -43,6 +43,7 @@ Solutions:
 - Option 2: Another option that works is to keep `createPlayer` as a separate global function that has a `choices`/`validMoves` parameter. Then, to avoid the general limitation above, each of the player states of the game can initially be `null` but later assigned using the `createPlayer` function (passed `this.choices`) within the orchestration engine (`play`).
 - Option 3: A third option that is unclear whether it works: use `Object.assign` to add `choices` as a state of the player objects after they are created.
 - Option 4: Perhaps `validMoves` doesn't need to be passed, but instead it can just be accessed from the global constant?
+- Option 5: Pass `rules` / `validMoves` / `choices` to `choose` method.
 
 ### How to avoid global constants?
 
@@ -92,7 +93,35 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 
 #### PEMDAC
 
-...
+Inputs:
+
+- player objects
+- match, round, score
+
+Output:
+
+1. history of moves for a session of the game, across matches & rounds
+  - for human and computer
+  - ability to display
+2. advanced rules for computer `choose`
+  - for each human choice, percentage of wins
+  - for computer choose, weighting of choices, based on percentage of wins for each human choice
+
+Data Structures
+
+- For each move:
+  - times played
+  - wins
+
+```js
+this.history = {
+  'rock': {
+    count: 5,
+    wins: 1,
+  },
+  'paper': ...
+};
+```
 
 ### [ ] Adjust computer choice based on history: Use history of moves to help computer make its moves
 

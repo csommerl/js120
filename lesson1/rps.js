@@ -1,16 +1,36 @@
 const readline = require('readline-sync');
 
-function createPlayer() {
+function createHistory(moves) {
+  return moves.reduce((history, move) => {
+    history[move] = { count: 0, wins: 0, };
+    return history;
+  }, {});
+}
+
+function createPlayer(moves) {
   return {
     move: null,
+    history: createHistory(moves),
+
+    updateHistory(isWinner) {
+      this.history[this.move]['count'] += 1;
+      if (isWinner) {
+        this.history[this.move]['wins'] += 1;
+      }
+    },
+
+    showHistory() {
+      console.log('Your history of moves and corresponding wins is as follows:');
+      console.table(this.history); // TODO: revise to give percentages
+    },
   };
 }
 
-function createComputer() {
-  let playerObject = createPlayer();
+function createComputer(choices) {
+  let playerObject = createPlayer(choices);
 
   let computerObject = {
-    choose(choices) {
+    choose() {
       let randomIdx = Math.floor(Math.random() * choices.length);
       this.move = choices[randomIdx];
     },
@@ -19,11 +39,11 @@ function createComputer() {
   return Object.assign(playerObject, computerObject);
 }
 
-function createHuman() {
-  let playerObject = createPlayer();
+function createHuman(choices) {
+  let playerObject = createPlayer(choices);
 
   let humanObject = {
-    choose(choices) {
+    choose() {
       let choice;
 
       while (true) {
@@ -71,8 +91,12 @@ function createRound(human, computer, rules) {
     play() {
       human.choose(this.choices);
       computer.choose(this.choices);
+
       this.getWinner();
       this.showResult();
+
+      human.updateHistory(this.winner === 'human');
+      computer.updateHistory(this.winner === 'computer');
     },
   };
 }
@@ -93,7 +117,7 @@ function createMatch(human, computer, rules) {
   return {
     winScore: 5,
     round: null,
-    score: null,
+    score: createScore(),
     winner: null,
 
     showInstructions() {
@@ -113,7 +137,6 @@ function createMatch(human, computer, rules) {
     },
 
     play() {
-      this.score = createScore();
       this.showInstructions();
 
       while (!this.winner) {
@@ -125,6 +148,7 @@ function createMatch(human, computer, rules) {
       }
 
       this.showWinner();
+      human.showHistory();
     },
   };
 }
@@ -161,9 +185,12 @@ const RPSGame = {
   },
 
   play() {
+    const choices = Object.keys(this.rules);
+    this.human = createHuman(choices);
+    this.computer = createComputer(choices);
+
     this.displayWelcomeMessage();
-    this.computer = createComputer();
-    this.human = createHuman();
+
     this.match = createMatch(this.human, this.computer, this.rules);
 
     while (true) {
