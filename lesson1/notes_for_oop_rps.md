@@ -80,15 +80,15 @@ TODO: To deal with the previous problem, one solution might be to have a factory
 - [x] Add to `validMoves`.
 - [x] Add to `winRules`.
 
-### [ ] Keep track of a history moves for the game session
+### [x] Keep track of a history moves for the game session
 
 - [x] Create `rules` and `choices` will just be `Object.keys(rules)`.
 - [x] Pass `choices` to `choose` method.
   - But maybe I want `rules` to be available to the player object as a whole,
     e.g., in order to create a history?
-- [ ] Do PEMDAC.
-- [ ] Create data structure (new or existing object?).
-- [ ] Keep track of which moves correlate with winning or losing? (for next bonus feature)
+- [x] Do PEMDAC.
+- [x] Create data structure (new or existing object?).
+- [x] Keep track of which moves correlate with winning or losing? (for next bonus feature)
 - [ ] Display history.
 
 #### PEMDAC
@@ -118,6 +118,7 @@ this.history = {
   'rock': {
     count: 5,
     wins: 1,
+    percWins: 0.2,
   },
   'paper': ...
 };
@@ -128,4 +129,50 @@ this.history = {
 - [ ] Option 1: Based on history, give weights to each of the possible moves, e.g., computer plays proportionately less often moves that cause the human to win.
 - [ ] Option 2: Computer plays what will beat the most common human move.
 
+PEMDAC
+
+inputs
+- history
+- rules (pass to `createComputer` instead of `Object.keys(rules)`?
+- choose
+
+outputs
+- `weights` object: use current `choices` array
+- `weightedChoices`: use weights
+
+weights:
+```js
+{
+  'rock': 1, // multiplier of 1, i.e., include only once in weigtedChoices
+  'paper': 3,
+  ...
+}
+```
+
+weightedChoices:
+```js
+['rock', 'paper', 'paper', 'paper', ...]
+```
+
+Algorithm for weights
+1. Create initial weights obj with all choices having a value of 1.
+2. Iterate over humanMove in humanHistory.
+  - if percWins < 50, continue
+  - Declare multiplier and initializse to 0.
+  - +1 to multiplier for every 10 percentage points above 50
+  - Iterate over move in rules:
+    - If humanMove is in array of the value of move,
+    increment weight of move by multiplier
+
+
+Example
+```js
+humanHistory = {
+  'rock': { count: 5, wins: 1, percWins: 0.2, },
+  'paper': { count: 5, wins: 4, percWins: 0.8, },
+  : { count: , wins: , percWins: , },
+  : { count: , wins: , percWins: , },
+  : { count: , wins: , percWins: , },
+};
+```
 ---
