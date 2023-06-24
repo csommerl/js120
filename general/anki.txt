@@ -36,4 +36,4 @@ How is collaboration different from dependency?; With collaboration, one object 
 
 ---
 
-
+eslint-disable-next-line error-abbreviation

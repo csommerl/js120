@@ -2,7 +2,7 @@ const readline = require('readline-sync');
 
 function createHistory(moves) {
   return moves.reduce((history, move) => {
-    history[move] = { count: 0, wins: 0, percWins: 0, }; // change default for percWins
+    history[move] = { count: 0, wins: 0, percWins: 0, }; // TODO: change default for percWins?
     return history;
   }, {});
 }
