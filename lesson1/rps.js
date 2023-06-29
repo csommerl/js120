@@ -7,7 +7,14 @@ function createHistory(moves) {
   }, {});
 }
 
-function createPlayer(moves) {
+function createWeights(moves) {
+  return moves.reduce((obj, move) => {
+    obj[move] = 1;
+    return obj;
+  }, {});
+}
+
+function createPlayer(moves) { // TODO: revise to take rules
   return {
     move: null,
     history: createHistory(moves),
@@ -30,13 +37,36 @@ function createPlayer(moves) {
   };
 }
 
-function createComputer(choices) {
+// eslint-disable-next-line max-lines-per-function
+function createComputer(gameRules) {
+  const choices = Object.keys(gameRules);
   let playerObject = createPlayer(choices);
 
   let computerObject = {
+    weights: createWeights(choices),
+    weightedChoices: null,
+
+    updateWeights() {
+    },
+
+    getWeightedChoices() {
+      const weightedChoices = [];
+
+      for (let choice in this.weights) {
+        let count = this.weights[choice];
+        for (let idx = 0; idx < count; ++idx) { // TODO: change to fill?
+          weightedChoices.push(choice);
+        }
+      }
+
+      this.weightedChoices = weightedChoices;
+    },
+
     choose() {
-      let randomIdx = Math.floor(Math.random() * choices.length);
-      this.move = choices[randomIdx];
+      this.getWeightedChoices();
+      console.log(this.weightedChoices);
+      let randomIdx = Math.floor(Math.random() * this.weightedChoices.length);
+      this.move = this.weightedChoices[randomIdx];
     },
   };
 
@@ -81,7 +111,11 @@ function createRound(human, computer, rules) {
     },
 
     showResult() {
+      // console.clear(); // TODO: restore
       console.log(`\nYou chose: ${human.move}`);
+
+      console.log(computer.weights); // TODO: remove
+
       console.log(`The computer chose: ${computer.move}`);
       if (this.winner === 'human') {
         console.log('You win!');
@@ -94,6 +128,7 @@ function createRound(human, computer, rules) {
 
     play() {
       human.choose(this.choices);
+      computer.updateWeights(human.history);
       computer.choose(this.choices);
 
       this.getWinner();
@@ -189,9 +224,10 @@ const RPSGame = {
   },
 
   play() {
+    // console.clear(); // TODO: restore
     const choices = Object.keys(this.rules);
     this.human = createHuman(choices);
-    this.computer = createComputer(choices);
+    this.computer = createComputer(this.rules);
 
     this.displayWelcomeMessage();
 
