@@ -1,8 +1,8 @@
 const readline = require('readline-sync');
 
-function createHistory(moves) { // TODO: update to take rules
+function createHistory(moves) {
   return moves.reduce((history, move) => {
-    history[move] = { count: 0, wins: 0, percWins: 0, }; // TODO: change default for percWins?
+    history[move] = { 'Times Played': 0, 'Wins': 0, 'Win Percentage': 0, };
     return history;
   }, {});
 }
@@ -14,25 +14,25 @@ function createWeights(moves) {
   }, {});
 }
 
-function createPlayer(moves) { // TODO: revise to take rules
+function createPlayer(moves) {
   return {
     move: null,
-    history: createHistory(moves), // TODO: update to take rules
+    history: createHistory(moves),
 
     updateHistory(isWinner) {
       const moveProp = this.history[this.move];
-      moveProp.count += 1;
+      moveProp['Times Played'] += 1;
 
       if (isWinner) {
-        moveProp.wins += 1;
+        moveProp['Wins'] += 1;
       }
 
-      moveProp.percWins = moveProp.wins / moveProp.count;
+      moveProp['Win Percentage'] = Math.round(moveProp['Wins'] / moveProp['Times Played'] * 100);
     },
 
     showHistory() {
       console.log('Your history of moves and corresponding wins is as follows:');
-      console.table(this.history); // TODO: revise to give percentages
+      console.table(this.history);
     },
   };
 }
@@ -40,7 +40,7 @@ function createPlayer(moves) { // TODO: revise to take rules
 // eslint-disable-next-line max-lines-per-function
 function createComputer(gameRules) {
   const choices = Object.keys(gameRules);
-  let playerObject = createPlayer(choices); // TODO: update to take rules
+  let playerObject = createPlayer(choices);
 
   let computerObject = {
     weights: null,
@@ -50,11 +50,11 @@ function createComputer(gameRules) {
       let weights = createWeights(choices);
 
       for (let humanMove in humanHistory) {
-        let percWins = humanHistory[humanMove].percWins;
+        let percWins = humanHistory[humanMove]['Win Percentage'];
 
-        if (percWins <= 0.5) continue;
+        if (percWins <= 50) continue;
 
-        let addedWeight = Math.floor(((percWins - 0.5) * 100) / 10);
+        let addedWeight = Math.floor((percWins - 50) / 10);
 
         for (let computerMove in gameRules) {
           if (!gameRules[computerMove].includes(humanMove)) continue;
@@ -72,9 +72,8 @@ function createComputer(gameRules) {
 
       for (let choice in this.weights) {
         let count = this.weights[choice];
-        for (let idx = 0; idx < count; ++idx) { // TODO: change to fill?
-          weightedChoices.push(choice);
-        }
+        let newChoices = Array(count).fill(choice);
+        weightedChoices.push(...newChoices);
       }
 
       this.weightedChoices = weightedChoices;
@@ -90,7 +89,8 @@ function createComputer(gameRules) {
   return Object.assign(playerObject, computerObject);
 }
 
-function createHuman(choices) { // TODO: update to take rules
+function createHuman(gameRules) {
+  const choices = Object.keys(gameRules);
   let playerObject = createPlayer(choices);
 
   let humanObject = {
@@ -240,8 +240,7 @@ const RPSGame = {
 
   play() {
     console.clear();
-    const choices = Object.keys(this.rules);
-    this.human = createHuman(choices); // TODO: pass rules
+    this.human = createHuman(this.rules);
     this.computer = createComputer(this.rules);
 
     this.displayWelcomeMessage();
