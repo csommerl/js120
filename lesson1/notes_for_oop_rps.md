@@ -154,6 +154,15 @@ weightedChoices:
 ['rock', 'paper', 'paper', 'paper', ...]
 ```
 
+Overall algo
+1. Pass humanHistory to computer.choose().
+2. Call getWeightedChoices.
+    a. Call updateWeights.
+        - 
+    b. Use weights to get weightedChoices.
+3. Get random from weightedChoices.
+
+
 Algorithm for weights
 1. Create initial weights obj with all choices having a value of 1.
 2. Iterate over humanMove in humanHistory.

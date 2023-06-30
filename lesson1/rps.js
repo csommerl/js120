@@ -1,6 +1,6 @@
 const readline = require('readline-sync');
 
-function createHistory(moves) {
+function createHistory(moves) { // TODO: update to take rules
   return moves.reduce((history, move) => {
     history[move] = { count: 0, wins: 0, percWins: 0, }; // TODO: change default for percWins?
     return history;
@@ -17,7 +17,7 @@ function createWeights(moves) {
 function createPlayer(moves) { // TODO: revise to take rules
   return {
     move: null,
-    history: createHistory(moves),
+    history: createHistory(moves), // TODO: update to take rules
 
     updateHistory(isWinner) {
       const moveProp = this.history[this.move];
@@ -40,16 +40,24 @@ function createPlayer(moves) { // TODO: revise to take rules
 // eslint-disable-next-line max-lines-per-function
 function createComputer(gameRules) {
   const choices = Object.keys(gameRules);
-  let playerObject = createPlayer(choices);
+  let playerObject = createPlayer(choices); // TODO: update to take rules
 
   let computerObject = {
-    weights: createWeights(choices),
+    weights: null,
     weightedChoices: null,
 
-    updateWeights() {
+    updateWeights(humanHistory) {
+      let weights = createWeights(choices);
+      console.log('HUMAN HISTORY', humanHistory);
+
+      // TODO
+
+      this.weights = weights;
     },
 
-    getWeightedChoices() {
+    getWeightedChoices(humanHistory) {
+      this.updateWeights(humanHistory);
+
       const weightedChoices = [];
 
       for (let choice in this.weights) {
@@ -62,9 +70,10 @@ function createComputer(gameRules) {
       this.weightedChoices = weightedChoices;
     },
 
-    choose() {
-      this.getWeightedChoices();
-      console.log(this.weightedChoices);
+    choose(humanHistory) {
+      this.getWeightedChoices(humanHistory);
+      console.log('WEIGHTS:', this.weights); // TODO: remove
+      console.log('WEIGHTED CHOICES:', this.weightedChoices); // TODO: remove
       let randomIdx = Math.floor(Math.random() * this.weightedChoices.length);
       this.move = this.weightedChoices[randomIdx];
     },
@@ -73,7 +82,7 @@ function createComputer(gameRules) {
   return Object.assign(playerObject, computerObject);
 }
 
-function createHuman(choices) {
+function createHuman(choices) { // TODO: update to take rules
   let playerObject = createPlayer(choices);
 
   let humanObject = {
@@ -114,9 +123,8 @@ function createRound(human, computer, rules) {
       // console.clear(); // TODO: restore
       console.log(`\nYou chose: ${human.move}`);
 
-      console.log(computer.weights); // TODO: remove
-
       console.log(`The computer chose: ${computer.move}`);
+
       if (this.winner === 'human') {
         console.log('You win!');
       } else if (this.winner === 'computer') {
@@ -127,9 +135,8 @@ function createRound(human, computer, rules) {
     },
 
     play() {
-      human.choose(this.choices);
-      computer.updateWeights(human.history);
-      computer.choose(this.choices);
+      human.choose();
+      computer.choose(human.history);
 
       this.getWinner();
       this.showResult();
@@ -226,7 +233,7 @@ const RPSGame = {
   play() {
     // console.clear(); // TODO: restore
     const choices = Object.keys(this.rules);
-    this.human = createHuman(choices);
+    this.human = createHuman(choices); // TODO: pass rules
     this.computer = createComputer(this.rules);
 
     this.displayWelcomeMessage();
