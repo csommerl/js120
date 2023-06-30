@@ -34,6 +34,21 @@ How does OOP reduce dependencies?; It confines them to exist within a single cla
 
 How is collaboration different from dependency?; With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.; js120
 
+How to disable eslint for a particular line?; eslint-disable-next-line error-abbreviation; eslint
+
+Member access notation; dot notation syntax for accessing object properties, e.g., `obj.prop`; js120
+
+Computed member access notation; bracket notation syntax for accessing object properties, e.g., `obj["prop"]`; js120
+
+Two differences between computed and non-computed member access notation; 1) non-computed accepts only strings, whereas computed member access notation accepts expressions (which are evaluated and implicitly coerced to strings), and 2) non-computed accepts only strings that meet JavaScript's rules for valid variable names, whereas computed accepts any UTF-8 compatible string; js120
+
+in operator; operator that returns true if the specified property is in the specified object or its prototype chain; js120
+
+Difference between hasOwnProperty and in operator; The main difference between them is that `in` will also return `true` if the property is anywhere in the object's prototype chain, whereas `hasOwnProperty` will not look for the property within the prototype chain; js120
+
+Difference between Object.keys and Object.getOwnPropertyNames; The main difference between them is that `Object.keys` will get only the object's enumerable properties, whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not); js120
+
+enumerable property; a property that will be visited by the most common iterative procedures performed upon objects, based on an intenal flag being set to true; js120
+
 ---
 
-eslint-disable-next-line error-abbreviation

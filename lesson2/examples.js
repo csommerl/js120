@@ -1,7 +1,14 @@
-let obj = {
-  count: 10,
-  wins: 5,
-  perc: this.wins,
-};
+const myObj = Object.create(
+  {},
+  {
+    getFoo: {
+      value() {
+        return this.foo;
+      },
+      enumerable: false,
+    },
+  },
+);
 
-console.log(obj);
+myObj.foo = 1;
+

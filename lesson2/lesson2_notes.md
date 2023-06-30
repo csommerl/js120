@@ -58,12 +58,33 @@ obj['1x']; // 'one ex'
 
 ### Property Existence
 
-...
+You cannot use property access notation to determine whether an object has a property. That's because that notation will evaluate to `undefined` for non-existent properties, yet existent properties can also have the value `undefined`.
 
-ANKI ADD!!!!!!
+So, instead of property access notation, there are two *direct* ways to determine whether an object has a property:
+
+1. the `in` operator: `prop in obj`
+2. the `hasOwnProperty` method: `obj.hasOwnProperty(prop)`
+
+Each returns `true` if the specified property name (or key) is in the specified object. The main difference between them is that `in` will also return `true` if the property is anywhere in the object's prototype chain, whereas `hasOwnProperty` will not look for the property within the prototype chain.
+
+There are also two *indirect* ways to check whether an object has a key, by getting an array of the object's property names:
+
+3. `Object.keys(obj).includes(prop)`
+4. `Object.getOwnPropertyNames(obj).includes(prop)`
+
+The main difference between them is that `Object.keys` will get only the object's enumerable properties, whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not).
+
+An **enumerable property** is one that will be visited by the most common iterative procedures performed upon objects. More precisely, an enumerable property is one whose internal enumerable flag is set to `true` (the default when creating properties in the most common ways).
+
+---
+
+## [2.3 Object Prototypes](https://launchschool.com/lessons/1eaf5e37/assignments/ccf2e4a7)
+
+...
 
 ---
 
 ## Later
 
+- add to anki
 - Go through discussion board questions
