@@ -124,9 +124,9 @@ this.history = {
 };
 ```
 
-### [ ] Adjust computer choice based on history: Use history of moves to help computer make its moves
+### [x] Adjust computer choice based on history: Use history of moves to help computer make its moves
 
-- [ ] Option 1: Based on history, give weights to each of the possible moves, e.g., computer plays proportionately less often moves that cause the human to win.
+- [x] Option 1: Based on history, give weights to each of the possible moves, e.g., computer plays proportionately less often moves that cause the human to win.
 - [ ] Option 2: Computer plays what will beat the most common human move.
 
 PEMDAC

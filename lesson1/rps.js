@@ -48,9 +48,19 @@ function createComputer(gameRules) {
 
     updateWeights(humanHistory) {
       let weights = createWeights(choices);
-      console.log('HUMAN HISTORY', humanHistory);
 
-      // TODO
+      for (let humanMove in humanHistory) {
+        let percWins = humanHistory[humanMove].percWins;
+
+        if (percWins <= 0.5) continue;
+
+        let addedWeight = Math.floor(((percWins - 0.5) * 100) / 10);
+
+        for (let computerMove in gameRules) {
+          if (!gameRules[computerMove].includes(humanMove)) continue;
+          weights[computerMove] += addedWeight;
+        }
+      }
 
       this.weights = weights;
     },
@@ -72,8 +82,6 @@ function createComputer(gameRules) {
 
     choose(humanHistory) {
       this.getWeightedChoices(humanHistory);
-      console.log('WEIGHTS:', this.weights); // TODO: remove
-      console.log('WEIGHTED CHOICES:', this.weightedChoices); // TODO: remove
       let randomIdx = Math.floor(Math.random() * this.weightedChoices.length);
       this.move = this.weightedChoices[randomIdx];
     },
@@ -120,7 +128,7 @@ function createRound(human, computer, rules) {
     },
 
     showResult() {
-      // console.clear(); // TODO: restore
+      console.clear();
       console.log(`\nYou chose: ${human.move}`);
 
       console.log(`The computer chose: ${computer.move}`);
@@ -231,7 +239,7 @@ const RPSGame = {
   },
 
   play() {
-    // console.clear(); // TODO: restore
+    console.clear();
     const choices = Object.keys(this.rules);
     this.human = createHuman(choices); // TODO: pass rules
     this.computer = createComputer(this.rules);
