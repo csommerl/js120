@@ -80,7 +80,21 @@ An **enumerable property** is one that will be visited by the most common iterat
 
 ## [2.3 Object Prototypes](https://launchschool.com/lessons/1eaf5e37/assignments/ccf2e4a7)
 
+### Prototypes
+
+**Prototypal inheritance** is a feature of JavaScript objects that can be used in order to avoid rewriting duplicate code for objects of the same type (i.e., objects that have some of the same properties and methods).
+
+A **prototype** is an object from which another object inherits properties and methods.
+
+Inherited properties are not part of an object's own properties. Instead, access to inherited properties and methods is *delegated* to the prototype.
+
+JavaScript keeps track of ...
+
 ...
+
+### :question: Questions
+
+- Can an object have more than one prototype?
 
 ---
 
