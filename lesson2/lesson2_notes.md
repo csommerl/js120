@@ -60,21 +60,36 @@ obj['1x']; // 'one ex'
 
 You cannot use property access notation to determine whether an object has a property. That's because that notation will evaluate to `undefined` for non-existent properties, yet existent properties can also have the value `undefined`.
 
-So, instead of property access notation, there are two *direct* ways to determine whether an object has a property:
+So, one must use other approaches for determining whether a property exists within an object.
+
+#### Direct Ways
+
+instead of property access notation, there are two *direct* ways to determine whether an object has a property:
 
 1. the `in` operator: `prop in obj`
 2. the `hasOwnProperty` method: `obj.hasOwnProperty(prop)`
 
 Each returns `true` if the specified property name (or key) is in the specified object. The main difference between them is that `in` will also return `true` if the property is anywhere in the object's prototype chain, whereas `hasOwnProperty` will not look for the property within the prototype chain.
 
+#### Indirect Ways
+
 There are also two *indirect* ways to check whether an object has a key, by getting an array of the object's property names:
 
-3. `Object.keys(obj).includes(prop)`
-4. `Object.getOwnPropertyNames(obj).includes(prop)`
+3. `Object.getOwnPropertyNames(obj).includes(prop)`
+4. `Object.keys(obj).includes(prop)`
 
-The main difference between them is that `Object.keys` will get only the object's enumerable properties, whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not).
+Both of these will retrieve only the object's own properties, and not any properties higher in the prototypal chain. But the difference between them is that whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not), `Object.keys` will get only the object's enumerable properties.
 
-An **enumerable property** is one that will be visited by the most common iterative procedures performed upon objects. More precisely, an enumerable property is one whose internal enumerable flag is set to `true` (the default when creating properties in the most common ways).
+An **enumerable property** is one that will be visited by the most common iterative procedures performed upon objects, such as a `for ... in` loop. Thus, enumerable properties are those over which it is useful to iterate. More precisely, an enumerable property is one whose internal enumerable flag is set to `true` (the default when creating properties in the most common ways).
+
+#### Summary
+
+The four approaches above are ordered from the *most to least inclusive* of the properties they test for.
+
+1. `prop in obj`: returns `true` if `prop` is in `obj`'s *prototypal chain*, whether or not `prop` is enumerable
+2. `obj.hasOwnProperty(prop)`: returns `true` if `prop` is `obj`'s *own* property, whether or not `prop` is enumerable
+3. `Object.getOwnPropertyNames(obj).includes(prop)`: returns `true` if `prop` is `obj`'s *own* property, whether or not `prop` is enumerable
+4. `Object.keys(obj).includes(prop)`: returns `true` if `prop` is `obj`'s *own enumerable* property
 
 ---
 

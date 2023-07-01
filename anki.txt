@@ -34,7 +34,7 @@ How does OOP reduce dependencies?; It confines them to exist within a single cla
 
 How is collaboration different from dependency?; With collaboration, one object instructs another object to do something without depending on anything concerning the implementation details within the latter object. In contrast, with a dependency, the former object would look within the latter object and operate directly on the implementation details.; js120
 
-How to disable eslint for a particular line?; eslint-disable-next-line error-abbreviation; eslint
+How to disable eslint for a particular line?; // eslint-disable-next-line error-abbreviation; eslint
 
 Member access notation; dot notation syntax for accessing object properties, e.g., `obj.prop`; js120
 
