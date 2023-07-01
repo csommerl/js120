@@ -103,17 +103,54 @@ A **prototype** is an object from which another object inherits properties and m
 
 Inherited properties are not part of an object's own properties. Instead, access to inherited properties and methods is *delegated* to the prototype.
 
-JavaScript keeps track of ...
+JavaScript keeps track of object prototypes by means of the internal `[[Prototype]]` property. Although that property is not directly accessible, it can be accessed indirectly by means of two object functions:
+
+1. `Object.getPrototypeOf(obj)` returns `obj`'s prototype object.
+2. `Object.setPrototypeOf(obj, newProtoObj)` sets the prototype of `obj` to `newProtoObj`.
+
+Using `setPrototypeOf` to set a prototype of an empty object is equivalent to using `Object.create`. This function implies that an object can have *only one* prototype.
+
+The `[[Prototype]]` property stores a *reference* to the object's prototype, which means that any changes to the prototype object are inherited by the child object.
+
+#### The Default Prototype
 
 ...
 
-### :question: Questions
+#### Iterating Over Objects with Prototypes
 
-- Can an object have more than one prototype?
+...
+
+#### The Protype Chain
+
+...
+
+### The `__proto__` Property
+
+...
+
+### Property Look-Up in the Prototype Chain
+
+...
+
+### Methods on Object.prototype
+
+...
+
+### Objects Without Prototypes
+
+...
 
 ---
 
-## Later
+## [Practice Problems]()
 
-- add to anki
+...
+
+---
+
+## Tasks
+
+- Add Anki cards
 - Go through discussion board questions
+
+---

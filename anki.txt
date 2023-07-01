@@ -52,3 +52,8 @@ enumerable property; a property that will be visited by the most common iterativ
 
 ---
 
+[[Prototype]]; an internal property (not directly accessible) of an object that keeps track of the object's prototype; js120
+
+Object.getPrototypeOf(obj); object function that returns an object's prototype object; js120
+
+Object.setPrototypeOf(obj, newProtoObj); object function that sets the prototype of obj to newProtoObj; js120
