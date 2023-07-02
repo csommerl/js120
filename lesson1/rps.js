@@ -65,7 +65,7 @@ function createComputer(gameRules) {
       this.weights = weights;
     },
 
-    getWeightedChoices(humanHistory) {
+    setWeightedChoices(humanHistory) {
       this.updateWeights(humanHistory);
 
       const weightedChoices = [];
@@ -80,7 +80,7 @@ function createComputer(gameRules) {
     },
 
     choose(humanHistory) {
-      this.getWeightedChoices(humanHistory);
+      this.setWeightedChoices(humanHistory);
       let randomIdx = Math.floor(Math.random() * this.weightedChoices.length);
       this.move = this.weightedChoices[randomIdx];
     },
@@ -117,7 +117,7 @@ function createRound(human, computer, rules) {
     winner: null,
     choices: Object.keys(rules),
 
-    getWinner() {
+    setWinner() {
       let humanWin = rules[human.move].includes(computer.move);
 
       if (human.move === computer.move) {
@@ -146,7 +146,7 @@ function createRound(human, computer, rules) {
       human.choose();
       computer.choose(human.history);
 
-      this.getWinner();
+      this.setWinner();
       this.showResult();
 
       human.updateHistory(this.winner === 'human');
@@ -178,7 +178,7 @@ function createMatch(human, computer, rules) {
       console.log(`\nThe first player to reach ${this.winScore} points wins the match. Good luck!`);
     },
 
-    getWinner() {
+    setWinner() {
       if (this.score.human === this.winScore) {
         this.winner = 'human';
       } else if (this.score.computer === this.winScore) {
@@ -198,7 +198,7 @@ function createMatch(human, computer, rules) {
         this.round.play();
         this.score[this.round.winner] += 1;
         this.score.show();
-        this.getWinner();
+        this.setWinner();
       }
 
       this.showWinner();

@@ -1,4 +1,4 @@
-# [Lesson 2: Functions, Objects, and Prototypes](https://launchschool.com/lessons/1eaf5e37/assignments)
+## [Lesson 2: Functions, Objects, and Prototypes](https://launchschool.com/lessons/1eaf5e37/assignments)
 
 [TOC]
 
@@ -80,7 +80,13 @@ There are also two *indirect* ways to check whether an object has a key, by gett
 
 Both of these will retrieve only the object's own properties, and not any properties higher in the prototypal chain. But the difference between them is that whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not), `Object.keys` will get only the object's enumerable properties.
 
-An **enumerable property** is one that will be visited by the most common iterative procedures performed upon objects, such as a `for ... in` loop. Thus, enumerable properties are those over which it is useful to iterate. More precisely, an enumerable property is one whose internal enumerable flag is set to `true` (the default when creating properties in the most common ways).
+#### Enumerability (supplemented with material from 2.3)
+
+An **enumerable property** is one that will be visited by the most common iterative procedures performed upon objects, such as a `for ... in` loop. Thus, enumerable properties are those over which it is useful to iterate.
+
+More precisely, an enumerable property is one whose internal enumerable flag is set to `true` (the default when creating properties in the most common ways). Most properties and methods of JavaScript's built-in data types are not enumerable.
+
+`Object.prototype.propertyIsEnumerable(prop)` returns a boolean for whether an object's property is enumerable.
 
 #### Summary
 
@@ -112,15 +118,18 @@ Using `setPrototypeOf` to set a prototype of an empty object is equivalent to us
 
 The `[[Prototype]]` property stores a *reference* to the object's prototype, which means that any changes to the prototype object are inherited by the child object.
 
-#### The Default Prototype
+### The Default Prototype
 
-...
+All JavaScript objects (created by object literal syntax) inherit from a prototype, the **default prototype** supplied by `Object.prototype`.
 
-#### Iterating Over Objects with Prototypes
+### Iterating Over Objects with Prototypes
 
-...
+There are two main ways to iterate over objects:
 
-#### The Protype Chain
+1. `for/in` loop: iterates over all enumerable properties of an object, as well as its prototype chain (unless a guard clause with `Object.hasOwnProperty` is used).
+2. `Object.keys`: provides an array of an object's *own enumerable* properties.
+
+### The Prototype Chain
 
 ...
 
@@ -134,7 +143,11 @@ The `[[Prototype]]` property stores a *reference* to the object's prototype, whi
 
 ### Methods on Object.prototype
 
-...
+`Object.prototype` supplies several useful built-in methods for objects that have it as a prototype. These include:
+
+1. `Object.prototype.hasOwnProperty(prop)`: seen above
+2. `Object.prototype.toString()`: returns string representation of the object
+3. `Object.prototype.isPrototypeOf(obj)`: returns a boolean representing whether the ==calling object== is a prototype of `obj`
 
 ### Objects Without Prototypes
 
@@ -144,12 +157,15 @@ The `[[Prototype]]` property stores a *reference* to the object's prototype, whi
 
 ## [Practice Problems]()
 
+(Backup page)
+
 ...
 
 ---
 
 ## Tasks
 
+- Backup Pages
 - Add Anki cards
 - Go through discussion board questions
 

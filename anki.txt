@@ -57,3 +57,7 @@ enumerable property; a property that will be visited by the most common iterativ
 Object.getPrototypeOf(obj); object function that returns an object's prototype object; js120
 
 Object.setPrototypeOf(obj, newProtoObj); object function that sets the prototype of obj to newProtoObj; js120
+
+Object.prototype.propertyIsEnumerable(prop); returns a boolean for whether an object's property is enumerable; js120
+
+Object.prototype; All JavaScript objects (created by object literal syntax) inherit from this **default prototype**; js120
