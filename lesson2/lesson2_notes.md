@@ -75,8 +75,8 @@ Each returns `true` if the specified property name (or key) is in the specified 
 
 There are also two *indirect* ways to check whether an object has a key, by getting an array of the object's property names:
 
-3. `Object.getOwnPropertyNames(obj).includes(prop)`
-4. `Object.keys(obj).includes(prop)`
+1. `Object.getOwnPropertyNames(obj).includes(prop)`
+2. `Object.keys(obj).includes(prop)`
 
 Both of these will retrieve only the object's own properties, and not any properties higher in the prototypal chain. But the difference between them is that whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not), `Object.keys` will get only the object's enumerable properties.
 
@@ -114,7 +114,7 @@ JavaScript keeps track of object prototypes by means of the internal `[[Prototyp
 1. `Object.getPrototypeOf(obj)` returns `obj`'s prototype object.
 2. `Object.setPrototypeOf(obj, newProtoObj)` sets the prototype of `obj` to `newProtoObj`.
 
-Using `setPrototypeOf` to set a prototype of an empty object is equivalent to using `Object.create`. This function implies that an object can have *only one* prototype.
+Using `setPrototypeOf` to set a prototype of an empty object is equivalent to using `Object.create`. This function implies that an object can have *only one* prototype at the next level up in the prototypal chain. But an object's prototype can itself have a prototype. See The Prototype Chain below.
 
 The `[[Prototype]]` property stores a *reference* to the object's prototype, which means that any changes to the prototype object are inherited by the child object.
 
@@ -131,11 +131,11 @@ There are two main ways to iterate over objects:
 
 ### The Prototype Chain
 
-...
+Since an object's prototype can itself have a prototype, and so on, there exists a **prototype chain**. Usually, the complete prototype chain terminates in `null`, since the default prototype(`Object.prototype`) has as its prototype `null`.
 
 ### The `__proto__` Property
 
-...
+The **dunder proto**, `__proto__`, is a deprecated, non-hidden (i.e., directly accessible) version of the `[[Prototype]]` property.
 
 ### Property Look-Up in the Prototype Chain
 
@@ -155,7 +155,7 @@ There are two main ways to iterate over objects:
 
 ---
 
-## [Practice Problems]()
+## [2.4 Practice Problems](https://launchschool.com/lessons/1eaf5e37/assignments/f7b8620b)
 
 (Backup page)
 
