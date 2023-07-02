@@ -52,7 +52,7 @@ enumerable property; a property that will be visited by the most common iterativ
 
 ---
 
-[[Prototype]]; an internal property (not directly accessible) of an object that keeps track of the object's prototype; js120
+[[Prototype]]; an internal property (not directly accessible) of an object that contains a reference to the object's prototype; js120
 
 Object.getPrototypeOf(obj); object function that returns an object's prototype object; js120
 
@@ -60,4 +60,12 @@ Object.setPrototypeOf(obj, newProtoObj); object function that sets the prototype
 
 Object.prototype.propertyIsEnumerable(prop); returns a boolean for whether an object's property is enumerable; js120
 
-Object.prototype; All JavaScript objects (created by object literal syntax) inherit from this **default prototype**; js120
+Object.prototype; All JavaScript objects (created by object literal syntax) inherit from this default prototype, which includes built-in properties; js120
+
+__proto__; a deprecated, non-hidden (i.e., directly accessible) version of the [[Prototype]] property; js120
+
+Object.prototype.isPrototypeOf(obj); returns a boolean representing whether the calling object is a prototype of obj; js120
+
+clean or bare object; an object whose prototype is set to null and so does not have Object.prototype within its prototype chain; js120
+
+How to test for whether an object has the usual built-in properties; use a guard clause with Object.getPrototypeOf(); js120

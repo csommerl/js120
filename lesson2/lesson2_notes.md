@@ -120,7 +120,7 @@ The `[[Prototype]]` property stores a *reference* to the object's prototype, whi
 
 ### The Default Prototype
 
-All JavaScript objects (created by object literal syntax) inherit from a prototype, the **default prototype** supplied by `Object.prototype`.
+All JavaScript objects (created by object literal syntax) inherit from a prototype, the **default prototype** supplied by `Object.prototype`. The value of `Object.prototype` is `null` and it contains several built-in non-enumerable properties for objects, such as `toString` and `hasOwnProperty`.
 
 ### Iterating Over Objects with Prototypes
 
@@ -139,19 +139,23 @@ The **dunder proto**, `__proto__`, is a deprecated, non-hidden (i.e., directly a
 
 ### Property Look-Up in the Prototype Chain
 
-...
+When attempting to access a property of an object, JavaScript first looks within the object's own properties. If it doesn't find the property there, it then looks within the properties of the object's prototype. It continues this process until it reaches `Object.prototype`, and if the property is not found there, `undefined` is returned.
+
+Thus, if two objects within a prototype chain share a property with the same name, accessing or assigning that property name will access the property of the object in the prototype chain that is closer to the calling object.
 
 ### Methods on Object.prototype
 
-`Object.prototype` supplies several useful built-in methods for objects that have it as a prototype. These include:
+`Object.prototype` has several useful built-in non-enumerable methods for objects that have it as a prototype. These include:
 
-1. `Object.prototype.hasOwnProperty(prop)`: seen above
-2. `Object.prototype.toString()`: returns string representation of the object
+1. `Object.prototype.hasOwnProperty(prop)`: returns a boolean reprenting whether the calling object has as its own property `prop`
+2. `Object.prototype.toString()`: returns a string representation of the object
 3. `Object.prototype.isPrototypeOf(obj)`: returns a boolean representing whether the ==calling object== is a prototype of `obj`
 
 ### Objects Without Prototypes
 
-...
+**A clean or bare object** is one whose prototype is set to `null` and so does not have `Object.prototype` within its prototype chain. It thus does not have the built-in properties or methods of JavaScript objects.
+
+To test for whether an object has the usual built-in properties, use a guard clause with `Object.getPrototypeOf()`.
 
 ---
 
@@ -163,9 +167,12 @@ The **dunder proto**, `__proto__`, is a deprecated, non-hidden (i.e., directly a
 
 ---
 
+## [2.5 ]()
+
 ## Tasks
 
 - Backup Pages
+- Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
 - Add Anki cards
 - Go through discussion board questions
 
