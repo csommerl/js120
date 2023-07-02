@@ -4,4 +4,6 @@
 
 2. This code will print `3`. Line 5 prints the sum of the values of the `foo` property of `baz` and the `foo` property of `qux`. The latter is `1`, as given in the initialization of `qux` in line 1. The former is `2`. Although `baz` has `qux` as its prototype, line 3 *has a property assignment that* gives `baz` its own `foo` property with the value of `2`. Thus, accessing the `foo` property of `baz` in line 5 will not search higher up within the prototype chain, since a proprety with that name is found within the calling object.
 
-3. 
+3. This code will print `4`. In line 5, what is logged to the console is the sum of the values of the `foo` property of `baz` and the `foo` property of `qux`. Since `baz` does not have `foo` as its own property, accessing that property will search within its prototype, `qux`. Thus, what is logged is the sum of adding the value of `foo` in `qux` to itself. That value is determined by the property assignment in line 3 of `qux.foo` to `2`. Accessing that property via `baz` will still return `2` even though `baz` had its prototype set to `qux` prior to line 3's reassignment of `foo`. This is because the internal property `[[Prototype]]` that keeps track of `baz`'s prototype contains a reference to `qux`, *which means that changes in its prototype are reflected within the inheriting object*.
+
+4. 

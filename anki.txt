@@ -46,11 +46,11 @@ in operator; operator that returns true if the specified property is in the spec
 
 Difference between hasOwnProperty and in operator; The main difference between them is that `in` will also return `true` if the property is anywhere in the object's prototype chain, whereas `hasOwnProperty` will not look for the property within the prototype chain; js120
 
+Object.getOwnPropertyNames(obj); returns an array of the names of obj's own properties; js120
+
 Difference between Object.keys and Object.getOwnPropertyNames; The main difference between them is that `Object.keys` will get only the object's enumerable properties, whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not); js120
 
 enumerable property; a property that will be visited by the most common iterative procedures performed upon objects, based on an intenal flag being set to true; js120
-
----
 
 [[Prototype]]; an internal property (not directly accessible) of an object that contains a reference to the object's prototype; js120
 
@@ -69,3 +69,5 @@ Object.prototype.isPrototypeOf(obj); returns a boolean representing whether the 
 clean or bare object; an object whose prototype is set to null and so does not have Object.prototype within its prototype chain; js120
 
 How to test for whether an object has the usual built-in properties; use a guard clause with Object.getPrototypeOf(); js120
+
+
