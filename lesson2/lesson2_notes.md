@@ -64,7 +64,7 @@ So, one must use other approaches for determining whether a property exists with
 
 #### Direct Ways
 
-instead of property access notation, there are two *direct* ways to determine whether an object has a property:
+Instead of property access notation, there are two *direct* ways to determine whether an object has a property:
 
 1. the `in` operator: `prop in obj`
 2. the `hasOwnProperty` method: `obj.hasOwnProperty(prop)`
@@ -78,7 +78,7 @@ There are also two *indirect* ways to check whether an object has a key, by gett
 1. `Object.getOwnPropertyNames(obj).includes(prop)`
 2. `Object.keys(obj).includes(prop)`
 
-Both of these will retrieve only the object's own properties, and not any properties higher in the prototypal chain. But the difference between them is that whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not), `Object.keys` will get only the object's enumerable properties.
+Both of these will retrieve only the object's own properties, and not any properties higher in the prototype chain. But the difference between them is that whereas `Object.getOwnPropertyNames` will get all the object's properties (whether enumerable or not), `Object.keys` will get only the object's enumerable properties.
 
 #### Enumerability (supplemented with material from 2.3)
 
@@ -92,7 +92,7 @@ More precisely, an enumerable property is one whose internal enumerable flag is 
 
 The four approaches above are ordered from the *most to least inclusive* of the properties they test for.
 
-1. `prop in obj`: returns `true` if `prop` is in `obj`'s *prototypal chain*, whether or not `prop` is enumerable
+1. `prop in obj`: returns `true` if `prop` is in `obj`'s *prototype chain*, whether or not `prop` is enumerable
 2. `obj.hasOwnProperty(prop)`: returns `true` if `prop` is `obj`'s *own* property, whether or not `prop` is enumerable
 3. `Object.getOwnPropertyNames(obj).includes(prop)`: returns `true` if `prop` is `obj`'s *own* property, whether or not `prop` is enumerable
 4. `Object.keys(obj).includes(prop)`: returns `true` if `prop` is `obj`'s *own enumerable* property
@@ -103,7 +103,7 @@ The four approaches above are ordered from the *most to least inclusive* of the 
 
 ### Prototypes
 
-**Prototypal inheritance** is a feature of JavaScript objects that can be used in order to avoid rewriting duplicate code for objects of the same type (i.e., objects that have some of the same properties and methods).
+**Prototype inheritance** is a feature of JavaScript objects that can be used in order to avoid rewriting duplicate code for objects of the same type (i.e., objects that have some of the same properties and methods).
 
 A **prototype** is an object from which another object inherits properties and methods.
 
@@ -114,7 +114,7 @@ JavaScript keeps track of object prototypes by means of the internal `[[Prototyp
 1. `Object.getPrototypeOf(obj)` returns `obj`'s prototype object.
 2. `Object.setPrototypeOf(obj, newProtoObj)` sets the prototype of `obj` to `newProtoObj`.
 
-Using `setPrototypeOf` to set a prototype of an empty object is equivalent to using `Object.create`. This function implies that an object can have *only one* prototype at the next level up in the prototypal chain. But an object's prototype can itself have a prototype. See The Prototype Chain below.
+Using `setPrototypeOf` to set a prototype of an empty object is equivalent to using `Object.create`. This function implies that an object can have *only one* prototype at the next level up in the prototype chain. But an object's prototype can itself have a prototype. See The Prototype Chain below.
 
 The `[[Prototype]]` property stores a *reference* to the object's prototype, which means that any changes to the prototype object are inherited by the child object.
 
@@ -147,7 +147,7 @@ Thus, if two objects within a prototype chain share a property with the same nam
 
 `Object.prototype` has several useful built-in non-enumerable methods for objects that have it as a prototype. These include:
 
-1. `Object.prototype.hasOwnProperty(prop)`: returns a boolean reprenting whether the calling object has as its own property `prop`
+1. `Object.prototype.hasOwnProperty(prop)`: returns a boolean representing whether the calling object has as its own property `prop`
 2. `Object.prototype.toString()`: returns a string representation of the object
 3. `Object.prototype.isPrototypeOf(obj)`: returns a boolean representing whether the ==calling object== is a prototype of `obj`
 
