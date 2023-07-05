@@ -70,4 +70,4 @@ clean or bare object; an object whose prototype is set to null and so does not h
 
 How to test for whether an object has the usual built-in properties; use a guard clause with Object.getPrototypeOf(); js120
 
-
+What are the 6 non-deprecated object instance methods?; hasOwnProperty, isPrototypeOf, propertyIsEnumerable, toLocaleString, toString, valueOf; js120

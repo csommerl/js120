@@ -161,11 +161,13 @@ To test for whether an object has the usual built-in properties, use a guard cla
 
 ## [2.4 Practice Problems](https://launchschool.com/lessons/1eaf5e37/assignments/f7b8620b)
 
+---
+
+## [2.5 Function Expressions](https://launchschool.com/lessons/1eaf5e37/assignments/be77df06)
+
 ...
 
 ---
-
-## [2.5 ]()
 
 ## Tasks
 

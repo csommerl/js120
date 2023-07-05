@@ -6,4 +6,27 @@
 
 3. This code will print `4`. In line 5, what is logged to the console is the sum of the values of the `foo` property of `baz` and the `foo` property of `qux`. Since `baz` does not have `foo` as its own property, accessing that property will search within its prototype, `qux`. Thus, what is logged is the sum of adding the value of `foo` in `qux` to itself. That value is determined by the property assignment in line 3 of `qux.foo` to `2`. Accessing that property via `baz` will still return `2` even though `baz` had its prototype set to `qux` prior to line 3's reassignment of `foo`. This is because the internal property `[[Prototype]]` that keeps track of `baz`'s prototype contains a reference to `qux`, *which means that changes in its prototype are reflected within the inheriting object*.
 
-4. 
+4. 4.js
+
+5. These two loops will not log the same results to the console. This is due to the difference in which property keys are accessed by the `in` operator and the `Object.keys` function. The `for/in` loop will access every one of `foo`'s own properties, *as well as every property higher up in `foo`'s prototype chain*. In contrast, `Object.keys` returns an array containing only the name's of `foo`'s own properties and not the names of properties higher up in the prototype chain. Thus, the results will differ in a case such as the following:
+
+```javascript
+let bar = {qux: 1};
+let foo = Object.create(bar);
+foo['lys'] = 2;
+
+for (let property in foo) {
+  console.log(`${property}: ${foo[property]}`);
+}
+// logs
+// lys: 2 
+// qux: 1
+
+Object.keys(foo).forEach(property => {
+  console.log(`${property}: ${foo[property]}`);
+});
+// logs
+// lys: 2
+```
+
+6. To create an object that does not have a prototype, use `Object.create(null)`. To determine whether an object has a prototype, use `Object.getPrototypeOf()`. 
