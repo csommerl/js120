@@ -236,7 +236,10 @@ The **execution context** is the environment in which code is executed, and in J
 
 JavaScript's rule for how execution context is determined/set: what matters is *how* a function/method is invoked, *not where or when* it is defined or invoked.
 
-There are two ways that (execution) context is determined or set: explicit and implicit (when your code doesn't explicictly determine the context).
+There are two ways that (execution) context is determined or set:
+
+1. implicit: the default execution context provided by the JavaScript engine, for when the program's code doesn't explicitly determine the context
+2. explicit: the code written overrides the default/implicit execution context with a programmer specified context
 
 **Binding or setting the binding of `this`** refers to determining or setting the execution context of `this` to a particular object for invoking a function/method.
 
@@ -246,27 +249,45 @@ The implicit execution context for regular function execution is the `global` ob
 
 #### Strict Mode and Implicit Context
 
-...
+When strict mode is enabled, the implicit function execution context is `undefined` instead of the global object.
 
 ### Method Execution Context (Implicit)
 
-...
+The implicit execution context for regular method execution is the object used to call the method. This means that for regular method invocations, `this` refers to the calling object.
+
+Since what matters for execution context is *how* a method is invoked, the execution context of a method can change if it is invoked by something other than the object in which the method is defined (e.g., when it invoked on its own by assigning it to a variable).
 
 ### Explicit Function and Method Execution Context
 
-...
+The two main ways to explicitly determine the execution context / bind `this`: `call` and `apply`.
 
 #### Explicit Execution Context with `call`
 
-...
+The function method `call` invokes a function/method with an explicit execution context provided as an argument. The calling function/method can be passed arguments by passing them to `call` after the execution context argument. Its syntax is as follows:
+
+- for functions: `someFunction.call(context, arg1, arg2, arg3, ...)`
+- for methods: `someObject.someMethod.call(context, arg1, arg2, arg3, ...)`
 
 #### Explicit Execution Contex with `apply`
 
-...
+The function method `apply` works like `call`, except that arguments to be passed to the calling function/method are passed to `apply` within an array. Its syntax is as follows:
+
+- for functions: `someFunction.apply(context, [arg1, arg2, arg3, ...])`
+- for methods: `someObject.someMethod.apply(context, [arg1, arg2, arg3, ...])`
+
+Since spread syntax has been introduced, `apply` isn't necessary to use.
 
 ### Summary
 
-...
+
+
+
+...  NOT LEXICAL SCOPE
+
+
+
+
+
 
 ## [2.9 Practice Problems: Implicit and Explicit Function Execution Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/a6c48cbb)
 
