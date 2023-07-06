@@ -202,7 +202,17 @@ All functions in JavaScript are of the `function` data type, which are in fact a
 
 ## [2.6 Higher Order Functions](https://launchschool.com/lessons/1eaf5e37/assignments/0d10f0ef)
 
-...
+A **higher-order function** is one that either takes another function as an argument of returns another function.
+
+The advantage of such functions is that they allow for a greater level of abstraction.
+
+### Functions That Accept Functions as Arguments
+
+One benefit of creating functions that accept other functions as arguments is that it creates a way to not duplicate code and to abstract away some of the implementation details of particular operations. For example, array methods such as `map` allow one not to reduplicate code for creating a new array, iterating over the calling array, etc.
+
+### Functions that Return a Function
+
+Functions that return other functions are *function factories*, where the arguments passed determine specific features of the functions produced.
 
 ---
 
