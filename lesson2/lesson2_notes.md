@@ -182,7 +182,21 @@ Not all function expressions create anonymous functions. Namely, those created u
 
 ### Arrow Functions
 
-...
+Arrow functions are always both function expressions and anonymous functions.
+
+### First-Class Functions
+
+All JavaScript functions are **first-class functions** or **first-class objects**, which means that they are like any other value insofar as they can be:
+
+1. assigned to variables *and properties*,
+2. passed as arguments to other functions, and
+3. returned from other functions.
+
+To accomplish each of these three things, invocation syntax, i.e., `()`, should not be used. That's because invocation syntax calls the function, and it would be the function's return value that would be assigned to a variable (etc.) instead of the function itself.
+
+### Type of a Function Value
+
+All functions in JavaScript are of the `function` data type, which are in fact objects (i.e., a complex data type that has both properties and methods).
 
 ---
 
