@@ -165,6 +165,41 @@ To test for whether an object has the usual built-in properties, use a guard cla
 
 ## [2.5 Function Expressions](https://launchschool.com/lessons/1eaf5e37/assignments/be77df06)
 
+### Function Declarations vs. Function Expressions
+
+Functions that are defined by function declarations can be called in code prior to where they are declared. This is because, prior to executing the code, the JavaScript engine runs a first pass over the code to prepare for the execution. This preparation includes internally **hoisting** function declarations, i.e., virtually moving them to the top of the scope within which they are defined.
+
+Function declarations include only those statements in which the `function` keyword is the *very first thing on a line*. All other function definitions are function expressions. Function expressions include even some function definitions that use the `function` keyword, namely those for which the `function` keyword is not the first thing on the line (regardless of whether the function is assigned to a variable).
+
+A **named function** is one whose definition consists of the `function` keyword followed by a progammer-defined name. All other functions are **anonymous functions**. Even functions that have been assigned to a variable can be anonymous, since a variable name is not the same thing as a function name. The function name is what follows the `function` keyword.
+
+All function declarations create named functions, since the JavaScript engine prohibits a function declaration/statement from not assigning a name.
+
+Not all function expressions create anonymous functions. Namely, those created using the `function` keyword can be given a name. This name is invisible in the surrounding scope of the function. But there are two uses for naming functions defined by function expressions:
+
+1. for debugging: the function name will be provided in the stack trace.
+2. for recursive functions: the function name will be accessible within the function body
+
+### Arrow Functions
+
+...
+
+---
+
+## [2.6 Higher Order Functions](https://launchschool.com/lessons/1eaf5e37/assignments/0d10f0ef)
+
+...
+
+---
+
+## [2.7 The Global Object](https://launchschool.com/lessons/1eaf5e37/assignments/a83079aa)
+
+...
+
+---
+
+## [2.8 Implicit and Explicit Execution Context](https://launchschool.com/lessons/1eaf5e37/assignments/49869006)
+
 ...
 
 ---
