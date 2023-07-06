@@ -218,7 +218,15 @@ Functions that return other functions are *function factories*, where the argume
 
 ## [2.7 The Global Object](https://launchschool.com/lessons/1eaf5e37/assignments/a83079aa)
 
-...
+An **execution context** consists in ==all the background code that is accessible==.
+
+The **implicit execution context** in JavaScript is either the `global` object in Node.js or the `window` object in the browser.
+
+The `global` object is available everywhere throughout a program. JavaScript's built-in values (such as `undefined`), functions (such as `parseFloat`), and ==types== (such as `String`) are properties of `global` (i.e., `global.undefined`, `global.parseFloat`, and `global.String`).
+
+### The Global Object and Undeclared Variables
+
+Undeclared variables are added as properties to the global object. When accessing a variable, JavaScript first looks for the variable within local scope, the global scope, and finally within the global object. 
 
 ---
 

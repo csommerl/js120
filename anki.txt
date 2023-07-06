@@ -81,3 +81,11 @@ anonymous functions; a function that is not defined with the function keyword fo
 two uses for naming a function defined by a function expression; 1. for debugging: the function name will be provided in the stack trace, and 2. for recursive functions: the function name will be accessible within the function body; js120
 
 data type of functions; function data type, which is in fact a type of object (i.e., a complex data type that has both properties and methods); js120
+
+isNaN(); function that, if necessary, coerces its argument to a number and then returns a boolean for whether the value is NaN; js120
+
+Which is better to use Number.isNaN or isNaN?; use Number.isNaN; js120
+
+implicit execution context; the global object in Node.js or the window object in the browser; js120
+
+What are undeclared variables relative to execution context?; they are properties of the global object; js120
