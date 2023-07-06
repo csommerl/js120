@@ -86,6 +86,16 @@ isNaN(); function that, if necessary, coerces its argument to a number and then 
 
 Which is better to use Number.isNaN or isNaN?; use Number.isNaN; js120
 
-implicit execution context; the global object in Node.js or the window object in the browser; js120
+implicit execution context; the global object, which is `global` in Node.js and `window` in the browser; js120
 
 What are undeclared variables relative to execution context?; they are properties of the global object; js120
+
+execution context; the environment in which code is executed, and in JavaScript this consists in the current value of the this keyword; js120
+
+JavaScript's rule for how execution context is determined/set; what matters is *how* a function/method is invoked, *not where or when* it is defined or invoked; js120
+
+two ways that (execution) context is determined or set; explicit and implicit (when your code doesn't explicictly determine the context); js120
+
+Binding or setting the binding of `this`; refers to determining or setting the execution context of `this` to a particular object for invoking a function/method; js120
+
+implicit execution context for regular function execution; `this` refers to the global object when it appears within the function body; js120

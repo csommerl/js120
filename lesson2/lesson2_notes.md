@@ -218,9 +218,7 @@ Functions that return other functions are *function factories*, where the argume
 
 ## [2.7 The Global Object](https://launchschool.com/lessons/1eaf5e37/assignments/a83079aa)
 
-An **execution context** consists in ==all the background code that is accessible==.
-
-The **implicit execution context** in JavaScript is either the `global` object in Node.js or the `window` object in the browser.
+The **implicit execution context** in JavaScript is the global object. The global object is `global` in Node.js and `window` in the browser. For the notion of *execution context* more generally, see Lesson 2.8 below.
 
 The `global` object is available everywhere throughout a program. JavaScript's built-in values (such as `undefined`), functions (such as `parseFloat`), and ==types== (such as `String`) are properties of `global` (i.e., `global.undefined`, `global.parseFloat`, and `global.String`).
 
@@ -232,15 +230,55 @@ Undeclared variables are added as properties to the global object. When accessin
 
 ## [2.8 Implicit and Explicit Execution Context](https://launchschool.com/lessons/1eaf5e37/assignments/49869006)
 
+### Execution Context
+
+The **execution context** is the environment in which code is executed, and in JavaScript this consists in the current value of the `this` keyword. Every function/method call has an execution context.
+
+JavaScript's rule for how execution context is determined/set: what matters is *how* a function/method is invoked, *not where or when* it is defined or invoked.
+
+There are two ways that (execution) context is determined or set: explicit and implicit (when your code doesn't explicictly determine the context).
+
+**Binding or setting the binding of `this`** refers to determining or setting the execution context of `this` to a particular object for invoking a function/method.
+
+### Function Execution Context (Implicit)
+
+The implicit execution context for regular function execution is the `global` object. This means that for regular function invocations `this` refers to the global object when it appears within the function body.
+
+#### Strict Mode and Implicit Context
+
+...
+
+### Method Execution Context (Implicit)
+
+...
+
+### Explicit Function and Method Execution Context
+
+...
+
+#### Explicit Execution Context with `call`
+
+...
+
+#### Explicit Execution Contex with `apply`
+
+...
+
+### Summary
+
+...
+
+## [2.9 Practice Problems: Implicit and Explicit Function Execution Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/a6c48cbb)
+
 ...
 
 ---
 
 ## Tasks
 
-- Backup Pages
-- Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
-- Add Anki cards
-- Go through discussion board questions
+- [ ] Backup Pages
+- [ ] Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
+- [ ] Add Anki cards
+- [ ] Go through discussion board questions
 
 ---
