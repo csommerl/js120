@@ -71,3 +71,13 @@ clean or bare object; an object whose prototype is set to null and so does not h
 How to test for whether an object has the usual built-in properties; use a guard clause with Object.getPrototypeOf(); js120
 
 What are the 6 non-deprecated object instance methods?; hasOwnProperty, isPrototypeOf, propertyIsEnumerable, toLocaleString, toString, valueOf; js120
+
+What makes a function definition a function declaration?; the function keyword is the very first thing on a line; js120
+
+named function; a function whose definition consists of the function keyword followed by a progammer-defined name; js120
+
+anonymous functions; a function that is not defined with the function keyword followed by a name; js120
+
+two uses for naming a function defined by a function expression; 1. for debugging: the function name will be provided in the stack trace, and 2. for recursive functions: the function name will be accessible within the function body; js120
+
+data type of functions; function data type, which is in fact a type of object (i.e., a complex data type that has both properties and methods); js120

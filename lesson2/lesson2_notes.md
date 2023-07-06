@@ -175,9 +175,9 @@ A **named function** is one whose definition consists of the `function` keyword 
 
 All function declarations create named functions, since the JavaScript engine prohibits a function declaration/statement from not assigning a name.
 
-Not all function expressions create anonymous functions. Namely, those created using the `function` keyword can be given a name. This name is invisible in the surrounding scope of the function. But there are two uses for naming functions defined by function expressions:
+Not all function expressions create anonymous functions. Namely, those created using the `function` keyword can be given a name. This name is invisible in the surrounding scope of the function. But there are two uses for naming a function defined by a function expression:
 
-1. for debugging: the function name will be provided in the stack trace.
+1. for debugging: the function name will be provided in the stack trace
 2. for recursive functions: the function name will be accessible within the function body
 
 ### Arrow Functions
@@ -196,7 +196,7 @@ To accomplish each of these three things, invocation syntax, i.e., `()`, should 
 
 ### Type of a Function Value
 
-All functions in JavaScript are of the `function` data type, which are in fact objects (i.e., a complex data type that has both properties and methods).
+All functions in JavaScript are of the `function` data type, which are in fact a type of object (i.e., a complex data type that has both properties and methods).
 
 ---
 
