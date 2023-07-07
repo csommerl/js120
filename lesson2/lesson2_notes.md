@@ -307,6 +307,12 @@ Question:
 
 ---
 
+## [2.12 Dealing with Context Loss I](https://launchschool.com/lessons/1eaf5e37/assignments/624e2099)
+
+finish past problems!
+
+---
+
 ## Tasks
 
 - [ ] [Exercises](https://launchschool.com/exercises#js120_object_oriented_javascript)
