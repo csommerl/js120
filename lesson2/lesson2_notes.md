@@ -279,24 +279,19 @@ Since spread syntax has been introduced, `apply` isn't necessary to use.
 
 ### Summary
 
+Since the vinding of `this` in JavaScript is determined by how a function/method is invoked, JavaScript does not (==strictly?==) use lexical scoping in determining the value of `this`.
 
-
-
-...  NOT LEXICAL SCOPE
-
-
-
-
-
+---
 
 ## [2.9 Practice Problems: Implicit and Explicit Function Execution Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/a6c48cbb)
 
 ...
 
----
+--- 
 
 ## Tasks
 
+- [ ] [Exercises](https://launchschool.com/exercises#js120_object_oriented_javascript)
 - [ ] Backup Pages
 - [ ] Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
 - [ ] Add Anki cards
