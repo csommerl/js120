@@ -39,10 +39,20 @@ Object.keys(foo).forEach(property => {
 
 2. This code will output the object referenced by `obj`, `{ func: [Function: func] }`. This is ultimately because the implicit execution context for methods is the object that calls the method. Here, the method `func` is invoked on line 7 by the object referenced by the global variable `obj`, and the return value of that method invocation is assigned to the global variable `context`. The `func` method is anonymous function that returns the value assigned to `this`. Thus, since `obj` called the method, the value of `this` here is `obj`. Thus, line 9 prints `obj`.
 
-3. ...
+3. This code will output two lines.
 
-4. ...
+First, line 7's invocation of the function `deliverMessage` will output `'Hello from the global scope!'`. This is because that function's body consists of only line 4, which logs to the console the value of `this.message`. Due to implicit function execution context, the value of `this` on line 7 is the global object. Thus, line 7 prints the value of the global object's `message` property. That property's value is `'Hello from the global scope!'`. This is because line 1 creates the global undeclared variable `message`, which is assigned to the string `'Hello from the global scope!'`. Since `message` is an undeclared variable, it becomes a property of the global object. Thus, line 4/7 prints its value to the console.
 
-5. ...
+Second, line 15 will output `'Hello from the function scope!'`. In that line, the object referenced by the global variable `foo` calls the method `deliverMessage`. That method was assigned to `foo` by line 13, which gave that method the value of the function `deliverMessage` defined on lines 3-7. Although the method `deliverMessage` is the same as the function `deliverMessage`, it outputs something different. This is because in JavaScript the implicit execution context for methods is the object that calls the method. Here, this means that the value of `this` within the method is the object referenced by `foo`. Thus, when that method logs the value of `this.message` to the console, the value printed is that of the `message` property of `foo`, which was assigned to `'Hello from the function scope!'` in line 10.
+
+4. So far, we have learned about two built-in function methods that enable one to specify an explicit execution context for a function. These are `apply` and `call`. Each of these is called by a function and the first argument of each is the explicit execution context. `apply` takes one additional argument, an array whose elements are the arguments to be passed to the function. The additional arguments of `call` are the arguments to be passed to the function.
+
+5. When `bar.add.call(foo)` is added to this code, the numerical value `3` is returned. This is because the `call` method sets the explicit execution context for the `add` method (and hence binds the value of `this` within that method invocation) to the object `foo`. Thus, when `add` is invoked in this manner, `this` within that function references the `foo` object. So, the addition `this.a + this.b` returned by line 10 has the value of `3`, since the `a` property of `foo` is `1` and the `b` property of `foo` is `2`.
+
+---
+
+# [2.11]()
+
+...
 
 ---

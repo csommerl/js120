@@ -285,9 +285,13 @@ Since the vinding of `this` in JavaScript is determined by how a function/method
 
 ## [2.9 Practice Problems: Implicit and Explicit Function Execution Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/a6c48cbb)
 
+--- 
+
+## [2.10 Hard Binding Functions with Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/155c4ab6)
+
 ...
 
---- 
+---
 
 ## Tasks
 
