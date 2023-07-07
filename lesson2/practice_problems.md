@@ -35,6 +35,14 @@ Object.keys(foo).forEach(property => {
 
 # [2.9 Practice Problems: Implicit and Explicit Function Execution Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/a6c48cbb)
 
-...
+1. This code will output the global object, i.e., `global` in Node.js and `window` in the browser. This is because the implicit function execution context (in non-strict mode) is the global object. Thus, the value of `this` returned by `func` in line 2is `global`/`window`, which is then assigned to the global variable `context` in line 5 and logged to the console in line 7.
+
+2. This code will output the object referenced by `obj`, `{ func: [Function: func] }`. This is ultimately because the implicit execution context for methods is the object that calls the method. Here, the method `func` is invoked on line 7 by the object referenced by the global variable `obj`, and the return value of that method invocation is assigned to the global variable `context`. The `func` method is anonymous function that returns the value assigned to `this`. Thus, since `obj` called the method, the value of `this` here is `obj`. Thus, line 9 prints `obj`.
+
+3. ...
+
+4. ...
+
+5. ...
 
 ---
