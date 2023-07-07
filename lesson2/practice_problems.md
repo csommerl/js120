@@ -51,7 +51,7 @@ Second, line 15 will output `'Hello from the function scope!'`. In that line, th
 
 ---
 
-# [2.11]()
+## [2.11 Practice Problems: Hard Binding Functions with Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/ed3a72f0)
 
 ...
 

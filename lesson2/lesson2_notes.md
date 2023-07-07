@@ -289,6 +289,20 @@ Since the vinding of `this` in JavaScript is determined by how a function/method
 
 ## [2.10 Hard Binding Functions with Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/155c4ab6)
 
+The `bind` function method creates and returns a new function whose execution context is *permanently* set to the method's first argument. Since the execution context is permanent, the value of `this` will always be bound to the explicitly specified context, no matter how the function/method is invoked, even if `apply`, `bind`, or `call` is used another time.
+
+Its syntax is: `someFunction.bind(context, arg1, arg2, arg3, ...)`.
+
+Since `bind` creates a new function, the original function and its execution context remains unchanged.
+
+Question:
+
+- What do the additional arguments passed to the `bind` method do? Is it that the new function has its first arguments permanently set to the arguments passed to the `bind` method?
+
+---
+
+## [2.11 Practice Problems: Hard Binding Functions with Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/ed3a72f0)
+
 ...
 
 ---

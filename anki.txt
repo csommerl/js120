@@ -111,3 +111,5 @@ Function.prototype.call(thisArg, arg1, ... argN); function method that takes an 
 Function.prototype.apply(thisArg, argsArray); function method that takes an argument to bind this and an array whose elements are to be passed as arguments to the calling function; js120
 
 Difference between the function methods call and apply?; apply takes an array for the elements to be passed as arguments to the calling function, whereas call takes the arguments themselves; js120
+
+Function.prototype.bind(thisArg, arg1, ... argN); function method that returns a new function whose execution context is the first argument; js120
