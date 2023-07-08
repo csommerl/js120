@@ -303,13 +303,11 @@ Question:
 
 ## [2.11 Practice Problems: Hard Binding Functions with Contexts](https://launchschool.com/lessons/1eaf5e37/assignments/ed3a72f0)
 
-...
-
 ---
 
 ## [2.12 Dealing with Context Loss I](https://launchschool.com/lessons/1eaf5e37/assignments/624e2099)
 
-finish past problems!
+...
 
 ---
 

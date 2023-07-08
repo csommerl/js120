@@ -67,6 +67,6 @@ Second, line 13 logs to the console the return value of invoking the `bar` funct
 
 4. Line 16 will print `'JavaScript makes sense!'`. Line 16 invokes the `logMessage` method of the `negativity` object. Line 15 set that method's value to the `bar` function. In turn, `bar` was created by the function expression on line 13, in which `bar` is assigned to a copy of the `foo` function whose execution context is permanently set to the `positivity` object. This means that the `logMessage` method invoked on line 16 is a function in which `this` is permanently bound to `positivity`. Thus, when that method prints the value `this.message`, what is printed is the `message` property of `positivity`.
 
-5. ...
+5. This code will output `'Amazebulous!'`. This is because line 12's function expression assigns to the global `bar` variable the function returned by invoking the `bind` method on the `foo` function with `obj` passed as the execution context. Thus, `bar` references a function that is a copy of the function `foo`, but in which the value of `this` is permanently set to `obj`. Thus, even though line 14 invokes `bar` with the `call` method and the argument `otherObj`, the `call` method does not change the value of `this` within `bar`. Thus, when line 9 prints the value of `this.a`, what is output is the value of the `a` property of `obj`, which in line 2 is defined as `'Amazebulous'`.
 
 ---
