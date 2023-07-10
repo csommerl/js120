@@ -313,10 +313,8 @@ Question:
 
 Context loss occurs in (at least) 3 ways, namely when
 
-1. a method is passed as an argument to a function
-   - Solution 1: add `thisArg` to the function and invoke the method using `call` with `thisArg`
-   - Solution 2: use `bind` on the method and pass the resulting function as an argument to the target function
-2. ...
+1. a method is copied from an object & used elsewhere
+2. a function is nested within an object method 
 3. ...
 
 ### The Problem: Method Copied from Object
@@ -342,7 +340,7 @@ There is 1 disadvantage of this solution:
 
 ## [2.13 Dealing with Context Loss II](https://launchschool.com/lessons/1eaf5e37/assignments/dc50753a)
 
-### Inner Function Not Using the Surrounding Context
+### The Problem: Inner Function Not Using the Surrounding Context
 
 ...
 
@@ -387,6 +385,16 @@ There is 1 disadvantage of this solution:
 ### Summary
 
 ...
+
+## Overview of Dealing with Context Loss
+
+The 3 problems and their solutions:
+
+1. a method is copied from an object & used elsewhere (e.g., passed as an argument to a function)
+   - Solution 1: use `call`/`apply` and if necessary modify the target function to accept the intended context as a `thisArg` argument
+   - Solution 2: use `bind` on the method and use the resulting function
+2. ...
+3. ...
 
 ---
 
