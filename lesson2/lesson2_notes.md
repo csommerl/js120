@@ -311,9 +311,11 @@ Question:
 
 **Context loss** occurs in JavaScript when the execution is not what is intuitively expected.
 
-Three main ways context loss occurs are when:
+Context loss occurs in (at least) 3 ways, namely when
 
-1. a method is copied from an object and used elsewhere,
+1. a method is passed as an argument to a function
+   - Solution 1: add `thisArg` to the function and invoke the method using `call` with `thisArg`
+   - Solution 2: use `bind` on the method and pass the resulting function as an argument to the target function
 2. ...
 3. ...
 
@@ -323,11 +325,20 @@ Context loss can occur when a method is copied from an object and used elsewhere
 
 More particularly, it occurs when a method is passed as an argument to a function. The method's context is no longer then the original object but instead the global object.
 
-### Solutions
+### Solution 1: add `thisArg` to the function and use `call`
 
-One solution is to pass the object / expected execution context as a second argument and use the `call` method.
+One solution is to pass the object / expected execution context as a second argument and use the `call` method. This also works for array methods such as `forEach`, `map`, and `filter`, which take an optional `thisArg` argument for setting the execution context.
 
-...
+There are 2 disadvantages of this solution:
+
+1. Can't pass a context argument to the function, e.g., with functions from libraries.
+2. It's good to use fewer arguments if possible. 
+
+### Solution 2: use `bind` and pass the resulting function
+
+There is 1 disadvantage of this solution:
+
+1. You can't tell the function's context by looking at how the function is invoked.
 
 ## [2.13 Dealing with Context Loss II](https://launchschool.com/lessons/1eaf5e37/assignments/dc50753a)
 
