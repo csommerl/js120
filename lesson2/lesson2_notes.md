@@ -268,7 +268,7 @@ The function method `call` invokes a function/method with an explicit execution 
 - for functions: `someFunction.call(context, arg1, arg2, arg3, ...)`
 - for methods: `someObject.someMethod.call(context, arg1, arg2, arg3, ...)`
 
-#### Explicit Execution Contex with `apply`
+#### Explicit Execution Context with `apply`
 
 The function method `apply` works like `call`, except that arguments to be passed to the calling function/method are passed to `apply` within an array. Its syntax is as follows:
 
@@ -279,7 +279,7 @@ Since spread syntax has been introduced, `apply` isn't necessary to use.
 
 ### Summary
 
-Since the vinding of `this` in JavaScript is determined by how a function/method is invoked, JavaScript does not (==strictly?==) use lexical scoping in determining the value of `this`.
+Since the binding of `this` in JavaScript is determined by how a function/method is invoked, JavaScript does not (==strictly?==) use lexical scoping in determining the value of `this`.
 
 ---
 
@@ -307,6 +307,74 @@ Question:
 
 ## [2.12 Dealing with Context Loss I](https://launchschool.com/lessons/1eaf5e37/assignments/624e2099)
 
+### Overview of Context Loss
+
+**Context loss** occurs in JavaScript when the execution is not what is intuitively expected.
+
+Three main ways context loss occurs are when:
+
+1. a method is copied from an object and used elsewhere,
+2. ...
+3. ...
+
+### The Problem: Method Copied from Object
+
+Context loss can occur when a method is copied from an object and used elsewhere (e.g., as a function or as a method of another function). This is because the method/function's execution context is no longer the original object.
+
+More particularly, it occurs when a method is passed as an argument to a function. The method's context is no longer then the original object but instead the global object.
+
+### Solutions
+
+One solution is to pass the object / expected execution context as a second argument and use the `call` method.
+
+...
+
+## [2.13 Dealing with Context Loss II](https://launchschool.com/lessons/1eaf5e37/assignments/dc50753a)
+
+### Inner Function Not Using the Surrounding Context
+
+...
+
+### Solution 1: Preserve Context with a Variable in Outer Scope
+
+...
+
+### Solution 2: Call Inner Function with Explicit Context
+
+...
+
+### Solution 3: Use `bind`
+
+...
+
+### Solution 4: Using an Arrow Function
+
+...
+
+## [2.14 Dealing with Context Loss III](https://launchschool.com/lessons/1eaf5e37/assignments/72c5b578)
+
+### Function as Argument Losing Surrounding Context
+
+...
+
+### Solution 1: Preserve the Context with a Variable in Outer Scope
+
+...
+
+### Solution 2: Use `bind`
+
+...
+
+### Solution 3: Use an Arrow Function
+
+...
+
+### Solution 4: Use the optional thisArg argument
+
+...
+
+### Summary
+
 ...
 
 ---
@@ -314,6 +382,7 @@ Question:
 ## Tasks
 
 - [ ] [Exercises](https://launchschool.com/exercises#js120_object_oriented_javascript)
+- [ ] Add my own examples, especially for context loss.
 - [ ] Backup Pages
 - [ ] Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
 - [ ] Add Anki cards
