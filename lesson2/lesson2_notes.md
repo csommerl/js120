@@ -314,7 +314,7 @@ Question:
 Context loss occurs in (at least) 3 ways, namely when
 
 1. a method is copied from an object & used elsewhere
-2. a function is nested within an object method 
+2. a function is nested within an object's method 
 3. ...
 
 ### The Problem: Method Copied from Object
@@ -342,23 +342,31 @@ There is 1 disadvantage of this solution:
 
 ### The Problem: Inner Function Not Using the Surrounding Context
 
-...
+A function nested within a method will have the implicit execution context for functions. So, within such a function the value of `this` will be the global object instead of the object of the outer method. So, when that function is invoked within the method, the context of the object will be lost.
 
 ### Solution 1: Preserve Context with a Variable in Outer Scope
 
-...
+The method's context can be preserved by assigning it to a variable in the method before the nested function:
+
+- `let self = this`
+- `let that = this`
+- `let context = this`
+
+Then, the inner function can use the variable instead of `this`.
 
 ### Solution 2: Call Inner Function with Explicit Context
 
-...
+The method's context can also be preserved by calling the function within the method by using `apply` or `call`.
 
 ### Solution 3: Use `bind`
 
-...
+The nested function's context can be permanently set by using `bind`, either with function expression and method chaining or with a function declaration followed by a function expression.
+
+Advantage over Solution 2: don't have to repeatedly call the function with the context as an argument.
 
 ### Solution 4: Using an Arrow Function
 
-...
+Instead of having the implicit function execution context of the global object, arrow functions receive the execution context lexically, i.e., they receive it from the surrounding context in which they are defined. So, the nested function will keep the expected context if it is defined with an arrow function.
 
 ## [2.14 Dealing with Context Loss III](https://launchschool.com/lessons/1eaf5e37/assignments/72c5b578)
 
@@ -386,14 +394,22 @@ There is 1 disadvantage of this solution:
 
 ...
 
+                      ADD ANKI CARDS FOR CONTEXT LOSS!!!!
+
 ## Overview of Dealing with Context Loss
 
 The 3 problems and their solutions:
 
-1. a method is copied from an object & used elsewhere (e.g., passed as an argument to a function)
-   - Solution 1: use `call`/`apply` and if necessary modify the target function to accept the intended context as a `thisArg` argument
-   - Solution 2: use `bind` on the method and use the resulting function
-2. ...
+1. Context is lost when a method is copied from an object & used elsewhere (e.g., passed as an argument to a function).
+   a. use `call`/`apply` and if necessary modify the target function to accept the intended context as a `thisArg` argument
+   b. use `bind` on the method and use the resulting function
+
+2. Context is lost when a function is nested within the method of an object, so thatthe value of `this` is not the method's object but instead the global object.
+   a. assign the outer context to a variable, e.g., `let self = this`, and use the variable within the function
+   b. call the nested function with `apply` or `call`
+   c. create the nested function (with a function expression) with `bind(this)` to set a permanent binding
+   d. use an arrow function to define the nested function
+
 3. ...
 
 ---

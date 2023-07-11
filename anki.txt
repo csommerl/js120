@@ -113,3 +113,9 @@ Difference between the function methods call and apply?; apply takes an array fo
 Function.prototype.bind(thisArg, arg1, ... argN); function method that returns a new function whose execution context is the first argument; js120
 
 context loss; in JavaScript, this occurs when the execution context is not what is intuitively expected; js120
+
+lexical; refers to the structure of the surrounding code without regard to its execution state; js120
+
+why not use an arrow function to define a method; the lexical context is that in which the object is created, not the object itself; js120
+
+preferable way to avoid context loss of nested functions within methods?; use an arrow function; js120
