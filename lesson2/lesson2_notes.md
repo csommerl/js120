@@ -313,8 +313,8 @@ Question:
 
 Context loss occurs in (at least) 3 ways, namely when:
 
-1. a method is copied from an object & used elsewhere
-2. a function is nested within an object's method 
+1. a method is copied from an object & used elsewhere,
+2. a function is nested within an object's method, and,
 3. a function is passed as an argument to another function
 
 ### The Problem: Method Copied from Object
@@ -412,6 +412,7 @@ Synthesis of the problems: context loss occurs
   - or when ...
 
 Synthesis of the solutions: there are 5 ways of dealing with context loss:
+
 1. arrow function (not to be used for methods but instead for functions that are nested or arguments)
 2. `call`/`apply` (for methods passed as function arguments)
 3. `thisArg` to pass context as argument
@@ -420,7 +421,11 @@ Synthesis of the solutions: there are 5 ways of dealing with context loss:
 
 ---
 
-                      ADD ANKI CARDS FOR CONTEXT LOSS!!!!
+## [Practice Problems: Dealing with Context Loss](https://launchschool.com/lessons/1eaf5e37/assignments/408c20c3)
+
+...
+
+---
 
 ## Tasks
 

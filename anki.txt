@@ -114,8 +114,10 @@ Function.prototype.bind(thisArg, arg1, ... argN); function method that returns a
 
 context loss; in JavaScript, this occurs when the execution context is not what is intuitively expected; js120
 
+The 3 ways context loss occurs; 1. when a method is copied from an object & used elsewhere (e.g., passed as an argument to a function), 2. when a function containing `this` is nested within an object's method, and, 3. when a function whose body refers to `this` is passed as an argument to another function; js120
+
 lexical; refers to the structure of the surrounding code without regard to its execution state; js120
 
 why not use an arrow function to define a method; the lexical context is that in which the object is created, not the object itself; js120
 
-preferable way to avoid context loss of nested functions within methods?; use an arrow function; js120
+5 ways of dealing with context loss; 1. arrow function, 2. `call`/`apply`, 3. `thisArg` to pass context as argument, 4. `bind`, and, 5. outer variable `let self = this`.; js120

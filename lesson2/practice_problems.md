@@ -70,3 +70,9 @@ Second, line 13 logs to the console the return value of invoking the `bar` funct
 5. This code will output `'Amazebulous!'`. This is because line 12's function expression assigns to the global `bar` variable the function returned by invoking the `bind` method on the `foo` function with `obj` passed as the execution context. Thus, `bar` references a function that is a copy of the function `foo`, but in which the value of `this` is permanently set to `obj`. Thus, even though line 14 invokes `bar` with the `call` method and the argument `otherObj`, the `call` method does not change the value of `this` within `bar`. Thus, when line 9 prints the value of `this.a`, what is output is the value of the `a` property of `obj`, which in line 2 is defined as `'Amazebulous'`.
 
 ---
+
+## [Practice Problems: Dealing with Context Loss](https://launchschool.com/lessons/1eaf5e37/assignments/408c20c3)
+
+1. 
+
+---
