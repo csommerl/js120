@@ -311,11 +311,11 @@ Question:
 
 **Context loss** occurs in JavaScript when the execution is not what is intuitively expected.
 
-Context loss occurs in (at least) 3 ways, namely when
+Context loss occurs in (at least) 3 ways, namely when:
 
 1. a method is copied from an object & used elsewhere
 2. a function is nested within an object's method 
-3. ...
+3. a function is passed as an argument to another function
 
 ### The Problem: Method Copied from Object
 
@@ -370,49 +370,57 @@ Instead of having the implicit function execution context of the global object, 
 
 ## [2.14 Dealing with Context Loss III](https://launchschool.com/lessons/1eaf5e37/assignments/72c5b578)
 
-### Function as Argument Losing Surrounding Context
+### The Problem: Function as Argument Losing Surrounding Context
 
-...
+Context can be lost when a function whose body refers to `this` is passed as an argument to another function. That can occur when/because the execution context of the former function is not the global object, and passing the function as an argument results in a new execution context that is the global object.
 
 ### Solution 1: Preserve the Context with a Variable in Outer Scope
 
-...
-
-### Solution 2: Use `bind`
-
-...
+### Solution 2: Use `bind` within the function argument
 
 ### Solution 3: Use an Arrow Function
 
-...
-
-### Solution 4: Use the optional thisArg argument
-
-...
+### Solution 4: Use the optional `thisArg` argument for methods like `forEach`
 
 ### Summary
-
-...
-
-                      ADD ANKI CARDS FOR CONTEXT LOSS!!!!
 
 ## Overview of Dealing with Context Loss
 
 The 3 problems and their solutions:
 
 1. Context is lost when a method is copied from an object & used elsewhere (e.g., passed as an argument to a function).
-   a. use `call`/`apply` and if necessary modify the target function to accept the intended context as a `thisArg` argument
-   b. use `bind` on the method and use the resulting function
 
-2. Context is lost when a function is nested within the method of an object, so thatthe value of `this` is not the method's object but instead the global object.
-   a. assign the outer context to a variable, e.g., `let self = this`, and use the variable within the function
-   b. call the nested function with `apply` or `call`
-   c. create the nested function (with a function expression) with `bind(this)` to set a permanent binding
-   d. use an arrow function to define the nested function
+   A. Use `call`/`apply` and if necessary modify the target function to accept the intended context as a `thisArg` argument.
+   B. Use `bind` to create a new function from the method.
 
-3. ...
+2. Context is lost when a function is nested within the method of an object, so that the value of `this` within that function is not the method's object but instead the global object.
+
+   A. Assign the outer context to a variable, e.g., `let self = this`, and use the variable within the function.
+   B. Call the nested function with `apply` or `call`.
+   C. Create the nested function (with a function expression) with `bind(this)` to set a permanent binding.
+   D. Use an arrow function to define the nested function.
+
+3. Context can be lost when a function whose body refers to `this` is passed as an argument to another function.
+
+  A. Preserve the Context with a Variable in Outer Scope.
+  B. Use `bind` within the function argument.
+  C. Use an Arrow Function.
+  D. Use the optional `thisArg` argument for methods like `forEach`.
+
+Synthesis of the problems: context loss occurs
+  - either when a function/method is passed as an argument to a function (problems 1 & 3)
+  - or when ...
+
+Synthesis of the solutions: there are 5 ways of dealing with context loss:
+1. arrow function (not to be used for methods but instead for functions that are nested or arguments)
+2. `call`/`apply` (for methods passed as function arguments)
+3. `thisArg` to pass context as argument
+4. `bind`
+5. outer variable `let self = this`
 
 ---
+
+                      ADD ANKI CARDS FOR CONTEXT LOSS!!!!
 
 ## Tasks
 
