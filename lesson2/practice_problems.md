@@ -73,6 +73,28 @@ Second, line 13 logs to the console the return value of invoking the `bar` funct
 
 ## [Practice Problems: Dealing with Context Loss](https://launchschool.com/lessons/1eaf5e37/assignments/408c20c3)
 
-1. 
+1. This code will print the following:
+
+```javascript
+undefined undefined is a undefined.
+```
+
+This is because passing the `turk.getDescription` method to the `logReturnVal` function in line 16 results in context loss. Namely, within that function, the implicit execution context is the global object. This means that when, in line 12 of that function, `turk.getDescription` is invoked through the alias `func`, the value of `this` is the global object. Since the global object does not have the properties `firstName`, `lastName`, or `occupation`, accessing those properties returns `undefined`.
+
+2. ...
+
+3. ...
+
+4. ...
+
+5. ...
+
+6. ...
+
+7. ...
+
+8. ...
+
+9. ...
 
 ---
