@@ -375,7 +375,7 @@ Instead of having the implicit function execution context of the global object, 
 
 ### Note on Arrow Functions and Execution Context outside of Functions & Methods
 
-Outside of the bodies of functions and methods, the implicit execution context is always the global object.
+Outside of the bodies of functions and methods, the implicit execution context is always the global object (or, when executing a file with `node`, it is the *module*). See [here](https://launchschool.com/posts/be164a87) and [here](https://launchschool.com/posts/1355d9b8).
 
 One implication of this is that instances of `this` that are within an object literal but not within any of its methods will reference the global object. Thus, `this` within the value of any property/state will be a reference to the global object, not the object of that property.
 
@@ -452,11 +452,10 @@ JavaScript's first-class functions are dynamically bound to a context when they 
 
 ## Tasks
 
-- [ ] [Exercises](https://launchschool.com/exercises#js120_object_oriented_javascript)
 - [ ] Add my own examples, especially for context loss.
 - [ ] Backup Pages
 - [ ] Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
-- [ ] Add Anki cards
-- [ ] Go through discussion board questions
+- [x] Add Anki cards
+- [ ] Go through discussion board questions, continue [here](https://launchschool.com/lessons/1eaf5e37/home?page=3)
 
 ---
