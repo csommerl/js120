@@ -81,17 +81,25 @@ undefined undefined is a undefined.
 
 This is because passing the `turk.getDescription` method to the `logReturnVal` function in line 16 results in context loss. Namely, within that function, the implicit execution context is the global object. This means that when, in line 12 of that function, `turk.getDescription` is invoked through the alias `func`, the value of `this` is the global object. Since the global object does not have the properties `firstName`, `lastName`, or `occupation`, accessing those properties returns `undefined`.
 
-2. ...
+2. See `2-15-2.js`.
 
-3. ...
+3. See `2-15-3.js`.
 
-4. ...
+4. This code will not produce the expected output. In lines 5-7, the `forEach` method is passed as an argument a new function whose body contains `this`. But since the implicit execution context for function execution is the global object, `this` in line 6 refers to the global object, not the `TESGames` object as intended. Since the global object does not have the property `seriesTitle`, the output of the code is:
 
-5. ...
+```
+undefined: Arena
+undefined: Daggerfall
+undefined: Morrowind
+undefined: Oblivion
+undefined: Skyrim
+```
 
-6. ...
+5. See `2-15-5.js`.
 
-7. ...
+6. See `2-15-6.js`.
+
+7. See `2-15-7.js`.
 
 8. ...
 
