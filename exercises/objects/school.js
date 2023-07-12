@@ -71,7 +71,7 @@ let school = {
   },
 
   enrollStudent: function(student, name, code) {
-    student.addCourse({ name, code, }); 
+    student.addCourse({ name, code, });
   },
 
   addGrade: function(student, courseCode, grade) {
@@ -89,7 +89,25 @@ let school = {
   },
 
   courseReport: function(courseName) {
-    return null;
+    let studentsInCourseWithGrades = this.students.filter(student => {
+      return student.getCourse(courseName) &&
+        student.getCourse(courseName).grade;
+    });
+
+    let average = studentsInCourseWithGrades.reduce((sum, student) => {
+      return sum + student.getCourse(courseName).grade;
+    }, 0) / studentsInCourseWithGrades.length;
+
+    if (studentsInCourseWithGrades.length) {
+      console.log(`=${courseName}=`);
+
+      for (let student of studentsInCourseWithGrades) {
+        console.log(`${student.name}: ${student.getCourse(courseName).grade}`);
+      }
+
+      console.log('---');
+      console.log(`Course Average: ${average}`);
+    }
   },
 };
 
