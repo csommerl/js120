@@ -371,7 +371,15 @@ QUESTION:
 
 ### Solution 4: Using an Arrow Function
 
-Instead of having the implicit function execution context of the global object, arrow functions receive the execution context lexically, i.e., they receive it from the surrounding context in which they are defined. So, the nested function will keep the expected context if it is defined with an arrow function.
+Instead of having the implicit function execution context of the global object, arrow functions receive the execution context **lexically**, i.e., they receive it from the surrounding context in which they are defined. So, the nested function will keep the expected context if it is defined with an arrow function.
+
+### Note on Arrow Functions and Execution Context outside of Functions & Methods
+
+Outside of the bodies of functions and methods, the implicit execution context is always the global object.
+
+One implication of this is that instances of `this` that are within an object literal but not within any of its methods will reference the global object. Thus, `this` within the value of any property/state will be a reference to the global object, not the object of that property.
+
+Similarly, since arrow functions receive their execution context lexically, their execution context will be the global object when they are used to define a method. Thus, arrow functions should be avoided for defining methods.
 
 ## [2.14 Dealing with Context Loss III](https://launchschool.com/lessons/1eaf5e37/assignments/72c5b578)
 
@@ -426,7 +434,17 @@ Synthesis of the solutions: there are 5 ways of dealing with context loss:
 
 ---
 
-## [Practice Problems: Dealing with Context Loss](https://launchschool.com/lessons/1eaf5e37/assignments/408c20c3)
+## [2.15 Practice Problems: Dealing with Context Loss](https://launchschool.com/lessons/1eaf5e37/assignments/408c20c3)
+
+---
+
+## [2.16 Summary](https://launchschool.com/lessons/1eaf5e37/assignments/7dae69f0)
+
+JavaScript's first-class functions are dynamically bound to a context when they are executed.
+
+---
+
+## [2.17 Lesson 2 Quiz 1](https://launchschool.com/lessons/1eaf5e37/assignments/39b60e49)
 
 ...
 

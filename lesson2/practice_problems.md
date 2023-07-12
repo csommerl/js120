@@ -101,8 +101,8 @@ undefined: Skyrim
 
 7. See `2-15-7.js`.
 
-8. ...
+8. The value of `foo.a` will remain `0`. That's because nested functions such as `increment` lose their context. `increment` has the implicit execution context of functions, namely the global object. Thus, `this.a` accesses the `a` property of the global object, and so the increment operator fails to increment the `a` property of `foo`.
 
-9. ...
+9. See `2-15-9.js`.
 
 ---
