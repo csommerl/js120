@@ -295,7 +295,7 @@ Its syntax is: `someFunction.bind(context, arg1, arg2, arg3, ...)`.
 
 Since `bind` creates a new function, the original function and its execution context remains unchanged.
 
-Question:
+QUESTION:
 
 - What do the additional arguments passed to the `bind` method do? Is it that the new function has its first arguments permanently set to the arguments passed to the `bind` method?
 
@@ -363,6 +363,11 @@ The method's context can also be preserved by calling the function within the me
 The nested function's context can be permanently set by using `bind`, either with function expression and method chaining or with a function declaration followed by a function expression.
 
 Advantage over Solution 2: don't have to repeatedly call the function with the context as an argument.
+
+QUESTION:
+
+- Does `bind` have the disadvantage that it prevents the outer function/method from being used as a method for another object?
+- Answer: No. See my `bind_question.js`. What presumably explains this is that the nested function is not created until the outer function/method is invoked.
 
 ### Solution 4: Using an Arrow Function
 

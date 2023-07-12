@@ -102,15 +102,13 @@ how does strict mode change implicit function execution context; the implicit fu
 
 implicit execution context for regular method execution; `this` refers to the object used to call the method; js120
 
-two main ways to explicitly determine the execution context / bind `this`; `call` and `apply`; js120
-
 Function.prototype.call(thisArg, arg1, ... argN); function method that takes an argument to bind this and additional arguments to pass as arguments to the calling function; js120
 
 Function.prototype.apply(thisArg, argsArray); function method that takes an argument to bind this and an array whose elements are to be passed as arguments to the calling function; js120
 
 Difference between the function methods call and apply?; apply takes an array for the elements to be passed as arguments to the calling function, whereas call takes the arguments themselves; js120
 
-Function.prototype.bind(thisArg, arg1, ... argN); function method that returns a new function whose execution context is the first argument; js120
+Function.prototype.bind(thisArg, arg1, ... argN); function method that returns a new function whose execution context is permanently set to the first argument; js120
 
 context loss; in JavaScript, this occurs when the execution context is not what is intuitively expected; js120
 
@@ -121,3 +119,5 @@ lexical; refers to the structure of the surrounding code without regard to its e
 why not use an arrow function to define a method; the lexical context is that in which the object is created, not the object itself; js120
 
 5 ways of dealing with context loss; 1. arrow function, 2. `call`/`apply`, 3. `thisArg` to pass context as argument, 4. `bind`, and, 5. outer variable `let self = this`.; js120
+
+Difference between iterable and enumerable; the former term refers to values that can be iterated over, whereas the latter term refers to object properties that are included in standard iterative procedures over their objects; js120
