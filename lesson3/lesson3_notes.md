@@ -27,12 +27,16 @@ So far, we've used only object-literal syntax with the **Factory Object Creation
 
 There are *2 disadvantages* of the Factory Object Creation Pattern:
 
-1. Each object created with a factory function has its own copy of all methods. Thus, the code for methods is redundantly recreated and strains memory.
+1. Each object created with a factory function has its own copy of all methods. Thus, methods are redundantly recreated and strain memory.
 2. Objects created with factory functions only have particular characteristics and no mark of the type of object they are, i.e., it's not possible to tell that they've been made with a factory function. 
 
 ---
 
 ## [3.4 Practice Problems - Factory Functions](https://launchschool.com/lessons/e3c64e3f/assignments/bf77a962)
+
+---
+
+## [3.5 Object Orientation](https://launchschool.com/lessons/e3c64e3f/assignments/51ddce40)
 
 ...
 
