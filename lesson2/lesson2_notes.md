@@ -446,6 +446,14 @@ JavaScript's first-class functions are dynamically bound to a context when they 
 
 ## [2.17 Lesson 2 Quiz 1](https://launchschool.com/lessons/1eaf5e37/assignments/39b60e49)
 
+An object whose `[[Prototype]]` property is set to `null` does not have an object prototype. That's because an object prototype must itself be an object.
+
+"entity" and "object" and "value" are all the same: all JavaScript functions are first-class *entities*.
+
+---
+
+## [2.18 Lesson 2 Quiz 2](https://launchschool.com/lessons/1eaf5e37/assignments/69e660e6)
+
 ...
 
 ---
@@ -456,6 +464,6 @@ JavaScript's first-class functions are dynamically bound to a context when they 
 - [ ] Backup Pages
 - [ ] Watch [video on prototypes](https://www.youtube.com/watch?v=-N9tBvlO9Bo)
 - [x] Add Anki cards
-- [ ] Go through discussion board questions, continue [here](https://launchschool.com/lessons/1eaf5e37/home?page=3)
+- [ ] Go through discussion board questions, continue [here](https://launchschool.com/lessons/1eaf5e37/home?page=2)
 
 ---
