@@ -1,4 +1,4 @@
-## [Lesson 2: Functions, Objects, and Prototypes](https://launchschool.com/lessons/1eaf5e37/assignments)
+# [Lesson 2: Functions, Objects, and Prototypes](https://launchschool.com/lessons/1eaf5e37/assignments)
 
 [TOC]
 
@@ -218,7 +218,7 @@ Functions that return other functions are *function factories*, where the argume
 
 ## [2.7 The Global Object](https://launchschool.com/lessons/1eaf5e37/assignments/a83079aa)
 
-The **implicit execution context** in JavaScript is the global object. The global object is `global` in Node.js and `window` in the browser. For the notion of *execution context* more generally, see Lesson 2.8 below.
+The **implicit execution context for function invocations** in JavaScript is the global object. The global object is `global` in Node.js and `window` in the browser. For the notion of *execution context* more generally, see Lesson 2.8 below.
 
 The `global` object is available everywhere throughout a program. JavaScript's built-in values (such as `undefined`), functions (such as `parseFloat`), and ==types== (such as `String`) are properties of `global` (i.e., `global.undefined`, `global.parseFloat`, and `global.String`).
 
@@ -245,7 +245,7 @@ There are two ways that (execution) context is determined or set:
 
 ### Function Execution Context (Implicit)
 
-The implicit execution context for regular function execution is the `global` object. This means that for regular function invocations `this` refers to the global object when it appears within the function body.
+The implicit execution context for regular function execution is the global object (`global` in Node.js or `window` in the browser). This means that for regular function invocations `this` refers to the global object when it appears within the function body.
 
 #### Strict Mode and Implicit Context
 
