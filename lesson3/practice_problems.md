@@ -17,3 +17,9 @@
 5. ...
 
 ---
+
+## [3.6 Practice Problems: Object Orientation](https://launchschool.com/lessons/e3c64e3f/assignments/c8712db5)
+
+1. A `product` data type could be created with the properties `id`, `name`, `stock`, and `price`. If another drill is added, you could use a different name. You could also create a `type` property that has the value `drill`.
+
+---

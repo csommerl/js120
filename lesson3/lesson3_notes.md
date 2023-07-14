@@ -38,6 +38,26 @@ There are *2 disadvantages* of the Factory Object Creation Pattern:
 
 ## [3.5 Object Orientation](https://launchschool.com/lessons/e3c64e3f/assignments/51ddce40)
 
+OOP makes some questions easier to answer, e.g.,
+
+1. What are the most fundamental concepts/entities in a program?
+2. How do you create an entity?
+3. What characterizes each entity, and what can they do?
+4. Where do new features get added?
+
+Advantages of OOP:
+
+1. Organize related code (data & operations) into logical bundles.
+2. Enables creating multiple instances of the same type.
+
+---
+
+## [3.6 Practice Problems: Object Orientation](https://launchschool.com/lessons/e3c64e3f/assignments/c8712db5)
+
+---
+
+## [3.7 Constructors](https://launchschool.com/lessons/e3c64e3f/assignments/5ca112a7)
+
 ...
 
 ---
