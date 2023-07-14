@@ -85,13 +85,15 @@ What JavaScript does when invoking a function as a constructor:
 
 ### Who Can be a Constructor
 
-All functions except those defined with arrow-function syntax can be constructor functions. Arrow functions are ineligible because they lack a `prototype` property.
+There are 3 kinds of functions cannot be constructors:
 
-...
+1. arrow functions, because they lack a `prototype` property,
+2. concise methods (defined with concise syntax without the `function` keyword), and,
+3. many built-in objects and methods.
 
 ### Constructors With Explicit Return Values
 
-...
+When functions are used as constructors, explicit return values that are primitive values are ignored, whereas those that are objects (including arrays) are returned instead of the constructed object.
 
 ### Supplying Constructor Arguments with Plain Objects
 

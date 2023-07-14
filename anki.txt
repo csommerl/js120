@@ -132,4 +132,8 @@ constructor function; a (non-arrow function) function called after the use of th
 
 What JavaScript does when invoking a function as a constructor; 1. A new object is created. 2. The new object's prototype is set to the object referenced by the constructor's `prototype` property. 3. The execution context (the value of `this`) within the function is set to the new object. 4. The function is invoked (and thereby any properties and methods are added to the new object). 5. The new object is returned, unless the function explicitly returns a different object (and any other explicit return values are ignored).; js120
 
+There are 3 kinds of functions cannot be constructors; 1. arrow functions, because they lack a `prototype` property, 2. concise methods (defined with concise syntax without the `function` keyword), and, 3. many built-in objects and methods.; js120
+
 why arrow functions can't be constructors; they are ineligible because they lack a `prototype` property; js120
+
+how explicit return values of constructor functions are handled; explicit return values that are primitive values are ignored, whereas those that are objects (including arrays) are returned instead of the constructed object; js120
