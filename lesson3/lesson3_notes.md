@@ -97,17 +97,37 @@ When functions are used as constructors, explicit return values that are primiti
 
 ### Supplying Constructor Arguments with Plain Objects
 
-...
+When a constructor function has many parameters, a good practice is to pass the function instead an `args` object whose property names match that of the object to be constructed. The properties can be either individually assigned to the new object or added en masse with `Object.assign`. One downside of the latter is that any superfluous properties within `args` will get added to the constructed object.
 
 ### Determining an Object's Type
 
-...
+Object types in JavaScript are looser and more dynamic than those in other OOP languages. Objects created solely with object-literal syntax will simply have the type `Object`.
+
+An object created using a constructor function is an **instance** of the constructor function.
+
+The `instanceof` operator returns a boolean for whether an object (the first operand) was created by a constructor (the second operand), or, more precisely, has in its prototype chain the `prototype` property of the constructor.
 
 ### `new` and Implicit Execution Context
 
-...
+The implicit execution context for functions used as constructors is the new object created by that constructor.
 
 ### Problems
+
+---
+
+## [3.8 Constructors with Prototypes](https://launchschool.com/lessons/e3c64e3f/assignments/bdc27fe0)
+
+...
+
+### Method Delegation to Prototypes
+
+...
+
+### The Constructor `prototype` property
+
+...
+
+### Overriding the Prototype
 
 ...
 
@@ -116,5 +136,7 @@ When functions are used as constructors, explicit return values that are primiti
 ## TODO
 
 - [ ] Summarize / enumerate object creation patterns.
+- [ ] Watch [video from 39:00 to 1:25](https://www.youtube.com/watch?v=-N9tBvlO9Bo&feature=youtu.be)
+- Read [article](https://medium.com/@patel.aneeesh/a-shallow-dive-into-the-constructor-property-in-javascript-b0a89747058b)
 
 ...

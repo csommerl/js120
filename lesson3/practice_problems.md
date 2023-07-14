@@ -23,3 +23,13 @@
 1. A `product` data type could be created with the properties `id`, `name`, `stock`, and `price`. If another drill is added, you could use a different name. You could also create a `type` property that has the value `drill`.
 
 ---
+
+## [3.7 Constructors](https://launchschool.com/lessons/e3c64e3f/assignments/5ca112a7)
+
+1. Constructor functions conventionally have capitalized names.
+
+2. When this code is run, a `TypeError` is thrown. This is because line 7 does not execute `Lizard` as a constructor function, since the `new` keyword is not used. Thus, in line 7, the global variable `lizzy` is assigned to `undefined`, the return value of the `Lizard` (had implicitly because it lacks a `return` statement and because it's not executed as a constructor). Since `undefined` is not of the object type, methods cannot be called by it. So, the exception is raised.
+
+3. ...
+
+---
