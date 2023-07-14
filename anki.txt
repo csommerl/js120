@@ -123,3 +123,5 @@ why not use an arrow function to define a method; the lexical context is that in
 Difference between iterable and enumerable; the former term refers to values that can be iterated over, whereas the latter term refers to object properties that are included in standard iterative procedures over their objects; js120
 
 Can an object in JavaScript not have an object prototype?; yes, an object can have its [[Prototype]] property set to null, but it an object prototype must itself be an object; js120
+
+2 disadvantages of the factory object creation pattern; 1. Each object created has its own copy of all methods, straining memory, and, 2. Objects have no mark of the type of object they are; js120

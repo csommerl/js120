@@ -61,3 +61,9 @@ Advantages of OOP:
 ...
 
 ---
+
+## TODO
+
+- [ ] Summarize / enumerate object creation patterns.
+
+...

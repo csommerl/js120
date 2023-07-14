@@ -44,6 +44,8 @@ Solutions:
 - Option 3: A third option that is unclear whether it works: use `Object.assign` to add `choices` as a state of the player objects after they are created.
 - Option 4: Perhaps `validMoves` doesn't need to be passed, but instead it can just be accessed from the global constant?
 - Option 5: Pass `rules` / `validMoves` / `choices` to `choose` method.
+- Option 6: Create the value prior to creating the object, and then add the value to the object.
+  - Problem: this will only work within an object factory, not an object literal like `RPSGame`.
 
 ### How to avoid global constants?
 

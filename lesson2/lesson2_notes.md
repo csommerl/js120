@@ -422,7 +422,7 @@ The 3 problems and their solutions:
 
 Synthesis of the problems: context loss occurs
   - either when a function/method is passed as an argument to a function (problems 1 & 3)
-  - or when ...
+  - or when a function is nested within another function.
 
 Synthesis of the solutions: there are 5 ways of dealing with context loss:
 
@@ -454,7 +454,7 @@ An object whose `[[Prototype]]` property is set to `null` does not have an objec
 
 ## [2.18 Lesson 2 Quiz 2](https://launchschool.com/lessons/1eaf5e37/assignments/69e660e6)
 
-...
+`global` is a property of the global object.
 
 ---
 
