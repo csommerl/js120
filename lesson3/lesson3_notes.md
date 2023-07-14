@@ -117,11 +117,18 @@ The implicit execution context for functions used as constructors is the new obj
 
 ## [3.8 Constructors with Prototypes](https://launchschool.com/lessons/e3c64e3f/assignments/bdc27fe0)
 
-...
+The *main disadvantage of object* factories is that, for every object created with them, they create a new copy of each method for each object. This is a strain on memory. Constructors do not have this problem.
 
 ### Method Delegation to Prototypes
 
+Constructors avoid creating copies of methods by *delegation*: their execution by an instance is delegated to the constructor.
+
 ...
+
+they are contained within the **function prototype** / the **constructor's prototype object**. Each object delegates the execution of methods of the object type to its **object prototype**, since JavaScript searches for the method name within the prototype chain.
+
+...
+
 
 ### The Constructor `prototype` property
 

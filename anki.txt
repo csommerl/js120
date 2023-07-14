@@ -140,6 +140,18 @@ how explicit return values of constructor functions are handled; explicit return
 
 How to handle constructor functions with many parameters; a good practice is to pass the function instead an `args` object whose property names match that of the object to be constructed; js120
 
+An object created using a constructor function; an instance of the constructor function; js120
+
 instanceof operator; returns a boolean for whether an object (the first operand) was created by a constructor (the second operand), or, more precisely, has in its prototype chain the `prototype` property of the constructor.; js120
 
 implicit execution context for functions used as constructors; the new object created is the execution context; js120
+
+function prototype; the object that the constructor uses as the object prototype for the objects it creates; js120
+
+where the function prototype is stored; a constructor's `prototype` property; js120
+
+constructor's prototype object; another name for the function prototype, i.e., the object that the constructor uses as the object prototype for the objects it creates; js120
+
+(object) prototype; the object from which another object inherits properties & methods; js120
+
+
