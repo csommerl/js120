@@ -62,21 +62,30 @@ Advantages of OOP:
 
 An **object constructor** is a way to create objects in JavaScript that ...
 
-A **constructor function** is ...
-
-To create an object using a constructor function, you use the `new` keyword followed by an invocation of the constructor function.
-
-Differences of a constructor function from a factory function:
-
-1. 
-
-...
+JavaScript treats a function as a **constructor function** when the function is called following the use of the `new` keyword and is not defined with an arrow function. If the `new` keyword is not used, the function is treated as an ordinary object.
 
 ### Calling a Constructor Function
 
-...
+Differences of a constructor function from an ordinary function:
+
+1. they are conventionally named with a capital letter,
+2. they are called with the `new` keyword,
+3. they create a new object with a prototype of the constructor's `prototype` property,
+4. `this` references the new object (to set properties and methods),
+5. the new object is returned whether or not there is an explicit return value, and,
+6. they don't usually have an explicit return value. 
+
+What JavaScript does when invoking a function as a constructor:
+
+1. A new object is created.
+2. The new object's prototype is set to the object referenced by the constructor's `prototype` property.
+3. The execution context (the value of `this`) within the function is set to the new object.
+4. The function is invoked (and thereby any properties and methods are added to the new object).
+5. The new object is returned, unless the function explicitly returns a different object (and any other explicit return values are ignored).
 
 ### Who Can be a Constructor
+
+All functions except those defined with arrow-function syntax can be constructor functions. Arrow functions are ineligible because they lack a `prototype` property.
 
 ...
 

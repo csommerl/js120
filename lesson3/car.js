@@ -14,6 +14,6 @@ function Car(make, model, year) {
 }
 
 let corolla = new Car('Toyota', 'Corolla', 2016);
-let leaf = new Car('Nissan', 'LEAF', 2018);
-let nova = new Car('Chevrolet', 'Nova', 1974);
 
+console.log(Object.getPrototypeOf(corolla));
+console.log(Car.prototype);
