@@ -125,3 +125,5 @@ Difference between iterable and enumerable; the former term refers to values tha
 Can an object in JavaScript not have an object prototype?; yes, an object can have its [[Prototype]] property set to null, but it an object prototype must itself be an object; js120
 
 2 disadvantages of the factory object creation pattern; 1. Each object created has its own copy of all methods, straining memory, and, 2. Objects have no mark of the type of object they are; js120
+
+new operator; creates an instance of an object type that has a constructor function; js120

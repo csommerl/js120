@@ -1,13 +1,21 @@
-let obj = {
-  a: 'hello',
-  b: 'world',
-  foo: function() {
-    function bar() {
-      console.log(this.a + ' ' + this.b);
-    }
+function repeatThreeTimes(func) {
+  func();
+  func();
+  func();
+}
 
-    bar();
+let john = {
+  firstName: 'John',
+  lastName: 'Doe',
+  greetings: function() {
+    repeatThreeTimes(function() {
+      console.log('hello, ' + this.firstName + ' ' + this.lastName);
+    });
   },
 };
 
-obj.foo();        // => undefined undefined, because this refers to the global object
+john.greetings();
+
+// => hello, undefined undefined
+// => hello, undefined undefined
+// => hello, undefined undefined

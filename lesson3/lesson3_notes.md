@@ -58,6 +58,46 @@ Advantages of OOP:
 
 ## [3.7 Constructors](https://launchschool.com/lessons/e3c64e3f/assignments/5ca112a7)
 
+### Introduction
+
+An **object constructor** is a way to create objects in JavaScript that ...
+
+A **constructor function** is ...
+
+To create an object using a constructor function, you use the `new` keyword followed by an invocation of the constructor function.
+
+Differences of a constructor function from a factory function:
+
+1. 
+
+...
+
+### Calling a Constructor Function
+
+...
+
+### Who Can be a Constructor
+
+...
+
+### Constructors With Explicit Return Values
+
+...
+
+### Supplying Constructor Arguments with Plain Objects
+
+...
+
+### Determining an Object's Type
+
+...
+
+### `new` and Implicit Execution Context
+
+...
+
+### Problems
+
 ...
 
 ---
