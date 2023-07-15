@@ -130,7 +130,7 @@ new operator; creates an instance of an object type that has a constructor funct
 
 constructor function; a (non-arrow function) function called after the use of the new keyword; js120
 
-What JavaScript does when invoking a function as a constructor; 1. A new object is created. 2. The new object's prototype is set to the object referenced by the constructor's `prototype` property. 3. The execution context (the value of `this`) within the function is set to the new object. 4. The function is invoked (and thereby any properties and methods are added to the new object). 5. The new object is returned, unless the function explicitly returns a different object (and any other explicit return values are ignored).; js120
+What JavaScript does when invoking a function as a constructor; 1. A new object is created. 2. The new object's prototype is set to the function prototype. 3. The execution context (the value of `this`) within the function is set to the new object. 4. The function is invoked (and thereby any properties and methods are added to the new object). 5. The new object is returned, unless the function explicitly returns a different object (and any other explicit return values are ignored).; js120
 
 There are 3 kinds of functions cannot be constructors; 1. arrow functions, because they lack a `prototype` property, 2. concise methods (defined with concise syntax without the `function` keyword), and, 3. many built-in objects and methods.; js120
 
@@ -154,7 +154,9 @@ constructor's prototype object; another name for the function prototype, i.e., t
 
 (object) prototype; the object from which another object inherits properties & methods; js120
 
+Object.prototype.constructor; object instance property that returns a reference to the constructor function that created the instance object; js120
 
+syntax for adding a method to a function prototype; Constructor.prototype.methodName = function() {...}; js120
 
+Do constructors inherit from the function prototype?; no, only a constructor's instances do; js120
 
-Object.prototype.constructor; 
