@@ -123,16 +123,20 @@ The *main disadvantage of object* factories is that, for every object created wi
 
 Creating copies of methods can be avoided by using prototypes: when an instance calls a method within its prototype object, the execution of that method is delegated to that prototype object.
 
-...
+Constructors can use this feature of prototypes. Namely, they can do so by having a prototype object from which objects created by the constructor inherit properties and methods.
 
-they are contained within the **function prototype** / the **constructor's prototype object**. Each object delegates the execution of methods of the object type to its **object prototype**, since JavaScript searches for the method name within the prototype chain.
+Here, this is illustrated in 2 ways (before seeing JavaScript's built-in implementation):
 
-...
-
+1. The (archetypal) prototype object is created prior to the constructor function, and the body of the latter sets the constructed object's prototype to the (archetypal) prototype object.
+  - Disadvantage: relationship between the constructor and the prototype is loose: they are separate entities.
+2. The constructor function sets the constructed object's prototype to a property of the constructor function, and then (after the function body terminates) the constructor function has that property assigned to the (archetypal) prototype object.
+  - Advantage: constructor & prototype are no longer separate entities.
 
 ### The Constructor `prototype` property
 
 ...
+
+they are contained within the **function prototype** / the **constructor's prototype object**. Each object delegates the execution of methods of the object type to its **object prototype**, since JavaScript searches for the method name within the prototype chain.
 
 ### Overriding the Prototype
 
