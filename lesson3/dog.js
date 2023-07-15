@@ -14,9 +14,20 @@ Dog.prototype.bark = function() {
 console.log(Dog.prototype); // { bark: [Function (anonymous)] }
 
 let maxi = new Dog('Maxi', 'German Shepherd', 32);
-let dexter = new Dog('Dexter', 'Rottweiler', 50);
-let biggie = new Dog('Biggie', 'Whippet', 9);
 
 // maxi.bark(); // 'Woof!'
 
+console.log(maxi instanceof Dog); // true
+console.log(maxi.constructor === Dog); // true
+console.log(Dog.prototype.isPrototypeOf(maxi)); // true
+
+console.log(Dog.prototype instanceof Dog); // false
 console.log(Dog.prototype.constructor === Dog); // true
+
+let dexter = new Dog('Dexter', 'Rottweiler', 50);
+
+dexter.bark = function() {
+  console.log('WOOF!');
+};
+
+dexter.bark();
