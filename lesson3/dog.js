@@ -42,3 +42,8 @@ Dog.describe = function(dog) {
 };
 
 Dog.describe(maxi);
+
+// Create instance property
+Dog.prototype.myProp = 5;
+
+console.log(maxi.myProp);

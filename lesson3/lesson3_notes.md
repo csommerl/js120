@@ -78,7 +78,7 @@ Differences of a constructor function from an ordinary function:
 What JavaScript does when invoking a function as a constructor:
 
 1. A new object is created.
-2. The new object's prototype is set to the object referenced by the constructor's `prototype` property.
+2. The new object's prototype is set to the function prototype (the object referenced by the constructor's `prototype` property).
 3. The execution context (the value of `this`) within the function is set to the new object.
 4. The function is invoked (and thereby any properties and methods are added to the new object).
 5. The new object is returned, unless the function explicitly returns a different object (and any other explicit return values are ignored).
@@ -134,9 +134,21 @@ Here, this is illustrated in 2 ways (before seeing JavaScript's built-in impleme
 
 ### The Constructor `prototype` property
 
-...
+Constructors in JavaScript have a built-in `prototype` property whose value is the **function prototype** or the **constructor's prototype object**. This is the object that the constructor uses as the object prototype for the objects it creates.
 
-they are contained within the **function prototype** / the **constructor's prototype object**. Each object delegates the execution of methods of the object type to its **object prototype**, since JavaScript searches for the method name within the prototype chain.
+The concept of function prototype is to be contrasted with that of the **(object) prototype**, which is the object from which another object inherits properties & methods. This latter concept refers to the objects within an object's prototype chain. Moreover, an object can have an (object) prototype without that prototype being a function prototype.
+
+Objects that are instances of constructors have the constructor's prototype object as their (object) prototype. This enables *method execution delegation*. That is, instances delegate the execution of (object type) methods to that prototype, since JavaScript searches for the method name within the prototype chain. Alternatively put, objects created by constructors *inherit* from the function prototype.
+
+The syntax for adding a method to a function prototype is `Constructor.prototype.methodName = function() {...}`.
+
+A constructor does not inherit from the function prototype, rather only a constructor's instances do.
+
+Arrow functions do not have function prototypes (i.e., they do not have a `prototype` property), and so they cannot be used as constructors.
+
+Reminder: the execution context of methods in the function prototype is determined by the object that calls the method. Thus, the value of `this` in the method's definition is not always bound to the function prototype. When an instance calls the method, `this` references the instance.
+
+To determine the type of an object created by a constructor use the `constructor` property: the object instance property `Object.prototype.constructor` returns a reference to the constructor function that created the instance object. The `constructor` property can be reassigned, with no effect upon the `instanceof` operator.
 
 ### Overriding the Prototype
 
