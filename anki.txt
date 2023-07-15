@@ -155,3 +155,6 @@ constructor's prototype object; another name for the function prototype, i.e., t
 (object) prototype; the object from which another object inherits properties & methods; js120
 
 
+
+
+Object.prototype.constructor; 
