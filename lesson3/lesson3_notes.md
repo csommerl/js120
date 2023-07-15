@@ -121,7 +121,7 @@ The *main disadvantage of object* factories is that, for every object created wi
 
 ### Method Delegation to Prototypes
 
-Constructors avoid creating copies of methods by *delegation*: their execution by an instance is delegated to the constructor.
+Creating copies of methods can be avoided by using prototypes: when an instance calls a method within its prototype object, the execution of that method is delegated to that prototype object.
 
 ...
 
@@ -144,6 +144,11 @@ they are contained within the **function prototype** / the **constructor's proto
 
 - [ ] Summarize / enumerate object creation patterns.
 - [ ] Watch [video from 39:00 to 1:25](https://www.youtube.com/watch?v=-N9tBvlO9Bo&feature=youtu.be)
-- Read [article](https://medium.com/@patel.aneeesh/a-shallow-dive-into-the-constructor-property-in-javascript-b0a89747058b)
+- [ ] Read [article](https://medium.com/@patel.aneeesh/a-shallow-dive-into-the-constructor-property-in-javascript-b0a89747058b)
+- [ ] Enumerate Object Factory Sub-patterns
+  1. return object with object-literal syntax
+  2. create empty object, use access notation, and return object
+  3. use `Object.create` to create bare bones prototype relations (see video for example)??
+- [ ] Create Scapple Diagram of constructor structure
 
 ...
