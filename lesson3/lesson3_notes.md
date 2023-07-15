@@ -152,6 +152,12 @@ To determine the type of an object created by a constructor use the `constructor
 
 ### Overriding the Prototype
 
+If a property or method is added to an instance and that property/method shares the same name as one in the function prototype, the instance's property/method overrides that of the function prototype. This means that two instances of the same constructor can have different behavior with respect to the same method names. This is made possible by how JavaScript accesses properties/methods (by beginning with the calling object and the searching up the prototype chain).
+
+---
+
+## [3.9 Practice Problems - Constructors and Prototypes](https://launchschool.com/lessons/e3c64e3f/assignments/ee0fee9d)
+
 ...
 
 ---
