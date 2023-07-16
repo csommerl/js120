@@ -160,3 +160,4 @@ syntax for adding a method to a function prototype; Constructor.prototype.method
 
 Do constructors inherit from the function prototype?; no, only a constructor's instances do; js120
 
+When a constructor is called without `new`, what do the assignments of properties to `this` do?; without strict mode, they become undeclared variables, since they are assigned as properties to the global object; js120

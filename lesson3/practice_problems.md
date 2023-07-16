@@ -36,6 +36,10 @@
 
 ## [3.9 Practice Problems - Constructors and Prototypes](https://launchschool.com/lessons/e3c64e3f/assignments/ee0fee9d)
 
-...
+1. This code will log `NaN` twice. `rect1` is created in line 17 as an instance of the `Rectangle` constructor defined on lines 10-15. As such, it receives its `area` and `perimeter` properties from lines 13 and 14 respectively. The values of these properties are the result of using the `RECTANGLE` object to call its `area` and `perimeter` methods. The key point here is that those methods are defined within `RECTANGLE` using `this`, whose value is determined by the implicit execution context: namely, the object that calls the methods. Since `RECTANGLE` was used to call the methods, the value of this is the `RECTANGLE` object. And since that object lacks `width` and `height` objects, `this.width` and `this.height` both evaluate to `undefined`. Since mathematical operations with `undefined` return `NaN`, that is the value of the `area` and `perimeter` properties of `rect1`.
+
+4. ...
+
+5. ...
 
 ---
