@@ -163,3 +163,8 @@ Do constructors inherit from the function prototype?; no, only a constructor's i
 When a constructor is called without `new`, what do the assignments of properties to `this` do?; without strict mode, they become undeclared variables, since they are assigned as properties to the global object; js120
 
 What happens when a function prototype is reassigned?; Any instances created prior to that reassignment will still have as their prototype the original function prototype object, whereas any instances created after that reassignment will have as their prototype the new function prototype; js120
+
+scope-safe constructor; a constructor that will return an instance of the constructor even if the `new` keyword is not used; js120
+
+How to create a scope-safe constructor?; use a guard clause that checks whether the execution context of the constructor's body is an instance of the constructor, and if it isn't then return the result of calling the constructor with the `new` keyword; js120
+

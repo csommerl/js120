@@ -165,7 +165,9 @@ When a function prototype is reassigned to a new object (i.e., when the construc
 
 This means that when an instance is created, its `[[Prototype]]` property is *set to reference directly* the object that is currently assigned to the constructor's `prototype` property. The `[[Prototype]]` property "directly references" the function prototype object insofar as accessing the instance's prototype does not indirectly access the prototype by accessing the constructor's `prototype` property (that property is accessed only once, namely when the instance is created).
 
-...
+A **scope-safe** constructor is one that will return an instance of the constructor even if the `new` keyword is not used.
+
+A scope-safe constructor is created by using a guard clause that checks whether the execution context of the constructor's body is an instance of the constructor, and if it isn't then it returns the result of calling the constructor with the `new` keyword.
 
 ---
 
