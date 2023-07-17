@@ -168,4 +168,18 @@ scope-safe constructor; a constructor that will return an instance of the constr
 
 How to create a scope-safe constructor?; use a guard clause that checks whether the execution context of the constructor's body is an instance of the constructor, and if it isn't then return the result of calling the constructor with the `new` keyword; js120
 
+instance; any object that is created by something that can create multiple objects of the same type, whether a constructor or a factory function; js120
+
+instance property; a property that belongs to (is stored directly in) a specific instance of some type; js120
+
+an object's instance methods; methods that are contained within an object's prototype chain; js120
+
+static property; a property that is defined & directly accessed on the constructor (not on an instance or the function prototype); js120
+
+syntax for adding a static property; ConstructorName.propName = val; js120
+
 syntax for creating a static method to a constructor; ConstructorName.methodName = function() {...}; js120
+
+syntax for creating a constructor; function Name(prop1, prop2) {this.prop1 = prop1; this.prop2 = prop2;} (no return statement necessary); js120
+
+syntax for creating a new instance from a constructor; new ConstructorName(prop1, prop2); js120

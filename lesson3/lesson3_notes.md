@@ -173,6 +173,42 @@ A scope-safe constructor is created by using a guard clause that checks whether 
 
 ## [3.10 Static and Instance Properties and Methods](https://launchschool.com/lessons/e3c64e3f/assignments/ad75ca54)
 
+### Instance Properties
+
+An **instance** is any object that is created by something that can create multiple objects of the same type, whether a constructor or a factory function.
+
+An **instance property** is a property that belongs to (is stored directly in) a specific instance of some type.
+
+### Instance Methods
+
+An object's **instance methods** are those that are contained within the object's prototype chain.
+
+### Static Properties
+
+A **static property** is a property that is defined & directly accessed on a constructor (not on an instance or the function prototype).
+
+The syntax for adding a static property is:
+
+```javascript
+ConstructorName.propName = val;
+```
+
+One useful static property is one whose value is an array that contains references to each of the instances created of the constructor.
+
+### Static Methods
+
+A **static method** is a method that is defined & directly accessed on a constructor (not on an instance or the function prototype).
+
+The syntax for adding a static method to a constructor
+
+```javascript
+ConstructorName.methodName = function() {...};
+```
+
+---
+
+## [3.11 Built-in Constructors](https://launchschool.com/lessons/e3c64e3f/assignments/14cdc112)
+
 ...
 
 ---

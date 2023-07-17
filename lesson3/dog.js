@@ -56,3 +56,5 @@ console.log(msg); // new keyword not used
 console.log(name);
 console.log(breed);
 console.log(weight);
+
+console.log(Dog.prototype.bark());
