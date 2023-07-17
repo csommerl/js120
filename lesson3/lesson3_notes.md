@@ -75,10 +75,10 @@ Differences of a constructor function from an ordinary function:
 5. the new object is returned whether or not there is an explicit return value, and,
 6. they don't usually have an explicit return value. 
 
-What JavaScript does when invoking a function as a constructor:
+JavaScript's steps for what happens when a function is invoked as a constructor:
 
 1. A new object is created.
-2. The new object's prototype is set to the function prototype (the object referenced by the constructor's `prototype` property).
+2. The new object's prototype is set to the function prototype object that is currently assigned to the constructor's `prototype` property (if that property is reassigned to a different object, the new object will still reference the original function prototype).
 3. The execution context (the value of `this`) within the function is set to the new object.
 4. The function is invoked (and thereby any properties and methods are added to the new object).
 5. The new object is returned, unless the function explicitly returns a different object (and any other explicit return values are ignored).
@@ -157,6 +157,13 @@ If a property or method is added to an instance and that property/method shares 
 ---
 
 ## [3.9 Practice Problems - Constructors and Prototypes](https://launchschool.com/lessons/e3c64e3f/assignments/ee0fee9d)
+
+When a function prototype is reassigned to a new object (i.e., when the constructor's `prototype` property is reassigned to a different object:
+
+- Any instances of that constructor created prior to the reassignment will still have as their prototype the original function prototype object.
+- Any instances created after that reassignment will have as their prototype the new function prototype.
+
+This means that when an instance is created, its `[[Prototype]]` property is *set to reference directly* the object that is currently assigned to the constructor's `prototype` property. The `[[Prototype]]` property "directly references" the function prototype object insofar as accessing the instance's prototype does not indirectly access the prototype by accessing the constructor's `prototype` property (that property is accessed only once, namely when the instance is created).
 
 ...
 

@@ -42,7 +42,8 @@
 
 Furthermore, `ninja` is able to delegate the execution of `swingSword` to the function prototype, even though that method is added to `Ninja`'s function prototype after `ninja` was created. That's because it is only in line 11 that the JavaScript engine attempts to access `swingSword` within `ninja` or its prototype chain, and by that point `swingSword` already is a method of the function prototype.
 
-5. This code will 
+5. This code will raise a `TypeError`. On line 13, when the `ninja` object calls the `swingSword` method, the JavaScript engine looks for that method within `ninja`'s prototype chain. But it doesn't find that method within the prototype chain. That's because when `ninja` was created as an instance of the `Ninja` constructor, it has its prototype set to `Ninja`'s current function prototype (the object assigned to `Ninja`'s `prototype`). But that function prototype object does not contain the `swingSword` method. That is the case despite lines 7-11. In those lines, `Ninja`'s `prototype` property is reassigned to a new object that does contain a `swingSword` method. That only reassigns the `prototype` property of `Ninja`, leaving the original object assigned to that property unaffected. But `ninja` still has that original object as its prototype. Thus, the JavaScript engine does not find the `swingSword` identifier within the keys of the objects in the prototype chain of `ninja`, and so the `TypeError` is raised.
+
 
 BAD ANSWER: This code will also output `true`. The only difference with the last code snippet consists in lines 7-11, where instead of adding the `swingSword` method to `Ninja`'s function prototype, that function prototype is assigned to a new object that contains the `swingSword` method. This does not change what happens when `ninja` delegates the execution of `swingSword` to the function prototype, since JavaScript still looks within the object referenced by the `prototype` property of `Ninja`.
 
