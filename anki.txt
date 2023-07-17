@@ -156,7 +156,7 @@ constructor's prototype object; another name for the function prototype, i.e., t
 
 Object.prototype.constructor; object instance property that returns a reference to the constructor function that created the instance object; js120
 
-syntax for adding a method to a function prototype; Constructor.prototype.methodName = function() {...}; js120
+syntax for adding a method to a function prototype; ConstructorName.prototype.methodName = function() {...}; js120
 
 Do constructors inherit from the function prototype?; no, only a constructor's instances do; js120
 
@@ -168,3 +168,4 @@ scope-safe constructor; a constructor that will return an instance of the constr
 
 How to create a scope-safe constructor?; use a guard clause that checks whether the execution context of the constructor's body is an instance of the constructor, and if it isn't then return the result of calling the constructor with the `new` keyword; js120
 
+syntax for creating a static method to a constructor; ConstructorName.methodName = function() {...}; js120

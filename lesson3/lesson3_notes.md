@@ -171,6 +171,12 @@ A scope-safe constructor is created by using a guard clause that checks whether 
 
 ---
 
+## [3.10 Static and Instance Properties and Methods](https://launchschool.com/lessons/e3c64e3f/assignments/ad75ca54)
+
+...
+
+---
+
 ## TODO
 
 - [ ] Summarize / enumerate object creation patterns.
