@@ -183,3 +183,5 @@ syntax for creating a static method to a constructor; ConstructorName.methodName
 syntax for creating a constructor; function Name(prop1, prop2) {this.prop1 = prop1; this.prop2 = prop2;} (no return statement necessary); js120
 
 syntax for creating a new instance from a constructor; new ConstructorName(prop1, prop2); js120
+
+How to get the name of an object's constructor?; obj.constructor.name (the constructor property references the constructor function, and the name property of that function returns the constructor's name); js120
