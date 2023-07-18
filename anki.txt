@@ -185,3 +185,13 @@ syntax for creating a constructor; function Name(prop1, prop2) {this.prop1 = pro
 syntax for creating a new instance from a constructor; new ConstructorName(prop1, prop2); js120
 
 How to get the name of an object's constructor?; obj.constructor.name (the constructor property references the constructor function, and the name property of that function returns the constructor's name); js120
+
+Object.prototype.constructor; a property of an object that returns a reference to the constructor function that created the instance object; js120
+
+Do instance objects have a prototype property?; no, they have [[Prototype]]/__proto__ and constructor properties; js120
+
+What receives a prototype property?; all functions besides arrow functions; js120
+
+Function.prototype.length; returns the number of parameters expected by the function; js120
+
+Function.prototype.name; returns the function's name or 'anonymous'/''; js120
