@@ -195,3 +195,7 @@ What receives a prototype property?; all functions besides arrow functions; js12
 Function.prototype.length; returns the number of parameters expected by the function; js120
 
 Function.prototype.name; returns the function's name or 'anonymous'/''; js120
+
+What is the constructor of a function prototype?; it is the constructor itself; js120
+
+What is the type of Function.prototype?; it is a function, not an object; js120
