@@ -60,9 +60,7 @@ Advantages of OOP:
 
 ### Introduction
 
-An **object constructor** is a way to create objects in JavaScript that ...
-
-JavaScript treats a function as a **constructor function** when the function is called following the use of the `new` keyword and is not defined with an arrow function. If the `new` keyword is not used, the function is treated as an ordinary object.
+JavaScript treats a function as a **constructor function**  or **object constructor** when the function is called following the use of the `new` keyword and is not defined with an arrow function. If the `new` keyword is not used, the function is treated as an ordinary object.
 
 ### Calling a Constructor Function
 
@@ -158,7 +156,7 @@ If a property or method is added to an instance and that property/method shares 
 
 ## [3.9 Practice Problems - Constructors and Prototypes](https://launchschool.com/lessons/e3c64e3f/assignments/ee0fee9d)
 
-When a function prototype is reassigned to a new object (i.e., when the constructor's `prototype` property is reassigned to a different object:
+When a function prototype is reassigned to a new object (i.e., when the constructor's `prototype` property is reassigned to a different object):
 
 - Any instances of that constructor created prior to the reassignment will still have as their prototype the original function prototype object.
 - Any instances created after that reassignment will have as their prototype the new function prototype.
@@ -209,7 +207,51 @@ ConstructorName.methodName = function() {...};
 
 ## [3.11 Built-in Constructors](https://launchschool.com/lessons/e3c64e3f/assignments/14cdc112)
 
+JavaScript's built-in constructors work by using the `new` keyword. Even though they often work without that keyword, it is best practice to *always use the `new` keyword*.
+
+### The `Array` constructor
+
+`new Array()` creates and returns a new array, which will be
+
+1. a sparse array (i.e., one with unset elements) whose length is the single non-negative integer passed as an argument to the constructor; or,
+2. an array containing as elements each of the arguments passed to the constructor.
+
+`Array.prototype` is the `Array` constructor's function prototype, from which all arrays inherit instance methods.
+
+#### Array Instance Methods
+
+`Array.prototype.fill` takes any value as an argument and replaces all of the calling array's elements with that value. It can be used with the `Array` constructor: `(new Array(lengthNum)).fill(val)`.
+
+#### Array Static Methods
+
+`Array.isArray` ...
+
+`Array.from`
+
+### The `Object` Constructor
+
+`Object.prototype`
+
+#### Object Instance Methods
+
+#### Object Static Methods
+
+### The `Date` Constructor
+
+`Date.prototype`
+
+#### Date Instance Methods
+
+`Date.prototype.toString`
+
+### The `String` Constructor
+
 ...
+
+### The `Number` and `Boolean` Constructors
+
+...
+
 
 ---
 
