@@ -186,8 +186,6 @@ syntax for creating a new instance from a constructor; new ConstructorName(prop1
 
 How to get the name of an object's constructor?; obj.constructor.name (the constructor property references the constructor function, and the name property of that function returns the constructor's name); js120
 
-Object.prototype.constructor; a property of an object that returns a reference to the constructor function that created the instance object; js120
-
 Do instance objects have a prototype property?; no, they have [[Prototype]]/__proto__ and constructor properties; js120
 
 What receives a prototype property?; all functions besides arrow functions; js120
@@ -225,3 +223,5 @@ What happens when the `new` keyword is not used to call a constructor defined by
 difference between class declarations & class expressions; There is no difference, unlike with function declarations & function expressions.; js120
 
 first-class citizen; a value that is treated like any other value insofar as they can be assigned to a variable, can be passed as an argument to a function, and can be returned by a function.; js120
+
+`constructor` method; a special method of a class for creating and initializing an object instance of that class; js120
