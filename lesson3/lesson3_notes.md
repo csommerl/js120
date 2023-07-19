@@ -224,9 +224,14 @@ JavaScript's built-in constructors work by using the `new` keyword. Even though 
 
 #### Array Static Methods
 
-`Array.isArray` ...
+`Array.isArray` takes one argument and returns a boolean representing whether the argument is an array object. Using the `typeof` operator does not work, since it will return `'object'` for an operand that is an array.
 
-`Array.from`
+An **array-like object** is any object that both: 
+
+1. has a `length` property and
+2. has some property keys that are non-negative integers.
+
+`Array.from` takes an array-like object and returns a new array whose length is the length property of the object and whose elements are those properties of the object whose keys are less than the length. It is useful for *node lists*.
 
 ### The `Object` Constructor
 

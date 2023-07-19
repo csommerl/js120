@@ -199,3 +199,7 @@ Function.prototype.name; returns the function's name or 'anonymous'/''; js120
 What is the constructor of a function prototype?; it is the constructor itself; js120
 
 What is the type of Function.prototype?; it is a function, not an object; js120
+
+An array-like object; any object that both has a `length` property and has some property keys that are non-negative integers; js120
+
+Array.from; takes an array-like object and returns a new array whose length is the length property of the object and whose elements are those properties of the object whose keys are less than the length; js120
