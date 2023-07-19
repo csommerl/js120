@@ -66,7 +66,7 @@ JavaScript treats a function as a **constructor function**  or **object construc
 
 Differences of a constructor function from an ordinary function:
 
-1. they are conventionally named with a capital letter,
+1. they are conventionally named using PascalCase,
 2. they are called with the `new` keyword,
 3. they create a new object with a prototype of the constructor's `prototype` property,
 4. `this` references the new object (to set properties and methods),
@@ -293,19 +293,91 @@ Array.prototype.methodName.call(str, callbackFunction);
 
 ## [3.12 ES6 Classes](https://launchschool.com/lessons/e3c64e3f/assignments/6bb902cd)
 
-...
+Lesson is contained in [Modern JavaScript: Classes](https://launchschool.com/gists/6ba85481)
+
+**Syntactic sugar** is syntax that is designed to be easier to read or use.
+
+### Class Declarations
+
+A **class declaration** has the following syntax:
+
+```javascript
+class ConstructorName {
+  constructor(prop1, prop2) {
+    this.prop1 = prop1;
+    this.prop2 = prop2;
+  }
+
+  static staticMethodName() {
+    ...
+  }
+
+  instanceMethodName() {
+    ...
+  }
+```
+
+Notes:
+
+- The class's name is not followed by parentheses.
+- The `constructor` method is used to create the properties of the instance, based on the arguments passed to it.
+- Methods are written using concise method syntax (or by using function expressions).
+- No commas or semi-colons are used between the properties of the class.
+- The `new` keyword must be used to call a constructor defined by `class`; otherwise, a `TypeError` is raised.
+
+### Class Expressions
+
+```javascript
+let ConstructorName = class {...};
+```
+
+### Classes as First-Class Citizens
+
+A **first-class citizen** is a value that is treated like any other value insofar as they:
+
+1. can be assigned to a variable,
+2. can be passed as an argument to a function, and
+3. can be returned by a function.
+
+JavaScript classes are first-class values/citizens.
+
+### Static Methods and Properties
+
+### A Few Caveats
 
 ---
 
+## [Ryan Schaul Object Creation Pattern](https://youtu.be/-N9tBvlO9Bo?t=2420)
+
+```javascript
+const protoObj = {
+  method1: function() {...},
+  method2: function() {...},
+};
+
+function createInstance(prop1, prop2) {
+  let newInstance = Object.create(protoObj);
+
+  newInstanc.prop1 = prop1;
+  newInstanc.prop2 = prop2;
+
+  return newInstance;
+}
+
+let instance = createInstance(prop1, prop2);
+```
+
 ## TODO
 
-- [ ] Summarize / enumerate object creation patterns.
-- [ ] Watch [video from 39:00 to 1:25](https://www.youtube.com/watch?v=-N9tBvlO9Bo&feature=youtu.be)
+- [ ] Summarize / enumerate object creation patterns, create separate markdown file
+  1. RPS style with `createPlayer` and then `createHuman`
+  2. Schaul
+  3. constructor pattern
+  4. class pattern
+- [ ] Watch [video from 1:02:00 to end](https://www.youtube.com/watch?v=-N9tBvlO9Bo&feature=youtu.be)
 - [ ] Read [article](https://medium.com/@patel.aneeesh/a-shallow-dive-into-the-constructor-property-in-javascript-b0a89747058b)
 - [ ] Enumerate Object Factory Sub-patterns
   1. return object with object-literal syntax
   2. create empty object, use access notation, and return object
   3. use `Object.create` to create bare bones prototype relations (see video for example)??
 - [ ] Create Scapple Diagram of constructor structure
-
-...

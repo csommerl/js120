@@ -212,4 +212,16 @@ Date.prototype.getDay; method that returns the day of the week for the calling `
 
 What happens when you use the `String` constructor without the `new` keyword; a new string is returned (following, if necessary, a conversion of a non-string argument to a string), not an object; js120
 
+What is the prototype of an instance of a constructor?; It is the prototype property of the constructor, not the constructor itself.; js120
 
+Syntactic sugar; syntax that is designed to be easier to read or use; js120
+
+class ConstructorName { constructor() {...} static StaticMethodName() {...} instanceMethodName() {...} }; syntax for class declaration; js120
+
+let ConstructorName = class {...}; syntax for class expression; js120
+
+What happens when the `new` keyword is not used to call a constructor defined by `class`; a TypeError is raised, unlike with the constructor pattern; js120
+
+difference between class declarations & class expressions; There is no difference, unlike with function declarations & function expressions.; js120
+
+first-class citizen; a value that is treated like any other value insofar as they can be assigned to a variable, can be passed as an argument to a function, and can be returned by a function.; js120
