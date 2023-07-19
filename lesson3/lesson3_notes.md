@@ -280,6 +280,19 @@ ConstructorName.prototype.propOrMethodName = ...
 
 ### Borrowing Array Methods for Strings
 
+Since functions in JavaScript are first-class, they enable **method borrowing**: a method of one object type can sometimes be used by objects of a different type. This can be done by using explicit context-binding techniques such as `call` and `apply`.
+
+For example, `String` objects can use *some* array methods because they are array-like (have a `length` property and index-based access to their characters). Two syntactical forms for doing so are:
+
+```javascript
+Array.prototype.methodName.call(str, callbackFunction);
+[].methodName.call(str, callbackFunction);
+```
+
+---
+
+## [3.12 ES6 Classes](https://launchschool.com/lessons/e3c64e3f/assignments/6bb902cd)
+
 ...
 
 ---
