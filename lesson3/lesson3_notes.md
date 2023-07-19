@@ -235,28 +235,52 @@ An **array-like object** is any object that both:
 
 ### The `Object` Constructor
 
-`Object.prototype`
+`Object.prototype` is the function prototype of the `Object` constructor, from which *nearly all* instances of objects (including arrays, other built-in objects, & custom-created objects) inherit instance methods. The only ones that don't have it in their prototype chain are those whose prototype chain ends with `null`.
 
 #### Object Instance Methods
+
+`Object.prototype.toString` returns a string representation of the calling object.
 
 #### Object Static Methods
 
 ### The `Date` Constructor
 
-`Date.prototype`
-
 #### Date Instance Methods
 
-`Date.prototype.toString`
+`Date.prototype.toString` is a method that returns a string representing the date, interpreted into the local timezone.
+
+`Date.prototype.getFullYear`
+
+`Date.prototype.getDay` is a method that returns the day of the week for the calling `Date` according to the local time, where `0` represents Sunday.
 
 ### The `String` Constructor
 
-...
+There are 2 kinds of strings in JavaScript:
+
+1. string primitives, created with string-literal syntax (quotation marks or backticks)
+2. `String` objects, created with the `String` constructor
+
+`String` objects are necessary in JavaScript because they provide string primitives with access to string instance methods and properties. When those methods are called or properties accessed, JavaScript wraps the string primitive in a `String` object, performs the operation, and then discards `String` object. `String` objects, however, should generally not be used by programmers.
+
+#### `String` without `new`
+
+When using the `String` constructor without the `new` keyword, a new string is returned (following, if necessary, a conversion of a non-string argument to a string), not an object.
 
 ### The `Number` and `Boolean` Constructors
 
-...
+The `Number` and `Boolean` constructors work like the `String` constructor insofar as they create new Number and Boolean objects if used with `new` or they return the argument converted to a new number/boolean if not used with `new`. They also should not be used to create new objects.
 
+### Extending Built-In Prototypes
+
+Although *it's best practice to avoid doing so*, JavaScript's built-in prototypes can be extended by adding to them new properties and methods. The syntax for doing so is:
+
+```javascript
+ConstructorName.prototype.propOrMethodName = ...
+```
+
+### Borrowing Array Methods for Strings
+
+...
 
 ---
 

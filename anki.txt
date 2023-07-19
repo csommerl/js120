@@ -203,3 +203,13 @@ What is the type of Function.prototype?; it is a function, not an object; js120
 An array-like object; any object that both has a `length` property and has some property keys that are non-negative integers; js120
 
 Array.from; takes an array-like object and returns a new array whose length is the length property of the object and whose elements are those properties of the object whose keys are less than the length; js120
+
+Date.prototype.toString; method that returns a string representing the date, interpreted into the local timezone; js120
+
+Date.prototype.getDay; method that returns the day of the week for the calling `Date` according to the local time, where `0` represents Sunday; js120
+
+2 kinds of strings in JavaScript; 1. string primitives, created with string-literal syntax (quotation marks or backticks), and 2. `String` objects, created with the `String` constructor; js120
+
+What happens when you use the `String` constructor without the `new` keyword; a new string is returned (following, if necessary, a conversion of a non-string argument to a string), not an object; js120
+
+
