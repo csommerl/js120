@@ -9,7 +9,7 @@ class Cat {
     console.log("Hello! I'm a cat!");
   }
 
-  greet() {
+  personalGreeting() {
     console.log(`Hello! My name is ${this.name}`);
   }
 
@@ -19,11 +19,6 @@ class Cat {
 }
 
 let kitty = new Cat('Sophie');
-kitty.greet();
-
-kitty.rename('Chloe');
-console.log(kitty.name);
 
 Cat.genericGreeting();
-
-
+kitty.personalGreeting();
