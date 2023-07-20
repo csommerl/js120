@@ -4,8 +4,14 @@ function Dog(name, breed, weight) {
   this.breed = breed;
   this.weight = weight;
 
+  this.constructor.count += 1;
+
   return 'new keyword not used';
 }
+
+// Static method counter
+Dog.count = 0;
+console.log(Dog.count);
 
 console.log(Dog.prototype); // {}
 console.log(Dog.prototype.constructor === Dog); // true
@@ -58,3 +64,8 @@ console.log(breed);
 console.log(weight);
 
 console.log(Dog.prototype.bark());
+
+console.log(Dog.count);
+
+let louie = new Dog('Louie', 'lab', 15);
+console.log(Dog.count);

@@ -225,3 +225,17 @@ difference between class declarations & class expressions; There is no differenc
 first-class citizen; a value that is treated like any other value insofar as they can be assigned to a variable, can be passed as an argument to a function, and can be returned by a function.; js120
 
 `constructor` method; a special method of a class for creating and initializing an object instance of that class; js120
+
+What is returned by typeof Constructor?; "function"; js120
+
+What are instance methods also called?; object methods; js120
+
+static keyword; this keyword defines a static property or method within class, as well as static initialization blocks; js120
+
+static initialization block; block containing statements to be evaluated during class initialization; js120
+
+implicit execution context within static initialization blocks; this refers to the class/constructor; js120
+
+When is a class initialized?; when the class is created (with a declaration or an expression); js120
+
+Without using the `static` keyword, what is the difference between full and concise method syntax within classes?; full syntax creates the method within every instance, whereas concise syntax creates it only within the function prototype; js120

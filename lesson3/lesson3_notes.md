@@ -321,9 +321,11 @@ Notes:
 
 - The class's name is not followed by parentheses.
 - The `constructor` method is used to create the properties of the instance, based on the arguments passed to it.
-- Methods are written using concise method syntax (or by using function expressions).
+- Instance methods are written using concise method syntax (or by using function expressions).
+  - When the `static` keyword is *not* used, there is a difference between using full and concise method syntax. Full method syntax creates the method within every instance, whereas concise method syntax creates it only within the function prototype.
 - No commas or semi-colons are used between the properties of the class.
 - The `new` keyword must be used to call a constructor defined by `class`; otherwise, a `TypeError` is raised.
+- Static methods are created using the `static` keyword.
 
 ### Class Expressions
 
@@ -341,9 +343,23 @@ A **first-class citizen** is a value that is treated like any other value insofa
 
 JavaScript classes are first-class values/citizens.
 
+The data type of classes is function.
+
 ### Static Methods and Properties
 
+Instance methods are also called **object methods**.
+
+Within classes, the `static` keyword defines:
+
+- static properties,
+- static methods, and
+- static initialization blocks.
+
+A **static initialization block** is a block containing statements to be evaluated during class initialization. A class is initialized only once, when it is created with a declaration or expression. So, a static initialization block is *executed only once*. The implicit execution context within static initialization blocks is the class, i.e., `this` within the block refers to the class constructor. Thus, code within these blocks can be used to create static properties and methods.
+
 ### A Few Caveats
+
+...
 
 ---
 
