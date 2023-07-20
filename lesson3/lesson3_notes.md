@@ -10,7 +10,7 @@ Even though there's a `class` keyword in JavaScript, it doesn't use class-based 
 
 Two Highlighted Patterns for Creating Objects:
 
-1. Classical approach
+1. classical approach
 2. `class` syntax
 
 ---
@@ -374,7 +374,7 @@ A **static initialization block** is a block containing statements to be evaluat
 
 ## [3.14 Summary](https://launchschool.com/lessons/e3c64e3f/assignments/d9d4b6a3)
 
-...
+The **pseudo-classical pattern of object creation** consists in using constructor functions to create object instances that inherit form the object referenced by the constructor's `prototype` property.
 
 ---
 
