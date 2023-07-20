@@ -48,3 +48,12 @@ Furthermore, `ninja` is able to delegate the execution of `swingSword` to the fu
 BAD ANSWER: This code will also output `true`. The only difference with the last code snippet consists in lines 7-11, where instead of adding the `swingSword` method to `Ninja`'s function prototype, that function prototype is assigned to a new object that contains the `swingSword` method. This does not change what happens when `ninja` delegates the execution of `swingSword` to the function prototype, since JavaScript still looks within the object referenced by the `prototype` property of `Ninja`.
 
 ---
+
+## [Practice Problems - Classes](https://launchschool.com/lessons/e3c64e3f/assignments/b29488f2)
+
+1. 
+
+2. 
+
+---
+

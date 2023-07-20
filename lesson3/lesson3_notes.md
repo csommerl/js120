@@ -368,6 +368,12 @@ A **static initialization block** is a block containing statements to be evaluat
 
 ---
 
+## [Practice Problems - Classes](https://launchschool.com/lessons/e3c64e3f/assignments/b29488f2)
+
+...
+
+---
+
 ## [Ryan Schaul Object Creation Pattern](https://youtu.be/-N9tBvlO9Bo?t=2420)
 
 ```javascript
