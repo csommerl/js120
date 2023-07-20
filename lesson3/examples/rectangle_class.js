@@ -1,3 +1,4 @@
+"use strict";
 class Rectangle {
   constructor(length, width) {
     this.length = length;
@@ -31,6 +32,9 @@ class Rectangle {
   }
 }
 
+Rectangle.prototype = {};
+
+/*
 let rect = new Rectangle(10, 5);
 
 console.log(typeof Rectangle);
@@ -54,3 +58,4 @@ console.log(Rectangle.prototype.hasOwnProperty('full')); // false
 console.log(Rectangle.prototype.hasOwnProperty('concise')); // true
 console.log(rect.hasOwnProperty('full')); // true
 console.log(rect.hasOwnProperty('concise')); // false
+*/

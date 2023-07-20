@@ -359,7 +359,12 @@ A **static initialization block** is a block containing statements to be evaluat
 
 ### A Few Caveats
 
-...
+1. Code in `class` bodies always executes in strict mode.
+2. Class declarations are not hoisted (but the *name* of the class is, just like with `let` and `const` declarations).
+3. If the `new` keyword is not used when calling a class constructor, a `TypeError` is raised.
+4. The `prototype` object of a class cannot be reassigned, since the `prototype` property is read only. The result will vary depending on the mode:
+   - In strict mode, attempting to reassign that property raises a `TypeError`.
+   - In sloppy mode, any attempt to reassign it fails.
 
 ---
 
