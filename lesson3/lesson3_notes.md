@@ -368,7 +368,11 @@ A **static initialization block** is a block containing statements to be evaluat
 
 ---
 
-## [Practice Problems - Classes](https://launchschool.com/lessons/e3c64e3f/assignments/b29488f2)
+## [3.13 Practice Problems - Classes](https://launchschool.com/lessons/e3c64e3f/assignments/b29488f2)
+
+---
+
+## [3.14 Summary](https://launchschool.com/lessons/e3c64e3f/assignments/d9d4b6a3)
 
 ...
 

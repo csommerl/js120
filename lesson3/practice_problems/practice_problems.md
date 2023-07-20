@@ -51,9 +51,9 @@ BAD ANSWER: This code will also output `true`. The only difference with the last
 
 ## [Practice Problems - Classes](https://launchschool.com/lessons/e3c64e3f/assignments/b29488f2)
 
-1. 
+1. Classes are first-class values insofar as they can be assigned to variables, passed as arguments to functions, and returned by functions.
 
-2. 
+2. The `static` keyword creates a static method. Thus, the `manufacturer` method is called like so: `Television.manufacturer()`.
 
 ---
 
