@@ -376,6 +376,10 @@ A **static initialization block** is a block containing statements to be evaluat
 
 The **pseudo-classical pattern of object creation** consists in using constructor functions to create object instances that inherit form the object referenced by the constructor's `prototype` property.
 
+## [3.15 Lesson 3 Quiz 1](https://launchschool.com/lessons/e3c64e3f/assignments/cb0a5ff7)
+
+...
+
 ---
 
 ## [Ryan Schaul Object Creation Pattern](https://youtu.be/-N9tBvlO9Bo?t=2420)
@@ -397,6 +401,8 @@ function createInstance(prop1, prop2) {
 
 let instance = createInstance(prop1, prop2);
 ```
+
+---
 
 ## TODO
 
