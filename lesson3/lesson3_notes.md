@@ -378,7 +378,7 @@ The **pseudo-classical pattern of object creation** consists in using constructo
 
 ## [3.15 Lesson 3 Quiz 1](https://launchschool.com/lessons/e3c64e3f/assignments/cb0a5ff7)
 
-...
+Technically, array-like objects only need a `length` property, since all objects can have properties accessed via indices.
 
 ---
 
@@ -406,15 +406,6 @@ let instance = createInstance(prop1, prop2);
 
 ## TODO
 
-- [ ] Summarize / enumerate object creation patterns, create separate markdown file
-  1. RPS style with `createPlayer` and then `createHuman`
-  2. Schaul
-  3. constructor pattern
-  4. class pattern
 - [ ] Watch [video from 1:02:00 to end](https://www.youtube.com/watch?v=-N9tBvlO9Bo&feature=youtu.be)
 - [ ] Read [article](https://medium.com/@patel.aneeesh/a-shallow-dive-into-the-constructor-property-in-javascript-b0a89747058b)
-- [ ] Enumerate Object Factory Sub-patterns
-  1. return object with object-literal syntax
-  2. create empty object, use access notation, and return object
-  3. use `Object.create` to create bare bones prototype relations (see video for example)??
 - [ ] Create Scapple Diagram of constructor structure

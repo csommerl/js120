@@ -3,8 +3,11 @@ function Cat(name, breed, weight) {
   this.breed = breed;
   this.weight = weight;
 
-  return [];
+  return 'catStr';
+  // return [];
 }
 
 let fluffy = new Cat('fluffy', 'Persian', 15);
 console.log(fluffy.weight); // 15
+
+console.log(Cat('fluffy', 'Persian', 15));
