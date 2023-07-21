@@ -239,3 +239,6 @@ implicit execution context within static initialization blocks; this refers to t
 When is a class initialized?; when the class is created (with a declaration or an expression); js120
 
 Without using the `static` keyword, what is the difference between full and concise method syntax within classes?; full syntax creates the method within every instance, whereas concise syntax creates it only within the function prototype; js120
+
+Objects Linking to Other Objects (OLOO) Pattern; a pattern for creating objects where properties common to all objects of the same type are extracted to a prototype object, from which objects of that type inherit those properties.; js120
+
