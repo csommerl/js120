@@ -6,3 +6,8 @@
 
 ---
 
+## [4.4 Subtyping with Constructors and Prototypes](https://launchschool.com/lessons/d5964d17/assignments/006358da)
+
+1.
+
+---

@@ -41,7 +41,45 @@ Objects created with factory functions have private state insofar as the body of
 
 ## [4.4 Subtyping with Constructors and Prototypes](https://launchschool.com/lessons/d5964d17/assignments/006358da)
 
-...
+Constructors and prototypes in JavaScript only resemble classes in other OOP languages. Likewise with the concept of inheritance.
+
+A class is a **sub-type** of another class when it inherits from the latter. A class is a **super-type** of another class when the latter inherits from it.
+
+A class inherits from another class insofar as the former's function prototype inherits from the latter's.
+
+### Restoring the `constructor` property
+
+A sub-type's `constructor` instance property is assigned to its super-type unless you reassign the sub-type's function prototype to have a `constructor` property set to the subtype (`Subtype.prototype.constructor = Subtype`).
+
+### Constructor Reuse
+
+A sub-type can reuse its super-type's body by using function instance methods such as `call`.
+
+### Prototypal Inheritance vs. Pseudo-Classic Inheritance
+
+There are two different kinds of inheritance:
+
+1. prototypal, and
+2. pseudo-classical.
+
+**Prototypal inheritance** or **prototypal delegation** or **object inheritance** occurs when each object's inheritance is set one at a time.
+
+**Prototypal delegation** occurs insofar as the JavaScript engine will look in an object's prototypal chain for a property until the property is found or the prototypal chain terminates.
+
+**Pseudo-classical object construction** or the **constructor/prototype pattern** mimics classes in other OOP languages insofar as instance objects inherit from a constructor function's prototype object.
+
+**Pseudo-classical inheritance** or **constructor inheritance** occurs when a constructor's prototype object inherits from another constructor's prototype object.
+
+### Steps for creating a sub-type
+
+1. Create the sub-type's constructor.
+2. Assign the sub-type's prototype object to an object that inherits from the super-type's prototype object (`Subtype.prototype = Object.create(Supertype.prototype)`).
+3. Assign the `constructor` property of the sub-type's prototype object to the sub-type constructor.
+4. Add methods to the sub-type's prototype object.
+
+Alternatively, the `class` keyword with the `extends` keyword can be used for pseudo-classical inheritance.
+
+### Practice Problem
 
 ---
 

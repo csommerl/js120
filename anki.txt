@@ -248,5 +248,14 @@ What is the advantage of OLOO over the factory function pattern?; memory efficie
 
 What is the advantage of the factory function pattern over OLOO?; it creates objects with private state; js120
 
+sub-type; a class that inherits from another class; js120
+
+super-type; a class from which another class inherits; js120
+
+How does a class inherit from another class?; the former's function prototype inherits from the latter's; js120
+
+sub-type's `constructor` instance property; assigned to its super-type unless you use reassign the sub-type's function prototype to have a `constructor` property set to the subtype (`Subtype.prototype.constructor = Subtype`).; js120
+
+How can a sub-type reuse its super-type's body; function instance methods such as `call` are used within the sub-type's body; js120
 
 
