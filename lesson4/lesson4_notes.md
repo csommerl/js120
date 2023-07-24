@@ -85,7 +85,7 @@ Alternatively, the `class` keyword with the `extends` keyword can be used for ps
 
 ## TODO
 
-- [ ] [Read article on Constructors](https://tobyho.com/2010/11/22/javascript-constructors-and/)
+- [x] [Read article on Constructors](https://tobyho.com/2010/11/22/javascript-constructors-and/)
 - [ ] [Read OLOO article](https://karistobias.medium.com/part-1-the-javascript-oloo-pattern-explained-with-pictures-34be175b7908)
 - [ ] [Read Karis on Pseudo-Classical](https://karistobias.medium.com/part-2-the-javascript-pseudo-classical-pattern-explained-with-pictures-70dfda6c6351)
 - [ ] [Read article on Mental Model](https://medium.com/launch-school/javascript-design-patterns-building-a-mental-model-68c2d4356538)
