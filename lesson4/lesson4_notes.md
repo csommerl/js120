@@ -21,13 +21,13 @@ This lesson's focus is on 4 things:
 
 The **Objects Linking to Other Objects (OLOO) Pattern** is a pattern for creating objects where properties common to all objects of the same type are extracted to a prototype object, from which objects of that type inherit those properties.
 
-The `init` method ...
+To avoid manually creating instance properties of objects created by OLOO, the prototype can be given an `init` method whose parameters are the instance's property values and whose body sets the instance's properties to those values (and returns the instance object).
 
 ### Advantage of OLOO over Factory Function
 
-...
+The *advantage* of OLOO over the factory function pattern is *memory efficiency* insofar as there is only one copy of instance methods within the prototype object, instead of each instance having its own copy.
 
-- [ ] See private state explanation in next lesson.
+The *advantage* of the factory function pattern over OLOO is that it creates objects with *private state*.
 
 ---
 
@@ -47,6 +47,7 @@ Objects created with factory functions have private state insofar as the body of
 
 ## TODO
 
+- [ ] Figure out what private state means.
 - [ ] [Read OLOO article](https://karistobias.medium.com/part-1-the-javascript-oloo-pattern-explained-with-pictures-34be175b7908)
 - [ ] Summarize / enumerate object creation patterns, create separate markdown file
   1. RPS style with `createPlayer` and then `createHuman`
