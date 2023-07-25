@@ -90,7 +90,7 @@ Alternatively, the `class` keyword with the `extends` keyword can be used for ps
   - classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
 - [ ] [Read Karis on Pseudo-Classical](https://karistobias.medium.com/part-2-the-javascript-pseudo-classical-pattern-explained-with-pictures-70dfda6c6351)
 - [ ] [Read article on Mental Model](https://medium.com/launch-school/javascript-design-patterns-building-a-mental-model-68c2d4356538)
-  - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`).
+  - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't.
 - [ ] Figure out what private state means.
 - [ ] Summarize / enumerate object creation patterns, create separate markdown file
   1. RPS style with `createPlayer` and then `createHuman`
