@@ -258,4 +258,8 @@ sub-type's `constructor` instance property; assigned to its super-type unless yo
 
 How can a sub-type reuse its super-type's body; function instance methods such as `call` are used within the sub-type's body; js120
 
+...
 
+class definition
+
+  - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't.
