@@ -53,7 +53,7 @@ A sub-type's `constructor` instance property is assigned to its super-type unles
 
 ### Constructor Reuse
 
-A sub-type can reuse its super-type's body by using function instance methods such as `call`.
+A sub-type constructor can reuse its super-type constructor's body by using function instance methods such as `call`.
 
 ### Prototypal Inheritance vs. Pseudo-Classic Inheritance
 
@@ -96,10 +96,10 @@ From [Complete the Program - Cats!](https://launchschool.com/exercises/94c9e258)
 ## TODO
 
 - [x] [Read article on Constructors](https://tobyho.com/2010/11/22/javascript-constructors-and/)
-- [ ] [Read OLOO article](https://karistobias.medium.com/part-1-the-javascript-oloo-pattern-explained-with-pictures-34be175b7908)
+- [x] [Read OLOO article](https://karistobias.medium.com/part-1-the-javascript-oloo-pattern-explained-with-pictures-34be175b7908)
   - classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
-- [ ] [Read Karis on Pseudo-Classical](https://karistobias.medium.com/part-2-the-javascript-pseudo-classical-pattern-explained-with-pictures-70dfda6c6351)
-- [ ] [Read article on Mental Model](https://medium.com/launch-school/javascript-design-patterns-building-a-mental-model-68c2d4356538)
+- [x] [Read Karis on Pseudo-Classical](https://karistobias.medium.com/part-2-the-javascript-pseudo-classical-pattern-explained-with-pictures-70dfda6c6351)
+- [x] [Read article on Mental Model](https://medium.com/launch-school/javascript-design-patterns-building-a-mental-model-68c2d4356538)
   - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't.
 - [ ] Figure out what private state means.
 - [ ] Summarize / enumerate object creation patterns, create separate markdown file

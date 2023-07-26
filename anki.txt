@@ -256,10 +256,12 @@ How does a class inherit from another class?; the former's function prototype in
 
 sub-type's `constructor` instance property; assigned to its super-type unless you use reassign the sub-type's function prototype to have a `constructor` property set to the subtype (`Subtype.prototype.constructor = Subtype`).; js120
 
-How can a sub-type reuse its super-type's body; function instance methods such as `call` are used within the sub-type's body; js120
+How can a sub-type constructor reuse its super-type constructor's body; function instance methods such as `call` are used within the sub-type constructor's body; js120
 
 ...
 
 class definition
 
+  - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't.
+  - classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
   - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't.
