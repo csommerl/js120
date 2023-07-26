@@ -240,6 +240,12 @@ When is a class initialized?; when the class is created (with a declaration or a
 
 Without using the `static` keyword, what is the difference between full and concise method syntax within classes?; full syntax creates the method within every instance, whereas concise syntax creates it only within the function prototype; js120
 
+In what mode are class bodies executed?; they are always executed in strict mode, regardless whether the programmer explicitly sets strict mode; js120
+
+How are class declarations (and expressions) hoisted?; Only their names are hoisted but not their values (unlike function declarations); js120
+
+What happens when attempting to reassign the `prototype` object of a class?; Here, the `prototype` property is read only, with the following behavior: 1. In strict mode, attempting to reassign that property raises a `TypeError`, and 2. In sloppy mode, any attempt to reassign it silently fails.; js120
+
 Objects Linking to Other Objects (OLOO) Pattern; a pattern for creating objects where properties common to all objects of the same type are extracted to a prototype object, from which objects of that type inherit those properties.; js120
 
 How to avoid manually creating instance properties of objects created by OLOO?; The prototype can be given an `init` method whose parameters are the instance's property values and whose body sets the instance's properties to those values (and returns the instance object).; js120

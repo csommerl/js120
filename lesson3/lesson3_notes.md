@@ -364,7 +364,7 @@ A **static initialization block** is a block containing statements to be evaluat
 3. If the `new` keyword is not used when calling a class constructor, a `TypeError` is raised.
 4. The `prototype` object of a class cannot be reassigned, since the `prototype` property is read only. The result will vary depending on the mode:
    - In strict mode, attempting to reassign that property raises a `TypeError`.
-   - In sloppy mode, any attempt to reassign it fails.
+   - In sloppy mode, any attempt to reassign it silently fails.
 
 ---
 
