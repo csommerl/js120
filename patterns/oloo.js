@@ -1,4 +1,4 @@
-let personPrototype = {
+const personPrototype = {
   fullName: function() {
     return `${this.firstName} ${this.lastName}`;
   },
@@ -28,6 +28,24 @@ function createPerson(firstName, lastName, age, gender) {
   return Object.create(personPrototype).init(firstName, lastName, age, gender);
 }
 
+const doctorPrototype = Object.create(personPrototype);
+
+doctorPrototype.diagnose = function() {
+  console.log('Diagnosing');
+}
+
+doctorPrototype.init = function(firstName, lastName, age, gender, specialization) {
+  personPrototype.init.call(this, firstName, lastName, age, gender);
+  this.specialization = specialization;
+  return this;
+}
+
+function createDoctor(firstName, lastName, age, gender, specialization) {
+  return Object
+    .create(doctorPrototype)
+    .init(firstName, lastName, age, gender, specialization);
+}
+
 let person = createPerson('foo', 'bar', 21, 'gender');
 // console.log(person instanceof Person);     // logs true
 console.log(personPrototype.isPrototypeOf(person)); // true
@@ -36,16 +54,19 @@ person.communicate();                      // logs 'Communicating'
 person.sleep();                            // logs 'Sleeping'
 console.log(person.fullName());            // logs 'foo bar'
 
-/*
-let doctor = new Doctor('foo', 'bar', 21, 'gender', 'Pediatrics');
-console.log(doctor instanceof Person);     // logs true
-console.log(doctor instanceof Doctor);     // logs true
+let doctor = createDoctor('foo', 'bar', 21, 'gender', 'Pediatrics');
+// console.log(doctor instanceof Person);     // logs true
+// console.log(doctor instanceof Doctor);     // logs true
+console.log(doctorPrototype.isPrototypeOf(doctor)); // true
+console.log(personPrototype.isPrototypeOf(doctor)); // true
+console.log(person.isPrototypeOf(doctor)); // true
 doctor.eat();                              // logs 'Eating'
 doctor.communicate();                      // logs 'Communicating'
 doctor.sleep();                            // logs 'Sleeping'
 console.log(doctor.fullName());            // logs 'foo bar'
 doctor.diagnose();                         // logs 'Diagnosing'
 
+/*
 let graduateStudent = new GraduateStudent('foo', 'bar', 21, 'gender', 'BS Industrial Engineering', 'MS Industrial Engineering');
 // logs true for next three statements
 console.log(graduateStudent instanceof Person);
