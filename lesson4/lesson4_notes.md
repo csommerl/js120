@@ -81,6 +81,16 @@ Alternatively, the `class` keyword with the `extends` keyword can be used for ps
 
 ### Practice Problem
 
+Add above lesson to Anki.
+
+---
+
+## [4.5 Subtyping with Classes](https://launchschool.com/lessons/d5964d17/assignments/7054ee88)
+
+...
+
+From [Complete the Program - Cats!](https://launchschool.com/exercises/94c9e258): if a sub-type does not add any new properties beyond the super-type, the sub-type's class statement need not include a `constructor` method. That's because the execution of the `constructor` function is delegated to the super-type.
+
 ---
 
 ## TODO
@@ -98,6 +108,7 @@ Alternatively, the `class` keyword with the `extends` keyword can be used for ps
   3. constructor pattern
   4. class pattern
   5. OLOO
+  - advantages and disadvantages of each
 - [ ] Enumerate Object Factory Sub-patterns
   1. return object with object-literal syntax
   2. create empty object, use access notation, and return object
