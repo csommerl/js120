@@ -23,3 +23,14 @@ Within the `hi` method, the value of `this` invokes the `greet` method with `'He
 4. `Goodbye!` is printed.
 
 5. A `TypeError` is raised, since `hi` is a property of `Hello`'s prototype object, not `Hello` itself.
+
+---
+
+## [4.6 Practice Problems: Subtyping with Classes](https://launchschool.com/lessons/d5964d17/assignments/16921628)
+
+1. 
+
+2. 
+
+---
+

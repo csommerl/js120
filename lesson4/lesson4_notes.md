@@ -129,19 +129,23 @@ When used within the `constructor` method, the `super` keyword refers to the con
 
 Its syntax is: `super(prop1, ...)`.
 
-It must be used prior to using `this` within the child's `constructor` method.
+A `ReferenceError` will be thrown by using `super` within the `constructor` method when it is not invoked prior to:
+
+1. accessing `this`,
+2. accessing properties using `super`, or
+3. returning from derived constructor.
 
 Overall, `super` has 3 uses:
 
-1. to invoke a superclass's constructor
-2. to access properties & methods on a class's `[[Prototype]]`
-3. to access properties & methods on an object literal
+1. to invoke a superclass's constructor method
+2. to access properties & methods on a class's `[[Prototype]]` (e.g., when defining instance methods of the subclass)
+3. to access properties & methods on an object literal's `[[Prototype]]`.
 
 ### Inheritance with Class Expressions
 
 ### Other
 
-From [Complete the Program - Cats!](https://launchschool.com/exercises/94c9e258): if a sub-type does not add any new properties beyond the super-type, the sub-type's class statement need not include a `constructor` method. That's because the execution of the `constructor` function is delegated to the super-type.
+If a sub-type does not add any new properties beyond the super-type, the sub-type's class statement need not include a `constructor` method. That's because the execution of the `constructor` function is delegated to the super-type. See [Complete the Program - Cats!](https://launchschool.com/exercises/94c9e258).
 
 ---
 

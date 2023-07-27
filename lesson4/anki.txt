@@ -52,4 +52,8 @@ extends; keyword used in class declarations & expressions to create a class that
 
 limitation of the `extends` keyword; the parent class must be callable with `new` and have a `prototype` property; js120
 
-how `super` must be used; it must be used to invoke the parent's constructor prior to anything else (instances of `this` or using `super` to access properties of the parent constructor); js120
+3 uses of `super`; 1. to invoke a superclass's constructor method, 2. to access properties & methods on a class's `[[Prototype]]`, and 3. to access properties & methods on an object literal's `[[Prototype]]`.; js120
+
+When `super` within the `constructor` method throws a `ReferenceError`; when it is not invoked prior to: 1. accessing `this`, 2. accessing properties using `super`, or 3. returning from derived constructor.; js120
+
+When can the `constructor` method be omitted within a sub-type class declaration/expression; when a sub-type does not add any new properties beyond the super-type, the execution of the `constructor` function is delegated to the super-type; js120
