@@ -1,0 +1,50 @@
+In what mode are class bodies executed?; they are always executed in strict mode, regardless whether the programmer explicitly sets strict mode; js120
+
+How are class declarations (and expressions) hoisted?; Only their names are hoisted but not their values (unlike function declarations); js120
+
+What happens when attempting to reassign the `prototype` object of a class?; Here, the `prototype` property is read only, with the following behavior: 1. In strict mode, attempting to reassign that property raises a `TypeError`, and 2. In sloppy mode, any attempt to reassign it silently fails.; js120
+
+Objects Linking to Other Objects (OLOO) Pattern; a pattern for creating objects where properties common to all objects of the same type are extracted to a prototype object, from which objects of that type inherit those properties.; js120
+
+How to avoid manually creating instance properties of objects created by OLOO?; The prototype can be given an `init` method whose parameters are the instance's property values and whose body sets the instance's properties to those values (and returns the instance object).; js120
+
+What is the advantage of OLOO over the factory function pattern?; memory efficiency insofar as there is only one copy of instance methods within the prototype object, instead of each instance having its own copy; js120
+
+What is the advantage of the factory function pattern over OLOO?; it creates objects with private state; js120
+
+sub-type; a class that inherits from another class; js120
+
+super-type; a class from which another class inherits; js120
+
+How does a class inherit from another class?; the former's function prototype inherits from the latter's; js120
+
+sub-type's `constructor` instance property; assigned to its super-type unless you use reassign the sub-type's function prototype to have a `constructor` property set to the subtype (`Subtype.prototype.constructor = Subtype`).; js120
+
+How can a sub-type constructor reuse its super-type constructor's body; function instance methods such as `call` are used within the sub-type constructor's body; js120
+
+different kinds of inheritance; prototypal, classical, and pseudo-classical; js120
+
+Prototypal inheritance; a model for inheritance where each object inherits from another object (the prototype object), which in turn inherits from another object, etc.; js120
+
+Other name for prototypal inheritance; object inheritance; js120
+
+Prototypal delegation; refers to how a prototypal chain is traversed once objects have been created with prototypal inheritance. Namely, the JavaScript engine will look in an object's prototypal chain for a property until the property is found or the prototypal chain terminates.; js120
+
+Difference between prototypal delegation and prototypal inheritance; the former refers to how the prototype chain is traversed, whereas the latter refers to how the prototype chain is created; js120
+
+Classical inheritance; occurs when object types inherit from other object types; js120
+
+Pseudo-classical inheritance; occurs when one constructor's prototype object inherits from another constructor's prototype object. This mimics classical inheritance insofar as objects of the former constructor are a sub-type that inherits from the super-type of objects created by the latter constructor.; js120
+
+Other name for pseudo-classical inheritance; constructor inheritance; js120
+
+Pseudo-classical object construction or the constructor/prototype pattern; refers to creating objects based on pseudo-classical inheritance.; js120
+
+6 steps for creating a sub-type with constructors; 1. Create the sub-type's constructor. 2. Within the constructor's body, assign properties shared with the super-type by using `Supertype.call(this, prop1, ...)`. 3. Within the constructor's body, add any additional properties specific to the sub-type by using `this`. 4. Assign the sub-type's prototype object to an object that inherits from the super-type's prototype object by using `Subtype.prototype = Object.create(Supertype.prototype)`. 5. Set the constructor property to the sub-type constructor by using `Subtype.prototype.constructor = Subtype`. 6. Add methods to the sub-type's prototype object.; js120
+
+With constructor inheritance, what is written within the sub-type constructor body to assign properties shared with the super-type?; Supertype.call(this, prop1, ...); js120
+
+With constructor inheritance, how to set a sub-type to inherit from a super-type?; Subtype.prototype = Object.create(Supertype.prototype); js120
+
+With constructor inheritance, how to set the `constructor` property of a sub-type's prototype to the sub-type constructor?; Subtype.prototype.constructor = Subtype; js120
+
