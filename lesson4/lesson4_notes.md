@@ -151,7 +151,7 @@ If a sub-type does not add any new properties beyond the super-type, the sub-typ
 
 ## [4.6 Practice Problems: Subtyping with Classes](https://launchschool.com/lessons/d5964d17/assignments/16921628)
 
-...
+**Method overriding** occurs when a subclass has a method with the same name as the superclass: what happens is that the subclass's method is accessed/invoked by subclass instances, rather than the superclass's method.
 
 ---
 

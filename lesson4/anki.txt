@@ -57,3 +57,6 @@ limitation of the `extends` keyword; the parent class must be callable with `new
 When `super` within the `constructor` method throws a `ReferenceError`; when it is not invoked prior to: 1. accessing `this`, 2. accessing properties using `super`, or 3. returning from derived constructor.; js120
 
 When can the `constructor` method be omitted within a sub-type class declaration/expression; when a sub-type does not add any new properties beyond the super-type, the execution of the `constructor` function is delegated to the super-type; js120
+
+Method overriding; occurs when a subclass has a method with the same name as the superclass: what happens is that the subclass's method is accessed/invoked by subclass instances, rather than the superclass's method; js120
+

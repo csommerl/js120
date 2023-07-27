@@ -28,7 +28,7 @@ Within the `hi` method, the value of `this` invokes the `greet` method with `'He
 
 ## [4.6 Practice Problems: Subtyping with Classes](https://launchschool.com/lessons/d5964d17/assignments/16921628)
 
-1. 
+1. If we add a `play` method to the `Bingo` class, what would happen if we invoke the `play` method of an instance of `Bingo` would be that the `play` method of `Bingo` would be invoked, not that of `Game`. That's because of how prototypal delegation in JavaScript works. Namely, when an instance's class has a method (more precisely, when the object in the class's `prototype` property has the method), that method will be executed and JavaScript won't look for the method higher up in the prototypal chain.
 
 2. 
 
