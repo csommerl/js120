@@ -97,9 +97,57 @@ JavaScript does have pseudo-classical inheritance.
 
 ## [4.5 Subtyping with Classes](https://launchschool.com/lessons/d5964d17/assignments/7054ee88)
 
-...
+See the [Gist](https://launchschool.com/gists/cdba6a8e).
+
+### Inheritance with Class Declarations
+
+The syntax for creating a sub-type with a class declarations is as follows:
+
+```javascript
+class Subtype extends Supertype {
+  constructor(prop1, ...) {
+    super(prop1, ...);
+  }
+
+  methodName() {
+    ...
+  }
+}
+```
+
+### `extends` keyword
+
+The `extends` keyword is used in class declarations & expressions to create a class that is a child of another class.
+
+Its syntax is: `class Child extends Parent`.
+
+The only limitation is that the parent class must be callable with `new` and have a `prototype` property.
+
+### `super` keyword
+
+When used within the `constructor` method, the `super` keyword refers to the constructor method within the parent class. It is used to add to the child's instance the same properties that parents' instances have.
+
+Its syntax is: `super(prop1, ...)`.
+
+It must be used prior to using `this` within the child's `constructor` method.
+
+Overall, `super` has 3 uses:
+
+1. to invoke a superclass's constructor
+2. to access properties & methods on a class's `[[Prototype]]`
+3. to access properties & methods on an object literal
+
+### Inheritance with Class Expressions
+
+### Other
 
 From [Complete the Program - Cats!](https://launchschool.com/exercises/94c9e258): if a sub-type does not add any new properties beyond the super-type, the sub-type's class statement need not include a `constructor` method. That's because the execution of the `constructor` function is delegated to the super-type.
+
+---
+
+## [4.6 Practice Problems: Subtyping with Classes](https://launchschool.com/lessons/d5964d17/assignments/16921628)
+
+...
 
 ---
 

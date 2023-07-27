@@ -48,3 +48,8 @@ With constructor inheritance, how to set a sub-type to inherit from a super-type
 
 With constructor inheritance, how to set the `constructor` property of a sub-type's prototype to the sub-type constructor?; Subtype.prototype.constructor = Subtype; js120
 
+extends; keyword used in class declarations & expressions to create a class that is a child of another class; js120
+
+limitation of the `extends` keyword; the parent class must be callable with `new` and have a `prototype` property; js120
+
+how `super` must be used; it must be used to invoke the parent's constructor prior to anything else (instances of `this` or using `super` to access properties of the parent constructor); js120
