@@ -52,11 +52,14 @@ Constructor/Prototype Pattern
 
 ### Sub-type Creation
 
-3 Steps:
+6 Steps:
 
-1. `SuperType.prototype.call(this, prop1, ...)` within the sub-type constructor's body: sub-type objects will get the same instance properties as those in the super-type.
-2. `SubType.prototype = Object.create(SuperType.prototype)` after the constructor: sub-type will inherit all the instance methods of the super-type.
-3. `SubType.prototype.constructor = SubType` after the constructor: sub-type instance property `constructor` will point to the sub-type, not the super-type.
+1. Create the sub-type's constructor.
+2. Within the constructor's body, assign properties shared with the super-type by using using `Supertype.call(this, prop1, ...)`.
+3. Within the constructor's body, add any additional properties specific to the sub-type by using `this`.
+4. Assign the sub-type's prototype object to an object that inherits from the super-type's prototype object by using `Subtype.prototype = Object.create(Supertype.prototype)`.
+5. Set the constructor property to the sub-type constructor by using `Subtype.prototype.constructor = Subtype`.
+6. Add methods to the sub-type's prototype object.
 
 ---
 

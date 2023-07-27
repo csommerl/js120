@@ -57,31 +57,41 @@ A sub-type constructor can reuse its super-type constructor's body by using func
 
 ### Prototypal Inheritance vs. Pseudo-Classic Inheritance
 
-There are two different kinds of inheritance:
+There are two different kinds of inheritance in JavaScript:
 
 1. prototypal, and
 2. pseudo-classical.
 
-**Prototypal inheritance** or **prototypal delegation** or **object inheritance** occurs when each object's inheritance is set one at a time.
+#### Prototypal Inheritance
 
-**Prototypal delegation** occurs insofar as the JavaScript engine will look in an object's prototypal chain for a property until the property is found or the prototypal chain terminates.
+**Prototypal inheritance** or **object inheritance** occurs when each object inherits from another object (the prototype object), which in turn inherits from another object, etc.
 
-**Pseudo-classical object construction** or the **constructor/prototype pattern** mimics classes in other OOP languages insofar as instance objects inherit from a constructor function's prototype object.
+**Prototypal delegation** refers to how a prototypal chain is traversed once objects have been created with prototypal inheritance. Namely, the JavaScript engine will look in an object's prototypal chain for a property until the property is found or the prototypal chain terminates.
 
-**Pseudo-classical inheritance** or **constructor inheritance** occurs when a constructor's prototype object inherits from another constructor's prototype object.
+#### Classical Inheritance
 
-### Steps for creating a sub-type
+**Classical inheritance** occurs when object *types* inherit from other object *types*.
+
+JavaScript does not strictly have classical inheritance, since all inheritance in JavaScript ultimately works through prototypal inheritance.
+
+JavaScript does have pseudo-classical inheritance. 
+
+#### Pseudo-Classical Inheritance
+
+**Pseudo-classical inheritance** or **constructor inheritance** occurs when one constructor's prototype object inherits from another constructor's prototype object. This mimics classical inheritance insofar as objects of the former constructor are a sub-type that inherits from the super-type of objects created by the latter constructor.
+
+**Pseudo-classical object construction** or the **constructor/prototype pattern** refers to creating objects based on pseudo-classical inheritance.
+
+### Steps for creating a sub-type with constructors
 
 1. Create the sub-type's constructor.
-2. Assign the sub-type's prototype object to an object that inherits from the super-type's prototype object (`Subtype.prototype = Object.create(Supertype.prototype)`).
-3. Assign the `constructor` property of the sub-type's prototype object to the sub-type constructor.
-4. Add methods to the sub-type's prototype object.
-
-Alternatively, the `class` keyword with the `extends` keyword can be used for pseudo-classical inheritance.
+2. Within the constructor's body, assign properties shared with the super-type by using `Supertype.call(this, prop1, ...)`.
+3. Within the constructor's body, add any additional properties specific to the sub-type by using `this`.
+4. Assign the sub-type's prototype object to an object that inherits from the super-type's prototype object by using `Subtype.prototype = Object.create(Supertype.prototype)`.
+5. Set the constructor property to the sub-type constructor by using `Subtype.prototype.constructor = Subtype`.
+6. Add methods to the sub-type's prototype object.
 
 ### Practice Problem
-
-Add above lesson to Anki.
 
 ---
 
@@ -95,12 +105,13 @@ From [Complete the Program - Cats!](https://launchschool.com/exercises/94c9e258)
 
 ## TODO
 
+- [ ] Add to Anki:
+  - [ ] classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
+  - [ ] difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't; alternatively, the former creates an instance of the super-type whereas the latter doesn't.
 - [x] [Read article on Constructors](https://tobyho.com/2010/11/22/javascript-constructors-and/)
 - [x] [Read OLOO article](https://karistobias.medium.com/part-1-the-javascript-oloo-pattern-explained-with-pictures-34be175b7908)
-  - classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
 - [x] [Read Karis on Pseudo-Classical](https://karistobias.medium.com/part-2-the-javascript-pseudo-classical-pattern-explained-with-pictures-70dfda6c6351)
 - [x] [Read article on Mental Model](https://medium.com/launch-school/javascript-design-patterns-building-a-mental-model-68c2d4356538)
-  - difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't.
 - [ ] Figure out what private state means.
 - [ ] Summarize / enumerate object creation patterns, create separate markdown file
   1. RPS style with `createPlayer` and then `createHuman`
