@@ -176,6 +176,12 @@ Steps for converting constructor code to classes:
 
 ---
 
+## [4.8 Code Reuse with Mixins](https://launchschool.com/lessons/d5964d17/assignments/e7850b07)
+
+...
+
+---
+
 ## TODO
 
 - [ ] Add to Anki:

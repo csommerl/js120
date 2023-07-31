@@ -46,6 +46,10 @@ Solutions:
 - Option 5: Pass `rules` / `validMoves` / `choices` to `choose` method.
 - Option 6: Create the value prior to creating the object, and then add the value to the object.
   - Problem: this will only work within an object factory, not an object literal like `RPSGame`.
+- **Option 7: Classes can be used.**
+  - the rules can be put into a static property of the class `RPSGame`, which can be accessed within the `constructor` function.
+  - they can also be put into an instance property within the constructor function, followed by adding the players: this works since the constructor function works line by line.
+- Option 8: you don't have to add all the properties at once, see `multiline.js`.
 
 ### How to avoid global constants?
 
