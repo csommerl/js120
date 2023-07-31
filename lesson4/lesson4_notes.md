@@ -155,6 +155,27 @@ If a sub-type does not add any new properties beyond the super-type, the sub-typ
 
 ---
 
+## [4.7 Rewriting OO RPS with Constructors and Classes](https://launchschool.com/lessons/d5964d17/assignments/aadce82e)
+
+### OO RPS With Constructors and Prototypes
+
+Steps for converting factory-function code to constructors:
+
+1. Write constructor function for each factory function.
+2. Move initialization code to constructor function.
+3. Move methods to constructor function.
+4. Replace factory function invocations.
+
+### OO RPS with Classes
+
+Steps for converting constructor code to classes:
+
+1. Write class for each factory function.
+2. Move constructor function into the class.
+3. Move prototype functions into the class.
+
+---
+
 ## TODO
 
 - [ ] Add to Anki:
