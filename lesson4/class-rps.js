@@ -1,53 +1,47 @@
 let readline = require('readline-sync');
 
-function Player() {
-  this.move = null;
+class Player {
+  constructor() {
+    this.move = null;
+  }
 }
 
-function Computer() {
-  Player.call(this);
+class Computer extends Player {
+  choose() {
+    const choices = ['rock', 'paper', 'scissors'];
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    this.move = choices[randomIndex];
+  }
 }
 
-Computer.prototype = Object.create(Player.prototype);
-Computer.prototype.constructor = Computer;
-Computer.prototype.choose = function() {
-  const choices = ['rock', 'paper', 'scissors'];
-  let randomIndex = Math.floor(Math.random() * choices.length);
-  this.move = choices[randomIndex];
-};
+class Human extends Player {
+  choose() {
+    let choice;
 
-function Human() {
-  Player.call(this);
+    while (true) {
+      console.log('Please choose rock, paper, or scissors:');
+      choice = readline.question();
+      if (['rock', 'paper', 'scissors'].includes(choice)) break;
+      console.log('Sorry, invalid choice.');
+    }
+
+    this.move = choice;
+  }
 }
 
-Human.prototype = Object.assign(Player.prototype);
-Human.prototype.constructor = Human;
-Human.prototype.choose = function() {
-  let choice;
-
-  while (true) {
-    console.log('Please choose rock, paper, or scissors:');
-    choice = readline.question();
-    if (['rock', 'paper', 'scissors'].includes(choice)) break;
-    console.log('Sorry, invalid choice.');
+class RPSGame {
+  constructor() {
+    this.human = new Human();
+    this.computer = new Computer();
   }
 
-  this.move = choice;
-};
-
-function RPSGame() {
-  this.human = new Human();
-  this.computer = new Computer();
-}
-
-RPSGame.prototype = {
   displayWelcomeMessage() {
     console.log('Welcome to Rock, Paper, Scissors!');
-  },
+  }
 
   displayGoodbyeMessage() {
     console.log('Thanks for playing Rock, Paper, Scissors. Goodbye!');
-  },
+  }
 
   displayWinner() {
     console.log(`You chose: ${this.human.move}`);
@@ -67,13 +61,13 @@ RPSGame.prototype = {
     } else {
       console.log("It's a tie");
     }
-  },
+  }
 
   playAgain() {
     console.log('Would you like to play again? (y/n)');
     let answer = readline.question();
     return answer.toLowerCase()[0] === 'y';
-  },
+  }
 
   play() {
     this.displayWelcomeMessage();
@@ -85,10 +79,8 @@ RPSGame.prototype = {
     }
 
     this.displayGoodbyeMessage();
-  },
-};
-
-RPSGame.prototype.constructor = RPSGame;
+  }
+}
 
 let game = new RPSGame();
 game.play();
