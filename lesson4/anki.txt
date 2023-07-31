@@ -60,3 +60,10 @@ When can the `constructor` method be omitted within a sub-type class declaration
 
 Method overriding; occurs when a subclass has a method with the same name as the superclass: what happens is that the subclass's method is accessed/invoked by subclass instances, rather than the superclass's method; js120
 
+Single inheritance; when an object (or class) can inherit from only one prototype object (or class); js120
+
+Multiple inheritance; when an object (class) can inherit from multiple objects (classes); js120
+
+When does single inheritance cause problems?; when two or more classes share the same method (with the same implementation) but that method is not appropriately contained within any class from which both those classes inherit; js120
+
+mix-in; a pattern that adds a property/method from one object to another (without using prototypal delegation but instead approaches like `Object.assign`); js120

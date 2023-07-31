@@ -178,7 +178,17 @@ Steps for converting constructor code to classes:
 
 ## [4.8 Code Reuse with Mixins](https://launchschool.com/lessons/d5964d17/assignments/e7850b07)
 
-...
+**Single inheritance** occurs when an object (or class) can inherit from only one prototype object (or class). JavaScript is a single-inheritance language.
+
+**Multiple inheritance** occurs when an object (or class) can inherit from multiple objects (or classes).
+
+Single inheritance causes problems when two or more classes share the same method (with the same implementation) but that method is not appropriately contained within any class from which both those classes inherit.
+
+### Mix-ins
+
+A **mix-in** is a pattern that adds a property/method from one object to another (without using prototypal delegation but instead approaches like `Object.assign`).
+
+### Mix-ins vs. Inheritance
 
 ---
 
