@@ -218,6 +218,19 @@ Suggested approach:
 
 ### Polymorphism through Inheritance
 
+**Polymorphism** in the general sense occurs when data of different types share a common interface. More specifically, it occurs when objects with different types respond in different ways to the same method invocation.
+
+The *advantage* of polymorphism is that it enables more maintainable code, since the same method name can be invoked on any of the relevant objects.
+
+### Polymorphism through Inheritance
+
+Polymorphism through inheritance occurs by having a class with an instance method and all instances of that class & its sub-types either 1. inherit the method from the class's prototype object, or 2. inherit a method with the same name from a sub-type's prototype object. In the latter case, the sub-type's method *overrides* the super-type's method.
+
+Example: `toString`:
+
+1. All instances of the `Object` type inherit the `toString` method from `Object.prototype`. This generic method returns the string `[object Object]`.
+2. But the `Array` type defines a `toString` method name that overrides the generic `toString` method. When array instances invoke the `toString` method, a string is returned that contains string representations of each element of the array, separated by commas.
+
 ### Polymorphism through Duck Typing
 
 ---
