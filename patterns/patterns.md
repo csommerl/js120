@@ -4,6 +4,20 @@
 
 ---
 
+## Overview
+
+1. Non-inheritance
+   a. Factory Functions
+2. Inheritance
+   a. OLOO
+   b. Pseudo-Classical
+      i. constructors
+      ii. classes
+
+Each of the above can also be complemented by the use of mix-ins.
+
+---
+
 ## Factory Function (FF)
 
 Definition

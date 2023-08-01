@@ -196,9 +196,29 @@ Steps to create and use a mix-in in JavaScript:
 2. Define the class.
 3. Use `Object.assign(Class.prototype, MixInObject)` to add the mix-in's method to the class's prototype object.
 
+One *downside* to mix-ins is that they create a copy of methods, straining memory.
+
 ### Mix-ins vs. Inheritance
 
-...
+One OOP approach in JavaScript is to use factory functions with mix-ins, avoiding the use of inheritance.
+
+But this approach has the two downsides of all factory functions:
+
+1. tax on memory due to reduplication of methods, and
+2. less easy debugging, since there is a lack of means to determine the type of an object.
+
+Suggested approach:
+
+1. Use inheritance for *is a* relationships.
+2. Use mix-ins for capabilities that transcend *is a* relationships.
+
+---
+
+## [4.9 Polymorphism](https://launchschool.com/lessons/d5964d17/assignments/22f0ecca)
+
+### Polymorphism through Inheritance
+
+### Polymorphism through Duck Typing
 
 ---
 

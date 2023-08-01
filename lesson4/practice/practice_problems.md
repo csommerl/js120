@@ -34,3 +34,10 @@ Within the `hi` method, the value of `this` invokes the `greet` method with `'He
 
 ---
 
+## [4.8 Code Reuse with Mixins](https://launchschool.com/lessons/d5964d17/assignments/e7850b07)
+
+1. 
+
+2. When the `goFast` method is invoked by an object, the string printed will contain the evaluated expression of `this.constructor.name`. With that notation, the `constructor` property is accessed on the calling object, which for an instance of constructors/classes is an instance property that contains a reference to the instance's constructor. Then, the notation accesses the `name` property of the constructor function (or class). The `name` property is added to the constructor/class when it is defined, and its value is a string of the identifier name given to the constructor/class.
+
+---
