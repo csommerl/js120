@@ -38,6 +38,16 @@ No inheritance?
 Definition
 Pure prototypal inheritance / prototypal delegation / object inheritance
 
+OLOO is accomplished in JavaScript by having 3 things:
+
+1. a prototype object;
+2. an initializer method within the prototype object to customize the state for each object; and,
+3. the use of `Object.create(protoObj).init(args)` to create objects that inherit from the prototype object.
+
+### Advantage of OLOO over Factory Function
+
+The *advantage* of OLOO over the factory function pattern is *memory efficiency* insofar as there is only one copy of instance methods within the prototype object, instead of each instance having its own copy.
+
 ### Type Creation
 
 ### Instance Creation

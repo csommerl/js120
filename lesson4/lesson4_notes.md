@@ -23,6 +23,12 @@ The **Objects Linking to Other Objects (OLOO) Pattern** is a pattern for creatin
 
 To avoid manually creating instance properties of objects created by OLOO, the prototype can be given an `init` method whose parameters are the instance's property values and whose body sets the instance's properties to those values (and returns the instance object).
 
+OLOO is accomplished in JavaScript by having 3 things:
+
+1. a prototype object,
+2. an initializer method within the prototype object to customize the state for each object,
+3. the use of `Object.create(protoObj).init(args)` to create objects that inherit from the prototype object.
+
 ### Advantage of OLOO over Factory Function
 
 The *advantage* of OLOO over the factory function pattern is *memory efficiency* insofar as there is only one copy of instance methods within the prototype object, instead of each instance having its own copy.
@@ -224,7 +230,7 @@ The *advantage* of polymorphism is that it enables more maintainable code, since
 
 ### Polymorphism through Inheritance
 
-Polymorphism through inheritance occurs by having a class with an instance method and all instances of that class & its sub-types either 1. inherit the method from the class's prototype object, or 2. inherit a method with the same name from a sub-type's prototype object. In the latter case, the sub-type's method *overrides* the super-type's method.
+**Polymorphism through inheritance** occurs when there is a class with an instance method and all instances of that class & its sub-types either 1. inherit the method from the class's prototype object, or 2. inherit a method with the same name from a sub-type's prototype object. In the latter case, the sub-type's method *overrides* the super-type's method.
 
 Example: `toString`:
 
@@ -232,6 +238,18 @@ Example: `toString`:
 2. But the `Array` type defines a `toString` method name that overrides the generic `toString` method. When array instances invoke the `toString` method, a string is returned that contains string representations of each element of the array, separated by commas.
 
 ### Polymorphism through Duck Typing
+
+**Duck typing** occurs when objects of unrelated types are intentionally designed to have methods that have the same name and the same number & type of arguments, and these methods have different but similar behavior. It is an informal manner of typing objects: if an object quacks like a duck, it can be treated like a duck.
+
+Having a method of the same name does not suffice for duck typing. A further requirement is that the methods be intentionally designed to be polymorphic.
+
+**Question**:
+
+- Does duck-typing always involve creating two methods: one with the common name, which invokes another method of the object?
+
+---
+
+## [4.10 Summary](https://launchschool.com/lessons/d5964d17/assignments/227d4701)
 
 ---
 
