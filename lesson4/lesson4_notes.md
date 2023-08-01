@@ -186,9 +186,19 @@ Single inheritance causes problems when two or more classes share the same metho
 
 ### Mix-ins
 
-A **mix-in** is a pattern that adds a property/method from one object to another (without using prototypal delegation but instead approaches like `Object.assign`).
+A **mix-in** is a pattern that adds a property/method from one object to another (without using prototypal delegation to a class/constructor prototype object but instead approaches like `Object.assign`).
+
+A **mix-in** is an object that has (as its own properties) one or more methods that can be mixed into a class such that all instances of the class can access those methods.
+
+Steps to create and use a mix-in in JavaScript:
+
+1. Create an object (a constant in title case) that defines a method to be mixed-in.
+2. Define the class.
+3. Use `Object.assign(Class.prototype, MixInObject)` to add the mix-in's method to the class's prototype object.
 
 ### Mix-ins vs. Inheritance
+
+...
 
 ---
 
