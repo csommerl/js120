@@ -251,9 +251,31 @@ Having a method of the same name does not suffice for duck typing. A further req
 
 ## Questions
 
+### Question about alternative mix-in syntax
+
+Why not define a method to be mixed-in with a function and then pass the method with `Object.assign(className.prototype, {mixInFunction})`?
+
+```javascript
+function swim() {
+  return `${this.name} is swimming.`;
+}
+
+class Fish {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+Object.assign(Fish.prototype, {swim});
+
+let fish1 = new Fish("Nemo");
+
+console.log(Fish.prototype.swim === swim);
+```
+
 ### Question about memory use of mix-ins
 
-It seems that mixed-in methods aren't reduplicated. That's because functions are objects, and objects are passed by reference. When a method is mixed-in to a class's prototype object, what is mixed-in is a reference to the same function in memory.
+It seems that mixed-in methods aren't reduplicated. (**LS doesn't ever say otherwise!**) That's because functions are objects, and objects are passed by reference. When a method is mixed-in to a class's prototype object, what is mixed-in is a reference to the same function in memory.
 
 ```javascript
 const swimMixin = {
