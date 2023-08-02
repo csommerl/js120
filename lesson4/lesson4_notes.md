@@ -216,7 +216,7 @@ But this approach has the two downsides of all factory functions:
 Suggested approach:
 
 1. Use inheritance for *is a* relationships.
-2. Use mix-ins for capabilities that transcend *is a* relationships.
+2. Use mix-ins for *capabilities that transcend is-a relationships* or for *has-a relationships*.
 
 ---
 
@@ -255,6 +255,7 @@ Having a method of the same name does not suffice for duck typing. A further req
 
 ## TODO
 
+- [ ] Redo [Pet Shelter](https://launchschool.com/exercises/2b521c67)
 - [ ] Add to Anki:
   - [ ] classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
   - [ ] difference between setting a sub-type's function prototype to an instance of a super-type (using `new`) versus a child of the super-type's function prototype object (using `Object.create`): former executes constructor body, latter doesn't; alternatively, the former creates an instance of the super-type whereas the latter doesn't.
