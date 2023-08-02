@@ -249,6 +249,10 @@ Having a method of the same name does not suffice for duck typing. A further req
 
 ---
 
+## [4.11 Lesson 4 Quiz 1](https://launchschool.com/lessons/d5964d17/assignments/b3268d0b)
+
+---
+
 ## Questions
 
 ### Question about alternative mix-in syntax
