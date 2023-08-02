@@ -273,6 +273,8 @@ let fish1 = new Fish("Nemo");
 console.log(Fish.prototype.swim === swim);
 ```
 
+Perhaps created a `swimMixin` is preferable because then you can add many methods at once.
+
 ### Question about memory use of mix-ins
 
 It seems that mixed-in methods aren't reduplicated. (**LS doesn't ever say otherwise!**) That's because functions are objects, and objects are passed by reference. When a method is mixed-in to a class's prototype object, what is mixed-in is a reference to the same function in memory.
@@ -325,6 +327,8 @@ Answer: this puts `swim` in every instance of the `Fish` class, so is inadvisabl
 ## TODO
 
 - [ ] Redo [Pet Shelter](https://launchschool.com/exercises/2b521c67)
+  - Lesson: when objects interact, don't have one object modify another object's properties directly.
+  - For example, in `adopt`, don't use `owner.pets.push(pet)` but instead use `owner.addPet(pet)`.
 - [ ] Further exploration of [Banner Class](https://launchschool.com/exercises/398917ba).
 - [ ] Add to Anki:
   - [ ] classes are blueprints / instructions, whereas constructors (or their prototypes) are objects
