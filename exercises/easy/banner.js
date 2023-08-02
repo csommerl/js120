@@ -1,8 +1,9 @@
 // https://launchschool.com/exercises/398917ba
 
 class Banner {
-  constructor(message) {
+  constructor(message, width) {
     this.message = message;
+    this.width = width ?? message.length + 4;
   }
 
   displayBanner() {
@@ -10,11 +11,11 @@ class Banner {
   }
 
   horizontalRule() {
-    return `+${'-'.repeat(this.message.length + 2)}+`;
+    return `+${'-'.repeat(this.width - 2)}+`;
   }
 
   emptyLine() {
-    return `|${' '.repeat(this.message.length + 2)}|`;
+    return `|${' '.repeat(this.width - 2)}|`;
   }
 
   messageLine() {
@@ -41,3 +42,9 @@ banner2.displayBanner();
 |  |
 +--+
 */
+
+let banner3 = new Banner('To boldly go where no one has gone before.', 20);
+banner3.displayBanner();
+
+let banner4 = new Banner('To boldly go where no one has gone before.', 75);
+banner4.displayBanner();
