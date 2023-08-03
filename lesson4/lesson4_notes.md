@@ -251,9 +251,28 @@ Having a method of the same name does not suffice for duck typing. A further req
 
 ## [4.11 Lesson 4 Quiz 1](https://launchschool.com/lessons/d5964d17/assignments/b3268d0b)
 
+Super-type and sub-type relationships are generally only concerned with immediate ancestor or descendant classes.
+
 ---
 
 ## Questions
+
+### Alternative way to set constructor sub-type's prototype
+
+The following is the standard way of setting a sub-type constructor's prototype object to inherit from a super-type constructor's prototype object:
+
+```javascript
+Subtype.prototype = Object.create(Supertype.prototype);
+```
+But it appears you can use the following too:
+
+```javascript
+Subtype.prototype = new Supertype();
+```
+
+The latter alternative works because it sets the sub-type's function prototype to an instance of the super-type, and this instance in turn inherits from the super-type's function prototype.
+
+Is this alternative ever preferable?
 
 ### Question about alternative mix-in syntax
 
@@ -330,6 +349,7 @@ Answer: this puts `swim` in every instance of the `Fish` class, so is inadvisabl
 
 ## TODO
 
+- [ ] Rebuild my RPS with classes
 - [ ] Redo [Pet Shelter](https://launchschool.com/exercises/2b521c67)
   - Lesson: when objects interact, don't have one object modify another object's properties directly.
   - For example, in `adopt`, don't use `owner.pets.push(pet)` but instead use `owner.addPet(pet)`.

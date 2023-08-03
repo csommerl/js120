@@ -39,4 +39,4 @@ polymorphism; when objects with different types respond in different ways to the
 Polymorphism through inheritance; occurs when there is a class with an instance method and all instances of that class & its sub-types either 1. inherit the method from the class's prototype object, or 2. inherit a method with the same name from a sub-type's prototype object.; js120
 Duck typing; occurs when objects of unrelated types are intentionally designed to have methods that have the same name and the same number & type of arguments, and these methods have different but similar behavior; js120
 OLOO is accomplished in JavaScript by having 3 things; 1. a prototype object, 2. an initializer method within the prototype object, 3. the use of `Object.create(protoObj).init(args)` to create objects that inherit from the prototype object.; js120
-
+Is a class's non-immediate ancestor a super-type?; No, super-type and sub-type relationships are generally only concerned with immediate ancestor or descendant classes.; js120

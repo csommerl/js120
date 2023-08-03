@@ -31,3 +31,6 @@ console.log(truck.tow());
 
 let car = new Car(2015);
 console.log(car.year);
+
+// console.log(Truck.prototype.getOwnPropertyNames());
+console.log(Object.getOwnPropertyNames(Truck.prototype));
