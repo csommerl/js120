@@ -4,15 +4,88 @@
 
 ---
 
-## [Introduction](https://launchschool.com/lessons/93a83d87/assignments/09362e48)
+## [5.1 Introduction](https://launchschool.com/lessons/93a83d87/assignments/09362e48)
 
 ---
 
-## [OOP Tic Tac Toe Overview](https://launchschool.com/lessons/93a83d87/assignments/360f434c)
+## [5.2 OOP Tic Tac Toe Overview](https://launchschool.com/lessons/93a83d87/assignments/360f434c)
+
+Difference with RPS: need to represent *game state* because there is a board.
+
+### Game Description
+
+- 2 players
+- 1 game board, consisting of 9 squares each at a location relative to the others
+- each player makes moves after the other
+- if a player's marker is three in a row, then they win
+- win conditions
+  - any three in the same row
+  - any three in the same column
+  - three, each of which has a column number matching its row number (1st diagonal)
+  - three, 
+- tie if no one wins
+
+### Nouns & Verbs
+
+Nouns
+- player
+- computer
+- human
+- board
+- square
+- marker
+- row
+- column
+
+Verbs
+- move
+- win
+- play
+
+---
+
+## [5.3 OOP Tic Tac Toe with Classes - Part 1](https://launchschool.com/lessons/93a83d87/assignments/56f620e5)
+
+### Scaffolding
+
+A class that is the orchestration engine is commonly placed as the last class in a file, and it has a unique name.
+
+### Orchestrating the Game
+
+Since OOP code doesn't have a procedural step-by-step flow, it can help to write spikes and stubs.
+
+A **spike** is exploratory code that provides a general outline of the flow of a program, providing its structure & general logic.
+
+A **stub** is a placeholder for a function or method that needs to be written or removed later, and they typically are empty or return a constant value.
+
+It's good practice to insert comments indicating both stubs and spikes: `STUB` and `SPIKE`.
+
+### Initial Test
+
+After writing stubs & spikes, it's good to test the code.
+
+---
+
+## [5.4 OOP Tic Tac Toe with Classes - Part 2](https://launchschool.com/lessons/93a83d87/assignments/ea59159e)
+
+At each step, outline the pros and cons of different approaches.
 
 ...
 
 ---
+
+## My Summary of Steps for Creating an OOP program.
+
+Steps:
+
+1. Outline classes & their methods.
+2. Write *stubs*, asking questions about data structures, relations between classes, etc.
+3. Write a *spike* in the orchestration engine.
+4. Test the code.
+5. Take care of low-hanging fruit.
+6. Work through the harder problems within the spike.
+   - At each step, outline the pros and cons of different approaches.
+
 
 ## Questions
 

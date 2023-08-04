@@ -49,7 +49,7 @@ Objects created with factory functions have private state insofar as the body of
 
 Constructors and prototypes in JavaScript only resemble classes in other OOP languages. Likewise with the concept of inheritance.
 
-A class is a **sub-type** of another class when it inherits from the latter. A class is a **super-type** of another class when the latter inherits from it.
+A class is a **sub-type** of another class when it inherits immediately from the latter. A class is a **super-type** of another class when the latter inherits immediately from it.
 
 A class inherits from another class insofar as the former's function prototype inherits from the latter's.
 
