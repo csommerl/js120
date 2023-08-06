@@ -70,7 +70,16 @@ After writing stubs & spikes, it's good to test the code.
 
 At each step, outline the pros and cons of different approaches.
 
-...
+For example, in choosing a data structure for the board, there are 3 options:
+
+1. matrix represented by nested subarrays
+   - pro: matches visually
+   - con: have to map user choice to 2 indices
+   - con: difficult to use 2 indices
+2. array of 9 square objects
+   - pro: avoid multiple indices
+   - con: array indices start at 0, user choice is best starting with 1
+3. object with 9 properties
 
 ---
 
