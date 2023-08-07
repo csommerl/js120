@@ -1,3 +1,5 @@
+const readline = require("readline-sync");
+
 class Board {
   constructor() {
     this.squares = {};
@@ -5,6 +7,10 @@ class Board {
     for (let idx = 1; idx <= 9; ++idx) {
       this.squares[idx] = new Square();
     }
+  }
+
+  markSquareAt(square, marker) {
+    this.squares[square].mark(marker);
   }
 
   display() {
@@ -26,10 +32,12 @@ class Board {
 
 class Square {
   static UNUSED_SQUARE = " ";
-  static HUMAN_MARKER = "X";
-  static COMPUTER_MARKER = "O";
 
   constructor(marker = Square.UNUSED_SQUARE) {
+    this.marker = marker;
+  }
+
+  mark(marker) {
     this.marker = marker;
   }
 
@@ -39,26 +47,49 @@ class Square {
 }
 
 class Player {
-  constructor() { // STUB
-  }
-
-  mark() { // STUB
+  constructor(marker) { // STUB
+    this.marker = marker;
   }
 }
 
 class Human extends Player {
   constructor() { // STUB
+    super("X");
+  }
+
+  move(board) { // STUB
+    let choice;
+
+    while (true) {
+      choice = parseInt(readline.question("Choose a square between 1 and 9: "), 10);
+      if (choice >= 1 && choice <= 9) break;
+      console.log("Sorry, that's not a valid choice.\n");
+    }
+
+    board.markSquareAt(choice, this.marker);
+
+    console.log(`Human marks ${this.marker} in square ${choice}.`); // TODO: remove
   }
 }
 
 class Computer extends Player {
   constructor() { // STUB
+    super("O");
+  }
+
+  move(board) { // STUB
+    let choice = Math.floor((Math.random() * 9) + 1);
+    board.markSquareAt(choice, this.marker);
+
+    console.log(`Computer marks ${this.marker} in square ${choice}.`); // TODO: remove
   }
 }
 
 class TTTGame {
   constructor() { // STUB
     this.board = new Board();
+    this.human = new Human();
+    this.computer = new Computer();
   }
 
   displayWelcomeMessage() { // STUB
@@ -67,7 +98,7 @@ class TTTGame {
   }
 
   displayGoodbyeMessage() { // STUB
-    console.log("Thanks for playing Tic Tac Toe! Goodbye");
+    console.log("Thanks for playing Tic Tac Toe! Goodbye!");
   }
 
   displayResults() { // STUB
@@ -85,16 +116,16 @@ class TTTGame {
 
   play() { // STUB
     this.displayWelcomeMessage();
+    this.board.display();
 
     while (true) {
+      this.human.move(this.board);
+      if (this.gameOver()) break;
+
+      this.computer.move(this.board);
+      if (this.gameOver()) break;
+
       this.board.display();
-
-      this.firstPlayerMoves();
-      if (this.gameOver()) break;
-
-      this.secondPlayerMoves();
-      if (this.gameOver()) break;
-
       break;
     }
 

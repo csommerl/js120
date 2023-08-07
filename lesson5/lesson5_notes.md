@@ -103,11 +103,13 @@ Magic constants in OOP can often be added as static properties of classes/constr
 
 ---
 
-## [OOP Tic Tac Toe with Classes - Part 3](https://launchschool.com/lessons/93a83d87/assignments/64827a63)
+## [5.5 OOP Tic Tac Toe with Classes - Part 3](https://launchschool.com/lessons/93a83d87/assignments/64827a63)
 
 ### Creating the Players
 
 ### Get the Human's Move
+
+Always use the radix argument of `parseInt`.
 
 ### Placing the Player's Move on the Board
 
@@ -120,6 +122,18 @@ Magic constants in OOP can often be added as static properties of classes/constr
 ### Possible Refactor: Move the Move Methods?
 
 ### Refactor: Remove the Marker Class
+
+### What's Next?
+
+---
+
+## [5.6 OOP Tic Tac Toe with Classes - Part 4](https://launchschool.com/lessons/93a83d87/assignments/8a2901c6)
+
+### Taking Turns
+
+### Validating Moves
+
+### Refactor: Remove `play` Method from `Player` Class
 
 ### What's Next?
 
