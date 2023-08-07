@@ -1,5 +1,25 @@
 const readline = require("readline-sync");
 
+class Square {
+  static UNUSED_SQUARE = " ";
+
+  constructor(marker = Square.UNUSED_SQUARE) {
+    this.marker = marker;
+  }
+
+  isUnused() {
+    return this.marker === Square.UNUSED_SQUARE;
+  }
+
+  mark(marker) {
+    this.marker = marker;
+  }
+
+  toString() {
+    return this.marker;
+  }
+}
+
 class Board {
   constructor() {
     this.squares = {};
@@ -7,6 +27,11 @@ class Board {
     for (let idx = 1; idx <= 9; ++idx) {
       this.squares[idx] = new Square();
     }
+  }
+
+  unusedSquareKeys() {
+    return Object.keys(this.squares)
+      .filter(key => this.squares[key].isUnused());
   }
 
   markSquareAt(square, marker) {
@@ -30,22 +55,6 @@ class Board {
   }
 }
 
-class Square {
-  static UNUSED_SQUARE = " ";
-
-  constructor(marker = Square.UNUSED_SQUARE) {
-    this.marker = marker;
-  }
-
-  mark(marker) {
-    this.marker = marker;
-  }
-
-  toString() {
-    return this.marker;
-  }
-}
-
 class Player {
   constructor(marker) { // STUB
     this.marker = marker;
@@ -58,17 +67,17 @@ class Human extends Player {
   }
 
   move(board) { // STUB
+    let validChoices = board.unusedSquareKeys();
+    const prompt = `Choose a square from (${validChoices.join(", ")}): `;
     let choice;
 
     while (true) {
-      choice = parseInt(readline.question("Choose a square between 1 and 9: "), 10);
-      if (choice >= 1 && choice <= 9) break;
+      choice = readline.question(prompt);
+      if (validChoices.includes(choice)) break;
       console.log("Sorry, that's not a valid choice.\n");
     }
 
     board.markSquareAt(choice, this.marker);
-
-    console.log(`Human marks ${this.marker} in square ${choice}.`); // TODO: remove
   }
 }
 
@@ -78,10 +87,10 @@ class Computer extends Player {
   }
 
   move(board) { // STUB
-    let choice = Math.floor((Math.random() * 9) + 1);
+    let validChoices = board.unusedSquareKeys();
+    let idx = Math.floor(Math.random() * validChoices.length);
+    let choice = validChoices[idx];
     board.markSquareAt(choice, this.marker);
-
-    console.log(`Computer marks ${this.marker} in square ${choice}.`); // TODO: remove
   }
 }
 
@@ -111,24 +120,27 @@ class TTTGame {
   }
 
   gameOver() { // STUB
+    if (!this.board.unusedSquareKeys().length) return true;
     return false;
   }
 
   play() { // STUB
     this.displayWelcomeMessage();
-    this.board.display();
 
-    while (true) {
+    while (this.board.unusedSquareKeys().length) {
+      this.board.display();
+
       this.human.move(this.board);
       if (this.gameOver()) break;
 
       this.computer.move(this.board);
       if (this.gameOver()) break;
 
-      this.board.display();
-      break;
+      console.clear();
     }
 
+    console.clear();
+    this.board.display();
     this.displayResults();
     this.displayGoodbyeMessage();
   }

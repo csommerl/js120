@@ -139,6 +139,30 @@ Always use the radix argument of `parseInt`.
 
 ---
 
+## [5.7 OOP Tic Tac Toe with Classes - Part 5](https://launchschool.com/lessons/93a83d87/assignments/527c4a79)
+
+### Is the Game Over?
+
+### Is the Board Full?
+
+### Did Someone Win the Game?
+
+### Who Won the Game?
+
+### Refactor: Clean Up `someoneWon`
+
+### Refactor: Remove the Row Class
+
+### Improving the UI: Clearing the Screen
+
+### ESLint
+
+### The Completed Game
+
+### What's Next?
+
+---
+
 ## My Summary of Steps for Creating an OOP program.
 
 Steps:
