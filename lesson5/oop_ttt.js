@@ -34,6 +34,10 @@ class Board {
       .filter(key => this.squares[key].isUnused());
   }
 
+  isFull() {
+    return this.unusedSquareKeys().length === 0;
+  }
+
   markSquareAt(square, marker) {
     this.squares[square].mark(marker);
   }
@@ -120,14 +124,13 @@ class TTTGame {
   }
 
   gameOver() { // STUB
-    if (!this.board.unusedSquareKeys().length) return true;
-    return false;
+    return this.board.isFull()
   }
 
   play() { // STUB
     this.displayWelcomeMessage();
 
-    while (this.board.unusedSquareKeys().length) {
+    while (true) {
       this.board.display();
 
       this.human.move(this.board);
