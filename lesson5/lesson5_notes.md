@@ -163,6 +163,12 @@ Always use the radix argument of `parseInt`.
 
 ---
 
+## [5.8 OOP Tic Tac Toe Code Discussion](https://launchschool.com/lessons/93a83d87/assignments/7e30fda9)
+
+...
+
+---
+
 ## My Summary of Steps for Creating an OOP program.
 
 Steps:

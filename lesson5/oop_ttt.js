@@ -1,14 +1,18 @@
 const readline = require("readline-sync");
 
 class Square {
-  static UNUSED_SQUARE = " ";
+  static UNUSED_SQUARE_MARKER = " ";
 
-  constructor(marker = Square.UNUSED_SQUARE) {
+  constructor(marker = Square.UNUSED_SQUARE_MARKER) {
     this.marker = marker;
   }
 
+  getMarker() {
+    return this.marker;
+  }
+
   isUnused() {
-    return this.marker === Square.UNUSED_SQUARE;
+    return this.marker === Square.UNUSED_SQUARE_MARKER;
   }
 
   mark(marker) {
@@ -29,20 +33,32 @@ class Board {
     }
   }
 
+  playerFillsRow(player, rowKeys) { // STUB
+    return rowKeys.every(squareKey => {
+      let square = this.squares[squareKey];
+      return square.getMarker() === player.getMarker();
+    });
+  }
+
   unusedSquareKeys() {
     return Object.keys(this.squares)
-      .filter(key => this.squares[key].isUnused());
+      .filter(key => {
+        let square = this.squares[key];
+        return square.isUnused();
+      });
   }
 
   isFull() {
     return this.unusedSquareKeys().length === 0;
   }
 
-  markSquareAt(square, marker) {
-    this.squares[square].mark(marker);
+  markSquareAt(squareKey, marker) {
+    let square = this.squares[squareKey];
+    square.mark(marker);
   }
 
   display() {
+    console.clear();
     console.log("");
     console.log("     |     |");
     console.log(`  ${this.squares[1]}  |  ${this.squares[2]}  |  ${this.squares[3]}`);
@@ -60,17 +76,21 @@ class Board {
 }
 
 class Player {
-  constructor(marker) { // STUB
+  constructor(marker) {
     this.marker = marker;
+  }
+
+  getMarker() {
+    return this.marker;
   }
 }
 
 class Human extends Player {
-  constructor() { // STUB
+  constructor() {
     super("X");
   }
 
-  move(board) { // STUB
+  move(board) {
     let validChoices = board.unusedSquareKeys();
     const prompt = `Choose a square from (${validChoices.join(", ")}): `;
     let choice;
@@ -86,11 +106,11 @@ class Human extends Player {
 }
 
 class Computer extends Player {
-  constructor() { // STUB
+  constructor() {
     super("O");
   }
 
-  move(board) { // STUB
+  move(board) {
     let validChoices = board.unusedSquareKeys();
     let idx = Math.floor(Math.random() * validChoices.length);
     let choice = validChoices[idx];
@@ -99,50 +119,69 @@ class Computer extends Player {
 }
 
 class TTTGame {
-  constructor() { // STUB
+  static WINNING_ROWS = [
+    [ "1", "2", "3", ],
+    [ "4", "5", "6", ],
+    [ "7", "8", "9", ],
+    [ "1", "4", "7", ],
+    [ "2", "5", "8", ],
+    [ "3", "6", "9", ],
+    [ "1", "5", "9", ],
+    [ "3", "5", "7", ],
+  ];
+
+  constructor() {
     this.board = new Board();
     this.human = new Human();
     this.computer = new Computer();
   }
 
-  displayWelcomeMessage() { // STUB
-    console.clear();
+  displayWelcomeMessage() {
     console.log("Welcome to Tic Tac Toe!");
   }
 
-  displayGoodbyeMessage() { // STUB
+  displayGoodbyeMessage() {
     console.log("Thanks for playing Tic Tac Toe! Goodbye!");
   }
 
   displayResults() { // STUB
+    if (this.isWinner(this.human)) {
+      console.log("You won! Congratulations!");
+    } else if (this.isWinner(this.computer)) {
+      console.log("The computer won!");
+    } else {
+      console.log("It was a tie.");
+    }
   }
 
-  firstPlayerMoves() { // STUB
+  gameOver() {
+    return this.board.isFull() || this.someoneWon();
   }
 
-  secondPlayerMoves() { // STUB
+  someoneWon() {
+    return this.isWinner(this.human) || this.isWinner(this.computer);
   }
 
-  gameOver() { // STUB
-    return this.board.isFull()
+  isWinner(player) {
+    return TTTGame.WINNING_ROWS.some(row => {
+      return this.board.playerFillsRow(player, row);
+    });
   }
 
-  play() { // STUB
+  play() {
+    this.board.display();
     this.displayWelcomeMessage();
 
     while (true) {
-      this.board.display();
-
       this.human.move(this.board);
       if (this.gameOver()) break;
 
       this.computer.move(this.board);
       if (this.gameOver()) break;
 
-      console.clear();
+      this.board.display();
     }
 
-    console.clear();
     this.board.display();
     this.displayResults();
     this.displayGoodbyeMessage();
