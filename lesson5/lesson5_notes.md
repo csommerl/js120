@@ -165,6 +165,22 @@ Always use the radix argument of `parseInt`.
 
 ## [5.8 OOP Tic Tac Toe Code Discussion](https://launchschool.com/lessons/93a83d87/assignments/7e30fda9)
 
+1. **Regression** refers to the reappearance of a bug after it was previously fixed. Testing will help with regression.
+
+2. **Indirection** refers to the ability to reference something indirectly, e.g., to invoke an action with a function or method. An advantage of OOP is that indirection can be used to isolate a problem and devise a solution that leaves the rest of the program unaffected.
+
+3. Generic names are generally to be avoided in order to avoid conflicts with other names in the global namespace. But *modules* also help prevent this issue.
+
+4. A **dependency graph** is the data structure that formed by the dependencies of a program. In OOP, it is best to avoid spiderweb dependency graphs, i.e., avoid having all classes depend on (or collaborate with) many others. Following this practice helps isolate changes.
+
+5. Sometimes these is no clear advantage or disadvantage to placing a method in one class or another.
+
+6. Passing an object as an argument of another object's method creates a dependency. This isn't wrong, but it comes with tradeoffs.
+
+---
+
+## [OOP Tic Tac Toe with Constructors and Prototypes](https://launchschool.com/lessons/93a83d87/assignments/88d58d62)
+
 ...
 
 ---
@@ -181,10 +197,15 @@ Steps:
 6. Work through the harder problems within the spike.
    - At each step, outline the pros and cons of different approaches.
 
-
 ## Questions
 
+### Ordering of classes
+
 The lesson [5.4 OOP Tic Tac Toe with Classes - Part 2](https://launchschool.com/lessons/93a83d87/assignments/ea59159e) says that we need the `Square` class before the `Board` class, but that's not true. That's because although the `Board` class contains references to the `Square` class, no code is executed when each is defined. The names of each (along with their properties and methods) are hoisted prior to execution. Thus, when the board class is initialized, the `Square` class can be referred to.
+
+### Coupling
+
+The lesson [5.8 OOP Tic Tac Toe Code Discussion](https://launchschool.com/lessons/93a83d87/assignments/7e30fda9) refers to **tight coupling** and **loose coupling** but doesn't define them.
 
 ---
 
