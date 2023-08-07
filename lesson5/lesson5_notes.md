@@ -68,6 +68,12 @@ After writing stubs & spikes, it's good to test the code.
 
 ## [5.4 OOP Tic Tac Toe with Classes - Part 2](https://launchschool.com/lessons/93a83d87/assignments/ea59159e)
 
+### Display the Board
+
+### Getting Started with the Board Class
+
+### The Board's State
+
 At each step, outline the pros and cons of different approaches.
 
 For example, in choosing a data structure for the board, there are 3 options:
@@ -80,6 +86,42 @@ For example, in choosing a data structure for the board, there are 3 options:
    - pro: avoid multiple indices
    - con: array indices start at 0, user choice is best starting with 1
 3. object with 9 properties
+
+### The Square Class 
+
+`toString` is called implicitly if it is not called explicitly in string interpolations.
+
+### Refactor: Eliminate Magic Constants
+
+Magic constants in OOP can often be added as static properties of classes/constructors.
+
+### Refactor: DRY Board Initialization
+
+**DRY** refers to "Don't Repeat Yourself", the principle that you should simplify repetitive code by using procedural techniques.
+
+### What's Next?
+
+---
+
+## [OOP Tic Tac Toe with Classes - Part 3](https://launchschool.com/lessons/93a83d87/assignments/64827a63)
+
+### Creating the Players
+
+### Get the Human's Move
+
+### Placing the Player's Move on the Board
+
+### Defining the Player's Marker
+
+### Testing the Human Player's Moves
+
+### The Computer's Move
+
+### Possible Refactor: Move the Move Methods?
+
+### Refactor: Remove the Marker Class
+
+### What's Next?
 
 ---
 
@@ -97,6 +139,8 @@ Steps:
 
 
 ## Questions
+
+The lesson [5.4 OOP Tic Tac Toe with Classes - Part 2](https://launchschool.com/lessons/93a83d87/assignments/ea59159e) says that we need the `Square` class before the `Board` class, but that's not true. That's because although the `Board` class contains references to the `Square` class, no code is executed when each is defined. The names of each (along with their properties and methods) are hoisted prior to execution. Thus, when the board class is initialized, the `Square` class can be referred to.
 
 ---
 

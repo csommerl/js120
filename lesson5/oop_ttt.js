@@ -1,19 +1,13 @@
 class Board {
-  constructor() { // STUB
-    this.squares = {
-      1: "X",
-      2: " ",
-      3: "O",
-      4: " ",
-      5: " ",
-      6: " ",
-      7: " ",
-      8: " ",
-      9: " ",
-    };
+  constructor() {
+    this.squares = {};
+
+    for (let idx = 1; idx <= 9; ++idx) {
+      this.squares[idx] = new Square();
+    }
   }
 
-  display() { // STUB
+  display() {
     console.log("");
     console.log("     |     |");
     console.log(`  ${this.squares[1]}  |  ${this.squares[2]}  |  ${this.squares[3]}`);
@@ -27,6 +21,20 @@ class Board {
     console.log(`  ${this.squares[7]}  |  ${this.squares[8]}  |  ${this.squares[9]}`);
     console.log("     |     |");
     console.log("");
+  }
+}
+
+class Square {
+  static UNUSED_SQUARE = " ";
+  static HUMAN_MARKER = "X";
+  static COMPUTER_MARKER = "O";
+
+  constructor(marker = Square.UNUSED_SQUARE) {
+    this.marker = marker;
+  }
+
+  toString() {
+    return this.marker;
   }
 }
 

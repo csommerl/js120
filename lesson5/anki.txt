@@ -1,3 +1,4 @@
 spike; exploratory code that provides a general outline of the flow of a program, providing its structure & general logic; js120
 stub; a placeholder for a function or method that needs to be written or removed later, and they typically are empty or return a constant value; js120
+How are object references handled in string interpolations?; `toString` is called implicitly if it is not called explicitly; js120
 
