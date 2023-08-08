@@ -179,9 +179,37 @@ Always use the radix argument of `parseInt`.
 
 ---
 
-## [OOP Tic Tac Toe with Constructors and Prototypes](https://launchschool.com/lessons/93a83d87/assignments/88d58d62)
+## [5.9 OOP Tic Tac Toe with Constructors and Prototypes](https://launchschool.com/lessons/93a83d87/assignments/88d58d62)
 
-...
+---
+
+## [5.10 OOP Tic Tac Toe with OLOO](https://launchschool.com/lessons/93a83d87/assignments/9c3dd72f)
+
+---
+
+## [5.11 OOP Tic Tac Toe with Bonus Features](https://launchschool.com/lessons/93a83d87/assignments/9123ba93)
+
+## Improved Prompt
+
+## Play Again
+
+## Computer AI: Defense
+
+## Computer AI: Offense
+
+## Another Computer Move Improvement
+
+## Refactor the Move Methods
+
+## Keep Score
+
+## Take Turns Going First
+
+## On Your Own Ideas
+
+1. Minimax algorithm
+2. Bigger board
+3. More players
 
 ---
 
