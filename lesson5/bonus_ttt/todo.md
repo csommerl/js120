@@ -38,6 +38,12 @@ Algorithm:
 
 ## [ ] Play Again
 
+Rules:
+1. Display welcome message only once.
+2. Display goodbye message only once.
+3. After each game, ask whether to play again.
+  - accept y,n,Y,N
+
 ## [ ] Computer AI: Defense
 
 ## [ ] Computer AI: Offense

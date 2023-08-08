@@ -135,8 +135,16 @@ class TTTGame {
 
   play() {
     this.displayWelcomeMessage();
+    do {
+      this.playRound();
+      this.board = new Board();
+    } while (this.playAgain());
+    this.displayGoodbyeMessage();
+  }
 
+  playRound() {
     this.board.display();
+
     while (true) {
       this.humanMoves();
       if (this.gameOver()) break;
@@ -149,7 +157,22 @@ class TTTGame {
 
     this.board.displayWithClear();
     this.displayResults();
-    this.displayGoodbyeMessage();
+  }
+
+  playAgain() {
+    let prompt = "Play again? Select y/Y or n/N: ";
+    const validAnswers = ['y', 'n', 'Y', 'N'];
+
+    let answer;
+
+    while (!validAnswers.includes(answer)) {
+      answer = readline.question(prompt);
+      if (!validAnswers.includes(answer)) {
+        console.log("Invalid answer");
+      }
+    }
+    
+    return ['y', 'Y'].includes(answer);
   }
 
   displayWelcomeMessage() {
@@ -217,10 +240,3 @@ class TTTGame {
 
 let game = new TTTGame();
 game.play();
-
-/*
-console.log(TTTGame.joinOr([1, 2])); //                   # => "1 or 2"
-console.log(TTTGame.joinOr([1, 2, 3])); //                # => "1, 2, or 3"
-console.log(TTTGame.joinOr([1, 2, 3], '; ')); //          # => "1; 2; or 3"
-console.log(TTTGame.joinOr([1, 2, 3], ', ', 'and')); //   # => "1, 2, and 3"
-*/
