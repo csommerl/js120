@@ -221,7 +221,35 @@ class TTTGame {
     this.board.markSquareAt(choice, this.human.getMarker());
   }
 
+  getWinningKey(player) {
+    let winningKey;
+
+    for (let row of TTTGame.POSSIBLE_WINNING_ROWS) {
+      if (this.board.countMarkersFor(player, row) === 2) {
+        winningKey = row.find(key => {
+          return this.board.squares[key].isUnused();
+        });
+      }
+    }
+
+    return winningKey;
+  }
+
   computerMoves() {
+    this.computerPlaysDefensively();
+  }
+
+  computerPlaysDefensively() {
+    let threat = this.getWinningKey(this.human);
+
+    if (threat) {
+      this.board.markSquareAt(threat, this.computer.getMarker());
+    } else {
+      this.computerPlaysRandom();
+    }
+  }
+
+  computerPlaysRandom() {
     let validChoices = this.board.unusedSquares();
     let choice;
 

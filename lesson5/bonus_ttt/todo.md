@@ -46,6 +46,22 @@ Rules:
 
 ## [ ] Computer AI: Defense
 
+### First model:
+
+- let `threat` = `getWinningKey(HUMAN_MARKER)`. If not `null`, play threat. Otherwise play random. 
+- Use `countMarkersFor` to get threats. If a row in `POSSIBLE_WINNING_ROWS` returns `2` for `HUMAN_MARKER`, then play the 3rd square in that row. Otherwise, play random choice.
+- To get the 3rd square, find the first square for which `isUnused`.
+
+                                     PEDAC
+
+`getWinningKey` / `getWinningSquare`
+
+### Alternative model:
+
+- Iterate through `validChoices`. If any choice would result in the human winning, play that choice. Otherwise, play random choice.
+- A choice would result in human winning when `countMarkersFor` would return `3` for some row with that choice.
+- Advantage of this approach is that it would very straightforwardly help with next bonus feature.
+
 ## [ ] Computer AI: Offense
 
 ## [ ] Another Computer Move Improvement
