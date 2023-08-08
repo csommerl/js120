@@ -2,7 +2,7 @@
 
 [TOC]
 
-## Improved Prompt
+## [x] Improved Prompt
 
 ```javascript
 // obj is the context for `joinOr`; replace it with the correct context.
@@ -12,30 +12,45 @@ obj.joinOr([1, 2, 3], '; ')          # => "1; 2; or 3"
 obj.joinOr([1, 2, 3], ', ', 'and')   # => "1, 2, and 3"
 ```
 
-Write a `joinOr` object method such that returns a string of the elements of an array with the arguments:
-- array
-- optional separator, e.g., `'; '` or `', '`.
-  - default is `", "`
-- optional alternative word before the last element
-  - default is `"or"`
+                                     PEDAC
+input:
+  1. array
+  2. optional separator (`'; '` or `', '`), default `", "`
+  3. optional conjunction (`"and"`), default `"or"`
+output:
+  - string containing each of the elements of the input array
+  1. If array length <= 1, return string containing just its elements.
+  2. If array length = 2, return string containing the elements separated by conjunction surrounded by spaces. 
+  3. Otherwise, all elements separated by separator & last 2 separated by conjunction.
 
-PEDAC:
+Mental model:
+- reduce
+- transform
 
-## Play Again
+Algorithm:
+1. If array length <= 1, return coerced string.
+2. If array length is 2, return join with ` conj `.
+3. Otherwise:
+   a. Use default join with all elements except last.
+   b. Append `sep conj `.
+   c. Append last element.
+   d. Return.
 
-## Computer AI: Defense
+## [ ] Play Again
 
-## Computer AI: Offense
+## [ ] Computer AI: Defense
 
-## Another Computer Move Improvement
+## [ ] Computer AI: Offense
 
-## Refactor the Move Methods
+## [ ] Another Computer Move Improvement
 
-## Keep Score
+## [ ] Refactor the Move Methods
 
-## Take Turns Going First
+## [ ] Keep Score
 
-## On Your Own Ideas
+## [ ] Take Turns Going First
+
+## [ ] On Your Own Ideas
 
 1. Minimax algorithm
 2. Bigger board

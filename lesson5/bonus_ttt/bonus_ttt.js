@@ -113,6 +113,20 @@ class TTTGame {
     [ "3", "5", "7" ],            // diagonal: bottom-left to top-right
   ];
 
+  static joinOr(arr, sep = ", ", conj = "or") {
+    let str;
+    if (arr.length <= 1) {
+      str = String(arr);
+    } else if (arr.length === 2) {
+      str = arr.join(` ${conj} `);
+    } else {
+      str = arr.slice(0, -1).join(sep);
+      str += `${sep}${conj} ${arr[arr.length - 1]}`;
+    }
+
+    return str;
+  }
+
   constructor() {
     this.board = new Board();
     this.human = new Human();
@@ -163,7 +177,7 @@ class TTTGame {
 
     while (true) {
       let validChoices = this.board.unusedSquares();
-      const prompt = `Choose a square (${validChoices.join(", ")}): `;
+      const prompt = `Choose a square (${TTTGame.joinOr(validChoices)}): `;
       choice = readline.question(prompt);
 
       if (validChoices.includes(choice)) break;
@@ -203,3 +217,10 @@ class TTTGame {
 
 let game = new TTTGame();
 game.play();
+
+/*
+console.log(TTTGame.joinOr([1, 2])); //                   # => "1 or 2"
+console.log(TTTGame.joinOr([1, 2, 3])); //                # => "1, 2, or 3"
+console.log(TTTGame.joinOr([1, 2, 3], '; ')); //          # => "1; 2; or 3"
+console.log(TTTGame.joinOr([1, 2, 3], ', ', 'and')); //   # => "1, 2, and 3"
+*/
