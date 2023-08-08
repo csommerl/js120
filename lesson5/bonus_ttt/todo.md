@@ -36,7 +36,7 @@ Algorithm:
    c. Append last element.
    d. Return.
 
-## [ ] Play Again
+## [x] Play Again
 
 Rules:
 1. Display welcome message only once.

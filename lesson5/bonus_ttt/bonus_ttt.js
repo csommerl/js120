@@ -28,6 +28,10 @@ class Square {
 
 class Board {
   constructor() {
+    this.reset();
+  }
+
+  reset() {
     this.squares = {};
     for (let counter = 1; counter <= 9; ++counter) {
       this.squares[String(counter)] = new Square();
@@ -135,10 +139,11 @@ class TTTGame {
 
   play() {
     this.displayWelcomeMessage();
+
     do {
       this.playRound();
-      this.board = new Board();
     } while (this.playAgain());
+
     this.displayGoodbyeMessage();
   }
 
@@ -157,22 +162,26 @@ class TTTGame {
 
     this.board.displayWithClear();
     this.displayResults();
+    this.board.reset();
   }
 
   playAgain() {
-    let prompt = "Play again? Select y/Y or n/N: ";
-    const validAnswers = ['y', 'n', 'Y', 'N'];
+    let prompt = "Play again (y/n)? ";
+    const validAnswers = ['y', 'n',];
 
     let answer;
 
     while (!validAnswers.includes(answer)) {
-      answer = readline.question(prompt);
+      answer = readline.question(prompt).toLowerCase();
       if (!validAnswers.includes(answer)) {
         console.log("Invalid answer");
       }
     }
     
-    return ['y', 'Y'].includes(answer);
+    console.log("");
+    console.log("");
+    console.clear();
+    return answer === 'y';
   }
 
   displayWelcomeMessage() {
