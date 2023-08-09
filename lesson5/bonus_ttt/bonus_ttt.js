@@ -27,13 +27,16 @@ class Square {
 }
 
 class Board {
+  static NUM_OF_SQUARES = 9;
+  static CENTER_SQUARE = 5;
+
   constructor() {
     this.reset();
   }
 
   reset() {
     this.squares = {};
-    for (let counter = 1; counter <= 9; ++counter) {
+    for (let counter = 1; counter <= Board.NUM_OF_SQUARES; ++counter) {
       this.squares[String(counter)] = new Square();
     }
   }
@@ -123,7 +126,7 @@ class Computer extends Player {
 }
 
 class TTTGame {
-  static WINNING_SCORE = 3;
+  static MATCH_GOAL = 3;
 
   static POSSIBLE_WINNING_ROWS = [
     [ "1", "2", "3" ],            // top row of board
@@ -154,6 +157,7 @@ class TTTGame {
     this.board = new Board();
     this.human = new Human();
     this.computer = new Computer();
+    this.currentMove = this.humanMoves;
   }
 
   play() {
@@ -170,7 +174,13 @@ class TTTGame {
     } while (this.playAgain());
   }
 
+  displayMatchInstructions() {
+    console.log(`The first player to win ${TTTGame.MATCH_GOAL} rounds wins the match.`);
+  }
+
   playMatch() {
+    this.displayMatchInstructions();
+
     while (!this.getMatchWinner()) {
       this.playRound();
       this.updatePlayerScores();
@@ -185,6 +195,9 @@ class TTTGame {
     this.board.display();
 
     while (true) {
+      // this.currentMove();
+      // if (this.roundOver()) break;
+
       this.humanMoves();
       if (this.roundOver()) break;
 
@@ -192,6 +205,7 @@ class TTTGame {
       if (this.roundOver()) break;
 
       this.board.displayWithClear();
+      // this.toggleCurrentMove();
     }
 
     this.board.displayWithClear();
@@ -277,7 +291,8 @@ class TTTGame {
   }
 
   getCenterSquareMove() {
-    return this.board.isUnusedSquareKey(5) ? 5 : null;
+    return this.board.isUnusedSquareKey(Board.CENTER_SQUARE) ?
+      Board.CENTER_SQUARE : null;
   }
 
   getDefensiveMove() {
@@ -327,15 +342,19 @@ class TTTGame {
   }
 
   getMatchWinner() {
-    if (this.human.getScore() === TTTGame.WINNING_SCORE) {
+    if (this.human.getScore() >= TTTGame.MATCH_GOAL) {
       return this.human;
-    } else if (this.computer.getScore() === TTTGame.WINNING_SCORE) {
+    } else if (this.computer.getScore() >= TTTGame.MATCH_GOAL) {
       return this.computer;
     }
   }
 
   displayMatchWinner() {
     console.log(`${this.getMatchWinner().constructor.name} wins the match!`);
+  }
+
+  toggleCurrentMove() {
+    this.currentMove = this.humanMoves ? this.computerMoves : this.humanMoves;
   }
 }
 

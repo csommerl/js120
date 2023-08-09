@@ -68,21 +68,28 @@ Rules:
 
 ## [x] Refactor the Move Methods
 
-## [ ] Keep Score
+## [x] Keep Score
 
 - [x] `playIndefinitely`
-- [ ] `playMatch`
+- [x] `playMatch`
 - keep score as a state of each player
   - [x] `updateScore` as method of player
-  - [ ] call method with `updateScore` method in `TTTGame`
+  - [x] call method with `updateScore` method in `TTTGame`
   - [x] `resetScore`
   - [ ] use `resetScore`
-- [ ] `getMatchWinner` in `TTTGame`
-  - [ ] use `getScore` method in each player
-  - [ ] use `winningScore` property of `TTTGame`
-- [ ] `displayScore` method in the `TTTGame` object
+- [x] `getMatchWinner` in `TTTGame`
+  - [x] use `getScore` method in each player
+  - [x] use `winningScore` property of `TTTGame`
+- [x] `displayScore` method in the `TTTGame` object
 
 ## [ ] Take Turns Going First
+
+- use for loop?
+  - problem: break statement needs to go to outer while loop
+- human goes first in first round, then it alternates
+- create `moveOrder` instance property
+  - array of `humanMoves` and `computerMoves`
+- `updateMoveOrder`
 
 ## [ ] On Your Own Ideas
 
