@@ -70,6 +70,18 @@ Rules:
 
 ## [ ] Keep Score
 
+- [x] `playIndefinitely`
+- [ ] `playMatch`
+- keep score as a state of each player
+  - [x] `updateScore` as method of player
+  - [ ] call method with `updateScore` method in `TTTGame`
+  - [x] `resetScore`
+  - [ ] use `resetScore`
+- [ ] `getMatchWinner` in `TTTGame`
+  - [ ] use `getScore` method in each player
+  - [ ] use `winningScore` property of `TTTGame`
+- [ ] `displayScore` method in the `TTTGame` object
+
 ## [ ] Take Turns Going First
 
 ## [ ] On Your Own Ideas
