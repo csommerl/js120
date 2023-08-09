@@ -44,7 +44,7 @@ Rules:
 3. After each game, ask whether to play again.
   - accept y,n,Y,N
 
-## [ ] Computer AI: Defense
+## [x] Computer AI: Defense
 
 ### First model:
 
@@ -62,11 +62,11 @@ Rules:
 - A choice would result in human winning when `countMarkersFor` would return `3` for some row with that choice.
 - Advantage of this approach is that it would very straightforwardly help with next bonus feature.
 
-## [ ] Computer AI: Offense
+## [x] Computer AI: Offense
 
-## [ ] Another Computer Move Improvement
+## [x] Another Computer Move Improvement
 
-## [ ] Refactor the Move Methods
+## [x] Refactor the Move Methods
 
 ## [ ] Keep Score
 

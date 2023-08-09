@@ -64,7 +64,11 @@ class Board {
 
   unusedSquares() {
     let keys = Object.keys(this.squares);
-    return keys.filter(key => this.squares[key].isUnused());
+    return keys.filter(key => this.isUnusedSquareKey(key));
+  }
+
+  isUnusedSquareKey(key) {
+    return this.squares[key].isUnused();
   }
 
   countMarkersFor(player, keys) {
@@ -177,7 +181,7 @@ class TTTGame {
         console.log("Invalid answer");
       }
     }
-    
+
     console.log("");
     console.log("");
     console.clear();
@@ -227,7 +231,7 @@ class TTTGame {
     for (let row of TTTGame.POSSIBLE_WINNING_ROWS) {
       if (this.board.countMarkersFor(player, row) === 2) {
         winningKey = row.find(key => {
-          return this.board.squares[key].isUnused();
+          return this.board.isUnusedSquareKey(key);
         });
       }
     }
@@ -236,20 +240,26 @@ class TTTGame {
   }
 
   computerMoves() {
-    this.computerPlaysDefensively();
+    let move = this.getCenterSquareMove() ??
+      this.getOffensiveMove() ??
+      this.getDefensiveMove() ??
+      this.getRandomMove();
+    this.board.markSquareAt(move, this.computer.getMarker());
   }
 
-  computerPlaysDefensively() {
-    let threat = this.getWinningKey(this.human);
-
-    if (threat) {
-      this.board.markSquareAt(threat, this.computer.getMarker());
-    } else {
-      this.computerPlaysRandom();
-    }
+  getCenterSquareMove() {
+    return this.board.isUnusedSquareKey(5) ? 5 : null;
   }
 
-  computerPlaysRandom() {
+  getDefensiveMove() {
+    return this.getWinningKey(this.human);
+  }
+
+  getOffensiveMove() {
+    return this.getWinningKey(this.computer);
+  }
+
+  getRandomMove() {
     let validChoices = this.board.unusedSquares();
     let choice;
 
@@ -257,7 +267,7 @@ class TTTGame {
       choice = Math.floor((9 * Math.random()) + 1).toString();
     } while (!validChoices.includes(choice));
 
-    this.board.markSquareAt(choice, this.computer.getMarker());
+    return choice;
   }
 
   gameOver() {
