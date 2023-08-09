@@ -158,20 +158,27 @@ class TTTGame {
 
   play() {
     this.displayWelcomeMessage();
-    this.playIndefinitely();
+    // this.playIndefinitely();
+    this.playMatch();
     this.displayGoodbyeMessage();
   }
 
   playIndefinitely() {
     do {
       this.playRound();
+      this.board.reset();
     } while (this.playAgain());
   }
 
   playMatch() {
-    while (this.getMatchWinner()) {
+    while (!this.getMatchWinner()) {
       this.playRound();
+      this.updatePlayerScores();
+      this.displayScores();
+      this.board.reset();
     }
+
+    this.displayMatchWinner();
   }
 
   playRound() {
@@ -188,8 +195,7 @@ class TTTGame {
     }
 
     this.board.displayWithClear();
-    this.displayResults();
-    this.board.reset();
+    this.displayRoundResults();
   }
 
   playAgain() {
@@ -221,13 +227,13 @@ class TTTGame {
     console.log("Thanks for playing Tic Tac Toe! Goodbye!");
   }
 
-  displayResults() {
+  displayRoundResults() {
     if (this.isRoundWinner(this.human)) {
-      console.log("You won! Congratulations!");
+      console.log("You won the round! Congratulations!");
     } else if (this.isRoundWinner(this.computer)) {
-      console.log("I won! I won! Take that, human!");
+      console.log("I won the round! I won! Take that, human!");
     } else {
-      console.log("A tie game. How boring.");
+      console.log("A tied round. How boring.");
     }
   }
 
@@ -305,6 +311,31 @@ class TTTGame {
     return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
       return this.board.countMarkersFor(player, row) === 3;
     });
+  }
+
+  updatePlayerScores() {
+    if (this.isRoundWinner(this.human)) {
+      this.human.updateScore();
+    } else if (this.isRoundWinner(this.computer)) {
+      this.computer.updateScore();
+    }
+  }
+
+  displayScores() {
+    console.log(`You: ${this.human.getScore()}`);
+    console.log(`Computer: ${this.computer.getScore()}`);
+  }
+
+  getMatchWinner() {
+    if (this.human.getScore() === TTTGame.WINNING_SCORE) {
+      return this.human;
+    } else if (this.computer.getScore() === TTTGame.WINNING_SCORE) {
+      return this.computer;
+    }
+  }
+
+  displayMatchWinner() {
+    console.log(`${this.getMatchWinner().constructor.name} wins the match!`);
   }
 }
 
