@@ -189,23 +189,23 @@ Always use the radix argument of `parseInt`.
 
 ## [5.11 OOP Tic Tac Toe with Bonus Features](https://launchschool.com/lessons/93a83d87/assignments/9123ba93)
 
-## Improved Prompt
+### Improved Prompt
 
-## Play Again
+### Play Again
 
-## Computer AI: Defense
+### Computer AI: Defense
 
-## Computer AI: Offense
+### Computer AI: Offense
 
-## Another Computer Move Improvement
+### Another Computer Move Improvement
 
-## Refactor the Move Methods
+### Refactor the Move Methods
 
-## Keep Score
+### Keep Score
 
-## Take Turns Going First
+### Take Turns Going First
 
-## On Your Own Ideas
+### On Your Own Ideas
 
 1. Minimax algorithm
 2. Bigger board
@@ -213,17 +213,34 @@ Always use the radix argument of `parseInt`.
 
 ---
 
+## [5.12 OOP Twenty-One Overview](https://launchschool.com/lessons/93a83d87/assignments/ab05d402)
+
+### Description
+
+### Identify the Nouns and Verbs
+
+### Organize
+
+### Additional Requirements
+
+### Scaffolding and Spike
+
+---
+
 ## My Summary of Steps for Creating an OOP program.
 
 Steps:
 
-1. Outline classes & their methods.
-2. Write *stubs*, asking questions about data structures, relations between classes, etc.
-3. Write a *spike* in the orchestration engine.
-4. Test the code.
-5. Take care of low-hanging fruit.
-6. Work through the harder problems within the spike.
-   - At each step, outline the pros and cons of different approaches.
+1. Write a description of the problem.
+2. Extract significant nouns & verbs.
+3. Organize & associate nouns & verbs.
+4. Write scaffolding stubs and spike code.
+    - Outline classes & their methods.
+    - Write *stubs*, asking questions about data structures, relations between classes, etc.
+    - Write a *spike* in the orchestration engine.
+    - Test the code.
+    - Take care of low-hanging fruit.
+    - Work through the harder problems within the spike, and at each step, outline the pros and cons of different approaches.
 
 ## Questions
 
