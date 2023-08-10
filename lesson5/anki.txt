@@ -5,4 +5,5 @@ Regression; the reappearance of a bug after it was previously fixed; js120
 Indirection; the ability to reference something indirectly, e.g., to invoke an action with a function or method; js120
 dependency graph; the data structure that formed by the dependencies of a program; js120
 obj.collaboratorName?.propName / obj.methodName?.(); the optional chaining operator: if the property/method name to the left of the operator is nullish, then the expression as a whole short-circuits with a value of undefined (instead of throwing a TypeError), but otherwise accesses/executes the right operand; js120
+When to use semi-colons in class declarations/expressions?; only after static properties; js120
 

@@ -157,7 +157,8 @@ class TTTGame {
     this.board = new Board();
     this.human = new Human();
     this.computer = new Computer();
-    this.currentMove = this.humanMoves;
+    this.firstMove = null;
+    this.currentMove = null;
   }
 
   play() {
@@ -181,11 +182,13 @@ class TTTGame {
   playMatch() {
     this.displayMatchInstructions();
 
-    while (!this.getMatchWinner()) {
+    while (true) {
       this.playRound();
       this.updatePlayerScores();
       this.displayScores();
       this.board.reset();
+      if (this.getMatchWinner()) break;
+      this.playAgain();
     }
 
     this.displayMatchWinner();
@@ -193,19 +196,15 @@ class TTTGame {
 
   playRound() {
     this.board.display();
+    // TODO: extract to separate method: `setMoves`
+    this.toggleFirstMove();
+    this.currentMove = this.firstMove;
 
     while (true) {
-      // this.currentMove();
-      // if (this.roundOver()) break;
-
-      this.humanMoves();
+      this.currentMove();
+      this.toggleCurrentMove();
       if (this.roundOver()) break;
-
-      this.computerMoves();
-      if (this.roundOver()) break;
-
       this.board.displayWithClear();
-      // this.toggleCurrentMove();
     }
 
     this.board.displayWithClear();
@@ -353,8 +352,13 @@ class TTTGame {
     console.log(`${this.getMatchWinner().constructor.name} wins the match!`);
   }
 
+  // TODO: DRY the methods below
   toggleCurrentMove() {
-    this.currentMove = this.humanMoves ? this.computerMoves : this.humanMoves;
+    this.currentMove = (this.currentMove === this.humanMoves) ? this.computerMoves : this.humanMoves;
+  }
+
+  toggleFirstMove() {
+    this.firstMove = (this.firstMove === this.humanMoves) ? this.computerMoves : this.humanMoves;
   }
 }
 
