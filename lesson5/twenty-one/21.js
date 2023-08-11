@@ -1,8 +1,6 @@
 const readline = require('readline-sync');
 
 class Card {
-  // static properties for points?
-
   constructor(rank, suit) { // STUB
     this.rank = rank;
     this.suit = suit;
@@ -17,6 +15,9 @@ class Card {
       return 10;
     }
   }
+
+  toString() { // STUB
+  }
 }
 
 class Deck {
@@ -29,10 +30,8 @@ class Deck {
     this.reset();
   }
 
-  dealHand() { // STUB
-  }
-
-  dealCard() { // STUB
+  getCard() {
+    return this.cards.pop();
   }
 
   shuffle() { // STUB
@@ -51,7 +50,11 @@ class Deck {
 
 class Hand {
   constructor() { // STUB
-    // data structure
+    this.cards = [];
+  }
+
+  add(card) { // STUB
+    this.cards.push(card);
   }
 
   isBusted() { // STUB
@@ -59,17 +62,25 @@ class Hand {
 
   score() { // STUB
   }
+
+  show() { // STUB
+    console.log(this.cards);
+  }
 }
 
 class Participant {
   constructor() { // STUB
-    // hand
+    this.hand = new Hand();
+  }
+
+  displayHand() { // STUB
+    this.hand.show();
   }
 }
 
 class Player extends Participant {
   constructor() { // STUB
-    // dollars
+    super();
   }
 
   move() { // STUB
@@ -82,6 +93,8 @@ class Player extends Participant {
   }
 
   displayHand() { // STUB
+    console.log(`You have:`);
+    super.displayHand();
   }
 
   updateDollars() { // STUB
@@ -90,29 +103,29 @@ class Player extends Participant {
 
 class Dealer extends Participant {
   constructor() { // STUB
+    super();
   }
 
   move() { // STUB
   }
 
   displayHand() { // STUB
+    console.log(`The dealer has:`);
+    super.displayHand();
   }
 }
 
 class TwentyOneGame {
   constructor() { // STUB
     this.deck = new Deck();
-    // Player
-    // Dealer
+    this.player = new Player();
+    this.dealer = new Dealer();
   }
 
   playMatch() { // SPIKE
     this.displayWelcomeMessage();
 
     do { // TODO: play based on dollars
-      for (let card of this.deck.cards) { // TODO: remove
-        console.log(card, card.points());
-      }
       this.playRound();
     } while (this.playAgain());
 
@@ -128,9 +141,12 @@ class TwentyOneGame {
   }
 
   dealCards() { // STUB
+    this.player.hand.add(this.deck.getCard());
   }
 
   showCards() { // STUB
+    this.dealer.displayHand();
+    this.player.displayHand();
   }
 
   playerTurn() { // STUB
