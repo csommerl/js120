@@ -40,6 +40,9 @@ See [JS101 5.9 Assignment: Twenty-One](https://launchschool.com/lessons/fb4809a8
 
 ## Scaffolding and Spike
 
+Use reset?
+Put new cards in discard pile?
+
 Where to put `dealHand`?
 - Putting it in `deck` would require passing participant as an argument.
 - So, to avoid dependency, it seems that it would be good to have it as a method of `TwentyOneGame`.

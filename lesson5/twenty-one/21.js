@@ -1,19 +1,32 @@
+const readline = require('readline-sync');
+
 class Card {
   // static properties for points?
 
-  constructor() { // STUB
-    // rank
-    // suit
+  constructor(rank, suit) { // STUB
+    this.rank = rank;
+    this.suit = suit;
   }
 
-  points() { // STUB
+  points() { // TODO: move to Hand?
+    if (Number(this.rank)) {
+      return Number(this.rank);
+    } else if (this.rank === 'Ace') {
+      return 11;
+    } else {
+      return 10;
+    }
   }
 }
 
 class Deck {
-  constructor() { // STUB
-    // cards data structure
-    // reset
+  static SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+  static PIP_CARDS = [...Array(9).keys()].map(idx => String(idx + 2));
+  static FACE_CARDS = ['Jack', 'Queen', 'King', 'Ace'];
+  static RANKS = this.PIP_CARDS.concat(this.FACE_CARDS);
+
+  constructor() { // TODO: move reset to constructor?
+    this.reset();
   }
 
   dealHand() { // STUB
@@ -25,7 +38,14 @@ class Deck {
   shuffle() { // STUB
   }
 
-  reset() { // STUB
+  reset() { // TODO: move to constructor?
+    this.cards = [];
+
+    for (let suit of Deck.SUITS) {
+      for (let rank of Deck.RANKS) {
+        this.cards.push(new Card(rank, suit));
+      }
+    }
   }
 }
 
@@ -81,14 +101,21 @@ class Dealer extends Participant {
 
 class TwentyOneGame {
   constructor() { // STUB
-    // Deck
+    this.deck = new Deck();
     // Player
     // Dealer
   }
 
   playMatch() { // SPIKE
     this.displayWelcomeMessage();
-    this.playRound(); // TODO: play based on dollars
+
+    do { // TODO: play based on dollars
+      for (let card of this.deck.cards) { // TODO: remove
+        console.log(card, card.points());
+      }
+      this.playRound();
+    } while (this.playAgain());
+
     this.displayGoodbyeMessage();
   }
 
@@ -116,11 +143,33 @@ class TwentyOneGame {
   }
 
   displayWelcomeMessage() { // STUB
+    console.clear();
+    console.log('Welcome to 21!');
   }
 
   displayGoodbyeMessage() { // STUB
+    console.log('Thanks for playing 21!');
+    console.clear();
+  }
+
+  playAgain() {
+    let prompt = "Play again (y/n)? ";
+    const validAnswers = ['y', 'n',];
+
+    let answer;
+
+    while (!validAnswers.includes(answer)) {
+      answer = readline.question(prompt).toLowerCase();
+      if (!validAnswers.includes(answer)) {
+        console.log("Invalid answer");
+      }
+    }
+
+    console.clear();
+
+    return answer === 'y';
   }
 }
 
 let game = new TwentyOneGame();
-game.playRound();
+game.playMatch();
