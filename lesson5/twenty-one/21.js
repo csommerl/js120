@@ -1,30 +1,35 @@
 const readline = require('readline-sync');
 
 class Card {
-  constructor(rank, suit) { // STUB
+  constructor(rank, suit) {
     this.rank = rank;
     this.suit = suit;
   }
 
-  points() { // TODO: move to Hand?
+  points() {
     if (Number(this.rank)) {
       return Number(this.rank);
     } else if (this.rank === 'Ace') {
-      return 11;
+      return Deck.ACE_MAX_VALUE;
     } else {
-      return 10;
+      return Deck.FACE_CARD_VALUE;
     }
   }
 
-  toString() { // STUB
+  toString() {
+    return `${this.rank} of ${this.suit}`;
   }
 }
 
 class Deck {
   static SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+
   static PIP_CARDS = [...Array(9).keys()].map(idx => String(idx + 2));
   static FACE_CARDS = ['Jack', 'Queen', 'King', 'Ace'];
   static RANKS = this.PIP_CARDS.concat(this.FACE_CARDS);
+
+  static FACE_CARD_VALUE = 10;
+  static ACE_MAX_VALUE = 11;
 
   constructor() { // TODO: move reset to constructor?
     this.reset();
@@ -49,37 +54,58 @@ class Deck {
 }
 
 class Hand {
-  constructor() { // STUB
+  constructor() {
     this.cards = [];
   }
 
-  add(card) { // STUB
+  add(card) {
     this.cards.push(card);
   }
 
-  isBusted() { // STUB
+  isBusted() {
+    return this.score() > TwentyOneGame.MAX_SCORE;
   }
 
-  score() { // STUB
+  score() {
+    let score = 0;
+
+    for (let card of this.cards) {
+      score += card.points();
+    }
+
+    let aces = this.cards.filter(card => card.rank === 'Ace');
+    aces.forEach(_ => {
+      if (score > TwentyOneGame.MAX_SCORE) score -= 10;
+    });
+
+    return score;
   }
 
-  show() { // STUB
-    console.log(this.cards);
+  showAll() {
+    for (let card of this.cards) {
+      console.log(` - ${card.toString()}`);
+    }
+  }
+
+  showOne() {
+    for (let idx = 0; idx < this.cards.length; ++idx) {
+      if (idx === 0) {
+        console.log(` - ${this.cards[0].toString()}`);
+      } else {
+        console.log(` - unknown card`);
+      }
+    }
   }
 }
 
 class Participant {
-  constructor() { // STUB
+  constructor() {
     this.hand = new Hand();
-  }
-
-  displayHand() { // STUB
-    this.hand.show();
   }
 }
 
 class Player extends Participant {
-  constructor() { // STUB
+  constructor() {
     super();
   }
 
@@ -92,9 +118,11 @@ class Player extends Participant {
   stay() { // STUB
   }
 
-  displayHand() { // STUB
+  displayHand() {
     console.log(`You have:`);
-    super.displayHand();
+    this.hand.showAll();
+    console.log(`With a score of ${this.hand.score()}`);
+    console.log();
   }
 
   updateDollars() { // STUB
@@ -102,24 +130,29 @@ class Player extends Participant {
 }
 
 class Dealer extends Participant {
-  constructor() { // STUB
+  constructor() {
     super();
   }
 
   move() { // STUB
   }
 
-  displayHand() { // STUB
+  displayHand() {
     console.log(`The dealer has:`);
-    super.displayHand();
+    this.hand.showOne();
+    console.log(`With a score of ?????`);
+    console.log();
   }
 }
 
 class TwentyOneGame {
+  static MAX_SCORE = 21;
+
   constructor() { // STUB
     this.deck = new Deck();
     this.player = new Player();
     this.dealer = new Dealer();
+    this.participants = [this.player, this.dealer];
   }
 
   playMatch() { // SPIKE
@@ -140,13 +173,18 @@ class TwentyOneGame {
     this.displayResult();
   }
 
-  dealCards() { // STUB
-    this.player.hand.add(this.deck.getCard());
+  dealCards() {
+    for (let participant of this.participants) {
+      for (let idx = 0; idx < 2; ++idx) {
+        participant.hand.add(this.deck.getCard());
+      }
+    }
   }
 
-  showCards() { // STUB
-    this.dealer.displayHand();
-    this.player.displayHand();
+  showCards() {
+    for (let participant of this.participants) {
+      participant.displayHand();
+    }
   }
 
   playerTurn() { // STUB
@@ -160,7 +198,7 @@ class TwentyOneGame {
 
   displayWelcomeMessage() { // STUB
     console.clear();
-    console.log('Welcome to 21!');
+    console.log('Welcome to 21!\n');
   }
 
   displayGoodbyeMessage() { // STUB
