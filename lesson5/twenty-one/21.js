@@ -6,16 +6,6 @@ class Card {
     this.suit = suit;
   }
 
-  points() {
-    if (Number(this.rank)) {
-      return Number(this.rank);
-    } else if (this.rank === 'Ace') {
-      return Deck.ACE_MAX_VALUE;
-    } else {
-      return Deck.FACE_CARD_VALUE;
-    }
-  }
-
   toString() {
     return `${this.rank} of ${this.suit}`;
   }
@@ -28,11 +18,9 @@ class Deck {
   static FACE_CARDS = ['Jack', 'Queen', 'King', 'Ace'];
   static RANKS = this.PIP_CARDS.concat(this.FACE_CARDS);
 
-  static FACE_CARD_VALUE = 10;
-  static ACE_MAX_VALUE = 11;
-
   constructor() { // TODO: move reset to constructor?
     this.reset();
+    this.shuffle();
   }
 
   getCard() {
@@ -40,6 +28,10 @@ class Deck {
   }
 
   shuffle() { // STUB
+    for (let idx1 = this.cards.length - 1; idx1 > 0; --idx1) {
+      let idx2 = Math.floor(Math.random() * (idx1 + 1)); // 0 to idx1
+      [this.cards[idx1], this.cards[idx2]] = [this.cards[idx2], this.cards[idx1]]; // swap elements
+    }
   }
 
   reset() { // TODO: move to constructor?
@@ -54,6 +46,11 @@ class Deck {
 }
 
 class Hand {
+  static FACE_CARD_VALUE = 12;
+  static ACE_MAX_VALUE = 11;
+  static ACE_MIN_VALUE = 10;
+  static MAX_SCORE = 21;
+
   constructor() {
     this.cards = [];
   }
@@ -62,23 +59,36 @@ class Hand {
     this.cards.push(card);
   }
 
-  isBusted() {
-    return this.score() > TwentyOneGame.MAX_SCORE;
+  pointsOf(card) {
+    if (Number(card.rank)) {
+      return Number(card.rank);
+    } else if (card.rank === 'Ace') {
+      return Hand.ACE_MAX_VALUE;
+    } else {
+      return Hand.FACE_CARD_VALUE;
+    }
   }
 
   score() {
-    let score = 0;
+    return this.aceAdjustment(this.maxScore());
+  }
 
-    for (let card of this.cards) {
-      score += card.points();
-    }
+  maxScore() {
+    return this.cards.reduce((score, card) => score + this.pointsOf(card), 0);
+  }
 
-    let aces = this.cards.filter(card => card.rank === 'Ace');
-    aces.forEach(_ => {
-      if (score > TwentyOneGame.MAX_SCORE) score -= 10;
-    });
+  aceAdjustment(score) {
+    this.cards
+      .filter(card => card.rank === 'Ace')
+      .forEach(_ => {
+        if (this.isBusted(score)) score -= 10;
+      });
 
     return score;
+  }
+
+  isBusted(score = this.score) {
+    return score > Hand.MAX_SCORE;
   }
 
   showAll() {
@@ -92,7 +102,7 @@ class Hand {
       if (idx === 0) {
         console.log(` - ${this.cards[0].toString()}`);
       } else {
-        console.log(` - unknown card`);
+        console.log(" - unknown card");
       }
     }
   }
@@ -146,8 +156,6 @@ class Dealer extends Participant {
 }
 
 class TwentyOneGame {
-  static MAX_SCORE = 21;
-
   constructor() { // STUB
     this.deck = new Deck();
     this.player = new Player();
@@ -166,14 +174,15 @@ class TwentyOneGame {
   }
 
   playRound() { // SPIKE
-    this.dealCards();
+    this.dealHands();
     this.showCards();
     this.playerTurn();
     this.dealerTurn();
     this.displayResult();
+    // TODO: discard cards in hand
   }
 
-  dealCards() {
+  dealHands() {
     for (let participant of this.participants) {
       for (let idx = 0; idx < 2; ++idx) {
         participant.hand.add(this.deck.getCard());
