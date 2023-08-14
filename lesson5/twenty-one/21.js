@@ -18,32 +18,50 @@ class Deck {
   static FACE_CARDS = ['Jack', 'Queen', 'King', 'Ace'];
   static RANKS = this.PIP_CARDS.concat(this.FACE_CARDS);
 
-  constructor() { // TODO: move reset to constructor?
-    this.reset();
-    this.shuffle();
+  static create() {
+    let cards = [];
+
+    for (let suit of Deck.SUITS) {
+      for (let rank of Deck.RANKS) {
+        cards.push(new Card(rank, suit));
+      }
+    }
+
+    return cards;
+  }
+
+  static shuffle(cards) {
+    for (let idx1 = cards.length - 1; idx1 > 0; --idx1) {
+      let idx2 = Math.floor(Math.random() * (idx1 + 1));
+      [cards[idx1], cards[idx2]] = [cards[idx2], cards[idx1]];
+    }
+
+    return cards;
+  }
+
+  constructor() {
+    this.cards = Deck.shuffle(Deck.create());
+    this.discarded = [];
   }
 
   getCard() {
     return this.cards.pop();
   }
 
-  shuffle() { // STUB
-    let cards = this.cards;
-
-    for (let idx1 = this.cards.length - 1; idx1 > 0; --idx1) {
-      let idx2 = Math.floor(Math.random() * (idx1 + 1)); // 0 to idx1
-      [cards[idx1], cards[idx2]] = [cards[idx2], cards[idx1]]; // swap elements
-    }
+  addToDiscarded(card) {
+    this.discarded.push(card);
   }
 
-  reset() { // TODO: move to constructor?
-    this.cards = [];
+  shuffle() {
+    Deck.shuffle(this.cards);
+  }
 
-    for (let suit of Deck.SUITS) {
-      for (let rank of Deck.RANKS) {
-        this.cards.push(new Card(rank, suit));
-      }
+  reset() {
+    while (this.discarded.length) {
+      this.cards.push(this.discarded.pop());
     }
+
+    this.shuffle();
   }
 }
 
@@ -109,8 +127,10 @@ class Hand {
     }
   }
 
-  empty() {
-    this.cards.length = 0;
+  discard() {
+    let discarded = this.cards;
+    this.cards = [];
+    return discarded;
   }
 }
 
@@ -127,15 +147,6 @@ class Participant {
 class Player extends Participant {
   constructor() {
     super();
-  }
-
-  move() { // STUB
-  }
-
-  hit() { // STUB
-  }
-
-  stay() { // STUB
   }
 
   displayHand() {
@@ -166,7 +177,7 @@ class Dealer extends Participant {
 }
 
 class TwentyOneGame {
-  constructor() { // STUB
+  constructor() {
     this.deck = new Deck();
     this.player = new Player();
     this.dealer = new Dealer();
@@ -178,7 +189,6 @@ class TwentyOneGame {
 
     do { // TODO: play based on dollars
       this.playRound();
-      // TODO: reset deck if number of cards is low
     } while (this.playAgain());
 
     this.displayGoodbyeMessage();
@@ -190,7 +200,7 @@ class TwentyOneGame {
     this.playerTurn();
     this.dealerTurn();
     this.displayResult();
-    this.emptyHands();
+    this.recycleCards();
   }
 
   dealCard(participant) {
@@ -205,10 +215,19 @@ class TwentyOneGame {
     }
   }
 
-  emptyHands() {
+  recycleCards() {
     for (let participant of this.participants) {
-      participant.hand.empty();
+      let discarded = participant.hand.discard();
+
+      while (discarded.length) {
+        this.deck.addToDiscarded(discarded.pop());
+      }
+
+      // does this help with memory? otherwise, you have an object left over after each recycle
+      discarded = null;
     }
+
+    this.deck.reset();
   }
 
   showCards() {
@@ -220,13 +239,15 @@ class TwentyOneGame {
   playerTurn() { // STUB
     while (this.playerHits()) {
       this.dealCard(this.player);
+
       if (this.player.hasBustedHand()) break;
+
       console.log("You hit!\n");
       this.showCards();
     }
   }
 
-  playerHits() { // STUB // TODO: DRY with playAgain?
+  playerHits() { // TODO: DRY with playAgain?
     let prompt = "(h)it or (s)tay? ";
     const validAnswers = ['h', 's',];
 
@@ -257,9 +278,8 @@ class TwentyOneGame {
     console.log('Welcome to 21!\n');
   }
 
-  displayGoodbyeMessage() { // STUB
+  displayGoodbyeMessage() {
     console.log('Thanks for playing 21!');
-    console.clear();
   }
 
   playAgain() {
