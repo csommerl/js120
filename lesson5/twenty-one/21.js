@@ -1,6 +1,11 @@
 const readline = require("readline-sync");
 
 class Card {
+  static SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"];
+  static PIP_CARDS = [...Array(9).keys()].map(idx => String(idx + 2));
+  static FACE_CARDS = ["Jack", "Queen", "King", "Ace"];
+  static RANKS = this.PIP_CARDS.concat(this.FACE_CARDS);
+
   constructor(rank, suit) {
     this.rank = rank;
     this.suit = suit;
@@ -23,22 +28,16 @@ class Card {
   }
 
   isFaceCard() {
-    return Deck.FACE_CARDS.includes(this.rank);
+    return Card.FACE_CARDS.includes(this.rank);
   }
 }
 
 class Deck {
-  static SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"];
-
-  static PIP_CARDS = [...Array(9).keys()].map(idx => String(idx + 2));
-  static FACE_CARDS = ["Jack", "Queen", "King", "Ace"];
-  static RANKS = this.PIP_CARDS.concat(this.FACE_CARDS);
-
   static create() {
     let cards = [];
 
-    for (let suit of Deck.SUITS) {
-      for (let rank of Deck.RANKS) {
+    for (let suit of Card.SUITS) {
+      for (let rank of Card.RANKS) {
         cards.push(new Card(rank, suit));
       }
     }
@@ -46,7 +45,9 @@ class Deck {
     return cards;
   }
 
-  static shuffleCards(cards) { // TODO: unnecessary?
+  // TODO: unnecessary?
+  // It does offer a resource for shuffling other cards, which might be useful
+  static shuffleCards(cards) {
     for (let idx1 = cards.length - 1; idx1 > 0; --idx1) {
       let idx2 = Math.floor(Math.random() * (idx1 + 1));
       [cards[idx1], cards[idx2]] = [cards[idx2], cards[idx1]];
@@ -81,6 +82,7 @@ class Deck {
   }
 }
 
+// Values here because cards have values only within a hand (e.g., aces)
 class Hand {
   static FACE_CARD_VALUE = 10;
   static ACE_MAX_VALUE = 11;
@@ -98,7 +100,7 @@ class Hand {
   pointsOf(card) {
     if (card.isAce()) {
       return Hand.ACE_MAX_VALUE;
-    } else if (card.isFaceCard()){
+    } else if (card.isFaceCard()) {
       return Hand.FACE_CARD_VALUE;
     } else {
       return Number(card.getRank());
@@ -110,16 +112,18 @@ class Hand {
       return points + this.pointsOf(card);
     }, 0);
 
+    let aceOffset = Hand.ACE_MAX_VALUE - Hand.ACE_MIN_VALUE;
+
     this.cards
       .filter(card => card.isAce())
       .forEach(_ => {
-        if (this.isBusted(score)) score -= (Hand.ACE_MAX_VALUE - Hand.ACE_MIN_VALUE);
+        if (this.isBusted(score)) score -= aceOffset;
       });
 
     return score;
   }
 
-  isBusted(score = this.score()) { // argument enables this to be useds within aceAdjustment
+  isBusted(score = this.score()) { // argument enables this to be useds within score()
     return score > Hand.MAX_SCORE;
   }
 
@@ -158,6 +162,7 @@ class Hand {
 class Participant {
   constructor() {
     this.hand = new Hand();
+    this.name = this.constructor.name;
   }
 
   discardHand() {
@@ -177,7 +182,7 @@ class Participant {
   }
 
   displayHandAndScore(quantity = "full") { // TODO: rename method name and quantity
-    console.log(`The ${this.constructor.name} has:`);
+    console.log(`The ${this.name} has:`);
 
     if (quantity === "full") {
       this.hand.showFull();
@@ -231,6 +236,20 @@ class TwentyOneGame {
     this.recycleCards();
   }
 
+  roundWinner() { // SPIKE: tidy up?
+    if (this.player.hasBustedHand()) {
+      return this.dealer;
+    } else if (this.dealer.hasBustedHand()) {
+      return this.player;
+    } else if (this.player.currentScore() === this.dealer.currentScore()) {
+      return null;
+    } else if (this.player.currentScore() > this.dealer.currentScore()) {
+      return this.player;
+    } else {
+      return this.dealer;
+    }
+  }
+
   dealCard(participant) {
     participant.addToHand(this.deck.getCard());
   }
@@ -282,13 +301,15 @@ class TwentyOneGame {
   }
 
   dealerTurn() {
+    if (this.player.hasBustedHand()) return;
+
     while (this.dealer.currentScore() < Dealer.TARGET_SCORE) {
       this.dealCard(this.dealer);
     }
   }
 
   displayResult() { // SPIKE
-    console.log("The round is over!\n");
+    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
     this.showCards();
   }
 
