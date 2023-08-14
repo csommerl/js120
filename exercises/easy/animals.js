@@ -23,7 +23,7 @@ class Cat extends Animal {
   }
 }
 
-Dog extends Animal {
+class Dog extends Animal {
   constructor(name, age, status, master) {
     super(name, age, 4, 'dog', status);
     this.master = master;
