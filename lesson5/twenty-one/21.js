@@ -28,9 +28,11 @@ class Deck {
   }
 
   shuffle() { // STUB
+    let cards = this.cards;
+
     for (let idx1 = this.cards.length - 1; idx1 > 0; --idx1) {
       let idx2 = Math.floor(Math.random() * (idx1 + 1)); // 0 to idx1
-      [this.cards[idx1], this.cards[idx2]] = [this.cards[idx2], this.cards[idx1]]; // swap elements
+      [cards[idx1], cards[idx2]] = [cards[idx2], cards[idx1]]; // swap elements
     }
   }
 
@@ -46,7 +48,7 @@ class Deck {
 }
 
 class Hand {
-  static FACE_CARD_VALUE = 12;
+  static FACE_CARD_VALUE = 10;
   static ACE_MAX_VALUE = 11;
   static ACE_MIN_VALUE = 10;
   static MAX_SCORE = 21;
@@ -87,7 +89,7 @@ class Hand {
     return score;
   }
 
-  isBusted(score = this.score) {
+  isBusted(score = this.score()) {
     return score > Hand.MAX_SCORE;
   }
 
@@ -106,11 +108,19 @@ class Hand {
       }
     }
   }
+
+  empty() {
+    this.cards.length = 0;
+  }
 }
 
 class Participant {
   constructor() {
     this.hand = new Hand();
+  }
+
+  hasBustedHand() {
+    return this.hand.isBusted();
   }
 }
 
@@ -168,6 +178,7 @@ class TwentyOneGame {
 
     do { // TODO: play based on dollars
       this.playRound();
+      // TODO: reset deck if number of cards is low
     } while (this.playAgain());
 
     this.displayGoodbyeMessage();
@@ -179,14 +190,24 @@ class TwentyOneGame {
     this.playerTurn();
     this.dealerTurn();
     this.displayResult();
-    // TODO: discard cards in hand
+    this.emptyHands();
+  }
+
+  dealCard(participant) {
+    participant.hand.add(this.deck.getCard());
   }
 
   dealHands() {
     for (let participant of this.participants) {
       for (let idx = 0; idx < 2; ++idx) {
-        participant.hand.add(this.deck.getCard());
+        this.dealCard(participant);
       }
+    }
+  }
+
+  emptyHands() {
+    for (let participant of this.participants) {
+      participant.hand.empty();
     }
   }
 
@@ -197,12 +218,38 @@ class TwentyOneGame {
   }
 
   playerTurn() { // STUB
+    while (this.playerHits()) {
+      this.dealCard(this.player);
+      if (this.player.hasBustedHand()) break;
+      console.log("You hit!\n");
+      this.showCards();
+    }
+  }
+
+  playerHits() { // STUB // TODO: DRY with playAgain?
+    let prompt = "(h)it or (s)tay? ";
+    const validAnswers = ['h', 's',];
+
+    let answer;
+
+    while (!validAnswers.includes(answer)) {
+      answer = readline.question(prompt).toLowerCase();
+      if (!validAnswers.includes(answer)) {
+        console.log("Invalid answer");
+      }
+    }
+
+    console.clear();
+
+    return answer === 'h';
   }
 
   dealerTurn() { // STUB
   }
 
   displayResult() { // STUB
+    console.log("The round is over!\n");
+    this.showCards();
   }
 
   displayWelcomeMessage() { // STUB
