@@ -9,6 +9,22 @@ class Card {
   toString() {
     return `${this.rank} of ${this.suit}`;
   }
+
+  getRank() {
+    return this.rank;
+  }
+
+  getSuit() {
+    return this.suit;
+  }
+
+  isAce() {
+    return this.rank === "Ace";
+  }
+
+  isFaceCard() {
+    return Deck.FACE_CARDS.includes(this.rank);
+  }
 }
 
 class Deck {
@@ -68,7 +84,7 @@ class Deck {
 class Hand {
   static FACE_CARD_VALUE = 10;
   static ACE_MAX_VALUE = 11;
-  static ACE_MIN_VALUE = 10;
+  static ACE_MIN_VALUE = 1;
   static MAX_SCORE = 21;
 
   constructor() {
@@ -80,51 +96,55 @@ class Hand {
   }
 
   pointsOf(card) {
-    if (Number(card.rank)) {
-      return Number(card.rank);
-    } else if (card.rank === "Ace") {
+    if (card.isAce()) {
       return Hand.ACE_MAX_VALUE;
-    } else {
+    } else if (card.isFaceCard()){
       return Hand.FACE_CARD_VALUE;
+    } else {
+      return Number(card.getRank());
     }
   }
 
   score() {
-    return this.aceAdjustment(this.maxScore());
-  }
+    let score = this.cards.reduce((points, card) => {
+      return points + this.pointsOf(card);
+    }, 0);
 
-  maxScore() {
-    return this.cards.reduce((score, card) => score + this.pointsOf(card), 0);
-  }
-
-  aceAdjustment(score) { // TODO: move to static method? or just move to score?
     this.cards
-      .filter(card => card.rank === "Ace")
+      .filter(card => card.isAce())
       .forEach(_ => {
-        if (this.isBusted(score)) score -= 10;
+        if (this.isBusted(score)) score -= (Hand.ACE_MAX_VALUE - Hand.ACE_MIN_VALUE);
       });
 
     return score;
   }
 
-  isBusted(score = this.score()) {
+  isBusted(score = this.score()) { // argument enables this to be useds within aceAdjustment
     return score > Hand.MAX_SCORE;
   }
 
-  showAll() {
+  showFull() {
     for (let card of this.cards) {
       console.log(` - ${card.toString()}`);
     }
+
+    console.log(`With a score of ${this.score()}\n`);
   }
 
-  showOne() {
-    for (let idx = 0; idx < this.cards.length; ++idx) {
+  showPartial() {
+    for (let idx = 0; idx < this.size(); ++idx) {
       if (idx === 0) {
         console.log(` - ${this.cards[0].toString()}`);
       } else {
         console.log(" - unknown card");
       }
     }
+
+    console.log(`With a score of ?????\n`);
+  }
+
+  size() {
+    return this.cards.length;
   }
 
   discard() { // TODO: side effect and return value
@@ -134,9 +154,14 @@ class Hand {
   }
 }
 
+// TODO: remove methods that simply invoke hand methods? Or use mix-in?
 class Participant {
   constructor() {
     this.hand = new Hand();
+  }
+
+  discardHand() {
+    return this.hand.discard();
   }
 
   hasBustedHand() {
@@ -155,11 +180,9 @@ class Participant {
     console.log(`The ${this.constructor.name} has:`);
 
     if (quantity === "full") {
-      this.hand.showAll();
-      console.log(`With a score of ${this.currentScore()}\n`);
+      this.hand.showFull();
     } else if (quantity === "partial") {
-      this.hand.showOne();
-      console.log(`With a score of ?????\n`);
+      this.hand.showPartial();
     }
     // TODO: add throw error
   }
@@ -175,17 +198,14 @@ class Player extends Participant {
 }
 
 class Dealer extends Participant {
+  static TARGET_SCORE = 17;
+
   constructor() {
     super();
-  }
-
-  move() { // STUB
   }
 }
 
 class TwentyOneGame {
-  static DEALER_TARGET_SCORE = 17;
-
   constructor() {
     this.deck = new Deck();
     this.player = new Player();
@@ -225,7 +245,7 @@ class TwentyOneGame {
 
   recycleCards() {
     for (let participant of this.participants) {
-      let discarded = participant.hand.discard(); // TODO: add method to Participant for discarding card from hand?
+      let discarded = participant.discardHand();
 
       while (discarded.length) {
         this.deck.addToDiscarded(discarded.pop());
@@ -240,11 +260,11 @@ class TwentyOneGame {
   }
 
   showCards(quantity = "full") {
-    this.player.displayHandAndScore();
+    this.player.displayHandAndScore("full");
     this.dealer.displayHandAndScore(quantity);
   }
 
-  playerTurn() { // STUB
+  playerTurn() { // SPIKE
     this.showCards("partial");
 
     while (this.playerHits()) {
@@ -257,36 +277,22 @@ class TwentyOneGame {
     }
   }
 
-  playerHits() { // TODO: DRY with playAgain?
-    let prompt = "(h)it or (s)tay? ";
-    const validAnswers = ["h", "s",];
-
-    let answer;
-
-    while (!validAnswers.includes(answer)) {
-      answer = readline.question(prompt).toLowerCase();
-      if (!validAnswers.includes(answer)) {
-        console.log("Invalid answer");
-      }
-    }
-
-    console.clear();
-
-    return answer === "h";
+  playerHits() {
+    return this.affirmPrompt("(h)it or (s)tay? ", ["h", "s",], "h");
   }
 
-  dealerTurn() { // STUB
-    while (this.dealer.currentScore() < TwentyOneGame.DEALER_TARGET_SCORE) { // TODO: add method to Participant for adding card to hand?
+  dealerTurn() {
+    while (this.dealer.currentScore() < Dealer.TARGET_SCORE) {
       this.dealCard(this.dealer);
     }
   }
 
-  displayResult() { // STUB
+  displayResult() { // SPIKE
     console.log("The round is over!\n");
     this.showCards();
   }
 
-  displayWelcomeMessage() { // STUB
+  displayWelcomeMessage() { // SPIKE
     console.clear();
     console.log("Welcome to 21!\n");
   }
@@ -296,9 +302,10 @@ class TwentyOneGame {
   }
 
   playAgain() {
-    let prompt = "Play again (y/n)? ";
-    const validAnswers = ["y", "n",];
+    return this.affirmPrompt("Play again (y/n)? ", ["y", "n",], "y");
+  }
 
+  affirmPrompt(prompt, validAnswers, affirmative) {
     let answer;
 
     while (!validAnswers.includes(answer)) {
@@ -310,7 +317,7 @@ class TwentyOneGame {
 
     console.clear();
 
-    return answer === "y";
+    return answer === affirmative;
   }
 }
 
