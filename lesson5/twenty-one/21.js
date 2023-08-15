@@ -158,7 +158,6 @@ class Hand {
   }
 }
 
-// TODO: remove methods that simply invoke hand methods? Or use mix-in?
 class Participant {
   constructor() {
     this.hand = new Hand();
@@ -305,17 +304,23 @@ class TwentyOneGame {
 
     while (this.dealer.currentScore() < Dealer.TARGET_SCORE) {
       this.dealCard(this.dealer);
+      this.showCards("full");
+      console.log(`${this.dealer.name} hit!`);
+      this.returnToContinue();
+      console.clear();
     }
   }
 
   displayResult() { // SPIKE
-    this.showCards();
+    this.showCards("full");
     console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
   }
 
   displayWelcomeMessage() { // SPIKE
     console.clear();
     console.log("Welcome to 21!\n");
+    this.returnToContinue();
+    console.clear();
   }
 
   displayGoodbyeMessage() {
@@ -339,6 +344,10 @@ class TwentyOneGame {
     console.clear();
 
     return answer === affirmative;
+  }
+
+  returnToContinue() {
+    readline.question("Press return to continue.");
   }
 }
 
