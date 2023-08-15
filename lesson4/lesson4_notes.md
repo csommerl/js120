@@ -298,28 +298,39 @@ console.log(Fish.prototype.swim === swim);
 
 Perhaps created a `swimMixin` is preferable because then you can add many methods at once.
 
-### Question about memory use of mix-ins
+### Question about memory use of factory function with mixins
 
-It seems that mixed-in methods aren't reduplicated. (**LS doesn't ever say otherwise!**) That's because functions are objects, and objects are passed by reference. When a method is mixed-in to a class's prototype object, what is mixed-in is a reference to the same function in memory.
+LS states that with this approach:
+
+> Every new object receives a new copy of all of its methods, including new copies of both mix-in methods and the methods that belong more directly to the object. That can be taxing on memory resources, even more so than the memory requirements of mix-ins.
+
+But it seems that mixed-in methods aren't reduplicated. That's because functions are objects, and objects are passed by reference. When a method is mixed-in to a class's prototype object, what is mixed-in is a reference to the same function in memory.
 
 ```javascript
-const swimMixin = {
-  swim() {
-    return `${this.name} is swimming.`;
-  }
+const Swimmable = {
+  swim() {}
 }
 
-class Fish {
-  constructor(name) {
-    this.name = name;
-  }
+function createPenguin() {
+  return createSwimmingBird();
 }
-Object.assign(Fish.prototype, swimMixin);
 
-let fish1 = new Fish("Nemo");
+function createOstrich() {
+  return createSwimmingBird();
+}
 
-console.log(Fish.prototype.swim === swimMixin.swim); // returns true
+let penguin = createPenguin();
+console.log(penguin.hasOwnProperty("swim")); // true
+
+console.log(Swimmable.swim === penguin.swim); // true
+
+let ostrich = createOstrich();
+console.log(ostrich.hasOwnProperty("swim")); // true
+
+console.log(penguin.swim === ostrich.swim); // true
 ```
+
+It seems that this approach is taxing on memory only to the extent that new variables/keys are created. But since these variables/keys point to the same objects, that's not so taxing on memory.
 
 ### Question about alternative mix-in approach
 

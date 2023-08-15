@@ -7,12 +7,14 @@
 ## Overview
 
 1. Non-inheritance
-   a. Factory Functions
+   a. Factory functions
 2. Inheritance
    a. OLOO
-   b. Pseudo-Classical
-      i. constructors
+   b. Pseudo-classical
+      i.  constructors
       ii. classes
+3. Hybrid
+   a. Factory functions with mix-ins
 
 Each of the above can also be complemented by the use of mix-ins.
 

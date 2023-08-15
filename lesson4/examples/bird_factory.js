@@ -42,5 +42,12 @@ function createGoose() {
   return createTalentedBird();
 }
 
-let goose = createGoose();
-console.log(goose.hasOwnProperty("swim"));
+let penguin = createPenguin();
+console.log(penguin.hasOwnProperty("swim")); // true
+
+console.log(Swimmable.swim === penguin.swim); // true
+
+let ostrich = createOstrich();
+console.log(ostrich.hasOwnProperty("swim")); // true
+
+console.log(penguin.swim === ostrich.swim); // true
