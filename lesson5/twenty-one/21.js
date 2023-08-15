@@ -127,7 +127,7 @@ class Hand {
     return score > Hand.MAX_SCORE;
   }
 
-  showFull() {
+  showFull() { // TODO: rename because it also shows score
     for (let card of this.cards) {
       console.log(` - ${card.toString()}`);
     }
@@ -135,7 +135,7 @@ class Hand {
     console.log(`With a score of ${this.score()}\n`);
   }
 
-  showPartial() {
+  showPartial() { // TODO: rename because it also shows score
     for (let idx = 0; idx < this.size(); ++idx) {
       if (idx === 0) {
         console.log(` - ${this.cards[0].toString()}`);
@@ -180,7 +180,7 @@ class Participant {
     return this.hand.score();
   }
 
-  displayHandAndScore(quantity = "full") { // TODO: rename method name and quantity
+  displayStatus(quantity = "full") { // TODO: rename method name and quantity
     console.log(`The ${this.name} has:`);
 
     if (quantity === "full") {
@@ -193,11 +193,33 @@ class Participant {
 }
 
 class Player extends Participant {
+  static INITIAL_PURSE = 5;
+  static BROKE_CONDITION = 0;
+  static RICH_CONDITION = 10;
+
   constructor() {
     super();
+    this.purse = Player.INITIAL_PURSE;
   }
 
-  updateDollars() { // STUB
+  winBet() {
+    ++this.purse;
+  }
+
+  loseBet() {
+    --this.purse;
+  }
+
+  isBroke() {
+    return this.purse === Player.BROKE_CONDITION;
+  }
+
+  isRich() {
+    return this.purse === Player.RICH_CONDITION;
+  }
+
+  showPurse() {
+    console.log(`You have $${this.purse}.\n`);
   }
 }
 
@@ -217,25 +239,37 @@ class TwentyOneGame {
     this.participants = [this.player, this.dealer];
   }
 
-  playMatch() { // SPIKE
+  playMatch() {
     this.displayWelcomeMessage();
 
-    do { // TODO: play based on dollars
+    do {
       this.playRound();
-    } while (this.playAgain());
+    } while (!this.matchWinner() && this.playAgain());
 
+    this.displayMatchResult();
     this.displayGoodbyeMessage();
   }
 
-  playRound() { // SPIKE
+  matchWinner() {
+    if (this.player.isRich()) {
+      return this.player;
+    } else if (this.player.isBroke()) {
+      return this.dealer;
+    } else {
+      return null;
+    }
+  }
+
+  playRound() {
     this.dealHands();
     this.playerTurn();
     this.dealerTurn();
-    this.displayResult();
+    this.updatePurse();
+    this.displayRoundResult();
     this.recycleCards();
   }
 
-  roundWinner() { // SPIKE: tidy up?
+  roundWinner() { // TODO: tidy up?
     if (this.player.hasBustedHand()) {
       return this.dealer;
     } else if (this.dealer.hasBustedHand()) {
@@ -277,13 +311,14 @@ class TwentyOneGame {
     this.deck.reset();
   }
 
-  showCards(quantity = "full") {
-    this.dealer.displayHandAndScore(quantity);
-    this.player.displayHandAndScore("full");
+  showCards(quantity = "full") { // TODO: rename because it also shows score
+    this.dealer.displayStatus(quantity);
+    this.player.displayStatus("full");
   }
 
-  playerTurn() { // SPIKE
+  playerTurn() {
     this.showCards("partial");
+    this.player.showPurse();
 
     while (this.playerHits()) {
       this.dealCard(this.player);
@@ -291,6 +326,7 @@ class TwentyOneGame {
       if (this.player.hasBustedHand()) break;
 
       this.showCards("partial");
+      this.player.showPurse();
       console.log("You hit!\n");
     }
   }
@@ -305,18 +341,28 @@ class TwentyOneGame {
     while (this.dealer.currentScore() < Dealer.TARGET_SCORE) {
       this.dealCard(this.dealer);
       this.showCards("full");
-      console.log(`${this.dealer.name} hit!`);
+      this.player.showPurse();
+      console.log(`${this.dealer.name} hit!\n`);
       this.returnToContinue();
       console.clear();
     }
   }
 
-  displayResult() { // SPIKE
-    this.showCards("full");
-    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
+  updatePurse() {
+    if (this.roundWinner() === this.player) {
+      this.player.winBet();
+    } else if (this.roundWinner() === this.dealer) {
+      this.player.loseBet();
+    }
   }
 
-  displayWelcomeMessage() { // SPIKE
+  displayRoundResult() {
+    this.showCards("full");
+    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
+    this.player.showPurse();
+  }
+
+  displayWelcomeMessage() {
     console.clear();
     console.log("Welcome to 21!\n");
     this.returnToContinue();
@@ -348,6 +394,14 @@ class TwentyOneGame {
 
   returnToContinue() {
     readline.question("Press return to continue.");
+  }
+
+  displayMatchResult() {
+    if (this.player.isRich()) {
+      console.log("You're rich!\n");
+    } else if (this.player.isBroke()) {
+      console.log("You're broke!\n");
+    }
   }
 }
 
