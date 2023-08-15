@@ -47,7 +47,11 @@ Where to put `dealHand`?
 - Putting it in `deck` would require passing participant as an argument.
 - So, to avoid dependency, it seems that it would be good to have it as a method of `TwentyOneGame`.
 
-More general lesson?: When a method involves two objects interacting, put the method in an object that has those two objects as collaborators.
+More general lesson?: When a method involves two objects interacting, put the method in an object that has those two objects as collaborators. Otherwise, a dependency is created.
+
+- But isn't there still a dependency of sorts, just a different kind?
+
+Don't access properties of a collaborator object directly. Instead, define a method in the collaborator object and use that. This also seems to apply when a collaborator object itself has a collaborator object.
 
 ---
 

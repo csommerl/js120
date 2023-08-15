@@ -279,8 +279,8 @@ class TwentyOneGame {
   }
 
   showCards(quantity = "full") {
-    this.player.displayHandAndScore("full");
     this.dealer.displayHandAndScore(quantity);
+    this.player.displayHandAndScore("full");
   }
 
   playerTurn() { // SPIKE
@@ -291,8 +291,8 @@ class TwentyOneGame {
 
       if (this.player.hasBustedHand()) break;
 
-      console.log("You hit!\n");
       this.showCards("partial");
+      console.log("You hit!\n");
     }
   }
 
@@ -309,8 +309,8 @@ class TwentyOneGame {
   }
 
   displayResult() { // SPIKE
-    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
     this.showCards();
+    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
   }
 
   displayWelcomeMessage() { // SPIKE
