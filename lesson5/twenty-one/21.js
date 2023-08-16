@@ -180,8 +180,9 @@ class Participant {
       this.hand.showFull();
     } else if (quantity === "partial") {
       this.hand.showPartial();
+    } else {
+      throw new Error(`${quantity} is not a valid argument for displayStatus!`);
     }
-    // TODO: add throw error
   }
 }
 
@@ -254,13 +255,12 @@ class TwentyOneGame {
   }
 
   playRound() {
-    console.log(this.deck.stock.length); // TODO: remove
     this.dealHands();
     this.playerTurn();
     this.dealerTurn();
     this.updatePurse();
     this.displayRoundResult();
-    this.recycleCards();
+    this.recycleCards(); // TODO: recycle only when the deck contains fewer than a particular # of cards?
   }
 
   roundWinner() { // TODO: tidy up?
@@ -291,10 +291,11 @@ class TwentyOneGame {
 
   recycleCards() {
     for (let participant of this.participants) {
-      while (true) { // TODO: better logic?
-        let card = participant.removeFromHand();
-        if (!card) break;
+      let card = participant.removeFromHand();
+
+      while (card) {
         this.deck.addToWastepile(card);
+        card = participant.removeFromHand();
       }
     }
 
