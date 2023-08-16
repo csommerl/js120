@@ -45,19 +45,9 @@ class Deck {
     return cards;
   }
 
-  // TODO: unnecessary?
-  // It does offer a resource for shuffling other cards, which might be useful
-  static shuffleCards(cards) {
-    for (let idx1 = cards.length - 1; idx1 > 0; --idx1) {
-      let idx2 = Math.floor(Math.random() * (idx1 + 1));
-      [cards[idx1], cards[idx2]] = [cards[idx2], cards[idx1]];
-    }
-
-    return cards;
-  }
-
   constructor() {
-    this.cards = Deck.shuffleCards(Deck.create());
+    this.cards = Deck.create();
+    this.shuffle();
     this.discarded = [];
   }
 
@@ -70,7 +60,12 @@ class Deck {
   }
 
   shuffle() {
-    Deck.shuffleCards(this.cards);
+    let cards = this.cards;
+
+    for (let idx1 = cards.length - 1; idx1 > 0; --idx1) {
+      let idx2 = Math.floor(Math.random() * (idx1 + 1));
+      [cards[idx1], cards[idx2]] = [cards[idx2], cards[idx1]];
+    }
   }
 
   reset() {
@@ -358,7 +353,7 @@ class TwentyOneGame {
 
   displayRoundResult() {
     this.showCards("full");
-    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n"); // TODO: handle tie/null
+    console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n");
     this.player.showPurse();
   }
 

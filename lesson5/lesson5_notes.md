@@ -234,6 +234,7 @@ Steps:
 1. Write a description of the problem.
 2. Extract significant nouns & verbs.
 3. Organize & associate nouns & verbs.
+   - Distinguish between verbs and states.
 4. Write scaffolding stubs and spike code.
     - Outline classes & their methods.
     - Write *stubs*, asking questions about data structures, relations between classes, etc.
@@ -251,6 +252,14 @@ The lesson [5.4 OOP Tic Tac Toe with Classes - Part 2](https://launchschool.com/
 ### Coupling
 
 The lesson [5.8 OOP Tic Tac Toe Code Discussion](https://launchschool.com/lessons/93a83d87/assignments/7e30fda9) refers to **tight coupling** and **loose coupling** but doesn't define them.
+
+## How to deal with collaborators and dependencies?
+
+Is this correct?: When a method involves two objects interacting, put the method in an object that has those two objects as collaborators. Otherwise, a dependency is created.
+
+- But isn't there still a dependency of sorts, just a different kind?
+
+Similarly, is it correct that you shouldn't access properties of a collaborator object directly? Instead, define a method in the collaborator object and use that. This also seems to apply when a collaborator object itself has a collaborator object.
 
 ---
 
