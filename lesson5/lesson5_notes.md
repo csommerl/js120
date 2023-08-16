@@ -227,6 +227,23 @@ Always use the radix argument of `parseInt`.
 
 ---
 
+## [5.13 OOP Twenty-One: Reference Implementation with Classes](https://launchschool.com/lessons/93a83d87/assignments/83ff3989)
+
+---
+
+## [5.14 Exercise Sets](https://launchschool.com/lessons/93a83d87/assignments/903c0997)
+
+[the Object Oriented JavaScript exercise sets](https://launchschool.com/exercises#js120_object_oriented_javascript)
+
+1. [Easy](https://launchschool.com/exercise_sets/d4280aad)
+2. Objects
+3. Function Context
+4. OO Basics: Classes
+5. OO Basics: Inheritance and Mixins
+6. Object Creation Patterns
+
+---
+
 ## My Summary of Steps for Creating an OOP program.
 
 Steps:

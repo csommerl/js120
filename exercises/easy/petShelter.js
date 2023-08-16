@@ -1,37 +1,13 @@
 // https://launchschool.com/exercises/2b521c67
 
-class Shelter {
-  constructor() {
-    this.owners = {};
-    this.unadoptedPets = [];
+class Pet {
+  constructor(species, name) {
+    this.species = species;
+    this.name = name;
   }
 
-  adopt(owner, pet) {
-    owner.addPet(pet);
-
-    if (!this.owners.hasOwnProperty(owner.name)) {
-      this.owners[owner.name] = owner; 
-    }
-  }
-
-  printAdoptions() {
-    for (let name in this.owners) {
-      console.log(`${name} has adopted the following pets:`);
-      this.owners[name].showPets();
-      console.log('');
-    }
-  }
-
-  addUnadoptedPet(pet) {
-    this.unadoptedPets.push(pet);
-  }
-
-  numberOfUnadoptedPets() {
-    return this.unadoptedPets.length;
-  }
-
-  printUnadoptedPets() {
-    this.unadoptedPets.forEach(pet => pet.info());
+  describe() {
+    console.log(`a ${this.species} named ${this.name}`);
   }
 }
 
@@ -41,33 +17,40 @@ class Owner {
     this.pets = [];
   }
 
-  numberOfPets() {
-    return this.pets.length;
-  }
-
-  addPet(pet) {
+  adoptPet(pet) {
     this.pets.push(pet);
   }
 
-  showPets() {
-    for (let pet of this.pets) {
-      console.log(pet.info());
+  numberOfPets() {
+    return this.pets.length;
+  }
+}
+
+class Shelter {
+  constructor() {
+    this.adoptions = {};
+  }
+
+  addToAdoptions(owner, pet) {
+    this.adoptions[owner.name] = this.adoptions[owner.name] ?? [];
+    this.adoptions[owner.name].push(pet);
+  }
+
+  adopt(owner, pet) {
+    owner.adoptPet(pet);
+    this.addToAdoptions(owner, pet);
+  }
+
+  printAdoptions() {
+    for (let owner in this.adoptions) {
+      console.log(`${owner} has adopted the following pets:`);
+      for (let pet of this.adoptions[owner]) {
+        pet.describe();
+      }
     }
   }
 }
 
-class Pet {
-  constructor(species, name) {
-    this.species = species;
-    this.name = name;
-  }
-
-  info() {
-    return `a ${this.species} named ${this.name}`;
-  }
-}
-
-/*
 let butterscotch = new Pet('cat', 'Butterscotch');
 let pudding      = new Pet('cat', 'Pudding');
 let darwin       = new Pet('bearded dragon', 'Darwin');
@@ -90,23 +73,3 @@ shelter.adopt(bholmes, chester);
 shelter.printAdoptions();
 console.log(`${phanson.name} has ${phanson.numberOfPets()} adopted pets.`);
 console.log(`${bholmes.name} has ${bholmes.numberOfPets()} adopted pets.`);
-*/
-
-let shelter = new Shelter();
-let curtis = new Owner('Curtis S');
-let sylvie = new Pet('cat', 'Sylvie');
-let bella = new Pet('cat', 'Bella');
-shelter.adopt(curtis, sylvie);
-shelter.adopt(curtis, bella);
-// shelter.printAdoptions();
-
-let asta = new Pet('dog', 'Asta');
-let fluffy = new Pet('cat', 'Fluffy');
-let chatterbox = new Pet('parakeet', 'Chatterbox');
-shelter.addUnadoptedPet(asta);
-shelter.addUnadoptedPet(fluffy);
-shelter.addUnadoptedPet(chatterbox);
-
-shelter.printUnadoptedPets();
-console.log(`${curtis.name} has ${curtis.numberOfPets()} adopted pets.`);
-console.log(`The Animal shelter has ${shelter.numberOfUnadoptedPets()} unadopted pets.`);
