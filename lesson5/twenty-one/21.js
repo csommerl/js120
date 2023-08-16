@@ -77,7 +77,6 @@ class Deck {
   }
 }
 
-// Values here because cards have values only within a hand (e.g., aces)
 class Hand {
   static FACE_CARD_VALUE = 10;
   static ACE_MAX_VALUE = 11;
@@ -122,19 +121,19 @@ class Hand {
     return score;
   }
 
-  isBusted(score = this.score()) { // argument enables this to be useds within score()
+  isBusted(score = this.score()) {
     return score > Hand.MAX_SCORE;
   }
 
-  showFull() { // TODO: rename because it also shows score
+  showFullStatus() {
     for (let card of this.cards) {
       console.log(` - ${card.toString()}`);
     }
 
-    console.log(`With a score of ${this.score()}\n`);
+    console.log(` With a score of ${this.score()}\n`);
   }
 
-  showPartial() { // TODO: rename because it also shows score
+  showPartialStatus() {
     for (let idx = 0; idx < this.size(); ++idx) {
       if (idx === 0) {
         console.log(` - ${this.cards[0].toString()}`);
@@ -143,7 +142,7 @@ class Hand {
       }
     }
 
-    console.log(`With a score of ?????\n`);
+    console.log(` With a score of ?????\n`);
   }
 
   size() {
@@ -173,13 +172,13 @@ class Participant {
     return this.hand.score();
   }
 
-  displayStatus(quantity = "full") { // TODO: rename method name and quantity
+  displayStatus(quantity = "full") {
     console.log(`The ${this.name} has:`);
 
     if (quantity === "full") {
-      this.hand.showFull();
+      this.hand.showFullStatus();
     } else if (quantity === "partial") {
-      this.hand.showPartial();
+      this.hand.showPartialStatus();
     } else {
       throw new Error(`${quantity} is not a valid argument for displayStatus!`);
     }
@@ -260,20 +259,20 @@ class TwentyOneGame {
     this.dealerTurn();
     this.updatePurse();
     this.displayRoundResult();
-    this.recycleCards(); // TODO: recycle only when the deck contains fewer than a particular # of cards?
+    this.recycleCards();
   }
 
-  roundWinner() { // TODO: tidy up?
+  roundWinner() {
     if (this.player.hasBustedHand()) {
       return this.dealer;
     } else if (this.dealer.hasBustedHand()) {
       return this.player;
-    } else if (this.player.currentScore() === this.dealer.currentScore()) {
-      return null;
+    } else if (this.player.currentScore() < this.dealer.currentScore()) {
+      return this.dealer;
     } else if (this.player.currentScore() > this.dealer.currentScore()) {
       return this.player;
     } else {
-      return this.dealer;
+      return null;
     }
   }
 
@@ -302,13 +301,13 @@ class TwentyOneGame {
     this.deck.reset();
   }
 
-  showCards(quantity = "full") { // TODO: rename because it also shows score
-    this.dealer.displayStatus(quantity);
+  showStatuses(view = "full") {
+    this.dealer.displayStatus(view);
     this.player.displayStatus("full");
   }
 
   playerTurn() {
-    this.showCards("partial");
+    this.showStatuses("partial");
     this.player.showPurse();
 
     while (this.playerHits()) {
@@ -316,7 +315,7 @@ class TwentyOneGame {
 
       if (this.player.hasBustedHand()) break;
 
-      this.showCards("partial");
+      this.showStatuses("partial");
       this.player.showPurse();
       console.log("You hit!\n");
     }
@@ -331,7 +330,7 @@ class TwentyOneGame {
 
     while (this.dealer.currentScore() < Dealer.TARGET_SCORE) {
       this.dealCard(this.dealer);
-      this.showCards("full");
+      this.showStatuses("full");
       this.player.showPurse();
       console.log(`${this.dealer.name} hit!\n`);
       this.returnToContinue();
@@ -348,7 +347,7 @@ class TwentyOneGame {
   }
 
   displayRoundResult() {
-    this.showCards("full");
+    this.showStatuses("full");
     console.log(this.roundWinner() ? `${this.roundWinner().name} wins!\n` : "It's a tie.\n");
     this.player.showPurse();
   }
