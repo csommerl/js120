@@ -322,7 +322,20 @@ class TwentyOneGame {
   }
 
   playerHits() {
-    return this.affirmPrompt("(h)it or (s)tay? ", ["h", "s",], "h");
+    let prompt = "(h)it or (s)tay? ";
+    let validAnswers = ["h", "s",];
+    let answer;
+
+    while (!validAnswers.includes(answer)) {
+      answer = readline.question(prompt).toLowerCase();
+      if (!validAnswers.includes(answer)) {
+        console.log("Invalid answer");
+      }
+    }
+
+    console.clear();
+
+    return answer === "h";
   }
 
   dealerTurn() {
@@ -364,10 +377,8 @@ class TwentyOneGame {
   }
 
   playAgain() {
-    return this.affirmPrompt("Play again (y/n)? ", ["y", "n",], "y");
-  }
-
-  affirmPrompt(prompt, validAnswers, affirmative) {
+    let prompt = "Play again (y/n)? ";
+    let validAnswers = ["y", "n",];
     let answer;
 
     while (!validAnswers.includes(answer)) {
@@ -379,7 +390,7 @@ class TwentyOneGame {
 
     console.clear();
 
-    return answer === affirmative;
+    return answer === "y";
   }
 
   returnToContinue() {
