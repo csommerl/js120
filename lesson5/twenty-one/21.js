@@ -34,33 +34,33 @@ class Card {
 
 class Deck {
   static create() {
-    let cards = [];
+    let pack = [];
 
     for (let suit of Card.SUITS) {
       for (let rank of Card.RANKS) {
-        cards.push(new Card(rank, suit));
+        pack.push(new Card(rank, suit));
       }
     }
 
-    return cards;
+    return pack;
   }
 
   constructor() {
-    this.cards = Deck.create();
+    this.stock = Deck.create();
     this.shuffle();
-    this.discarded = [];
+    this.wastepile = [];
   }
 
   getCard() {
-    return this.cards.pop();
+    return this.stock.pop();
   }
 
-  addToDiscarded(card) {
-    this.discarded.push(card);
+  addToWastepile(card) {
+    this.wastepile.push(card);
   }
 
   shuffle() {
-    let cards = this.cards;
+    let cards = this.stock;
 
     for (let idx1 = cards.length - 1; idx1 > 0; --idx1) {
       let idx2 = Math.floor(Math.random() * (idx1 + 1));
@@ -69,8 +69,8 @@ class Deck {
   }
 
   reset() {
-    while (this.discarded.length) {
-      this.cards.push(this.discarded.pop());
+    while (this.wastepile.length) {
+      this.stock.push(this.wastepile.pop());
     }
 
     this.shuffle();
@@ -90,6 +90,10 @@ class Hand {
 
   add(card) {
     this.cards.push(card);
+  }
+
+  remove() {
+    return this.cards.pop();
   }
 
   pointsOf(card) {
@@ -145,12 +149,6 @@ class Hand {
   size() {
     return this.cards.length;
   }
-
-  discard() { // TODO: side effect and return value
-    let discarded = this.cards;
-    this.cards = [];
-    return discarded;
-  }
 }
 
 class Participant {
@@ -159,16 +157,16 @@ class Participant {
     this.name = this.constructor.name;
   }
 
-  discardHand() {
-    return this.hand.discard();
-  }
-
   hasBustedHand() {
     return this.hand.isBusted();
   }
 
   addToHand(card) {
     this.hand.add(card);
+  }
+
+  removeFromHand() {
+    return this.hand.remove();
   }
 
   currentScore() {
@@ -256,6 +254,7 @@ class TwentyOneGame {
   }
 
   playRound() {
+    console.log(this.deck.stock.length); // TODO: remove
     this.dealHands();
     this.playerTurn();
     this.dealerTurn();
@@ -292,15 +291,11 @@ class TwentyOneGame {
 
   recycleCards() {
     for (let participant of this.participants) {
-      let discarded = participant.discardHand();
-
-      while (discarded.length) {
-        this.deck.addToDiscarded(discarded.pop());
+      while (true) { // TODO: better logic?
+        let card = participant.removeFromHand();
+        if (!card) break;
+        this.deck.addToWastepile(card);
       }
-
-      // TODO: does this help with memory?
-      // otherwise, you have an object left over after each recycle
-      discarded = null;
     }
 
     this.deck.reset();
