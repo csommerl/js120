@@ -284,5 +284,8 @@ Similarly, is it correct that you shouldn't access properties of a collaborator 
 
 - [ ] Redo [Circular Queue](https://launchschool.com/exercises/1becc424) with hard solution
 - [ ] [Banner Class](https://launchschool.com/exercises/398917ba) further exploration
+- [ ] [Use All Object Creation Patterns](https://fine-ocean-68c.notion.site/Use-All-Object-Creation-Patterns-9e431d9a2c4842b9b75af32f8c96a623)
+- [ ] [Questions about Theory](https://fine-ocean-68c.notion.site/JS120-Questions-about-various-concepts-theory-How-the-backpropagation-algorithm-works-aed422b1bd4447498e09850634ac161f)
+- [ ] [Tigers and Lions and Ligers](https://fine-ocean-68c.notion.site/Tigers-and-Lions-and-Ligers-Oh-My-b11a93b231d149beba22d51692d029ee)
 
 ---
