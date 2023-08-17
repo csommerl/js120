@@ -1,12 +1,12 @@
 // https://launchschool.com/exercises/1becc424
 
 class CircularQueue {
-  constructor(size) { // STUB
+  constructor(size) {
     this.queue = [];
     this.size = size;
   }
 
-  enqueue(obj) { // STUB
+  enqueue(obj) {
     if (this.queue.length < this.size) {
       this.queue.push(obj);
     } else {
@@ -15,7 +15,7 @@ class CircularQueue {
     }
   }
 
-  dequeue() { // STUB
+  dequeue() {
     if (this.queue.length === 0) {
       return null;
     } else {

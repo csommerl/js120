@@ -282,4 +282,7 @@ Similarly, is it correct that you shouldn't access properties of a collaborator 
 
 ## To Do
 
+- [ ] Redo [Circular Queue](https://launchschool.com/exercises/1becc424) with hard solution
+- [ ] [Banner Class](https://launchschool.com/exercises/398917ba) further exploration
+
 ---
