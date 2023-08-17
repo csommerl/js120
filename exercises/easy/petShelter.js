@@ -35,6 +35,11 @@ class Owner {
 class Shelter {
   constructor() {
     this.owners = [];
+    this.unadoptedPets = [];
+  }
+
+  addUnadopted(pet) {
+    this.unadoptedPets.push(pet);
   }
 
   adopt(owner, pet) {
@@ -50,6 +55,16 @@ class Shelter {
       owner.printPets();
     }
   }
+
+  unadoptedCount() {
+    return this.unadoptedPets.length;
+  }
+
+  printUnadopted() {
+    this.unadoptedPets.forEach(pet => {
+      console.log(pet.info());
+    });
+  }
 }
 
 let butterscotch = new Pet('cat', 'Butterscotch');
@@ -64,6 +79,13 @@ let phanson = new Owner('P Hanson');
 let bholmes = new Owner('B Holmes');
 
 let shelter = new Shelter();
+
+let asta = new Pet('dog', 'Asta');
+
+shelter.addUnadopted(asta);
+
+shelter.printUnadopted();
+
 shelter.adopt(phanson, butterscotch);
 shelter.adopt(phanson, pudding);
 shelter.adopt(phanson, darwin);
@@ -71,6 +93,10 @@ shelter.adopt(bholmes, kennedy);
 shelter.adopt(bholmes, sweetie);
 shelter.adopt(bholmes, molly);
 shelter.adopt(bholmes, chester);
+
 shelter.printAdoptions();
+
 console.log(`${phanson.name} has ${phanson.numberOfPets()} adopted pets.`);
 console.log(`${bholmes.name} has ${bholmes.numberOfPets()} adopted pets.`);
+
+console.log(`The Animal shelter has ${shelter.unadoptedCount()} unadopted pets.`);

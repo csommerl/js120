@@ -65,6 +65,8 @@ banner2.displayBanner();
 +--+
 */
 
+/*
+
 let banner3 = new Banner('To boldly go where no one has gone before.', 20);
 banner3.displayBanner();
 
@@ -73,3 +75,4 @@ banner4.displayBanner();
 
 let banner5 = new Banner('To boldly go where no one has gone before?!', 80);
 banner5.displayBanner();
+*/
